@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211A104723966212002A42DA /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 211A104623966211002A42DA /* Auth0.plist */; };
 		211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A104823966DE3002A42DA /* NiZiAPIHelper.swift */; };
+		211A104F23969D17002A42DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 211A105123969D17002A42DA /* Localizable.strings */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496542391832700243B41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496532391832700243B41 /* ViewController.swift */; };
@@ -31,6 +32,10 @@
 /* Begin PBXFileReference section */
 		211A104623966211002A42DA /* Auth0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		211A104823966DE3002A42DA /* NiZiAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiZiAPIHelper.swift; sourceTree = "<group>"; };
+		211A105023969D17002A42DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		211A105223969D49002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		211A105323969D4B002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		211A105423969D4C002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 				2174965A2391832900243B41 /* LaunchScreen.storyboard */,
 				211A104623966211002A42DA /* Auth0.plist */,
 				2174965D2391832900243B41 /* Info.plist */,
+				211A105123969D17002A42DA /* Localizable.strings */,
 			);
 			path = NiziApp;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = 217496432391832700243B41;
 			productRefGroup = 2174964D2391832700243B41 /* Products */;
@@ -211,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211A104F23969D17002A42DA /* Localizable.strings in Resources */,
 				2174965C2391832900243B41 /* LaunchScreen.storyboard in Resources */,
 				217496592391832900243B41 /* Assets.xcassets in Resources */,
 				217496572391832700243B41 /* Main.storyboard in Resources */,
@@ -287,10 +295,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		211A105123969D17002A42DA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				211A105023969D17002A42DA /* en */,
+				211A105423969D4C002A42DA /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		217496552391832700243B41 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				217496562391832700243B41 /* Base */,
+				211A105223969D49002A42DA /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -299,6 +317,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2174965B2391832900243B41 /* Base */,
+				211A105323969D4B002A42DA /* nl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -310,6 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -370,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
