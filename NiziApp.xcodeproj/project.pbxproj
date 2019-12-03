@@ -25,6 +25,7 @@
 		9322A702239671BF003F136D /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A701239671BF003F136D /* Consumption.swift */; };
 		9322A704239680D7003F136D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A703239680D7003F136D /* Meal.swift */; };
 		9322A70623968798003F136D /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70523968798003F136D /* Food.swift */; };
+		9322A708239697B0003F136D /* DietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A707239697B0003F136D /* DietaryManagement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		9322A701239671BF003F136D /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		9322A703239680D7003F136D /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9322A70523968798003F136D /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		9322A707239697B0003F136D /* DietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryManagement.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.release.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.release.xcconfig"; sourceTree = "<group>"; };
 		E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.debug.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				9322A701239671BF003F136D /* Consumption.swift */,
 				9322A703239680D7003F136D /* Meal.swift */,
 				9322A70523968798003F136D /* Food.swift */,
+				9322A707239697B0003F136D /* DietaryManagement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				217496542391832700243B41 /* ViewController.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
+				9322A708239697B0003F136D /* DietaryManagement.swift in Sources */,
 				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
