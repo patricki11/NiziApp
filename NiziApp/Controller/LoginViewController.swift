@@ -64,7 +64,7 @@ class LoginViewController : UIViewController {
             .authentication()
             .login(
             usernameOrEmail: "577234@student.inholland.nl",
-            password: "TestTestTest!",
+            password: "TestPassword!",
             realm: "Username-Password-Authentication",
             scope: "openid")
             .start { result in
