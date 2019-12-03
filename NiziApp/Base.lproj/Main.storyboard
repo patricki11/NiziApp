@@ -204,7 +204,10 @@
                         <outlet property="nierstichtingMailLabel" destination="T2r-OC-IZh" id="q5a-Uw-zfT"/>
                         <outlet property="nierstichtingPhoneLabel" destination="bHu-sb-6Pu" id="aBu-ME-q2v"/>
                         <outlet property="nierstichtingPhoneTimeLabel" destination="04U-8T-oXZ" id="sEA-iP-KFj"/>
+                        <outlet property="nierstichtingWebImage" destination="C9q-FE-wIP" id="AQ9-M7-DjC"/>
                         <outlet property="nierstichtingWebLabel" destination="BSu-od-5QN" id="CEI-wg-mgw"/>
+                        <outlet property="nierstrichtingMailImage" destination="ZfB-sy-aVC" id="Wrd-hV-BaJ"/>
+                        <outlet property="nierstrichtingPhoneImage" destination="Z3g-bh-dbb" id="dol-AU-6FL"/>
                         <outlet property="pageTitleLabel" destination="rgL-n1-5u8" id="Xbc-2l-J6C"/>
                         <outlet property="passwordField" destination="HXj-xi-tWx" id="u94-pZ-MbP"/>
                         <outlet property="passwordLabel" destination="5lO-yF-9ow" id="qUH-UX-h8h"/>
@@ -466,36 +469,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhh-nl-e4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2584.8000000000002" y="-1084.4077961019491"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ahg-o7-nbs">
-            <objects>
-                <viewController id="dlr-GI-8aQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FPk-fO-1R2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="NGT-3z-lRK"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V4F-vg-esZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="706" y="142"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="25" y="142"/>
         </scene>
     </scenes>
     <resources>
