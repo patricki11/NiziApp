@@ -1,0 +1,6 @@
+framework module Pods_NiziApp {
+  umbrella header "Pods-NiziApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,12 @@
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
 		217496592391832900243B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217496582391832900243B41 /* Assets.xcassets */; };
 		2174965C2391832900243B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2174965A2391832900243B41 /* LaunchScreen.storyboard */; };
+		2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966723918F3100243B41 /* AddPatientViewController.swift */; };
+		2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21749669239190FD00243B41 /* DairyListViewController.swift */; };
+		2174966C2391913300243B41 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966B2391913300243B41 /* PatientListViewController.swift */; };
+		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
+		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
+		83F72D69651889CD514430FE /* Pods_NiziApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,14 @@
 		217496582391832900243B41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2174965B2391832900243B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2174965D2391832900243B41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2174966723918F3100243B41 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
+		21749669239190FD00243B41 /* DairyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DairyListViewController.swift; sourceTree = "<group>"; };
+		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
+		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.release.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.release.xcconfig"; sourceTree = "<group>"; };
+		E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.debug.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83F72D69651889CD514430FE /* Pods_NiziApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06AAAB2BB9282299FE4E0CC1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */,
+				C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		217496432391832700243B41 = {
 			isa = PBXGroup;
 			children = (
 				2174964E2391832700243B41 /* NiziApp */,
 				2174964D2391832700243B41 /* Products */,
+				06AAAB2BB9282299FE4E0CC1 /* Pods */,
+				8EBB918C5949E75D013E6EF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,44 @@
 		2174964E2391832700243B41 /* NiziApp */ = {
 			isa = PBXGroup;
 			children = (
+				2174966423918EBC00243B41 /* Model */,
+				2174966323918E8200243B41 /* Controller */,
 				2174964F2391832700243B41 /* AppDelegate.swift */,
 				217496512391832700243B41 /* SceneDelegate.swift */,
-				217496532391832700243B41 /* ViewController.swift */,
 				217496552391832700243B41 /* Main.storyboard */,
 				217496582391832900243B41 /* Assets.xcassets */,
 				2174965A2391832900243B41 /* LaunchScreen.storyboard */,
 				2174965D2391832900243B41 /* Info.plist */,
 			);
 			path = NiziApp;
+			sourceTree = "<group>";
+		};
+		2174966323918E8200243B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2174966723918F3100243B41 /* AddPatientViewController.swift */,
+				217496532391832700243B41 /* ViewController.swift */,
+				21749669239190FD00243B41 /* DairyListViewController.swift */,
+				2174966B2391913300243B41 /* PatientListViewController.swift */,
+				2174966F2391A4F500243B41 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2174966423918EBC00243B41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2174966D2391937A00243B41 /* Patient.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8EBB918C5949E75D013E6EF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 217496602391832900243B41 /* Build configuration list for PBXNativeTarget "NiziApp" */;
 			buildPhases = (
+				745349FC25FF9FA1EC6B2445 /* [CP] Check Pods Manifest.lock */,
 				217496482391832700243B41 /* Sources */,
 				217496492391832700243B41 /* Frameworks */,
 				2174964A2391832700243B41 /* Resources */,
+				68F144263F8089751288805C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +190,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68F144263F8089751288805C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NiziApp/Pods-NiziApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NiziApp/Pods-NiziApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NiziApp/Pods-NiziApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		745349FC25FF9FA1EC6B2445 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NiziApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		217496482391832700243B41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +239,11 @@
 			files = (
 				217496542391832700243B41 /* ViewController.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
+				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
+				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,
+				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
+				2174966E2391937A00243B41 /* Patient.swift in Sources */,
+				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +386,12 @@
 		};
 		217496612391832900243B41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NiziApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,10 +405,12 @@
 		};
 		217496622391832900243B41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NiziApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
