@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  NiziApp
+
+  Created by Patrick Dammers on 03/12/2019.
+  Copyright © 2019 Samir Yeasin. All rights reserved.
+*/
+
+"ApplicationName" = "Nizi";
+"LoginPageTitle" = "Inloggen";
+"UsernameLabel" = "Gebruikersnaam";
+"PasswordLabel" = "Wachtwoord";
+"Login" = "Inloggen";
+"NeedHelp" = "Hulp Nodig?";
+"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
+"NierstichtingWeb" = "http://www.nierstichting.nl";
+"NierstichtingPhone" = "035 697 80 00";
+"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
+"NierstichtingMail" = "info@nierstichting.nl";
