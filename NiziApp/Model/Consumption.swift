@@ -10,18 +10,18 @@ import Foundation
 
 class Consumption {
     var foodName: String = ""
-    var kCal : Float = Float()    
-    var protein : Float = Float()
-    var fiber : Float = Float()
-    var calium : Float = Float()
-    var sodium : Float = Float()
+    var kCal : Double = 0.0
+    var protein : Double = 0.0
+    var fiber : Double = 0.0
+    var calium : Double = 0.0
+    var sodium : Double = 0.0
     var amount : Int = 0
-    var weightUnitId : Float = Float()
+    var weightUnitId : Double = 0.0
     var date : String = ""
     var patientId : Int = 0
     var id : Int = 0
     
-    init(foodName : String, kCal : Float, protein : Float, fiber: Float, calium: Float, sodium : Float, amount : Int, weightUnitId : Float, date : String, patientId : Int, id : Int){
+    init(foodName : String, kCal : Double, protein : Double, fiber: Double, calium: Double, sodium : Double, amount : Int, weightUnitId : Double, date : String, patientId : Int, id : Int){
         self.foodName = foodName
         self.kCal = kCal
         self.protein = protein
