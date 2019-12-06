@@ -23,7 +23,8 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var needHelpLabel: UILabel!
     @IBOutlet weak var needHelpDescription: UILabel!
     
-    @IBOutlet weak var LoginButton: UIButton!
+    @IBOutlet weak var LoginPatientButton: UIButton!
+    @IBOutlet weak var LoginDietistButton: UIButton!
     
     @IBOutlet weak var nierstichtingWebImage: UIImageView!
     @IBOutlet weak var nierstrichtingPhoneImage: UIImageView!
@@ -47,7 +48,11 @@ class LoginViewController : UIViewController {
         passwordLabel.text = NSLocalizedString("PasswordLabel", comment: "")
         needHelpLabel.text = NSLocalizedString("NeedHelp", comment: "")
         needHelpDescription.text = NSLocalizedString("NeedHelpSubtitle", comment: "")
-        LoginButton.setTitle("Login", for: .normal)
+        
+        // Temporary Titles
+        LoginDietistButton.setTitle("Dietist", for: .normal)
+        LoginPatientButton.setTitle("Patient", for: .normal)
+        //LoginButton.setTitle("Login", for: .normal)
         nierstichtingWebLabel.text = NSLocalizedString("NierstichtingWeb", comment: "")
         nierstichtingPhoneLabel.text = NSLocalizedString("NierstichtingPhone", comment: "")
         nierstichtingPhoneTimeLabel.text = NSLocalizedString("NierstichtingPhoneTime", comment: "")
@@ -59,22 +64,62 @@ class LoginViewController : UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func Login(_ sender: Any) {
+    @IBAction func LoginPatient(_ sender: Any) {
+        let username = usernameField.text ?? ""
+        let password = passwordField.text ?? ""
         Auth0
             .authentication()
             .login(
-            usernameOrEmail: "577234@student.inholland.nl",
-            password: "TestPassword!",
+            usernameOrEmail: username,
+            password: password,
             realm: "Username-Password-Authentication",
-            scope: "openid")
+            audience: "appnizi.nl/api",
+            scope: "openid profile")
             .start { result in
-                print(result)
                 switch result {
                 case .success(let credentials):
-                    print("Obtained credentials: \(credentials)")
+                    NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
+                        print(response)
+                    })
                 case .failure(let error):
                     print("Failed with \(error)")
+                    self.showFailedToLoginMessage()
                 }
         }
+    }
+    
+    @IBAction func LoginDietist(_ sender: Any) {
+        let username = usernameField.text ?? ""
+        let password = passwordField.text ?? ""
+        Auth0
+            .authentication()
+            .login(
+            usernameOrEmail: username,
+            password: password,
+            realm: "Username-Password-Authentication",
+            audience: "appnizi.nl/api",
+            scope: "openid profile")
+            .start { result in
+                switch result {
+                case .success(let credentials):
+                    NiZiAPIHelper.login(withDoctorCode: credentials.accessToken!).responseData(completionHandler: { response in
+                        print(response)
+                    })
+                case .failure(let error):
+                    print("Failed with \(error)")
+                    self.showFailedToLoginMessage()
+                }
+        }
+    }
+    
+    func showFailedToLoginMessage() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("wrongCredentialsTitle", comment: "Title"),
+            message: NSLocalizedString("wrongCredentialsMessage", comment: "Message"),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
