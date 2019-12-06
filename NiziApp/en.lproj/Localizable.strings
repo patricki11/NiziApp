@@ -17,6 +17,3 @@
 "NierstichtingPhone" = "035 697 80 00";
 "NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
 "NierstichtingMail" = "info@nierstichting.nl";
-"wrongCredentialsTitle" = "Niet ingelogd";
-"wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
-"ok" = "Ok";
