@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Plj-QQ-SWu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Plj-QQ-SWu">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +66,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG0-ae-acw" userLabel="LoginButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG0-ae-acw" userLabel="LoginButtonDietist">
                                         <rect key="frame" x="254" y="220" width="100" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.60275733470916748" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -75,7 +75,7 @@
                                         <color key="tintColor" red="0.99616746865432249" green="1" blue="0.97195226662950784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="Login:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="AdM-sx-9ix"/>
+                                            <action selector="LoginDietist:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="CaU-WC-GR9"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd4-1j-E3z" userLabel="NeedHelp_Label">
@@ -146,6 +146,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjZ-6r-H79" userLabel="LoginButtonPatient">
+                                        <rect key="frame" x="134" y="220" width="100" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.60275733470000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Xgy-YX-QFm"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.99616746869999995" green="1" blue="0.9719522666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="LoginPatient:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="JJ7-Un-lIe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -161,6 +173,7 @@
                                     <constraint firstAttribute="trailing" secondItem="HXj-xi-tWx" secondAttribute="trailing" constant="20" id="Nnk-6S-Y6h"/>
                                     <constraint firstItem="bHu-sb-6Pu" firstAttribute="top" secondItem="BSu-od-5QN" secondAttribute="bottom" constant="50" id="NoB-JT-BC5"/>
                                     <constraint firstItem="04U-8T-oXZ" firstAttribute="leading" secondItem="Z3g-bh-dbb" secondAttribute="trailing" constant="80" id="OTR-il-XB5"/>
+                                    <constraint firstItem="qjZ-6r-H79" firstAttribute="top" secondItem="HXj-xi-tWx" secondAttribute="bottom" constant="30" id="PeB-8Z-GSI"/>
                                     <constraint firstAttribute="trailing" secondItem="SG0-ae-acw" secondAttribute="trailing" constant="20" id="QEd-RU-voL"/>
                                     <constraint firstAttribute="trailing" secondItem="Jd4-1j-E3z" secondAttribute="trailing" constant="20" id="Sr4-Cp-jQF"/>
                                     <constraint firstItem="BSu-od-5QN" firstAttribute="top" secondItem="nM0-HV-VoR" secondAttribute="bottom" constant="40.5" id="VTd-s6-wLC"/>
@@ -180,6 +193,7 @@
                                     <constraint firstItem="HXj-xi-tWx" firstAttribute="leading" secondItem="YJ2-a4-t5O" secondAttribute="leading" constant="20" id="uyy-0R-0cY"/>
                                     <constraint firstItem="WKo-14-eUZ" firstAttribute="leading" secondItem="YJ2-a4-t5O" secondAttribute="leading" constant="20" id="wrT-qO-H1N"/>
                                     <constraint firstItem="BSu-od-5QN" firstAttribute="leading" secondItem="C9q-FE-wIP" secondAttribute="trailing" constant="80" id="xFE-Ff-tYb"/>
+                                    <constraint firstItem="SG0-ae-acw" firstAttribute="leading" secondItem="qjZ-6r-H79" secondAttribute="trailing" constant="20" id="xVt-lK-Mdj"/>
                                     <constraint firstAttribute="trailing" secondItem="nM0-HV-VoR" secondAttribute="trailing" constant="20" id="zcm-n7-spF"/>
                                 </constraints>
                             </view>
@@ -197,7 +211,8 @@
                         <viewLayoutGuide key="safeArea" id="dtD-ca-gBP"/>
                     </view>
                     <connections>
-                        <outlet property="LoginButton" destination="SG0-ae-acw" id="htJ-S7-mvB"/>
+                        <outlet property="LoginDietistButton" destination="SG0-ae-acw" id="yFM-lp-LPf"/>
+                        <outlet property="LoginPatientButton" destination="qjZ-6r-H79" id="cet-si-REA"/>
                         <outlet property="applicationNameLabel" destination="N10-ix-95c" id="VRt-8w-aD5"/>
                         <outlet property="needHelpDescription" destination="nM0-HV-VoR" id="AhC-B6-LKN"/>
                         <outlet property="needHelpLabel" destination="Jd4-1j-E3z" id="Xec-cJ-Y8H"/>
