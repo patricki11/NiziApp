@@ -14,10 +14,9 @@ class NiZiAPIHelper {
     static let baseUrl = "https://appnizi-api.azurewebsites.net/api/"
 
     // DOCTORS //
-    static func getAllDoctor() -> DataRequest {
-
+    static func getAllDoctors() -> DataRequest {
         let apiMethod = "v1/doctor"
-        return AF.request(baseUrl + apiMethod, method: .post)
+        return AF.request(baseUrl + apiMethod, method: .get)
     }
 
     static func getDoctor(byId doctorId: Int) -> DataRequest {
@@ -33,15 +32,17 @@ class NiZiAPIHelper {
     
     static func login(withDoctorCode authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/login/doctor"
-        return AF.request(baseUrl + apiMethod, method: .get)
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        print(header)
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     // DOCTORS //
     
     
     // PATIENTS //
     static func getAllPatients() -> DataRequest {
-        let apiMethod = "v1/login/patient"
-        return AF.request(baseUrl + apiMethod, method: .get)
+        let apiMethod = "v1/patients"
+        return AF.request(baseUrl + apiMethod, method: .post, parameters: nil)
     }
     
     static func getPatient(byId patientId: Int) -> DataRequest {
@@ -51,7 +52,8 @@ class NiZiAPIHelper {
     
     static func login(withPatientCode authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/login/patient"
-        return AF.request(baseUrl + apiMethod, method: .get)
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     // PATIENTS //
     
