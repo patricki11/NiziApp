@@ -78,14 +78,41 @@ class LoginViewController : UIViewController {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
-                        print(response)
-                    })
+                    self.patientLoginToApi(credentials: credentials)
                 case .failure(let error):
                     print("Failed with \(error)")
                     self.showFailedToLoginMessage()
                 }
         }
+    }
+    
+    func patientLoginToApi(credentials: Credentials) {
+        NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
+            print(response.response)
+        })
+    }
+    
+    func dietistLoginToApi(credentials: Credentials) {
+        NiZiAPIHelper.login(withDoctorCode: credentials.accessToken!).responseData(completionHandler: { response in
+            print(response.response)
+            
+            switch(response.response?.statusCode) {
+            case 200:
+                self.navigateToPatientList()
+            case 401:
+                self.showUnauthorizedMessage()
+            case .none:
+                break
+            case .some(_):
+                break
+            }
+        })
+    }
+    
+    func navigateToPatientList() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
+        self.navigationController?.pushViewController(patientListVC, animated: true)
     }
     
     @IBAction func LoginDietist(_ sender: Any) {
@@ -116,6 +143,17 @@ class LoginViewController : UIViewController {
         let alertController = UIAlertController(
             title: NSLocalizedString("wrongCredentialsTitle", comment: "Title"),
             message: NSLocalizedString("wrongCredentialsMessage", comment: "Message"),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showUnauthorizedMessage() {
+        let alertController = UIAlertController(
+            title: "TODO",
+            message: "User is not authorized message",
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
