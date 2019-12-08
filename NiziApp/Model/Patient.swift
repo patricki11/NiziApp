@@ -8,26 +8,37 @@
 
 import Foundation
 
-class Patient {
-    var patientId : Int = 0
-    var accountId : Int = 0
-    var doctorId : Int = 0
-    var firstName : String = ""
-    var lastName : String = ""
+class Patient : Decodable {
+    var patientId   : Int = 0
+    var accountId   : Int = 0
+    var doctorId    : Int = 0
+    var firstName   : String = ""
+    var lastName    : String = ""
     var dateOfBirth : Date = Date()
-    var weightInKg : Float = Float()
-    var guid : String = ""
+    var weightInKg  : Float = Float()
+    var guid        : String = ""
     
     init(patientId: Int, accountId: Int, doctorId: Int, firstName: String, lastName: String, dateOfBirth: Date, guid: String,  weightInKg: Float  ){
         
-        self.patientId = patientId
-        self.accountId = accountId
-        self.doctorId = doctorId
-        self.firstName = firstName
-        self.lastName = lastName
+        self.patientId   = patientId
+        self.accountId   = accountId
+        self.doctorId    = doctorId
+        self.firstName   = firstName
+        self.lastName    = lastName
         self.dateOfBirth = dateOfBirth
-        self.weightInKg = weightInKg
-        self.guid = guid
+        self.weightInKg  = weightInKg
+        self.guid        = guid
         
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case patientId   = "patientId"
+        case accountId   = "accountId"
+        case doctorId    = "doctorId"
+        case firstName   = "firstName"
+        case lastName    = "lastName"
+        case dateOfBirth = "dateOfBirth"
+        case weightInKg  = "weightInKg"
+        case guid        = "guid"
     }
 }
