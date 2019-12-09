@@ -10,11 +10,31 @@ import UIKit
 
 class PatientListViewController: UIViewController {
 
+    @IBOutlet weak var patientListTableView : UITableView?
+    
     var patientList: [Patient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        getAllPatients()
         // Do any additional setup after loading the view.
+    }
+    
+    func getAllPatients() {
+        let doctorId = 1;
+        NiZiAPIHelper.getPatients(forDoctor: doctorId).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+            else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patientList = try? jsonDecoder.decode( [Patient].self, from: jsonResponse )
+            else { return }
+            
+            self.patientList = patientList
+            self.patientListTableView?.reloadData()
+            
+        })
     }
 }
 
