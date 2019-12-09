@@ -88,24 +88,23 @@ class LoginViewController : UIViewController {
     
     func patientLoginToApi(credentials: Credentials) {
         NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
-            print(response.response)
+            guard let jsonResponse = response.data
+            else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patientAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
+            else { return }
         })
     }
     
     func dietistLoginToApi(credentials: Credentials) {
         NiZiAPIHelper.login(withDoctorCode: credentials.accessToken!).responseData(completionHandler: { response in
-            print(response.response)
+            guard let jsonResponse = response.data
+            else { return }
             
-            switch(response.response?.statusCode) {
-            case 200:
-                self.navigateToPatientList()
-            case 401:
-                self.showUnauthorizedMessage()
-            case .none:
-                break
-            case .some(_):
-                break
-            }
+            let jsonDecoder = JSONDecoder()
+            guard let doctorAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
+            else { return }
         })
     }
     
@@ -129,9 +128,7 @@ class LoginViewController : UIViewController {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    NiZiAPIHelper.login(withDoctorCode: credentials.accessToken!).responseData(completionHandler: { response in
-                        print(response)
-                    })
+                    self.dietistLoginToApi(credentials: credentials)
                 case .failure(let error):
                     print("Failed with \(error)")
                     self.showFailedToLoginMessage()

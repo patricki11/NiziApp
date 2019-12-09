@@ -33,7 +33,6 @@ class NiZiAPIHelper {
     static func login(withDoctorCode authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/login/doctor"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        print(header)
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     // DOCTORS //

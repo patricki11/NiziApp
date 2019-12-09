@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Doctor{
-    var doctorId : Int = 0
-    var firstName: String = ""
-    var lastName : String = ""
-    var location : String = ""
+class Doctor : Codable{
+    var doctorId  : Int = 0
+    var firstName : String = ""
+    var lastName  : String = ""
+    var location  : String = ""
     
-    init(doctorId : Int, firstName: String, lastName: String, location: String ){
-        self.doctorId = doctorId
-        self.firstName = firstName
-        self.lastName = lastName
-        self.location = location
+    enum CodingKeys : String, CodingKey {
+        case doctorId  = "doctorId"
+        case firstName = "firstName"
+        case lastName  = "lastName"
+        case location  = "location"
     }
 }

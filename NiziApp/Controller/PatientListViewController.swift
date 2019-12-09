@@ -21,7 +21,7 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
-        let doctorId = 1;
+        let doctorId = 3;
         NiZiAPIHelper.getPatients(forDoctor: doctorId).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data

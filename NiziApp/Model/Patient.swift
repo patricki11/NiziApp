@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Patient : Decodable {
+class Patient : Codable {
     var patientId   : Int = 0
     var accountId   : Int = 0
     var doctorId    : Int = 0
