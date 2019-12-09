@@ -20,3 +20,5 @@
 "wrongCredentialsTitle" = "Niet ingelogd";
 "wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
 "ok" = "Ok";
+"loginAsPatient" = "Login als patiënt";
+"loginAsDietist" = "Login als diëtist";

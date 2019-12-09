@@ -14,6 +14,7 @@
 		21488B17239E4C57004D31C8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B16239E4C57004D31C8 /* Account.swift */; };
 		21488B19239E4CC9004D31C8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B18239E4CC9004D31C8 /* Login.swift */; };
 		21488B1B239E53E2004D31C8 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B1A239E53E2004D31C8 /* Token.swift */; };
+		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496542391832700243B41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496532391832700243B41 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		21488B16239E4C57004D31C8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		21488B18239E4CC9004D31C8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		21488B1A239E53E2004D31C8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
+				214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				217496542391832700243B41 /* ViewController.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,

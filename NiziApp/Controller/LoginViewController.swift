@@ -23,8 +23,7 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var needHelpLabel: UILabel!
     @IBOutlet weak var needHelpDescription: UILabel!
     
-    @IBOutlet weak var LoginPatientButton: UIButton!
-    @IBOutlet weak var LoginDietistButton: UIButton!
+    @IBOutlet weak var LoginButton: UIButton!
     
     @IBOutlet weak var nierstichtingWebImage: UIImageView!
     @IBOutlet weak var nierstrichtingPhoneImage: UIImageView!
@@ -34,6 +33,9 @@ class LoginViewController : UIViewController {
     @IBOutlet weak var nierstichtingPhoneLabel: UILabel!
     @IBOutlet weak var nierstichtingPhoneTimeLabel: UILabel!
     @IBOutlet weak var nierstichtingMailLabel: UILabel!
+    
+    var isPatient : Bool = false
+    var isDietist : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +50,7 @@ class LoginViewController : UIViewController {
         passwordLabel.text = NSLocalizedString("PasswordLabel", comment: "")
         needHelpLabel.text = NSLocalizedString("NeedHelp", comment: "")
         needHelpDescription.text = NSLocalizedString("NeedHelpSubtitle", comment: "")
-        
-        // Temporary Titles
-        LoginDietistButton.setTitle("Dietist", for: .normal)
-        LoginPatientButton.setTitle("Patient", for: .normal)
-        //LoginButton.setTitle("Login", for: .normal)
+        LoginButton.setTitle("Login", for: .normal)
         nierstichtingWebLabel.text = NSLocalizedString("NierstichtingWeb", comment: "")
         nierstichtingPhoneLabel.text = NSLocalizedString("NierstichtingPhone", comment: "")
         nierstichtingPhoneTimeLabel.text = NSLocalizedString("NierstichtingPhoneTime", comment: "")
@@ -64,36 +62,22 @@ class LoginViewController : UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func LoginPatient(_ sender: Any) {
-        let username = usernameField.text ?? ""
-        let password = passwordField.text ?? ""
-        Auth0
-            .authentication()
-            .login(
-            usernameOrEmail: username,
-            password: password,
-            realm: "Username-Password-Authentication",
-            audience: "appnizi.nl/api",
-            scope: "openid profile")
-            .start { result in
-                switch result {
-                case .success(let credentials):
-                    self.patientLoginToApi(credentials: credentials)
-                case .failure(let error):
-                    print("Failed with \(error)")
-                    self.showFailedToLoginMessage()
-                }
-        }
-    }
-    
     func patientLoginToApi(credentials: Credentials) {
         NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
+            
+            print(credentials.accessToken)
             guard let jsonResponse = response.data
-            else { return }
+                else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
-            else { return }
+            guard let patientAccount = try? jsonDecoder.decode(Login.self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            print("--------------------------------------------")
+            print(patientAccount.doctor?.doctorId)
+            print(patientAccount.auth?.token)
+            print(patientAccount.auth?.token?.scheme)
+            print(patientAccount.auth?.token?.accessCode)
         })
     }
     
@@ -105,6 +89,13 @@ class LoginViewController : UIViewController {
             let jsonDecoder = JSONDecoder()
             guard let doctorAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
             else { return }
+            print("--------------------------------------------")
+            print(doctorAccount.doctor?.doctorId)
+            print(doctorAccount.auth?.token)
+            print(doctorAccount.auth?.token?.scheme)
+            print(doctorAccount.auth?.token?.accessCode)
+            
+            self.navigateToPatientList()
         })
     }
     
@@ -114,7 +105,7 @@ class LoginViewController : UIViewController {
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
     
-    @IBAction func LoginDietist(_ sender: Any) {
+    @IBAction func LoginButton(_ sender: Any) {
         let username = usernameField.text ?? ""
         let password = passwordField.text ?? ""
         Auth0
@@ -128,7 +119,8 @@ class LoginViewController : UIViewController {
             .start { result in
                 switch result {
                 case .success(let credentials):
-                    self.dietistLoginToApi(credentials: credentials)
+                    if(self.isPatient) { self.patientLoginToApi(credentials: credentials) }
+                    if(self.isDietist) { self.dietistLoginToApi(credentials: credentials) }
                 case .failure(let error):
                     print("Failed with \(error)")
                     self.showFailedToLoginMessage()

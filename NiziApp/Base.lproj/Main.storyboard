@@ -7,6 +7,66 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Choose Login View Controller-->
+        <scene sceneID="o6G-OL-qdt">
+            <objects>
+                <viewController storyboardIdentifier="ChooseLoginViewController" id="kfb-Me-IId" customClass="ChooseLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eq9-od-Kmk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-ua-21g">
+                                <rect key="frame" x="87" y="97" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="E0k-JN-fIQ"/>
+                                    <constraint firstAttribute="height" constant="240" id="fJv-9M-ynw"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-4o-O2f">
+                                <rect key="frame" x="0.0" y="310" width="414" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.60673958059999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="SFO-gg-GUN"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateToPatientLogin:" destination="kfb-Me-IId" eventType="touchUpInside" id="Ol0-bt-AhA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wg1-hQ-pCc">
+                                <rect key="frame" x="0.0" y="368" width="414" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.60648602250000005" blue="0.00060962408319999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="VoH-nd-ld0"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateToDietistLogin:" destination="kfb-Me-IId" eventType="touchUpInside" id="cu0-pY-Kw6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wg1-hQ-pCc" firstAttribute="top" secondItem="Vca-4o-O2f" secondAttribute="bottom" constant="30" id="5xZ-l6-keT"/>
+                            <constraint firstItem="Vca-4o-O2f" firstAttribute="leading" secondItem="jQA-Cf-xLh" secondAttribute="leading" id="7vb-V5-8yb"/>
+                            <constraint firstItem="jQA-Cf-xLh" firstAttribute="trailing" secondItem="Vca-4o-O2f" secondAttribute="trailing" id="kgr-uE-zsd"/>
+                            <constraint firstItem="Vca-4o-O2f" firstAttribute="top" secondItem="cBa-ua-21g" secondAttribute="bottom" constant="100" id="vGI-g7-Xee"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jQA-Cf-xLh"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginAsDietistButton" destination="Wg1-hQ-pCc" id="cgs-ig-fQ4"/>
+                        <outlet property="loginAsPatientButton" destination="Vca-4o-O2f" id="ZSQ-H3-Cij"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="762-6I-qFe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-635" y="-1084"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="plp-W0-NR4">
             <objects>
@@ -66,16 +126,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG0-ae-acw" userLabel="LoginButtonDietist">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SG0-ae-acw" userLabel="LoginButton">
                                         <rect key="frame" x="254" y="220" width="100" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.60275733470916748" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.60249680279999995" blue="0.0023547969760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="NlJ-p9-Xgh"/>
                                         </constraints>
                                         <color key="tintColor" red="0.99616746865432249" green="1" blue="0.97195226662950784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="LoginDietist:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="CaU-WC-GR9"/>
+                                            <action selector="LoginButton:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="j1M-iL-o0X"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd4-1j-E3z" userLabel="NeedHelp_Label">
@@ -91,13 +151,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSu-od-5QN" userLabel="Nierstichting_Link">
-                                        <rect key="frame" x="180" y="341" width="31" height="15"/>
+                                        <rect key="frame" x="180" y="341.33333333333331" width="31" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHu-sb-6Pu" userLabel="Nietstichting_Phone">
-                                        <rect key="frame" x="181" y="406" width="31" height="12"/>
+                                        <rect key="frame" x="181" y="406.33333333333331" width="31" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="31" id="7Zq-7N-Po1"/>
                                             <constraint firstAttribute="height" constant="12" id="ScU-j2-BXl"/>
@@ -107,7 +167,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04U-8T-oXZ" userLabel="Nierstichting_PhoneTime">
-                                        <rect key="frame" x="181" y="420" width="31" height="14.666666666666686"/>
+                                        <rect key="frame" x="181" y="420.33333333333337" width="31" height="14.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14.5" id="gF3-K0-HvF"/>
                                             <constraint firstAttribute="width" constant="31" id="lzb-6f-Woc"/>
@@ -146,18 +206,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjZ-6r-H79" userLabel="LoginButtonPatient">
-                                        <rect key="frame" x="134" y="220" width="100" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.60275733470000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Xgy-YX-QFm"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.99616746869999995" green="1" blue="0.9719522666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="LoginPatient:" destination="Plj-QQ-SWu" eventType="touchUpInside" id="JJ7-Un-lIe"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -173,7 +221,6 @@
                                     <constraint firstAttribute="trailing" secondItem="HXj-xi-tWx" secondAttribute="trailing" constant="20" id="Nnk-6S-Y6h"/>
                                     <constraint firstItem="bHu-sb-6Pu" firstAttribute="top" secondItem="BSu-od-5QN" secondAttribute="bottom" constant="50" id="NoB-JT-BC5"/>
                                     <constraint firstItem="04U-8T-oXZ" firstAttribute="leading" secondItem="Z3g-bh-dbb" secondAttribute="trailing" constant="80" id="OTR-il-XB5"/>
-                                    <constraint firstItem="qjZ-6r-H79" firstAttribute="top" secondItem="HXj-xi-tWx" secondAttribute="bottom" constant="30" id="PeB-8Z-GSI"/>
                                     <constraint firstAttribute="trailing" secondItem="SG0-ae-acw" secondAttribute="trailing" constant="20" id="QEd-RU-voL"/>
                                     <constraint firstAttribute="trailing" secondItem="Jd4-1j-E3z" secondAttribute="trailing" constant="20" id="Sr4-Cp-jQF"/>
                                     <constraint firstItem="BSu-od-5QN" firstAttribute="top" secondItem="nM0-HV-VoR" secondAttribute="bottom" constant="40.5" id="VTd-s6-wLC"/>
@@ -193,7 +240,6 @@
                                     <constraint firstItem="HXj-xi-tWx" firstAttribute="leading" secondItem="YJ2-a4-t5O" secondAttribute="leading" constant="20" id="uyy-0R-0cY"/>
                                     <constraint firstItem="WKo-14-eUZ" firstAttribute="leading" secondItem="YJ2-a4-t5O" secondAttribute="leading" constant="20" id="wrT-qO-H1N"/>
                                     <constraint firstItem="BSu-od-5QN" firstAttribute="leading" secondItem="C9q-FE-wIP" secondAttribute="trailing" constant="80" id="xFE-Ff-tYb"/>
-                                    <constraint firstItem="SG0-ae-acw" firstAttribute="leading" secondItem="qjZ-6r-H79" secondAttribute="trailing" constant="20" id="xVt-lK-Mdj"/>
                                     <constraint firstAttribute="trailing" secondItem="nM0-HV-VoR" secondAttribute="trailing" constant="20" id="zcm-n7-spF"/>
                                 </constraints>
                             </view>
@@ -211,8 +257,7 @@
                         <viewLayoutGuide key="safeArea" id="dtD-ca-gBP"/>
                     </view>
                     <connections>
-                        <outlet property="LoginDietistButton" destination="SG0-ae-acw" id="yFM-lp-LPf"/>
-                        <outlet property="LoginPatientButton" destination="qjZ-6r-H79" id="cet-si-REA"/>
+                        <outlet property="LoginButton" destination="SG0-ae-acw" id="8pV-56-zYf"/>
                         <outlet property="applicationNameLabel" destination="N10-ix-95c" id="VRt-8w-aD5"/>
                         <outlet property="needHelpDescription" destination="nM0-HV-VoR" id="AhC-B6-LKN"/>
                         <outlet property="needHelpLabel" destination="Jd4-1j-E3z" id="Xec-cJ-Y8H"/>
