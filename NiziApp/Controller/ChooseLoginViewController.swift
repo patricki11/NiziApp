@@ -23,7 +23,7 @@ class ChooseLoginViewController : UIViewController {
     }
     
     func setLanguageSpecificText() {
-        loginAsPatientButton.setTitle(NSLocalizedString("lginAsPatient", comment: ""), for: .normal)
+        loginAsPatientButton.setTitle(NSLocalizedString("loginAsPatient", comment: ""), for: .normal)
         loginAsDietistButton.setTitle(NSLocalizedString("loginAsDietist", comment: ""), for: .normal)
     }
     
