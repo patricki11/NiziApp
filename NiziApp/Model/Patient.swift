@@ -9,16 +9,16 @@
 import Foundation
 
 class Patient : Codable {
-    var patientId   : Int = 0
-    var accountId   : Int = 0
-    var doctorId    : Int = 0
-    var firstName   : String = ""
-    var lastName    : String = ""
-    var dateOfBirth : Date = Date()
-    var weightInKg  : Float = Float()
-    var guid        : String = ""
+    var patientId   : Int? = 0
+    var accountId   : Int? = 0
+    var doctorId    : Int? = 0
+    var firstName   : String? = ""
+    var lastName    : String? = ""
+    var dateOfBirth : String? = ""
+    var weightInKg  : Float? = Float()
+    var guid        : String? = ""
     
-    init(patientId: Int, accountId: Int, doctorId: Int, firstName: String, lastName: String, dateOfBirth: Date, guid: String,  weightInKg: Float  ){
+    init(patientId: Int, accountId: Int, doctorId: Int, firstName: String, lastName: String, dateOfBirth: String, guid: String,  weightInKg: Float  ){
         
         self.patientId   = patientId
         self.accountId   = accountId
@@ -38,7 +38,7 @@ class Patient : Codable {
         case firstName   = "firstName"
         case lastName    = "lastName"
         case dateOfBirth = "dateOfBirth"
-        case weightInKg  = "weightInKg"
+        case weightInKg  = "weightInKilograms"
         case guid        = "guid"
     }
     

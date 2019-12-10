@@ -198,7 +198,7 @@ class AddPatientViewController: UIViewController {
             doctorId: 3,
             firstName: firstNameField.text!,
             lastName: surnameField.text!,
-            dateOfBirth: Date(),
+            dateOfBirth: "",
             guid: "",
             weightInKg: 0.00)
     }

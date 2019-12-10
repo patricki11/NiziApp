@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Login : Decodable {
+class DoctorLogin : Decodable {
+    var account : Account  = Account()
+    var doctor  : Doctor?  = nil
+    var auth    : Auth?    = nil
+    
+    enum CodingKeys : String, CodingKey {
+        case account = "account"
+        case doctor  = "doctor"
+        case auth    = "auth"
+    }
+}
+
+class PatientLogin : Decodable {
     var account : Account  = Account()
     var doctor  : Doctor?  = nil
     var patient : Patient? = nil
@@ -18,6 +30,6 @@ class Login : Decodable {
         case account = "account"
         case doctor  = "doctor"
         case patient = "patient"
-        case auth    = "auth"
+        case auth    = "authLogin"
     }
 }

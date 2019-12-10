@@ -10,9 +10,9 @@ import Foundation
 
 class Doctor : Codable{
     var doctorId  : Int = 0
-    var firstName : String = ""
-    var lastName  : String = ""
-    var location  : String = ""
+    var firstName : String? = nil
+    var lastName  : String? = nil
+    var location  : String? = nil
     
     enum CodingKeys : String, CodingKey {
         case doctorId  = "doctorId"

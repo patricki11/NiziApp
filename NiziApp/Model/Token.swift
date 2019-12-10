@@ -9,8 +9,8 @@
 import Foundation
 
 class Token : Codable {
-    var scheme     : String = ""
-    var accessCode : String = ""
+    var scheme     : String? = nil
+    var accessCode : String? = nil
     
     enum CodingKeys : String, CodingKey {
         case scheme     = "scheme"
