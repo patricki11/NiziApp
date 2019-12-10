@@ -23,3 +23,15 @@
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
 "patientList" = "Patiënten";
+"addPatient" = "Toevoegen Patiënt";
+
+
+"firstName" = "Voornaam";
+"surname" = "Achternaam";
+"dateOfBirth" = "Geboortedatum";
+"username" = "Gebruikersnaam";
+"password" = "Wachtwoord";
+"confirmPassword" = "Wachtwoord herhalen";
+"personalInfo" = "Persoonsgegevens";
+"loginInfo" = "Logingegevens";
+"createPatient" = "Patiënt aanmaken";
