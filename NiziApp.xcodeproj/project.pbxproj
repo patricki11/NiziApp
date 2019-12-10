@@ -10,6 +10,7 @@
 		211A104723966212002A42DA /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 211A104623966211002A42DA /* Auth0.plist */; };
 		211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A104823966DE3002A42DA /* NiZiAPIHelper.swift */; };
 		211A104F23969D17002A42DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 211A105123969D17002A42DA /* Localizable.strings */; };
+		213E5A35239FE16100242905 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213E5A34239FE16100242905 /* HomeViewController.swift */; };
 		21488B15239E4B7B004D31C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B14239E4B7B004D31C8 /* Auth.swift */; };
 		21488B17239E4C57004D31C8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B16239E4C57004D31C8 /* Account.swift */; };
 		21488B19239E4CC9004D31C8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B18239E4CC9004D31C8 /* Login.swift */; };
@@ -41,6 +42,7 @@
 		211A105223969D49002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		211A105323969D4B002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		211A105423969D4C002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		213E5A34239FE16100242905 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		21488B14239E4B7B004D31C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		21488B16239E4C57004D31C8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		21488B18239E4CC9004D31C8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
 				214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */,
+				213E5A34239FE16100242905 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
+				213E5A35239FE16100242905 /* HomeViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,

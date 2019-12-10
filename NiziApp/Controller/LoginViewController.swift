@@ -70,7 +70,7 @@ class LoginViewController : UIViewController {
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientAccount = try? jsonDecoder.decode(Login.self, from: jsonResponse )
+            guard let patientAccount = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse )
                 else { print("temp2"); return }
             
             print("--------------------------------------------")
@@ -78,6 +78,8 @@ class LoginViewController : UIViewController {
             print(patientAccount.auth?.token)
             print(patientAccount.auth?.token?.scheme)
             print(patientAccount.auth?.token?.accessCode)
+            
+            self.navigateToPatientHomepage()
         })
     }
     
@@ -87,7 +89,7 @@ class LoginViewController : UIViewController {
             else { return }
             
             let jsonDecoder = JSONDecoder()
-            guard let doctorAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
+            guard let doctorAccount = try? jsonDecoder.decode(DoctorLogin.self, from: jsonResponse )
             else { return }
             print(credentials.accessToken)
             print("--------------------------------------------")
@@ -105,6 +107,13 @@ class LoginViewController : UIViewController {
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
+    
+    func navigateToPatientHomepage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
+    
     
     @IBAction func LoginButton(_ sender: Any) {
         let username = usernameField.text ?? ""

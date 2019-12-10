@@ -9,7 +9,7 @@
 import Foundation
 
 class Auth : Codable {
-    var guid  : String = ""
+    var guid  : String? = nil
     var token : Token? = nil
     
     enum CodingKeys : String, CodingKey {

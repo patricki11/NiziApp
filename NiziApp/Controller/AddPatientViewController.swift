@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Auth0
 
 class AddPatientViewController: UIViewController {
 
@@ -64,7 +65,7 @@ class AddPatientViewController: UIViewController {
         firstNameLabel.text = NSLocalizedString("firstName", comment: "")
         surnameLabel.text = NSLocalizedString("surname", comment: "")
         dateOfBirthLabel.text = NSLocalizedString("dateOfBirth", comment: "")
-        usernameLabel.text = NSLocalizedString("username", comment: "")
+        usernameLabel.text = NSLocalizedString("email", comment: "")
         passwordLabel.text = NSLocalizedString("password", comment: "")
         confirmPasswordLabel.text = NSLocalizedString("confirmPassword", comment: "")
         
@@ -91,6 +92,28 @@ class AddPatientViewController: UIViewController {
         
         let patient = createNewPatientObject()
         
+        createNewAuth0Account()
+        
+    }
+    
+    func createNewAuth0Account() {
+        Auth0
+        .authentication()
+        .createUser(
+            email: usernameField.text!,
+            password: passwordField.text!,
+            connection: "Username-Password-Authentication",
+            userMetadata: ["first_name": firstNameField.text,
+                           "last_name": surnameField.text]
+        )
+        .start { result in
+            switch result {
+            case .success(let user):
+                print("User Signed up: \(user)")
+            case .failure(let error):
+                print("Failed with \(error)")
+            }
+        }
     }
     
     func requiredFieldsAreFilled() -> Bool {
@@ -175,7 +198,7 @@ class AddPatientViewController: UIViewController {
             doctorId: 3,
             firstName: firstNameField.text!,
             lastName: surnameField.text!,
-            dateOfBirth: Date(),
+            dateOfBirth: "",
             guid: "",
             weightInKg: 0.00)
     }
