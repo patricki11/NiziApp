@@ -41,7 +41,12 @@ class NiZiAPIHelper {
     // PATIENTS //
     static func getAllPatients() -> DataRequest {
         let apiMethod = "v1/patients"
-        return AF.request(baseUrl + apiMethod, method: .post, parameters: nil)
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil)
+    }
+    
+    static func addPatient(withDetails patient: Patient) -> DataRequest {
+        let apiMethod = "v1/patient"
+        return AF.request(baseUrl + apiMethod, method: .post, parameters: patient.toJSON(), encoding: JSONEncoding.default)
     }
     
     static func getPatient(byId patientId: Int) -> DataRequest {

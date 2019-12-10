@@ -89,6 +89,7 @@ class AddPatientViewController: UIViewController {
             return
         }
         
+        let patient = createNewPatientObject()
         
     }
     
@@ -167,8 +168,16 @@ class AddPatientViewController: UIViewController {
         return password == confirmPassword
     }
     
-    func createNewPatientInDatabase() {
-        var newPatient = Patient(patientId: 0, accountId: 0, doctorId: 3, firstName: firstNameField.text!, lastName: surnameField.text!, dateOfBirth: Date(), guid: "", weightInKg: 0.00)
+    func createNewPatientObject() -> Patient {
+        return Patient(
+            patientId: 0,
+            accountId: 0,
+            doctorId: 3,
+            firstName: firstNameField.text!,
+            lastName: surnameField.text!,
+            dateOfBirth: Date(),
+            guid: "",
+            weightInKg: 0.00)
     }
     
     func showRequiredFieldsNotFilledMessage() {

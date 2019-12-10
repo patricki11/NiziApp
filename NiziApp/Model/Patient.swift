@@ -41,4 +41,14 @@ class Patient : Codable {
         case weightInKg  = "weightInKg"
         case guid        = "guid"
     }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "firstName": firstName as Any,
+            "lastName": lastName as Any,
+            "dateOfBirth": dateOfBirth as Any,
+            "weight": weightInKg as Any,
+            "doctorId": doctorId as Any
+        ]
+    }
 }
