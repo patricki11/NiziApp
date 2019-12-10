@@ -17,7 +17,7 @@ class PatientListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("patientList", comment: "")
-        //getAllPatients()
+        getAllPatients()
         // Do any additional setup after loading the view.
     }
     
