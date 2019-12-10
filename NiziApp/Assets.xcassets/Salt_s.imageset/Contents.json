@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Kidneys_s.png",
+      "filename" : "Salt_s.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Kidneys_m.png",
       "scale" : "2x"
     },
     {
