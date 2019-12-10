@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Auth0
+import SwiftKeychainWrapper
 
 class LoginViewController : UIViewController {
     
@@ -73,12 +74,7 @@ class LoginViewController : UIViewController {
             guard let patientAccount = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse )
                 else { print("temp2"); return }
             
-            print("--------------------------------------------")
-            print(patientAccount.doctor?.doctorId)
-            print(patientAccount.auth?.token)
-            print(patientAccount.auth?.token?.scheme)
-            print(patientAccount.auth?.token?.accessCode)
-            
+            self.saveAuthToken(token: credentials.accessToken!)
             self.navigateToPatientHomepage()
         })
     }
@@ -91,15 +87,14 @@ class LoginViewController : UIViewController {
             let jsonDecoder = JSONDecoder()
             guard let doctorAccount = try? jsonDecoder.decode(DoctorLogin.self, from: jsonResponse )
             else { return }
-            print(credentials.accessToken)
-            print("--------------------------------------------")
-            print(doctorAccount.doctor?.doctorId)
-            print(doctorAccount.auth?.token)
-            print(doctorAccount.auth?.token?.scheme)
-            print(doctorAccount.auth?.token?.accessCode)
-            
+
+            self.saveAuthToken(token: credentials.accessToken!)
             self.navigateToPatientList()
         })
+    }
+    
+    func saveAuthToken(token: String) {
+        KeychainWrapper.standard.set(token, forKey: "authToken")
     }
     
     func navigateToPatientList() {
