@@ -11,12 +11,13 @@ import UIKit
 class PatientListViewController: UIViewController {
 
     @IBOutlet weak var patientListTableView : UITableView?
-    
+    @IBOutlet weak var patientSearchField : UITextField?
+
     var patientList: [Patient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getAllPatients()
+        title = NSLocalizedString("patientList", comment: "")
+        //getAllPatients()
         // Do any additional setup after loading the view.
     }
     
@@ -35,6 +36,12 @@ class PatientListViewController: UIViewController {
             self.patientListTableView?.reloadData()
             
         })
+    }
+    
+    @IBAction func addNewPatientButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newPatientVC = storyboard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+        self.navigationController?.pushViewController(newPatientVC, animated: true)
     }
 }
 

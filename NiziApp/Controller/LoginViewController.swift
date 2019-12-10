@@ -40,11 +40,11 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        title = NSLocalizedString("login", comment: "")
         setLanguageSpecificText()
     }
     
     func setLanguageSpecificText() {
-        applicationNameLabel.text = NSLocalizedString("ApplicationName", comment: "Nizi")
         pageTitleLabel.text = NSLocalizedString("LoginPageTitle", comment: "")
         usernameLabel.text = NSLocalizedString("UsernameLabel", comment: "")
         passwordLabel.text = NSLocalizedString("PasswordLabel", comment: "")
@@ -89,6 +89,7 @@ class LoginViewController : UIViewController {
             let jsonDecoder = JSONDecoder()
             guard let doctorAccount = try? jsonDecoder.decode( Login.self, from: jsonResponse )
             else { return }
+            print(credentials.accessToken)
             print("--------------------------------------------")
             print(doctorAccount.doctor?.doctorId)
             print(doctorAccount.auth?.token)
