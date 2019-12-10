@@ -77,6 +77,93 @@ class AddPatientViewController: UIViewController {
         
     }
     
+    func requiredFieldsAreFilled() -> Bool {
+        let firstName = firstNameField.text ?? ""
+        let surname = surnameField.text ?? ""
+        let dateOfBirth = dateOfBirthField.text ?? ""
+        let username = usernameField.text ?? ""
+        let password = passwordField.text ?? ""
+        let confirmedPassword = confirmPasswordField.text ?? ""
+        
+        return firstName != "" && surname != "" && dateOfBirth != "" && username != "" && password != "" && confirmedPassword != ""
+    }
+    
+    func passwordIsValid() -> Bool {
+        let password = passwordField.text
+        let confirmPassword = confirmPasswordField.text
+        
+        if(passwordMatches() && isStrongPassword()) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func isStrongPassword() -> Bool {
+        return passwordContainsLowercaseLetters() && passwordContainsUppercaseLetters() && passwordContainsNumber() && passwordContainsSpecialCharacter()
+    }
+    
+    func passwordContainsSpecialCharacter() -> Bool {
+        let password = passwordField.text ?? ""
+        
+        let charset = CharacterSet(charactersIn: "!@#$%^&*")
+
+        if let _ = password.rangeOfCharacter(from: charset, options: .caseInsensitive) {
+           return true
+        }
+        else {
+           return false
+        }
+
+    }
+    
+    func passwordContainsLowercaseLetters() -> Bool {
+        let password = passwordField.text ?? ""
+        
+        let charset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz")
+
+        if let _ = password.rangeOfCharacter(from: charset) {
+           return true
+        }
+        else {
+           return false
+        }
+    }
+    
+    func passwordContainsUppercaseLetters() -> Bool {
+        let password = passwordField.text ?? ""
+        
+        let charset = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+        if let _ = password.rangeOfCharacter(from: charset) {
+           return true
+        }
+        else {
+           return false
+        }
+    }
+    
+    func passwordContainsNumber() -> Bool {
+        let password = passwordField.text ?? ""
+        
+        let charset = CharacterSet(charactersIn: "0123456789")
+
+        if let _ = password.rangeOfCharacter(from: charset) {
+           return true
+        }
+        else {
+           return false
+        }
+    }
+    
+    func passwordMatches() -> Bool {
+        let password = passwordField.text
+        let confirmPassword = confirmPasswordField.text
+        
+        return password == confirmPassword
+    }
+    
     func createNewPatientInDatabase() {
         var newPatient = Patient(patientId: 0, accountId: 0, doctorId: 3, firstName: firstNameField.text!, lastName: surnameField.text!, dateOfBirth: Date(), guid: "", weightInKg: 0.00)
     }
