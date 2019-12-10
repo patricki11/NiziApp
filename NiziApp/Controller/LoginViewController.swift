@@ -75,7 +75,7 @@ class LoginViewController : UIViewController {
                 else { print("temp2"); return }
             
             self.saveAuthToken(token: credentials.accessToken!)
-            self.navigateToPatientHomepage()
+            self.navigateToPatientHomepage(withPatient: patientAccount)
         })
     }
     
@@ -89,7 +89,7 @@ class LoginViewController : UIViewController {
             else { return }
 
             self.saveAuthToken(token: credentials.accessToken!)
-            self.navigateToPatientList()
+            self.navigateToPatientList(withAccount: doctorAccount)
         })
     }
     
@@ -97,13 +97,14 @@ class LoginViewController : UIViewController {
         KeychainWrapper.standard.set(token, forKey: "authToken")
     }
     
-    func navigateToPatientList() {
+    func navigateToPatientList(withAccount doctorAccount: DoctorLogin) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
+        patientListVC.loggedInAccount = doctorAccount
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
     
-    func navigateToPatientHomepage() {
+    func navigateToPatientHomepage(withPatient patientAccount: PatientLogin) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         self.navigationController?.pushViewController(homeVC, animated: true)

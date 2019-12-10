@@ -13,6 +13,8 @@ class PatientListViewController: UIViewController {
     @IBOutlet weak var patientListTableView : UITableView?
     @IBOutlet weak var patientSearchField : UITextField?
 
+    weak var loggedInAccount : DoctorLogin?
+    
     var patientList: [Patient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
