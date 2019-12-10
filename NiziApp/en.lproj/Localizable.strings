@@ -30,7 +30,7 @@
 "surname" = "Achternaam";
 "dateOfBirth" = "Geboortedatum";
 "username" = "Gebruikersnaam";
-"email" = "e-mailadres"
+"email" = "e-mailadres";
 "password" = "Wachtwoord";
 "confirmPassword" = "Wachtwoord herhalen";
 "personalInfo" = "Persoonsgegevens";
