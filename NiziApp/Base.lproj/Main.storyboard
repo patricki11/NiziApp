@@ -582,10 +582,10 @@
             </objects>
             <point key="canvasLocation" x="1290" y="-1959"/>
         </scene>
-        <!--Diary List View Controller-->
+        <!--Dairy List View Controller-->
         <scene sceneID="ZdR-aD-2ex">
             <objects>
-                <viewController storyboardIdentifier="DiaryListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u0l-CT-qbq" customClass="DiaryListViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u0l-CT-qbq" customClass="DairyListViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rjg-5v-T8H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,12 +611,18 @@
                                         <state key="normal" title="&lt;">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="DiaryPreviousDayButton:" destination="u0l-CT-qbq" eventType="touchUpInside" id="zQf-mY-uky"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIR-ht-oXW">
                                         <rect key="frame" x="284" y="112" width="30" height="30"/>
                                         <state key="normal" title="&gt;">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="DiaryNextDayButton:" destination="u0l-CT-qbq" eventType="touchUpInside" id="R7d-O4-Bac"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-r8-It7">
                                         <rect key="frame" x="16" y="58" width="29" height="21"/>
@@ -698,6 +704,13 @@
                         <viewLayoutGuide key="safeArea" id="zob-7Q-eeJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="EC6-Y6-x6Q"/>
+                    <connections>
+                        <outlet property="DairyDayLabel" destination="bVt-jO-UG0" id="ck0-AT-fdc"/>
+                        <outlet property="DiaryAddLabel" destination="AIC-Kv-UBs" id="7vj-qE-bTE"/>
+                        <outlet property="DiaryDietaryList" destination="BkY-dP-oHs" id="hr2-VO-2Ih"/>
+                        <outlet property="DiaryRecentFood" destination="87l-82-QAV" id="3LI-h8-61s"/>
+                        <outlet property="DiaryTitleLabel" destination="s9K-zb-x3G" id="LYw-6f-CXQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhh-nl-e4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1058,6 +1071,7 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7v9-IM-KlR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q6G-Bf-sHL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

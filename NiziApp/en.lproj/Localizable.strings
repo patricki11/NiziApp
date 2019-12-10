@@ -36,3 +36,7 @@
 "personalInfo" = "Persoonsgegevens";
 "loginInfo" = "Logingegevens";
 "createPatient" = "Patiënt aanmaken";
+
+"DiaryDayLabel" = "VANDAAG";
+"DiaryTitle" = "Voeding";
+"DiaryAddProduct" = "voeding toevoegen";
