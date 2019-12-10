@@ -16,6 +16,8 @@ class DairyListViewController: UIViewController {
     @IBOutlet weak var DiaryTitleLabel: UILabel!
     @IBOutlet weak var DiaryAddLabel: UILabel!
     
+    var productList: [Food] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLanguageSpecificText()
