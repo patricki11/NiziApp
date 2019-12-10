@@ -8,7 +8,17 @@
 
 import UIKit
 
-class DairyListViewController: UIViewController {
+class DairyListViewController: UIViewController, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "this is the cell for indexPath\(indexPath.row)"
+        return cell
+    }
+    
     @IBOutlet weak var DiaryDietaryList: UITableView!
     @IBOutlet weak var DiaryRecentFood: UITableView!
     

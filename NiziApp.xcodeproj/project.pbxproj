@@ -33,6 +33,10 @@
 		9322A704239680D7003F136D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A703239680D7003F136D /* Meal.swift */; };
 		9322A70623968798003F136D /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70523968798003F136D /* Food.swift */; };
 		9322A708239697B0003F136D /* DietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A707239697B0003F136D /* DietaryManagement.swift */; };
+		9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70A23A01DCE003F136D /* DiaryTableViewCell.swift */; };
+		9322A70D23A02385003F136D /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70C23A02385003F136D /* Diary.swift */; };
+		9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70E23A02A07003F136D /* ConsumptionView.swift */; };
+		9322A71123A02CA5003F136D /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71023A02CA5003F136D /* Weight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		9322A703239680D7003F136D /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9322A70523968798003F136D /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		9322A707239697B0003F136D /* DietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietaryManagement.swift; sourceTree = "<group>"; };
+		9322A70A23A01DCE003F136D /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
+		9322A70C23A02385003F136D /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		9322A70E23A02A07003F136D /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
+		9322A71023A02CA5003F136D /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.release.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.release.xcconfig"; sourceTree = "<group>"; };
 		E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.debug.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +161,9 @@
 		2174966423918EBC00243B41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9322A70923A01D9C003F136D /* Cell */,
 				2174966D2391937A00243B41 /* Patient.swift */,
+				9322A70E23A02A07003F136D /* ConsumptionView.swift */,
 				9322A6FF23966FA7003F136D /* Doctor.swift */,
 				9322A701239671BF003F136D /* Consumption.swift */,
 				9322A703239680D7003F136D /* Meal.swift */,
@@ -163,6 +173,8 @@
 				21488B16239E4C57004D31C8 /* Account.swift */,
 				21488B18239E4CC9004D31C8 /* Login.swift */,
 				21488B1A239E53E2004D31C8 /* Token.swift */,
+				9322A70C23A02385003F136D /* Diary.swift */,
+				9322A71023A02CA5003F136D /* Weight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,6 +185,14 @@
 				A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9322A70923A01D9C003F136D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9322A70A23A01DCE003F136D /* DiaryTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +315,7 @@
 			files = (
 				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				217496542391832700243B41 /* ViewController.swift in Sources */,
+				9322A70D23A02385003F136D /* Diary.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
@@ -305,14 +326,17 @@
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
+				9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
+				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
 				213E5A35239FE16100242905 /* HomeViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
+				9322A71123A02CA5003F136D /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
