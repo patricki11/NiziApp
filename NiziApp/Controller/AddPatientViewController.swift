@@ -74,6 +74,21 @@ class AddPatientViewController: UIViewController {
     }
     
     @IBAction func addPatient(_ sender: Any) {
+        if(!requiredFieldsAreFilled()) {
+            showRequiredFieldsNotFilledMessage()
+            return
+        }
+        
+        if(!passwordMatches()) {
+            showPasswordDoesNotMatchMessage()
+            return
+        }
+        
+        if(!isStrongPassword()) {
+            showPasswordNotStrongEnoughMessage()
+            return
+        }
+        
         
     }
     
@@ -86,18 +101,6 @@ class AddPatientViewController: UIViewController {
         let confirmedPassword = confirmPasswordField.text ?? ""
         
         return firstName != "" && surname != "" && dateOfBirth != "" && username != "" && password != "" && confirmedPassword != ""
-    }
-    
-    func passwordIsValid() -> Bool {
-        let password = passwordField.text
-        let confirmPassword = confirmPasswordField.text
-        
-        if(passwordMatches() && isStrongPassword()) {
-            return true
-        }
-        else {
-            return false
-        }
     }
     
     func isStrongPassword() -> Bool {
@@ -166,5 +169,38 @@ class AddPatientViewController: UIViewController {
     
     func createNewPatientInDatabase() {
         var newPatient = Patient(patientId: 0, accountId: 0, doctorId: 3, firstName: firstNameField.text!, lastName: surnameField.text!, dateOfBirth: Date(), guid: "", weightInKg: 0.00)
+    }
+    
+    func showRequiredFieldsNotFilledMessage() {
+        let alertController = UIAlertController(
+            title: "TODO",
+            message: "Not all required fields are filled",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showPasswordDoesNotMatchMessage() {
+        let alertController = UIAlertController(
+            title: "TODO",
+            message: "Password does not match",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showPasswordNotStrongEnoughMessage() {
+        let alertController = UIAlertController(
+            title: "TODO",
+            message: "Password is not strong enough",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
