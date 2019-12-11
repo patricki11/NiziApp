@@ -11,6 +11,7 @@
 		211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A104823966DE3002A42DA /* NiZiAPIHelper.swift */; };
 		211A104F23969D17002A42DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 211A105123969D17002A42DA /* Localizable.strings */; };
 		213E5A35239FE16100242905 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213E5A34239FE16100242905 /* HomeViewController.swift */; };
+		21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */; };
 		21488B15239E4B7B004D31C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B14239E4B7B004D31C8 /* Auth.swift */; };
 		21488B17239E4C57004D31C8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B16239E4C57004D31C8 /* Account.swift */; };
 		21488B19239E4CC9004D31C8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B18239E4CC9004D31C8 /* Login.swift */; };
@@ -47,6 +48,7 @@
 		211A105323969D4B002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		211A105423969D4C002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		213E5A34239FE16100242905 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListTableViewCell.swift; sourceTree = "<group>"; };
 		21488B14239E4B7B004D31C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		21488B16239E4C57004D31C8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		21488B18239E4CC9004D31C8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				9322A70A23A01DCE003F136D /* DiaryTableViewCell.swift */,
+				21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				217496542391832700243B41 /* ViewController.swift in Sources */,
 				9322A70D23A02385003F136D /* Diary.swift in Sources */,
+				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,

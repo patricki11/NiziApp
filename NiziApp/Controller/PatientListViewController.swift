@@ -7,13 +7,13 @@
 //
 
 import UIKit
-
+import SwiftKeychainWrapper
 class PatientListViewController: UIViewController {
 
     @IBOutlet weak var patientListTableView : UITableView?
     @IBOutlet weak var patientSearchField : UITextField?
 
-    weak var loggedInAccount : DoctorLogin?
+    weak var loggedInAccount : DoctorLogin!
     
     var patientList: [Patient] = []
     override func viewDidLoad() {
@@ -24,9 +24,8 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
-        let doctorId = 3;
-        NiZiAPIHelper.getPatients(forDoctor: doctorId).responseData(completionHandler: { response in
-            
+        
+        NiZiAPIHelper.getPatients(forDoctor: 3, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
             else { return }
             
@@ -34,6 +33,7 @@ class PatientListViewController: UIViewController {
             guard let patientList = try? jsonDecoder.decode( [Patient].self, from: jsonResponse )
             else { return }
             
+            print(patientList.count)
             self.patientList = patientList
             self.patientListTableView?.reloadData()
             
@@ -53,8 +53,13 @@ extension PatientListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "PatientListTableViewCell"
+        let cell = patientListTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientListTableViewCell
 
-        return UITableViewCell()
+        let patient = patientList[indexPath.row]
+        cell.patientNumber.text = String(indexPath.row)
+        cell.patientName.text = patient.firstName! + " " + patient.lastName!
+        return cell
 
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7v9-IM-KlR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fd9-I8-H7P">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -336,6 +336,46 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WYd-sk-Pgh">
                                         <rect key="frame" x="0.0" y="54" width="374" height="688"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientListTableViewCell" id="1jC-Pd-3mi" customClass="PatientListTableViewCell" customModule="NiziApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="53.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1jC-Pd-3mi" id="Fcl-6F-iLh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="53.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-wI-e12">
+                                                            <rect key="frame" x="25" y="16" width="42" height="21.666666666666671"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="42" id="8qO-Vy-Umt"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-Tw-xp6">
+                                                            <rect key="frame" x="87" y="16" width="262" height="21.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="a3i-Tw-xp6" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="topMargin" constant="5" id="1Pv-JQ-J1b"/>
+                                                        <constraint firstItem="a3i-Tw-xp6" firstAttribute="leading" secondItem="XQR-wI-e12" secondAttribute="trailing" constant="20" id="4Y6-xz-oNr"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="a3i-Tw-xp6" secondAttribute="trailing" constant="5" id="6Rs-Rw-cs3"/>
+                                                        <constraint firstItem="XQR-wI-e12" firstAttribute="leading" secondItem="Fcl-6F-iLh" secondAttribute="leadingMargin" constant="5" id="G8b-45-CkE"/>
+                                                        <constraint firstItem="XQR-wI-e12" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="topMargin" constant="5" id="Hx6-4A-YoA"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="a3i-Tw-xp6" secondAttribute="bottom" constant="5" id="T9h-GG-par"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="XQR-wI-e12" secondAttribute="bottom" constant="5" id="o5P-NR-jpE"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="patientName" destination="a3i-Tw-xp6" id="oQi-Ut-Ee8"/>
+                                                    <outlet property="patientNumber" destination="XQR-wI-e12" id="6hw-lz-lhM"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLC-9B-vkN">
                                         <rect key="frame" x="320" y="10" width="34" height="34"/>
