@@ -3,4 +3,54 @@
    uuid = "234599F4-B4DC-402C-A1BF-EE3A06182D41"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CCA0FC3-EE30-46DB-94C0-CB621C5D62FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NiziApp/Controller/DairyListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getConsumption()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CCA0FC3-EE30-46DB-94C0-CB621C5D62FA - 45bc60d7fc9f9d41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NiziApp.DairyListViewController.getConsumption() -&gt; ()"
+                  moduleName = "NiziApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winglam/Documents/GitHub/NiziApp/NiziApp/Controller/DairyListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  uuid = "3CCA0FC3-EE30-46DB-94C0-CB621C5D62FA - f298647117073546"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in NiziApp.DairyListViewController.getConsumption() -&gt; ()"
+                  moduleName = "NiziApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winglam/Documents/GitHub/NiziApp/NiziApp/Controller/DairyListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "113">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

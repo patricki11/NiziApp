@@ -597,7 +597,7 @@
                                     <constraint firstAttribute="height" constant="350" id="PBd-1X-4EV"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="xGA-fO-ILh" customClass="DiaryTableViewCell" customModule="NiziApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="diarycell" rowHeight="70" id="xGA-fO-ILh" customClass="DiaryTableViewCell" customModule="NiziApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="418" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xGA-fO-ILh" id="59u-CW-BmZ">
@@ -620,6 +620,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="u0l-CT-qbq" id="nfj-br-gIu"/>
+                                    <outlet property="delegate" destination="u0l-CT-qbq" id="eGp-5t-oxO"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEo-4K-V3u">
