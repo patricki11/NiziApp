@@ -12,11 +12,11 @@ import UIKit
 class Diary : Decodable{
     var consumptions    : [ConsumptionView] = []
     
-    var kcalTotal       : Float         = Float()
-    var proteinTotal    : Float         = Float()
-    var fiberTotal      : Float         = Float()
-    var caliumTotal     : Float         = Float()
-    var sodiumTotal     : Float         = Float()
+    var kcalTotal       : Float? = nil
+    var proteinTotal    : Float? = nil
+    var fiberTotal      : Float? = nil
+    var caliumTotal     : Float? = nil
+    var sodiumTotal     : Float? = nil
     
     enum CodingKeys : String, CodingKey {
         case consumptions   = "Consumptions"
@@ -24,9 +24,7 @@ class Diary : Decodable{
         case proteinTotal   = "ProteinTotal"
         case fiberTotal     = "FiberTotal"
         case caliumTotal    = "CaliumTotal"
-        case sodiumTotal    = "sodiumTotal"
+        case sodiumTotal    = "SodiumTotal"
      }
-    
-    
 }
 

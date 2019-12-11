@@ -11,8 +11,8 @@ import UIKit
 
 class Weight : Codable {
     var id      : Int    = 0
-    var unit    : String = ""
-    var short   : String = ""
+    var unit    : String? = ""
+    var short   : String? = ""
     
     enum CodingKeys : String, CodingKey {
         case id    = "Id"

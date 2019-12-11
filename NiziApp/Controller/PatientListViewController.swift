@@ -23,8 +23,7 @@ class PatientListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func getAllPatients() {
-        
+    func getAllPatients() {     
         NiZiAPIHelper.getPatients(forDoctor: 3, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
             else { return }

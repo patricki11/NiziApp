@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Food {
-    var foodId : Int   = 0
-    var name  : String  = ""
-    var kCal  : Double = 0.0
-    var protein  : Double = 0.0
-    var fiber   : Double = 0.0
-    var calcium : Double =  0.0
-    var sodium : Double = 0.0
+class Food : Codable {
+    var foodId      : Int    = 0
+    var name        : String = ""
+    var kCal        : Double = 0.0
+    var protein     : Double = 0.0
+    var fiber       : Double = 0.0
+    var calcium     : Double = 0.0
+    var sodium      : Double = 0.0
     var portionSize : Double = 0.0
-    var weightUnit : String = ""
-    var picture : String = ""
+    var weightUnit  : String = ""
+    var picture     : String = ""
     
     init(foodId : Int, name : String, kCal : Double, protein : Double, fiber : Double, calcium : Double, sodium : Double, portionSize : Double, weigtUnit : String, picture : String){
         
@@ -32,5 +32,18 @@ class Food {
         self.portionSize = portionSize
         self.weightUnit = weigtUnit
         self.picture = picture
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case foodId      = "FoodId"
+        case name        = "Name"
+        case kCal        = "KCal"
+        case protein     = "Protein"
+        case fiber       = "Fiber"
+        case calcium     = "Calcium"
+        case sodium      = "Sodium"
+        case portionSize = "PortionSize"
+        case weightUnit  = "WeightUnit"
+        case picture     = "Picture"
     }
 }
