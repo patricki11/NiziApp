@@ -5,7 +5,7 @@
 //  Created by Informatica Haarlem on 19-11-19.
 //  Copyright © 2019 De Mobiele Jongens. All rights reserved.
 //
-
+/*
 import Foundation
 import UIKit
 import Auth0
@@ -75,7 +75,7 @@ class LoginViewController : UIViewController {
                 else { print("temp2"); return }
             
             self.saveAuthToken(token: credentials.accessToken!)
-            self.navigateToPatientHomepage(withPatient: patientAccount, withPatientCode: credentials.accessToken!)
+            self.navigateToPatientHomepage(withPatient: patientAccount)
         })
     }
     
@@ -104,10 +104,9 @@ class LoginViewController : UIViewController {
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
     
-    func navigateToPatientHomepage(withPatient patientAccount: PatientLogin, withPatientCode: String) {
+    func navigateToPatientHomepage(withPatient patientAccount: PatientLogin) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
-        homeVC.token = withPatientCode
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
@@ -157,3 +156,4 @@ class LoginViewController : UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 }
+*/

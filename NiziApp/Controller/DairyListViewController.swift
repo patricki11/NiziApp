@@ -39,10 +39,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             self.DiaryRecentFood?.reloadData()
         })
     }
-    
-    
-    
-    
     func setLanguageSpecificText() {
         DairyDayLabel.text = NSLocalizedString("DiaryDayLabel", comment: "")
         DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
