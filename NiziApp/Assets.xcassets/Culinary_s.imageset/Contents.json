@@ -1,6 +1,20 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 64,
+          "top" : 63,
+          "right" : 19,
+          "left" : 108
+        }
+      },
       "idiom" : "universal",
       "filename" : "Culinary_s.png",
       "scale" : "1x"
