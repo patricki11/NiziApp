@@ -36,8 +36,8 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func SearchButton(_ sender: Any) {
         searchFood()
     }
-        func searchFood() {
-            NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5ERkdPRFUxTnpJNFJEZ3lNakkxUmtFMU5EZ3dRMEUxTkVJM05UTTBSRGRFUTBFNE5FWkdNZyJ9.eyJpc3MiOiJodHRwczovL2FwcG5pemkuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkZGMyMThlOTg3MDRiMGVmNmM0NjY4YyIsImF1ZCI6WyJhcHBuaXppLm5sL2FwaSIsImh0dHBzOi8vYXBwbml6aS5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc2MDI0MzQ3LCJleHAiOjE1NzYxMTA3NDcsImF6cCI6IlhydVlCWmVFWklKbDYzSDF5OWxIcURDZzhhTWhKbXhjIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSIsImd0eSI6InBhc3N3b3JkIn0.C0IRzdof7QGU2q8OoxjzHeFJPMFlsW8B1tQr-aqjh1hzg15eRopc1AOiHxzY46O-ddVCZZP6P47quJ7tFc2omUlFqrlDgLkjA50U5xwhzNv1KEbhnj_tj8OO0XPRzRSBFj_nfNDTpMewyTtz7j6oHkLGaIDl7rBvlnzrPFxKjCH2NpvbDUjsLWNJMezdMtoLoInuN3H9Gzpr3sSdaN0pfdvvpWjV6eKf4CTzWQUfwmaMwKA5oRWQzgEodwGxklNl2RwiH--j_2-EvhyxRtMX94L1vMBFquXgqVpcHWzdrCfQ5P90cat9jbK1VmzoATSF-S6XPPIA3_YaDfC4HAhhEg").responseData(completionHandler: { response in
+    func searchFood() {
+            NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5ERkdPRFUxTnpJNFJEZ3lNakkxUmtFMU5EZ3dRMEUxTkVJM05UTTBSRGRFUTBFNE5FWkdNZyJ9.eyJpc3MiOiJodHRwczovL2FwcG5pemkuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkZGMyMThlOTg3MDRiMGVmNmM0NjY4YyIsImF1ZCI6WyJhcHBuaXppLm5sL2FwaSIsImh0dHBzOi8vYXBwbml6aS5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MDk1ODUwLCJleHAiOjE1NzcxODIyNTAsImF6cCI6IlhydVlCWmVFWklKbDYzSDF5OWxIcURDZzhhTWhKbXhjIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSIsImd0eSI6InBhc3N3b3JkIn0.KX-oZ8QZT7SHBC2uFvTdt7XqqbmOU_g-EKcnMDYCTle5SxKIEoVo1YqhhK3gy2vU4RUW9RjEXaj3fZECEzA1xBji2fHhMJv_qZDLuCSSSFdi_DeoL6u7iBJN8DCSG3_ov_4rpam65VcJZp0TsQ3KA8UMenkWZ2mP-61Lnr3wT1dPpIv8RdyaTRr0jfzD6zRfM8PIK0es6AcmrcBV5QX940YR8PaPlSsccvoY5LyJMoNr2-PjyLyJkd5z06w9a9ZQb0So0okWhk7MaTi-HcT-ju5tQg3Z8-pyPatMli4B2KB-oGwGH6j1OuEJ_plUGfUnPgMw9uuu2VZNiK7qDyTLgA").responseData(completionHandler: { response in
               
               guard let jsonResponse = response.data
               else { print("temp1"); return }
@@ -50,6 +50,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
               self.FoodTable?.reloadData()
           })
       }
- 
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+    }
 }

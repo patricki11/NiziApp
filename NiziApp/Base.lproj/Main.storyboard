@@ -731,10 +731,10 @@
             </objects>
             <point key="canvasLocation" x="2674" y="-307"/>
         </scene>
-        <!--View Controller-->
+        <!--Food Detail View Controller-->
         <scene sceneID="d6f-IX-lZL">
             <objects>
-                <viewController storyboardIdentifier="ProductDetailListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Xy-eG-HOf" customClass="ViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Xy-eG-HOf" customClass="FoodDetailViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqR-JC-d0I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -821,10 +821,17 @@
                         <viewLayoutGuide key="safeArea" id="aKu-Zq-cCU"/>
                     </view>
                     <navigationItem key="navigationItem" id="2XN-je-Yig"/>
+                    <connections>
+                        <outlet property="AmountPortion" destination="ngh-pA-YxN" id="jQv-zM-1qV"/>
+                        <outlet property="ConsumtionValues" destination="AF0-fk-mTZ" id="7gw-JH-KQz"/>
+                        <outlet property="DetailTitle" destination="kpv-I3-4m5" id="efH-Ex-KXu"/>
+                        <outlet property="FoodTitle" destination="EkI-Cd-CWm" id="o0T-qv-gNZ"/>
+                        <outlet property="Portion" destination="tzt-ST-dI1" id="h3l-oO-VgI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3Q-Az-Evx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201" y="-1083"/>
+            <point key="canvasLocation" x="2200" y="-1083.4821428571429"/>
         </scene>
         <!--Voeding zoeken-->
         <scene sceneID="xFv-50-erm">
