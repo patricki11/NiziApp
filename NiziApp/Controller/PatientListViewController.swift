@@ -20,7 +20,13 @@ class PatientListViewController: UIViewController {
         super.viewDidLoad()
         title = NSLocalizedString("patientList", comment: "")
         getAllPatients()
+        setupDataTable()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupDataTable() {
+        patientListTableView?.delegate = self
+        patientListTableView?.dataSource = self
     }
     
     func getAllPatients() {     
@@ -32,16 +38,16 @@ class PatientListViewController: UIViewController {
             guard let patientList = try? jsonDecoder.decode( [Patient].self, from: jsonResponse )
             else { return }
             
-            print(patientList.count)
             self.patientList = patientList
             self.patientListTableView?.reloadData()
-            
         })
     }
     
     @IBAction func addNewPatientButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newPatientVC = storyboard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
+        print(loggedInAccount)
+        newPatientVC.loggedInAccount = self.loggedInAccount
         self.navigationController?.pushViewController(newPatientVC, animated: true)
     }
 }
@@ -56,6 +62,9 @@ extension PatientListViewController: UITableViewDataSource {
         let cell = patientListTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientListTableViewCell
 
         let patient = patientList[indexPath.row]
+        
+        print(indexPath.row)
+        print(patient)
         cell.patientNumber.text = String(indexPath.row)
         cell.patientName.text = patient.firstName! + " " + patient.lastName!
         return cell

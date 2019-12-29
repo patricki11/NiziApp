@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Auth0
+import SwiftKeychainWrapper
 
 class AddPatientViewController: UIViewController {
 
@@ -30,6 +31,8 @@ class AddPatientViewController: UIViewController {
     @IBOutlet weak var confirmPasswordField: UITextField!
     
     @IBOutlet weak var addPatientButton: UIButton!
+    
+    weak var loggedInAccount : DoctorLogin!
     
     func datePicker() -> UIDatePicker {
         let picker = UIDatePicker()
@@ -59,6 +62,7 @@ class AddPatientViewController: UIViewController {
         dateOfBirthField.inputView = datePicker()
         title = NSLocalizedString("addPatient", comment: "")
         setLanguageSpecificText()
+        print(loggedInAccount)
     }
     
     func setLanguageSpecificText() {
@@ -71,7 +75,7 @@ class AddPatientViewController: UIViewController {
         
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
-         addPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
+        addPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
     }
     
     @IBAction func addPatient(_ sender: Any) {
@@ -89,14 +93,13 @@ class AddPatientViewController: UIViewController {
             showPasswordNotStrongEnoughMessage()
             return
         }
-        
-        let patient = createNewPatientObject()
-        
-        createNewAuth0Account()
+
+        createPatientAccount()
+
         
     }
     
-    func createNewAuth0Account() {
+    func createPatientAccount() {
         Auth0
         .authentication()
         .createUser(
@@ -110,8 +113,46 @@ class AddPatientViewController: UIViewController {
             switch result {
             case .success(let user):
                 print("User Signed up: \(user)")
+                self.addPatientToAPIDatabase()
             case .failure(let error):
                 print("Failed with \(error)")
+            }
+        }
+    }
+    
+    func addPatientToAPIDatabase() {
+        DispatchQueue.main.async {
+            Auth0
+            .authentication()
+            .login(
+                usernameOrEmail: self.usernameField.text!,
+                password: self.passwordField.text!,
+                realm: "Username-Password-Authentication",
+                scope: "openid"
+            )
+            .start { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let credentials):
+                        Auth0
+                        .authentication()
+                        .userInfo(withAccessToken: credentials.accessToken!)
+                        .start { result in
+                            switch result {
+                            case .success(let result):
+                                let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, credentials: credentials, userInfo: result)
+                                NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+                                    // TODO: Melden aan diëtist dat de patiënt is toegevoegd.
+                                })
+                            case .failure(let error):
+                                print(error)
+                            }
+                            
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
             }
         }
     }
@@ -206,16 +247,40 @@ class AddPatientViewController: UIViewController {
         return password == confirmPassword
     }
     
-    func createNewPatientObject() -> Patient {
-        return Patient(
+    func createNewPatientObject(firstName: String, lastName: String, credentials: Credentials, userInfo: UserInfo) -> PatientLogin {
+         
+        let account : Account = Account(
+            accountId: 0,
+            role: "Patient"
+        )
+        let patient : Patient = Patient(
             patientId: 0,
             accountId: 0,
-            doctorId: 3,
-            firstName: firstNameField.text!,
-            lastName: surnameField.text!,
-            dateOfBirth: "",
-            guid: "",
-            weightInKg: 0.00)
+            doctorId: 3,//self.loggedInAccount.doctor?.doctorId,
+            firstName: firstName,
+            lastName: lastName,
+            dateOfBirth: "1999-01-01T00:00:00",
+            guid: userInfo.sub,
+            weightInKg: 0.00
+        )
+        let token : Token? = Token(
+            scheme: "Bearer",
+            accessCode: credentials.accessToken
+        )
+        let auth: Auth? = Auth(
+            guid: userInfo.sub,
+            token: token
+        )
+        
+        let doctor : Doctor = Doctor(doctorId: 3, firstName: "Dr", lastName: "Pepper", location: "")
+        
+        return PatientLogin(
+            account: account,
+            doctor: doctor,//self.loggedInAccount.doctor,
+            patient: patient,
+            auth: auth
+        )
+                 
     }
     
     func showRequiredFieldsNotFilledMessage() {

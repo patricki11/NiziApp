@@ -16,4 +16,16 @@ class Account : Codable {
         case accountId = "accountId"
         case role      = "role"
     }
+    
+    init(accountId: Int, role: String){
+        self.accountId = accountId
+        self.role = role
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "accountId": accountId as Any,
+            "role": role as Any
+        ]
+    }
 }

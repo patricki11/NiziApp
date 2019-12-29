@@ -20,4 +20,20 @@ class Doctor : Codable{
         case lastName  = "lastName"
         case location  = "location"
     }
+    
+    init(doctorId: Int, firstName: String?, lastName: String?, location: String?) {
+        self.doctorId = doctorId
+        self.firstName = firstName
+        self.lastName = lastName
+        self.location = location
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "doctorId": doctorId as Any,
+            "firstName": firstName as Any,
+            "lastName": lastName as Any,
+            "location": location as Any
+        ]
+    }
 }

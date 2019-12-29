@@ -18,7 +18,7 @@ class Patient : Codable {
     var weightInKg  : Float? = Float()
     var guid        : String? = ""
     
-    init(patientId: Int, accountId: Int, doctorId: Int, firstName: String, lastName: String, dateOfBirth: String, guid: String,  weightInKg: Float  ){
+    init(patientId: Int?, accountId: Int?, doctorId: Int?, firstName: String?, lastName: String?, dateOfBirth: String?, guid: String?, weightInKg: Float?  ){
         
         self.patientId   = patientId
         self.accountId   = accountId

@@ -16,4 +16,16 @@ class Auth : Codable {
         case guid  = "guid"
         case token = "token"
     }
+    
+    init(guid: String?, token: Token?) {
+        self.guid = guid
+        self.token = token
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "guid": guid as Any,
+            "token": token?.toJSON() as Any
+        ]
+    }
 }

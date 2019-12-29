@@ -16,4 +16,16 @@ class Token : Codable {
         case scheme     = "scheme"
         case accessCode = "accessCode"
     }
+    
+    init(scheme: String?, accessCode: String?) {
+        self.scheme = scheme
+        self.accessCode = accessCode
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "scheme": scheme as Any,
+            "accessCode": accessCode as Any
+        ]
+    }
 }

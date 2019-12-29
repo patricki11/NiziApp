@@ -9,7 +9,7 @@
 import Foundation
 
 class DoctorLogin : Decodable {
-    var account : Account  = Account()
+    var account : Account? = nil
     var doctor  : Doctor?  = nil
     var auth    : Auth?    = nil
     
@@ -20,8 +20,8 @@ class DoctorLogin : Decodable {
     }
 }
 
-class PatientLogin : Decodable {
-    var account : Account  = Account()
+class PatientLogin : Encodable, Decodable {
+    var account : Account? = nil
     var doctor  : Doctor?  = nil
     var patient : Patient? = nil
     var auth    : Auth?    = nil
@@ -31,5 +31,21 @@ class PatientLogin : Decodable {
         case doctor  = "doctor"
         case patient = "patient"
         case auth    = "authLogin"
+    }
+    
+    init(account: Account, doctor: Doctor?, patient: Patient?, auth: Auth?) {
+        self.account = account
+        self.doctor = doctor
+        self.patient = patient
+        self.auth = auth
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "account": account?.toJSON() as Any,
+            "doctor": doctor?.toJSON() as Any,
+            "patient": patient?.toJSON() as Any,
+            "auth": auth?.toJSON() as Any,
+        ]
     }
 }

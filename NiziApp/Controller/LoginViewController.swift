@@ -67,6 +67,8 @@ class LoginViewController : UIViewController {
         NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
             
             print(credentials.accessToken)
+            print(credentials.idToken)
+            print(credentials)
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
             
@@ -87,7 +89,6 @@ class LoginViewController : UIViewController {
             let jsonDecoder = JSONDecoder()
             guard let doctorAccount = try? jsonDecoder.decode(DoctorLogin.self, from: jsonResponse )
             else { return }
-
             self.saveAuthToken(token: credentials.accessToken!)
             self.navigateToPatientList(withAccount: doctorAccount)
         })
@@ -100,7 +101,9 @@ class LoginViewController : UIViewController {
     func navigateToPatientList(withAccount doctorAccount: DoctorLogin) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
+        print(doctorAccount)
         patientListVC.loggedInAccount = doctorAccount
+        print(patientListVC.loggedInAccount)
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
     
