@@ -128,7 +128,22 @@ class AddPatientViewController: UIViewController {
     }
     
     func isStrongPassword() -> Bool {
-        return passwordContainsLowercaseLetters() && passwordContainsUppercaseLetters() && passwordContainsNumber() && passwordContainsSpecialCharacter()
+        var strongCounter = 0
+        if(passwordContainsLowercaseLetters()) {
+            strongCounter+=1
+        }
+        if(passwordContainsUppercaseLetters()){
+            strongCounter+=1
+        }
+        if(passwordContainsNumber()) {
+            strongCounter+=1
+        }
+        if(passwordContainsSpecialCharacter()) {
+            strongCounter+=1
+        }
+        
+        // Auth0 Requires a minimum of 3 of the conditions to be true
+        return strongCounter >= 3
     }
     
     func passwordContainsSpecialCharacter() -> Bool {
