@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftKeychainWrapper
 
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -41,7 +42,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         searchFood()
     }
     func searchFood() {
-            NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5ERkdPRFUxTnpJNFJEZ3lNakkxUmtFMU5EZ3dRMEUxTkVJM05UTTBSRGRFUTBFNE5FWkdNZyJ9.eyJpc3MiOiJodHRwczovL2FwcG5pemkuZXUuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkZGMyMThlOTg3MDRiMGVmNmM0NjY4YyIsImF1ZCI6WyJhcHBuaXppLm5sL2FwaSIsImh0dHBzOi8vYXBwbml6aS5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3MTg0OTk3LCJleHAiOjE1NzcyNzEzOTcsImF6cCI6IlhydVlCWmVFWklKbDYzSDF5OWxIcURDZzhhTWhKbXhjIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSIsImd0eSI6InBhc3N3b3JkIn0.To3Bbm7d4JUif3I-u1RZiav2-Dlw6zFlhFCooc4ClsRRyLkuVKr7PqkeiBGCP9ndRt2_0jmAkQr1sDjen-XPD7D9c0gamrmnsJLpydl9jM37zKBb-nplSgzDhzvl1msBax-ROdocmLtFZifV4PuaGK52VpjJ3YI7LZWhJraWjbDuQLB7VYT9n72gKOLZrrAdyLd-CgeRTO3Le1JR023k55DPClOecW_Fvp-ijD4d8F05EBTblb6H_aMXeMucmVtXSsK7e4VgWJwTUcjJnXxwtJ3Euq_JFVU5JjHYkppclpjRPB6K3PlIbdFy-w887AXOIJ-dnP8xvBRG9xrukFdyGQ").responseData(completionHandler: { response in
+        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
               
               guard let jsonResponse = response.data
               else { print("temp1"); return }
