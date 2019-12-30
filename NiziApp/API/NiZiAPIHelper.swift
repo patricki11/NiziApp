@@ -91,8 +91,8 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     
-    static func addProductToFavorite(productId productId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/food/favorite"
+    static func addProductToFavorite(forproductId productId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
+        let apiMethod = "v1/food/favorite?patientId=\(patientId)&foodId=\(productId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .post, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }

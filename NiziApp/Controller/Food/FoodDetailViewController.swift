@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Kingfisher
 
 class FoodDetailViewController: UIViewController {
     @IBOutlet weak var DetailTitle: UILabel!
@@ -50,4 +52,17 @@ class FoodDetailViewController: UIViewController {
         Sodium.text = sodiumString
         
     }
+    @IBAction func AddtoFavorites(_ sender: Any) {
+        Addfavorite()
+    }
+    
+    
+    func Addfavorite() {
+        NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
+            guard let jsonResponse = response.request
+            else { print("Not succeeded"); return }
+            print(response.request)
+                
+            })
+        }
 }
