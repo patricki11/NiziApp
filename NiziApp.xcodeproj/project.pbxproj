@@ -10,7 +10,6 @@
 		211A104723966212002A42DA /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 211A104623966211002A42DA /* Auth0.plist */; };
 		211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A104823966DE3002A42DA /* NiZiAPIHelper.swift */; };
 		211A104F23969D17002A42DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 211A105123969D17002A42DA /* Localizable.strings */; };
-		213E5A35239FE16100242905 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213E5A34239FE16100242905 /* HomeViewController.swift */; };
 		21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */; };
 		21488B15239E4B7B004D31C8 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B14239E4B7B004D31C8 /* Auth.swift */; };
 		21488B17239E4C57004D31C8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B16239E4C57004D31C8 /* Account.swift */; };
@@ -19,7 +18,6 @@
 		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
-		217496542391832700243B41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496532391832700243B41 /* ViewController.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
 		217496592391832900243B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217496582391832900243B41 /* Assets.xcassets */; };
 		2174965C2391832900243B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2174965A2391832900243B41 /* LaunchScreen.storyboard */; };
@@ -43,6 +41,7 @@
 		9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71623A084AF003F136D /* DiaryNavigationController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
+		93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE323BB48E8007E7E58 /* DateviewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		211A105223969D49002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		211A105323969D4B002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		211A105423969D4C002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		213E5A34239FE16100242905 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListTableViewCell.swift; sourceTree = "<group>"; };
 		21488B14239E4B7B004D31C8 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		21488B16239E4C57004D31C8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		217496532391832700243B41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		217496562391832700243B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		217496582391832900243B41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2174965B2391832900243B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,6 +85,7 @@
 		9322A71623A084AF003F136D /* DiaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNavigationController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
+		93722DE323BB48E8007E7E58 /* DateviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateviewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,14 +164,12 @@
 			children = (
 				9375BCDB23B27287004559D3 /* Food */,
 				2174966723918F3100243B41 /* AddPatientViewController.swift */,
-				217496532391832700243B41 /* ViewController.swift */,
-				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
 				214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */,
-				213E5A34239FE16100242905 /* HomeViewController.swift */,
 				9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */,
 				9322A71623A084AF003F136D /* DiaryNavigationController.swift */,
+				93722DE323BB48E8007E7E58 /* DateviewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,6 +219,7 @@
 				9375BCD923B2727C004559D3 /* FavoriteViewController.swift */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 				9322A71823A08611003F136D /* SearchFoodViewController.swift */,
+				21749669239190FD00243B41 /* DairyListViewController.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -346,7 +343,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
-				217496542391832700243B41 /* ViewController.swift in Sources */,
 				9322A70D23A02385003F136D /* Diary.swift in Sources */,
 				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
@@ -368,10 +364,10 @@
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
 				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
-				213E5A35239FE16100242905 /* HomeViewController.swift in Sources */,
 				9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
+				93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */,
 				9322A71523A079F1003F136D /* BackLoginController.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,

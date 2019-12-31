@@ -13,10 +13,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
 
     var consumptions: [ConsumptionView] = [] 
 
-    @IBOutlet weak var DiaryDietaryList: UITableView!
     @IBOutlet weak var DiaryRecentFood: UITableView!
-    
-    @IBOutlet weak var DairyDayLabel: UILabel!
     @IBOutlet weak var DiaryTitleLabel: UILabel!
     @IBOutlet weak var DiaryAddLabel: UILabel!
     
@@ -41,7 +38,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         })
     }
     func setLanguageSpecificText() {
-        DairyDayLabel.text = NSLocalizedString("DiaryDayLabel", comment: "")
         DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
         DiaryAddLabel.text = NSLocalizedString("DiaryAddProduct", comment: "")
     }
@@ -55,10 +51,5 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         let idx: Int = indexPath.row
         diarycell.productTitle?.text = consumptions[idx].foodName
         return diarycell
-    }
-    
-    @IBAction func DiaryPreviousDayButton(_ sender: Any) {
-    }
-    @IBAction func DiaryNextDayButton(_ sender: Any) {
     }
 }
