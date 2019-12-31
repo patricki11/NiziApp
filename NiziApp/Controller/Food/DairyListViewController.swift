@@ -16,15 +16,59 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var DiaryRecentFood: UITableView!
     @IBOutlet weak var DiaryTitleLabel: UILabel!
     @IBOutlet weak var DiaryAddLabel: UILabel!
+    @IBOutlet weak var CalorieLabel: UILabel!
+    @IBOutlet weak var GrainLabel: UILabel!
+    @IBOutlet weak var ProteinLabel: UILabel!
+    @IBOutlet weak var PotassiumLabel: UILabel!
+    @IBOutlet weak var MoistureLabel: UILabel!
+    @IBOutlet weak var SodiumLabel: UILabel!
+    @IBOutlet weak var ProgressCalorie: UIProgressView!
+    @IBOutlet weak var ProgressGrain: UIProgressView!
+    @IBOutlet weak var ProgressHumidity: UIProgressView!
+    @IBOutlet weak var ProgressProtein: UIProgressView!
+    @IBOutlet weak var ProgressSodium: UIProgressView!
+    @IBOutlet weak var ProgressPotassium: UIProgressView!
+    @IBOutlet weak var DatePicker: UIDatePicker!
+    
+    fileprivate func SetupDatePicker() {
+        DatePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        DatePicker.setValue(false, forKeyPath: "highlightsToday")
+        DatePicker.backgroundColor = UIColor(red: 0x0A, green: 0x71, blue: 0xCB)
+        DatePicker.addTarget(self, action: #selector(DairyListViewController.datePickerValueChanged(_:)), for: .valueChanged)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate = format.string(from: date)
+        print(formattedDate)
+        
         setLanguageSpecificText()
-        getConsumption()
+        getConsumption(Date: formattedDate)
+        SetupDatePicker()
     }
     
-    func getConsumption() {
-        NiZiAPIHelper.getAllConsumptions(forPatient: 57, between: "2019-12-10", and: "2019-12-10", authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+    @objc func datePickerValueChanged(_ sender: UIDatePicker){
+        
+        // Create date formatter
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        // Set date format
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Apply date format
+        let selectedDate: String = dateFormatter.string(from: sender.date)
+        
+        getConsumption(Date: selectedDate)
+        
+        //print("Selected value \(selectedDate)")
+    }
+
+    
+    func getConsumption(Date date: String) {
+        NiZiAPIHelper.getAllConsumptions(forPatient: 57, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
             else { print("temp1"); return }
@@ -40,6 +84,12 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     func setLanguageSpecificText() {
         DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
         DiaryAddLabel.text = NSLocalizedString("DiaryAddProduct", comment: "")
+        CalorieLabel.text = NSLocalizedString("Calorie", comment: "")
+        GrainLabel.text = NSLocalizedString("Grain", comment: "")
+        ProteinLabel.text = NSLocalizedString("Protein", comment: "")
+        PotassiumLabel.text = NSLocalizedString("Potassium", comment: "")
+        SodiumLabel.text = NSLocalizedString("Natrium", comment: "")
+        MoistureLabel.text = NSLocalizedString("Moisture", comment: "")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,4 +102,22 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         diarycell.productTitle?.text = consumptions[idx].foodName
         return diarycell
     }
+}
+
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }

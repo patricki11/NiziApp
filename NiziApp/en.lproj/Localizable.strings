@@ -40,3 +40,11 @@
 "DiaryDayLabel" = "VANDAAG";
 "DiaryTitle" = "Voeding";
 "DiaryAddProduct" = "voeding toevoegen";
+
+"Calorie" = "Calorieën";
+"Grain" = "Vezel";
+"Protein" = "Proteïne";
+"Moisture" = "Vocht";
+"Potassium" = "Kalium";
+"Natrium" = "Natrium";
+

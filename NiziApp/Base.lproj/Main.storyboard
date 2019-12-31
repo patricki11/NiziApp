@@ -338,14 +338,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientListTableViewCell" id="1jC-Pd-3mi" customClass="PatientListTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="52.666667938232422"/>
+                                                <rect key="frame" x="0.0" y="28" width="374" height="53"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1jC-Pd-3mi" id="Fcl-6F-iLh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="52.666667938232422"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="53"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-wI-e12">
-                                                            <rect key="frame" x="25" y="16" width="42" height="20.666666666666671"/>
+                                                            <rect key="frame" x="25" y="16" width="42" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="8qO-Vy-Umt"/>
                                                             </constraints>
@@ -354,7 +354,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-Tw-xp6">
-                                                            <rect key="frame" x="87" y="16" width="262" height="20.666666666666671"/>
+                                                            <rect key="frame" x="87" y="16" width="262" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -874,9 +874,22 @@
                     <tabBarItem key="tabBarItem" title="Dagboek" image="Diary" id="NBF-jg-cUl"/>
                     <navigationItem key="navigationItem" title="Dagboek" id="goG-Hx-Rg0"/>
                     <connections>
+                        <outlet property="CalorieLabel" destination="ZcA-mc-kZ6" id="UTO-7b-yQg"/>
+                        <outlet property="DatePicker" destination="Pqy-5F-3Hv" id="mtP-Eq-nmb"/>
                         <outlet property="DiaryAddLabel" destination="AIC-Kv-UBs" id="7vj-qE-bTE"/>
                         <outlet property="DiaryRecentFood" destination="87l-82-QAV" id="3LI-h8-61s"/>
                         <outlet property="DiaryTitleLabel" destination="s9K-zb-x3G" id="LYw-6f-CXQ"/>
+                        <outlet property="GrainLabel" destination="SPF-en-ZdG" id="K62-Gx-IVw"/>
+                        <outlet property="MoistureLabel" destination="IaM-SH-ehw" id="unC-X8-Nbg"/>
+                        <outlet property="PotassiumLabel" destination="0BN-k6-fpP" id="ONf-J6-zs3"/>
+                        <outlet property="ProgressCalorie" destination="IQx-rT-NGI" id="RCn-jG-djF"/>
+                        <outlet property="ProgressGrain" destination="3VB-0W-a3a" id="0PQ-QG-C6F"/>
+                        <outlet property="ProgressHumidity" destination="2HS-Kn-brh" id="cLn-d8-NIy"/>
+                        <outlet property="ProgressPotassium" destination="862-Ar-8Dd" id="vLH-W3-VNi"/>
+                        <outlet property="ProgressProtein" destination="eJL-RT-VxU" id="hSo-m7-UHL"/>
+                        <outlet property="ProgressSodium" destination="Tr4-Sx-qEm" id="Sur-9j-NJl"/>
+                        <outlet property="ProteinLabel" destination="enl-qb-WFC" id="mFf-hs-8Wc"/>
+                        <outlet property="SodiumLabel" destination="5iP-tT-2Gj" id="YDa-eW-YMF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhh-nl-e4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1259,7 +1272,7 @@
         <!--Stats-->
         <scene sceneID="kJD-5x-uoL">
             <objects>
-                <viewController storyboardIdentifier="StatisticsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I5c-fX-joc" customClass="DateViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatisticsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I5c-fX-joc" customClass="StatisticViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ulh-D5-Up6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

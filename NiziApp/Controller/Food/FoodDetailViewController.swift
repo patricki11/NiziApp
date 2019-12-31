@@ -56,7 +56,6 @@ class FoodDetailViewController: UIViewController {
         Addfavorite()
     }
     
-    
     func Addfavorite() {
         NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
             guard let jsonResponse = response.request

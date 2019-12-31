@@ -42,6 +42,7 @@
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
 		93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE323BB48E8007E7E58 /* DateviewController.swift */; };
+		93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE523BB88BE007E7E58 /* StatisticViewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
 		93722DE323BB48E8007E7E58 /* DateviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateviewController.swift; sourceTree = "<group>"; };
+		93722DE523BB88BE007E7E58 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 				9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */,
 				9322A71623A084AF003F136D /* DiaryNavigationController.swift */,
 				93722DE323BB48E8007E7E58 /* DateviewController.swift */,
+				93722DE523BB88BE007E7E58 /* StatisticViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
+				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
 				9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */,
 				9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */,
