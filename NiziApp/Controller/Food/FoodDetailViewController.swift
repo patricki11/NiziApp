@@ -22,6 +22,9 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var Sodium: UILabel!
     @IBOutlet weak var Picture: UIImageView!
     
+    @IBAction func AddToDiary(_ sender: Any) {
+        
+    }
     var foodItem: Food?
 
     override func viewDidLoad() {
@@ -64,4 +67,12 @@ class FoodDetailViewController: UIViewController {
                 
             })
         }
+    
+    func Adddiary() {
+    NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
+        guard let jsonResponse = response.request
+        else { print("Not succeeded"); return }
+        print(response.request)
+        })
+    }
 }

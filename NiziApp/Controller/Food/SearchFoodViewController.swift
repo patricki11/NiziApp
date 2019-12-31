@@ -20,7 +20,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(KeychainWrapper.standard.string(forKey: "date")!)
         // Do any additional setup after loading the view.
     }
     

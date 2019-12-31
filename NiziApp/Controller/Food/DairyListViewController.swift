@@ -44,6 +44,8 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         print(formattedDate)
+        saveDate(date: formattedDate)
+        print(KeychainWrapper.standard.string(forKey: "date")!)
         
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
@@ -62,7 +64,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         let selectedDate: String = dateFormatter.string(from: sender.date)
         
         getConsumption(Date: selectedDate)
-        
+        saveDate(date: selectedDate)
         //print("Selected value \(selectedDate)")
     }
 
@@ -101,6 +103,10 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         let idx: Int = indexPath.row
         diarycell.productTitle?.text = consumptions[idx].foodName
         return diarycell
+    }
+    
+    func saveDate(date: String) {
+        KeychainWrapper.standard.set(date, forKey: "date")
     }
 }
 

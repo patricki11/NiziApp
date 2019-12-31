@@ -34,4 +34,14 @@ class Consumption {
         self.patientId = patientId
         self.id = id
     }
+    
+    func toJSON() -> [String:Any] {
+           return [
+               "foodName": foodName as Any,
+               "kCal": kCal as Any,
+               "protein": protein as Any,
+               "fiber": fiber as Any,
+               "calium": calium as Any
+           ]
+       }
 }
