@@ -21,7 +21,17 @@ class PatientListViewController: UIViewController {
         title = NSLocalizedString("patientList", comment: "")
         getAllPatients()
         setupDataTable()
+        setupFilterTextfield()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupFilterTextfield() {
+        patientSearchField?.addTarget(self, action: #selector(filterTextfieldChanged(_:)), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func filterTextfieldChanged(_ textField: UITextField) {
+        print("test")
+        patientListTableView?.reloadData()
     }
     
     func setupDataTable() {
@@ -46,7 +56,7 @@ class PatientListViewController: UIViewController {
     @IBAction func addNewPatientButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newPatientVC = storyboard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
-        print(loggedInAccount)
+        
         newPatientVC.loggedInAccount = self.loggedInAccount
         self.navigationController?.pushViewController(newPatientVC, animated: true)
     }
@@ -54,23 +64,33 @@ class PatientListViewController: UIViewController {
 
 extension PatientListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patientList.count
+        return getFilteredPatientList().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PatientListTableViewCell"
         let cell = patientListTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientListTableViewCell
 
-        let patient = patientList[indexPath.row]
+        let filteredPatientList = getFilteredPatientList()
+        let patient = filteredPatientList[indexPath.row]
         
-        print(indexPath.row)
-        print(patient)
         cell.patientNumber.text = String(indexPath.row)
         cell.patientName.text = patient.firstName! + " " + patient.lastName!
         return cell
 
     }
 
+    func getFilteredPatientList() -> [Patient] {
+        let patientName = patientSearchField?.text ?? ""
+        
+        if(patientName == "") {
+            return patientList
+        }
+        else {
+            return patientList.filter { ("\($0.firstName?.lowercased()) \($0.lastName?.lowercased())").contains(patientName.lowercased())}
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // TODO: Volgende patienten ophalen
     }
