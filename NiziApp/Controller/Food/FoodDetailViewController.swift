@@ -68,10 +68,10 @@ class FoodDetailViewController: UIViewController {
             })
         }
     func addConsumption() {
-        //let date = KeychainWrapper.standard.string(forKey: "date")!
-        //let newdate = date + "T00:00:00"
-        //print(newdate)
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: "2019-12-11T00:00:00", patientid: 57, foodId: foodItem!.foodId)
+        let date = KeychainWrapper.standard.string(forKey: "date")!
+        let newdate = date + "T00:00:00"
+
+        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: 57, foodId: foodItem!.foodId)
             NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan diëtist dat de voedsel is toegevoegd.
         })
@@ -91,7 +91,6 @@ class FoodDetailViewController: UIViewController {
             date: date,
             patientId: patientid,
             id: foodId
-            
         )
         return consumption
     }

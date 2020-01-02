@@ -46,6 +46,7 @@
 		93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE523BB88BE007E7E58 /* StatisticViewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
+		93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		93722DE523BB88BE007E7E58 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchViewController.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C698404F33E3A6522C3D6B70 /* Pods-NiziApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.release.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.release.xcconfig"; sourceTree = "<group>"; };
 		E7237B7618E484E6DF0452F3 /* Pods-NiziApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiziApp.debug.xcconfig"; path = "Target Support Files/Pods-NiziApp/Pods-NiziApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				93722DE323BB48E8007E7E58 /* DateviewController.swift */,
 				93722DE523BB88BE007E7E58 /* StatisticViewController.swift */,
 				214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */,
+				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				9322A70623968798003F136D /* Food.swift in Sources */,
 				9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */,
 				9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */,
+				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
 				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
