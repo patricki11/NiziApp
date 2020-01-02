@@ -99,6 +99,14 @@ extension PatientListViewController: UITableViewDataSource {
 
 extension PatientListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TO DO: Go to Patient
+        let filteredPatientList = getFilteredPatientList()
+        navigateToPatientDetailView(patient: filteredPatientList[indexPath.row])
+    }
+    
+    func navigateToPatientDetailView(patient: Patient) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
+        patientDetailVC.patient = patient
+        self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
 }

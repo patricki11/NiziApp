@@ -16,6 +16,7 @@
 		21488B19239E4CC9004D31C8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B18239E4CC9004D31C8 /* Login.swift */; };
 		21488B1B239E53E2004D31C8 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B1A239E53E2004D31C8 /* Token.swift */; };
 		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
+		214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		21488B18239E4CC9004D31C8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		21488B1A239E53E2004D31C8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
+		214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOverviewViewController.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				9322A71623A084AF003F136D /* DiaryNavigationController.swift */,
 				93722DE323BB48E8007E7E58 /* DateviewController.swift */,
 				93722DE523BB88BE007E7E58 /* StatisticViewController.swift */,
+				214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
 				9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */,
+				214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
 				93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */,
