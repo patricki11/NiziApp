@@ -28,6 +28,7 @@
 		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
 		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
 		83F72D69651889CD514430FE /* Pods_NiziApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */; };
+		931298BF23BF6F140082D644 /* MealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931298BE23BF6F140082D644 /* MealDetailViewController.swift */; };
 		9322A70023966FA7003F136D /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A6FF23966FA7003F136D /* Doctor.swift */; };
 		9322A702239671BF003F136D /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A701239671BF003F136D /* Consumption.swift */; };
 		9322A704239680D7003F136D /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A703239680D7003F136D /* Meal.swift */; };
@@ -74,6 +75,7 @@
 		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		931298BE23BF6F140082D644 /* MealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
 		9322A6FF23966FA7003F136D /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		9322A701239671BF003F136D /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		9322A703239680D7003F136D /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 				9322A71823A08611003F136D /* SearchFoodViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
+				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
 				9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */,
+				931298BF23BF6F140082D644 /* MealDetailViewController.swift in Sources */,
 				9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */,
 				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,

@@ -33,6 +33,14 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         let meal = self.meallist[indexPath.row]
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealDetailViewController") as! MealDetailViewController;()
+        detailFoodVC.mealItem = meal
+         self.navigationController?.pushViewController(detailFoodVC, animated: true)
+     }
 
     func GetMeals() {
         NiZiAPIHelper.getAllMeals(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
