@@ -36,7 +36,7 @@ class Meal : Codable {
     }
     
     enum CodingKeys : String, CodingKey {
-         case mealId      = "FoodId"
+         case mealId      = "MealId"
          case name        = "Name"
          case patientId   = "PatientId"
          case kCal        = "KCal"

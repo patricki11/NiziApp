@@ -14,6 +14,11 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var MealTable: UITableView!
     var meallist : [Meal] = []
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        GetMeals()
+        // Do any additional setup after loading the view.
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meallist.count
@@ -28,24 +33,18 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
-    
     func GetMeals() {
-          NiZiAPIHelper.getFavoriteProducts(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getAllMeals(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
               
               guard let jsonResponse = response.data
               else { print("temp1"); return }
               
               let jsonDecoder = JSONDecoder()
-              guard let foodlistJSON = try? jsonDecoder.decode( [Meal].self, from: jsonResponse )
+              guard let MeallistJSON = try? jsonDecoder.decode( [Meal].self, from: jsonResponse )
               else { print("temp2"); return }
               
-              self.meallist = foodlistJSON
+              self.meallist = MeallistJSON
               self.MealTable?.reloadData()
           })
       }
