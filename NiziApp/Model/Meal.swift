@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Meal {
+class Meal : Codable {
     var mealId : Int = 0
     var name : String = ""
     var patientId : Int = 0
@@ -34,4 +34,18 @@ class Meal {
         self.weightUnit = weightUnit
         self.picture = picture
     }
+    
+    enum CodingKeys : String, CodingKey {
+         case mealId      = "MealId"
+         case name        = "Name"
+         case patientId   = "PatientId"
+         case kCal        = "KCal"
+         case protein     = "Protein"
+         case fiber       = "Fiber"
+         case calcium     = "Calcium"
+         case sodium      = "Sodium"
+         case portionSize = "PortionSize"
+         case weightUnit  = "WeightUnit"
+         case picture     = "Picture"
+     }
 }
