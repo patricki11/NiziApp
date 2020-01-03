@@ -1782,7 +1782,7 @@
         <!--Maaltijd Zoeken-->
         <scene sceneID="EI4-53-Mad">
             <objects>
-                <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="FavoriteViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1859,8 +1859,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="w0Y-9M-giY" id="Ru7-9O-0Cu"/>
-                                    <outlet property="delegate" destination="w0Y-9M-giY" id="Ufs-bd-5G4"/>
+                                    <outlet property="dataSource" destination="w0Y-9M-giY" id="NXY-pI-9zf"/>
+                                    <outlet property="delegate" destination="w0Y-9M-giY" id="jFP-fY-jfk"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1891,7 +1891,7 @@
                     <tabBarItem key="tabBarItem" title="Dagboek" image="Culinary_s" id="Jd3-uB-jG7"/>
                     <navigationItem key="navigationItem" title="Maaltijd Zoeken" id="yEF-bk-ZiD"/>
                     <connections>
-                        <outlet property="FavoriteTable" destination="ecM-TO-uc7" id="NIw-3K-Zuq"/>
+                        <outlet property="MealTable" destination="ecM-TO-uc7" id="VAl-61-NqX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkE-HD-Zu8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

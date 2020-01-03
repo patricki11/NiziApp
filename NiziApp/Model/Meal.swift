@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Meal {
+class Meal : Codable {
     var mealId : Int = 0
     var name : String = ""
     var patientId : Int = 0
