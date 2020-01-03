@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DietaryManagement{
+class DietaryManagement : Codable {
     var id          : Int = 0
     var description : String = ""
     var amount      : Int = 0
@@ -21,5 +21,13 @@ class DietaryManagement{
         self.amount = amount
         self.isActive = isActive
         self.patientId = patientId
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case id          = "id"
+        case description = "Description"
+        case amount      = "Amount"
+        case isActive    = "IsActive"
+        case patientId   = "Patient"
     }
 }

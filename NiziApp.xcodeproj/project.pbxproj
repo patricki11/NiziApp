@@ -17,6 +17,9 @@
 		21488B1B239E53E2004D31C8 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B1A239E53E2004D31C8 /* Token.swift */; };
 		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */; };
+		214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */; };
+		214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB023BF804A003311A1 /* Restrictions.swift */; };
+		214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -62,6 +65,9 @@
 		21488B1A239E53E2004D31C8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOverviewViewController.swift; sourceTree = "<group>"; };
+		214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDietaryGuidelines.swift; sourceTree = "<group>"; };
+		214F5EB023BF804A003311A1 /* Restrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restrictions.swift; sourceTree = "<group>"; };
+		214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientGuidelineTableViewCell.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				21488B1A239E53E2004D31C8 /* Token.swift */,
 				9322A70C23A02385003F136D /* Diary.swift */,
 				9322A71023A02CA5003F136D /* Weight.swift */,
+				214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */,
+				214F5EB023BF804A003311A1 /* Restrictions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 				9322A70A23A01DCE003F136D /* DiaryTableViewCell.swift */,
 				21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */,
 				9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */,
+				214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
 				9322A708239697B0003F136D /* DietaryManagement.swift in Sources */,
 				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,
+				214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */,
 				21488B17239E4C57004D31C8 /* Account.swift in Sources */,
 				21488B15239E4B7B004D31C8 /* Auth.swift in Sources */,
 				9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */,
@@ -375,8 +385,10 @@
 				214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
+				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
 				93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */,
 				9322A71523A079F1003F136D /* BackLoginController.swift in Sources */,
+				214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,
