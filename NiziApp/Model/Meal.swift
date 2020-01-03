@@ -34,4 +34,18 @@ class Meal {
         self.weightUnit = weightUnit
         self.picture = picture
     }
+    
+    enum CodingKeys : String, CodingKey {
+         case mealId      = "FoodId"
+         case name        = "Name"
+         case patientId   = "PatientId"
+         case kCal        = "KCal"
+         case protein     = "Protein"
+         case fiber       = "Fiber"
+         case calcium     = "Calcium"
+         case sodium      = "Sodium"
+         case portionSize = "PortionSize"
+         case weightUnit  = "WeightUnit"
+         case picture     = "Picture"
+     }
 }

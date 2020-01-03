@@ -42,7 +42,6 @@
 		9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71623A084AF003F136D /* DiaryNavigationController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
-		93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE323BB48E8007E7E58 /* DateviewController.swift */; };
 		93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE523BB88BE007E7E58 /* StatisticViewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
@@ -89,7 +88,6 @@
 		9322A71623A084AF003F136D /* DiaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNavigationController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
-		93722DE323BB48E8007E7E58 /* DateviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateviewController.swift; sourceTree = "<group>"; };
 		93722DE523BB88BE007E7E58 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -175,10 +173,8 @@
 				214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */,
 				9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */,
 				9322A71623A084AF003F136D /* DiaryNavigationController.swift */,
-				93722DE323BB48E8007E7E58 /* DateviewController.swift */,
 				93722DE523BB88BE007E7E58 /* StatisticViewController.swift */,
 				214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */,
-				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -225,6 +221,7 @@
 		9375BCDB23B27287004559D3 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
 				9375BCD923B2727C004559D3 /* FavoriteViewController.swift */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 				9322A71823A08611003F136D /* SearchFoodViewController.swift */,
@@ -379,7 +376,6 @@
 				214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
-				93722DE423BB48E8007E7E58 /* DateviewController.swift in Sources */,
 				9322A71523A079F1003F136D /* BackLoginController.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,

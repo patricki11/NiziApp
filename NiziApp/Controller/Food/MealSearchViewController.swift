@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+import SwiftKeychainWrapper
 
 class MealSearchViewController: UIViewController {
 

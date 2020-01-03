@@ -73,7 +73,7 @@ class FoodDetailViewController: UIViewController {
 
         let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: 57, foodId: foodItem!.foodId)
             NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            // TODO: Melden aan diëtist dat de voedsel is toegevoegd.
+            // TODO: Melden aan patient dat de voedsel is toegevoegd.
         })
     }
     
