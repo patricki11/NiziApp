@@ -39,7 +39,6 @@
 		9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70E23A02A07003F136D /* ConsumptionView.swift */; };
 		9322A71123A02CA5003F136D /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71023A02CA5003F136D /* Weight.swift */; };
 		9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */; };
-		9322A71523A079F1003F136D /* BackLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71423A079F1003F136D /* BackLoginController.swift */; };
 		9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71623A084AF003F136D /* DiaryNavigationController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
@@ -86,7 +85,6 @@
 		9322A70E23A02A07003F136D /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		9322A71023A02CA5003F136D /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
-		9322A71423A079F1003F136D /* BackLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackLoginController.swift; sourceTree = "<group>"; };
 		9322A71623A084AF003F136D /* DiaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNavigationController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				211A104623966211002A42DA /* Auth0.plist */,
 				2174965D2391832900243B41 /* Info.plist */,
 				211A105123969D17002A42DA /* Localizable.strings */,
-				9322A71423A079F1003F136D /* BackLoginController.swift */,
 			);
 			path = NiziApp;
 			sourceTree = "<group>";
@@ -168,7 +165,7 @@
 		2174966323918E8200243B41 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9375BCDB23B27287004559D3 /* Food */,
+				9375BCDB23B27287004559D3 /* Patient */,
 				2174966723918F3100243B41 /* AddPatientViewController.swift */,
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
@@ -220,7 +217,7 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		9375BCDB23B27287004559D3 /* Food */ = {
+		9375BCDB23B27287004559D3 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
 				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
@@ -230,7 +227,7 @@
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 			);
-			path = Food;
+			path = Patient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,7 +377,6 @@
 				214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
-				9322A71523A079F1003F136D /* BackLoginController.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,

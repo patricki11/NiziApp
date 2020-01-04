@@ -41,6 +41,20 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         detailFoodVC.mealItem = meal
          self.navigationController?.pushViewController(detailFoodVC, animated: true)
      }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            DeleteMeal(Id: meallist[indexPath.row].mealId)
+            meallist.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 
     func GetMeals() {
         NiZiAPIHelper.getAllMeals(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
@@ -56,4 +70,11 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
               self.MealTable?.reloadData()
           })
       }
+    
+    func DeleteMeal(Id id: Int){
+        NiZiAPIHelper.deleteMeal(withId: id, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+               guard response.data != nil
+               else { print("temp1"); return }
+           })
+       }
 }
