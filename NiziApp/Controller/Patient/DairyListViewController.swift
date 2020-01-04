@@ -51,6 +51,12 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         SetupDatePicker()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
         
         // Create date formatter

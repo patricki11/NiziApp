@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 import Kingfisher
 
 class MealDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var MealTitle: UILabel!
     @IBOutlet weak var MealPicture: UIImageView!
     @IBOutlet weak var MealPortion: UILabel!
@@ -33,6 +33,12 @@ class MealDetailViewController: UIViewController {
         SetupData()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          // Hide the Navigation Bar
+          self.navigationController?.setNavigationBarHidden(false, animated: animated)
+      }
     
     @IBAction func AddMealtoDiary(_ sender: Any) {
         addConsumption()
@@ -62,32 +68,32 @@ class MealDetailViewController: UIViewController {
         
     }
     func addConsumption() {
-           let date = KeychainWrapper.standard.string(forKey: "date")!
-           let newdate = date + "T00:00:00"
-
+        let date = KeychainWrapper.standard.string(forKey: "date")!
+        let newdate = date + "T00:00:00"
+        
         let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: 57, foodId: mealItem!.mealId)
-               NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-               // TODO: Melden aan patient dat de voedsel is toegevoegd.
-           })
-       }
-       
-       func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int ) -> Consumption {
-       
-           let consumption : Consumption = Consumption(
-               foodName : foodName,
-               kCal: kCal,
-               protein: protein,
-               fiber: fiber,
-               calium: calium,
-               sodium: sodium,
-               amount: amount,
-               weightUnitId: weigthUnitId,
-               date: date,
-               patientId: patientid,
-               id: foodId
-           )
-           return consumption
-       }
+        NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            // TODO: Melden aan patient dat de voedsel is toegevoegd.
+        })
+    }
     
-
+    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int ) -> Consumption {
+        
+        let consumption : Consumption = Consumption(
+            foodName : foodName,
+            kCal: kCal,
+            protein: protein,
+            fiber: fiber,
+            calium: calium,
+            sodium: sodium,
+            amount: amount,
+            weightUnitId: weigthUnitId,
+            date: date,
+            patientId: patientid,
+            id: foodId
+        )
+        return consumption
+    }
+    
+    
 }

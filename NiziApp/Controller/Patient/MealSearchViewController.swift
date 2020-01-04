@@ -20,6 +20,12 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meallist.count
     }
@@ -35,12 +41,12 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let meal = self.meallist[indexPath.row]
-         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealDetailViewController") as! MealDetailViewController;()
+        let meal = self.meallist[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealDetailViewController") as! MealDetailViewController;()
         detailFoodVC.mealItem = meal
-         self.navigationController?.pushViewController(detailFoodVC, animated: true)
-     }
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -55,26 +61,26 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
             tableView.endUpdates()
         }
     }
-
+    
     func GetMeals() {
         NiZiAPIHelper.getAllMeals(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-              
-              guard let jsonResponse = response.data
-              else { print("temp1"); return }
-              
-              let jsonDecoder = JSONDecoder()
-              guard let MeallistJSON = try? jsonDecoder.decode( [Meal].self, from: jsonResponse )
-              else { print("temp2"); return }
-              
-              self.meallist = MeallistJSON
-              self.MealTable?.reloadData()
-          })
-      }
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let MeallistJSON = try? jsonDecoder.decode( [Meal].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.meallist = MeallistJSON
+            self.MealTable?.reloadData()
+        })
+    }
     
     func DeleteMeal(Id id: Int){
         NiZiAPIHelper.deleteMeal(withId: id, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-               guard response.data != nil
-               else { print("temp1"); return }
-           })
-       }
+            guard response.data != nil
+                else { print("temp1"); return }
+        })
+    }
 }
