@@ -14,6 +14,7 @@ import SwiftKeychainWrapper
 class MealSearchProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var foodlist : [Food] = []
+    var mealfoodlist : [Food] = []
     @IBOutlet weak var MealProductsTable: UITableView!
     @IBOutlet weak var ProductText: UITextField!
     override func viewDidLoad() {
@@ -43,8 +44,9 @@ class MealSearchProductViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealProductDetailListViewController") as! MealProductDetailViewController;()
         detailFoodVC.foodItem = food
+        detailFoodVC.foodlist = mealfoodlist
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

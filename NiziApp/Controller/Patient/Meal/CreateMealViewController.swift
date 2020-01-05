@@ -38,7 +38,7 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func SearchProducts(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchProductViewController") as! MealSearchProductViewController;()
-        detailFoodVC.foodlist = Mealfoodlist
+        detailFoodVC.mealfoodlist = Mealfoodlist
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
