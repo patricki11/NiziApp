@@ -57,6 +57,10 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool){
+        getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
+    }
+    
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
         
         // Create date formatter
@@ -98,7 +102,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func setLanguageSpecificText() {
         DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
-        DiaryAddLabel.text = NSLocalizedString("DiaryAddProduct", comment: "")
         CalorieLabel.text = NSLocalizedString("Calorie", comment: "")
         GrainLabel.text = NSLocalizedString("Grain", comment: "")
         ProteinLabel.text = NSLocalizedString("Protein", comment: "")

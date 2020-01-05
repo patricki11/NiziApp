@@ -1,39 +1,37 @@
 //
-//  SearchFoodViewController.swift
+//  MealSearchProductViewController.swift
 //  NiziApp
 //
-//  Created by Wing lam on 11/12/2019.
-//  Copyright © 2019 Samir Yeasin. All rights reserved.
+//  Created by Wing lam on 05/01/2020.
+//  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
 import SwiftKeychainWrapper
 
-class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class MealSearchProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var foodlist : [Food] = []
-    @IBOutlet weak var FoodTable: UITableView!
-    @IBOutlet weak var SearchFoodInput: UITextField!
-    @IBOutlet weak var SearchDayLabel: UILabel!
-    
-    
+    @IBOutlet weak var MealProductsTable: UITableView!
+    @IBOutlet weak var ProductText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(KeychainWrapper.standard.string(forKey: "date")!)
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func SearchButton(_ sender: Any) {
+    @IBAction func SearchProduct(_ sender: Any) {
         searchFood()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodlist.count
+        foodlist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
+        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "ProductMealCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
         searchFoodCell.textLabel?.text = foodlist[idx].name
         let url = URL(string: foodlist[idx].picture)
@@ -51,8 +49,10 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
 
+    
+    
     func searchFood() {
-        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.searchProducts(byName: ProductText.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -62,8 +62,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
-            self.FoodTable?.reloadData()
+            self.MealProductsTable?.reloadData()
         })
     }
-
 }
