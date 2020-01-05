@@ -28,6 +28,7 @@ class PatientOverviewViewController : UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = true
+        title = "Overzicht"
         setupTableView()
         setLanguageSpecificText()
         getDietaryGuidelines()
@@ -42,12 +43,18 @@ class PatientOverviewViewController : UIViewController
         guidelineTableView.dataSource = self
     }
     
+    @IBAction func editPatient(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientViewController
+        patientDetailVC.patientId = patient.patientId
+        print(patient.patientId)
+        self.navigationController?.pushViewController(patientDetailVC, animated: true)
+    }
+    
     func getDietaryGuidelines() {
         NiZiAPIHelper.getDietaryManagement(forDiet: patient.patientId!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
             guard let jsonResponse = response.data else { return }
-            
-            print(String(data: jsonResponse, encoding: .utf8))
 
             let jsonDecoder = JSONDecoder()
             

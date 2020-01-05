@@ -106,6 +106,7 @@ class LoginViewController : UIViewController {
         print(patientListVC.loggedInAccount)
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
+
     
     func navigateToPatientHomepage(withPatient patientAccount: PatientLogin, withPatientCode: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

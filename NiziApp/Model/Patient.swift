@@ -52,3 +52,35 @@ class Patient : Codable {
         ]
     }
 }
+
+class PatientPersonalInfo : Codable {
+    var patientId   : Int? = 0
+    var doctorId    : Int? = 0
+    var firstName   : String? = ""
+    var lastName    : String? = ""
+    var dateOfBirth : String? = ""
+    var weightInKg  : Float? = Float()
+    
+    enum CodingKeys : String, CodingKey {
+        case patientId   = "Id"
+        case doctorId    = "HandlingDoctorId"
+        case firstName   = "FirstName"
+        case lastName    = "LastName"
+        case dateOfBirth = "DateOfBirth"
+        case weightInKg  = "WeightInKilograms"
+    }
+    
+    func toJSON() -> [String:Any] {
+        return [
+            "Id"               : patientId as Any,
+            "HandlingDoctorId" : doctorId as Any,
+            "firstName"        : firstName as Any,
+            "lastName"         : lastName as Any,
+            "dateOfBirth"      : dateOfBirth as Any,
+            "weight"           : weightInKg as Any,
+            "doctorId"         : doctorId as Any
+        ]
+    }
+}
+
+
