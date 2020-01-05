@@ -199,7 +199,7 @@ class NiZiAPIHelper {
     }
     
     static func deleteMeal(withId mealId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/meal"
+        let apiMethod = "v1/meal?patientId=\(patientId)&mealId=\(mealId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .delete , parameters: nil, encoding: JSONEncoding.default , headers: header)
     }

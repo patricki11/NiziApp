@@ -20,6 +20,12 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodlist.count
     }
@@ -41,15 +47,29 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //DeleteFavorite(Id: foodlist[indexPath.row].foodId)
+            foodlist.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
     func GetFavortiesFood() {
         NiZiAPIHelper.getFavoriteProducts(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-            else { print("temp1"); return }
+                else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
-            else { print("temp2"); return }
+                else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
             self.FavoriteTable?.reloadData()

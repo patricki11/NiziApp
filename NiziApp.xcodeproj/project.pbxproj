@@ -43,10 +43,12 @@
 		9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A70E23A02A07003F136D /* ConsumptionView.swift */; };
 		9322A71123A02CA5003F136D /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71023A02CA5003F136D /* Weight.swift */; };
 		9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */; };
-		9322A71523A079F1003F136D /* BackLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71423A079F1003F136D /* BackLoginController.swift */; };
 		9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71623A084AF003F136D /* DiaryNavigationController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
+		934F537523C14DCA007745AF /* CreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537423C14DCA007745AF /* CreateMealViewController.swift */; };
+		934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537623C160DB007745AF /* MealSearchProductViewController.swift */; };
+		934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537923C1660C007745AF /* MealProductDetailViewController.swift */; };
 		93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93722DE523BB88BE007E7E58 /* StatisticViewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
@@ -94,10 +96,12 @@
 		9322A70E23A02A07003F136D /* ConsumptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionView.swift; sourceTree = "<group>"; };
 		9322A71023A02CA5003F136D /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
-		9322A71423A079F1003F136D /* BackLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackLoginController.swift; sourceTree = "<group>"; };
 		9322A71623A084AF003F136D /* DiaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNavigationController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
+		934F537423C14DCA007745AF /* CreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewController.swift; sourceTree = "<group>"; };
+		934F537623C160DB007745AF /* MealSearchProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchProductViewController.swift; sourceTree = "<group>"; };
+		934F537923C1660C007745AF /* MealProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealProductDetailViewController.swift; sourceTree = "<group>"; };
 		93722DE523BB88BE007E7E58 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +172,6 @@
 				211A104623966211002A42DA /* Auth0.plist */,
 				2174965D2391832900243B41 /* Info.plist */,
 				211A105123969D17002A42DA /* Localizable.strings */,
-				9322A71423A079F1003F136D /* BackLoginController.swift */,
 			);
 			path = NiziApp;
 			sourceTree = "<group>";
@@ -176,7 +179,7 @@
 		2174966323918E8200243B41 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9375BCDB23B27287004559D3 /* Food */,
+				9375BCDB23B27287004559D3 /* Patient */,
 				2174966723918F3100243B41 /* AddPatientViewController.swift */,
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
@@ -232,17 +235,28 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		9375BCDB23B27287004559D3 /* Food */ = {
+		934F537823C163EB007745AF /* Meal */ = {
 			isa = PBXGroup;
 			children = (
+				934F537423C14DCA007745AF /* CreateMealViewController.swift */,
+				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
+				934F537623C160DB007745AF /* MealSearchProductViewController.swift */,
 				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
+				934F537923C1660C007745AF /* MealProductDetailViewController.swift */,
+			);
+			path = Meal;
+			sourceTree = "<group>";
+		};
+		9375BCDB23B27287004559D3 /* Patient */ = {
+			isa = PBXGroup;
+			children = (
+				934F537823C163EB007745AF /* Meal */,
 				9375BCD923B2727C004559D3 /* FavoriteViewController.swift */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 				9322A71823A08611003F136D /* SearchFoodViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
-				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 			);
-			path = Food;
+			path = Patient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,7 +390,9 @@
 				21488B17239E4C57004D31C8 /* Account.swift in Sources */,
 				21488B15239E4B7B004D31C8 /* Auth.swift in Sources */,
 				9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */,
+				934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */,
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
+				934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
 				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,
@@ -401,6 +417,7 @@
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,
 				9322A71123A02CA5003F136D /* Weight.swift in Sources */,
+				934F537523C14DCA007745AF /* CreateMealViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UB9963N2X;
 				INFOPLIST_FILE = NiziApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -578,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8UB9963N2X;
 				INFOPLIST_FILE = NiziApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -11,7 +11,7 @@ import Kingfisher
 import SwiftKeychainWrapper
 
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var foodlist : [Food] = []
     @IBOutlet weak var FoodTable: UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!
@@ -24,10 +24,14 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func SearchButton(_ sender: Any) {
+        searchFood()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodlist.count
-      }
-      
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
@@ -36,25 +40,8 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
-      }
-    
-    @IBAction func SearchButton(_ sender: Any) {
-        searchFood()
     }
-    func searchFood() {
-        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-              
-              guard let jsonResponse = response.data
-              else { print("temp1"); return }
-              
-              let jsonDecoder = JSONDecoder()
-              guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
-              else { print("temp2"); return }
-              
-              self.foodlist = foodlistJSON
-              self.FoodTable?.reloadData()
-          })
-      }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -62,4 +49,21 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         detailFoodVC.foodItem = food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+    
+
+    func searchFood() {
+        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.foodlist = foodlistJSON
+            self.FoodTable?.reloadData()
+        })
+    }
+
 }

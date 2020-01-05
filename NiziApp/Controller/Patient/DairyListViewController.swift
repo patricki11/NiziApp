@@ -46,10 +46,19 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         print(formattedDate)
         saveDate(date: formattedDate)
         print(KeychainWrapper.standard.string(forKey: "date")!)
-        
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
         SetupDatePicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
@@ -68,7 +77,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         //print("Selected value \(selectedDate)")
     }
 
-    
+    // API Calls
     func getConsumption(Date date: String) {
         NiZiAPIHelper.getAllConsumptions(forPatient: 57, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
@@ -83,9 +92,16 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             self.DiaryRecentFood?.reloadData()
         })
     }
+    
+    func Deleteconsumption(Id id: Int){
+        NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard response.data != nil
+            else { print("temp1"); return }
+        })
+    }
+    
     func setLanguageSpecificText() {
         DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
-        DiaryAddLabel.text = NSLocalizedString("DiaryAddProduct", comment: "")
         CalorieLabel.text = NSLocalizedString("Calorie", comment: "")
         GrainLabel.text = NSLocalizedString("Grain", comment: "")
         ProteinLabel.text = NSLocalizedString("Protein", comment: "")
@@ -94,6 +110,8 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         MoistureLabel.text = NSLocalizedString("Moisture", comment: "")
     }
     
+    
+    // table functons
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return consumptions.count
     }
@@ -105,11 +123,30 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         return diarycell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
+            consumptions.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
     func saveDate(date: String) {
         KeychainWrapper.standard.set(date, forKey: "date")
     }
 }
 
+
+
+
+
+// Working with Hex Code
 extension UIColor {
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
