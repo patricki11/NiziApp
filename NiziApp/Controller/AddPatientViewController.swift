@@ -140,9 +140,10 @@ class AddPatientViewController: UIViewController {
                             switch result {
                             case .success(let result):
                                 let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, dateOfBirth: self.dateOfBirthField.text!, credentials: credentials, userInfo: result)
-                                //NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-                                    // TODO: Melden aan diëtist dat de patiënt is toegevoegd.
-                                //})
+                                NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+                                    self.showPatientAddedMessage()
+                                    self.navigationController?.popViewController(animated: true)
+                                })
                             case .failure(let error):
                                 print(error)
                             }
@@ -304,6 +305,17 @@ class AddPatientViewController: UIViewController {
         let alertController = UIAlertController(
             title: "TODO",
             message: "Password does not match",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showPatientAddedMessage() {
+        let alertController = UIAlertController(
+            title: "TODO",
+            message: "Patiënt added",
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))

@@ -52,9 +52,32 @@ class EditPatientViewController : UIViewController {
     
     var patientInfo : PatientPersonalInfo? = nil
     var patientId : Int!
+    
+    func datePicker() -> UIDatePicker {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        return picker
+    }
+    
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        return formatter
+    }()
+    
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        dateOfBirthField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Bewerken Patiënt"
+        dateOfBirthField.inputView = datePicker()
         getPatientObject()
         createRestrictionPicker()
         restrictions = getRestrictions()
@@ -65,7 +88,16 @@ class EditPatientViewController : UIViewController {
     func fillFieldsWithPatientInfo() {
         firstNameField.text = patientInfo?.firstName
         surnameField.text = patientInfo?.lastName
-        dateOfBirthField.text = patientInfo?.dateOfBirth
+        
+        let dateFormatterFrom = DateFormatter()
+        dateFormatterFrom.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let dateFormatterTo = DateFormatter()
+        dateFormatterTo.dateFormat = "dd-MM-YYYY"
+        
+        let date : Date = dateFormatterFrom.date(from: patientInfo?.dateOfBirth ?? "") ?? Date()
+        
+        dateOfBirthField.text = dateFormatterTo.string(from: date)
     }
     
     func setLanguageSpecificText() {
