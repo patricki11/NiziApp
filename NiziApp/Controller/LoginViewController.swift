@@ -76,6 +76,7 @@ class LoginViewController : UIViewController {
             guard let patientAccount = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse )
                 else { print("temp2"); return }
             
+            self.savePatientId(patientId: patientAccount.patient!.patientId!)
             self.saveAuthToken(token: credentials.accessToken!)
             self.navigateToPatientHomepage(withPatient: patientAccount, withPatientCode: credentials.accessToken!)
         })
@@ -92,6 +93,10 @@ class LoginViewController : UIViewController {
             self.saveAuthToken(token: credentials.accessToken!)
             self.navigateToPatientList(withAccount: doctorAccount)
         })
+    }
+    
+    func savePatientId(patientId: Int) {
+        KeychainWrapper.standard.set(patientId, forKey: "patientId")
     }
     
     func saveAuthToken(token: String) {
