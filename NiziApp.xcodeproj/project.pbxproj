@@ -411,7 +411,6 @@
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
 				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
-				9322A71523A079F1003F136D /* BackLoginController.swift in Sources */,
 				214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
