@@ -43,8 +43,7 @@ class AddPatientViewController: UIViewController {
     
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
+        formatter.dateFormat = "dd-MM-YYYY"
         return formatter
     }()
     
@@ -140,10 +139,10 @@ class AddPatientViewController: UIViewController {
                         .start { result in
                             switch result {
                             case .success(let result):
-                                let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, credentials: credentials, userInfo: result)
-                                NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+                                let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, dateOfBirth: self.dateOfBirthField.text!, credentials: credentials, userInfo: result)
+                                //NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
                                     // TODO: Melden aan diëtist dat de patiënt is toegevoegd.
-                                })
+                                //})
                             case .failure(let error):
                                 print(error)
                             }
@@ -247,8 +246,15 @@ class AddPatientViewController: UIViewController {
         return password == confirmPassword
     }
     
-    func createNewPatientObject(firstName: String, lastName: String, credentials: Credentials, userInfo: UserInfo) -> PatientLogin {
-         
+    func createNewPatientObject(firstName: String, lastName: String, dateOfBirth: String, credentials: Credentials, userInfo: UserInfo) -> PatientLogin {
+        let dateFormatterFrom = DateFormatter()
+        dateFormatterFrom.dateFormat = "dd-MM-YYYY"
+        
+        let dateFormatterTo = DateFormatter()
+        dateFormatterTo.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let date : Date = dateFormatterFrom.date(from: dateOfBirth) ?? Date()
+        print(dateFormatterTo.string(from: date))
         let account : Account = Account(
             accountId: 0,
             role: "Patient"
@@ -259,7 +265,7 @@ class AddPatientViewController: UIViewController {
             doctorId: 3,//self.loggedInAccount.doctor?.doctorId,
             firstName: firstName,
             lastName: lastName,
-            dateOfBirth: "1999-01-01T00:00:00",
+            dateOfBirth: dateFormatterTo.string(from: date),
             guid: userInfo.sub,
             weightInKg: 0.00
         )
