@@ -180,10 +180,11 @@ class NiZiAPIHelper {
     // WATER CONSUMPTION //
     
     // MEAL //
-    static func addMeal(forPatient patientId: Int, authenticationCode: String) -> DataRequest {
+    static func addMeal(withDetails meal: Meal, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/meal/\(patientId)"
+        let parameters = meal.toJSON()
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .post , parameters: nil, encoding: JSONEncoding.default , headers: header)
+        return AF.request(baseUrl + apiMethod, method: .post , parameters: parameters, encoding: JSONEncoding.default , headers: header)
     }
     
     static func updateMeal(withId mealId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
