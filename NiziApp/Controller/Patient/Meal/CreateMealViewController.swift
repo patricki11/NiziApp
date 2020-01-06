@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Kingfisher
 
 class CreateMealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -43,6 +45,7 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func CreateMeal(_ sender: Any) {
+        addMeal()
     }
     
     
@@ -58,6 +61,21 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
+    }
+    
+    func addMeal() {
+        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: 57, kcal: 10.0, fiber: 10.0, calcium: 10.0, sodium: 10.0, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: 10.0)
+        
+        NiZiAPIHelper.addMeal(withDetails: meal, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            // TODO: Melden aan patient dat de maaltijd is toegevoegd.
+        })
+    }
+    
+    func createNewMealObject(mealId: Int, name: String, patientId: Int, kcal: Double, fiber: Double, calcium: Double, sodium: Double, portionSize: Double, weightUnit: String, picture: String, protein: Double) -> Meal {
+        
+        let meal : Meal = Meal(
+            mealId: mealId, name: name, patientId: patientId, kCal: kcal, protein: protein, fiber: fiber, calcium: calcium, sodium: sodium, portionSize: portionSize, weightUnit: weightUnit, picture: picture)
+        return meal
     }
     
 }

@@ -48,4 +48,20 @@ class Meal : Codable {
          case weightUnit  = "WeightUnit"
          case picture     = "Picture"
      }
+    
+    func toJSON() -> [String:Any] {
+              return [
+                  "MealId"      : mealId as Any,
+                  "Name"        : name as Any,
+                  "PatientId"   : patientId as Any,
+                  "KCal"        : kCal as Any,
+                  "Protein"     : protein as Any,
+                  "Fiber"       : fiber as Any,
+                  "Calcium"     : calcium as Any,
+                  "Sodium"      : sodium as Any,
+                  "PortionSize" : portionSize as Any,
+                  "WeightUnit"  : weightUnit as Any,
+                  "Picture"     : picture as Any
+              ]
+          }
 }
