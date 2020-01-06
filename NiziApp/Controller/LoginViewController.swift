@@ -133,6 +133,7 @@ class LoginViewController : UIViewController {
             audience: "appnizi.nl/api",
             scope: "openid profile")
             .start { result in
+                print(result)
                 switch result {
                 case .success(let credentials):
                     if(self.isPatient) { self.patientLoginToApi(credentials: credentials) }
@@ -145,14 +146,17 @@ class LoginViewController : UIViewController {
     }
     
     func showFailedToLoginMessage() {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("wrongCredentialsTitle", comment: "Title"),
-            message: NSLocalizedString("wrongCredentialsMessage", comment: "Message"),
-            preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
+        print("test")
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("wrongCredentialsTitle", comment: "Title"),
+                message: NSLocalizedString("wrongCredentialsMessage", comment: "Message"),
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func showUnauthorizedMessage() {

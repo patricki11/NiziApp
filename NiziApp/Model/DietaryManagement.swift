@@ -37,7 +37,7 @@ class DietaryManagement : Codable {
             "Description": description as Any,
             "Amount": amount as Any,
             "IsActive": isActive as Any,
-            "PatientId": patientId as Any
+            "Patient": patientId as Any
         ]
     }
 }
