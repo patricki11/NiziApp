@@ -22,7 +22,13 @@ class PatientListViewController: UIViewController {
         getAllPatients()
         setupDataTable()
         setupFilterTextfield()
+        createLogoutButton()
         // Do any additional setup after loading the view.
+    }
+    
+    func createLogoutButton() {
+        let logoutButton = UIBarButtonItem(title: "Uitloggen", style: .plain, target: self, action: #selector(logout))
+        self.navigationItem.leftBarButtonItem = logoutButton
     }
     
     func setupFilterTextfield() {
@@ -37,6 +43,22 @@ class PatientListViewController: UIViewController {
     func setupDataTable() {
         patientListTableView?.delegate = self
         patientListTableView?.dataSource = self
+    }
+    
+    @objc func logout() {
+        removeAuthorizationToken()
+        navigateToLoginPage()
+    }
+    
+    func removeAuthorizationToken() {
+        KeychainWrapper.standard.removeObject(forKey: "authToken")
+    }
+    
+    func navigateToLoginPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "ChooseLoginViewController") as! ChooseLoginViewController
+        
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
     func getAllPatients() {     

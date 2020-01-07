@@ -277,7 +277,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dtD-ca-gBP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="acw-G0-MCL"/>
+                    <navigationItem key="navigationItem" id="acw-G0-MCL">
+                        <barButtonItem key="backBarButtonItem" title="Uitloggen" id="Yzx-st-IJk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="LoginButton" destination="SG0-ae-acw" id="8pV-56-zYf"/>
                         <outlet property="needHelpDescription" destination="nM0-HV-VoR" id="AhC-B6-LKN"/>
@@ -339,14 +341,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientListTableViewCell" id="1jC-Pd-3mi" customClass="PatientListTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="53"/>
+                                                <rect key="frame" x="0.0" y="28" width="335" height="53.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1jC-Pd-3mi" id="Fcl-6F-iLh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="53"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="53.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-wI-e12">
-                                                            <rect key="frame" x="20" y="16" width="42" height="21"/>
+                                                            <rect key="frame" x="20" y="16" width="42" height="21.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="8qO-Vy-Umt"/>
                                                             </constraints>
@@ -355,7 +357,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-Tw-xp6">
-                                                            <rect key="frame" x="82" y="16" width="233" height="21"/>
+                                                            <rect key="frame" x="82" y="16" width="233" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -630,7 +632,7 @@
         <!--Edit Patient-->
         <scene sceneID="7IM-em-4Ay">
             <objects>
-                <viewController storyboardIdentifier="EditPatientViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KEm-yn-oYW" userLabel="Edit Patient" customClass="EditPatientViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditPatientViewController" title="Patiënt Bewerken" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KEm-yn-oYW" userLabel="Edit Patient" customClass="EditPatientViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1wL-1d-7ou">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
