@@ -71,8 +71,9 @@ class ChooseLoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfLoggedIn()
-        title = NSLocalizedString("ApplicationName", comment: "");
+        title = NSLocalizedString("ApplicationName", comment: "")
         setLanguageSpecificText()
+        self.navigationItem.hidesBackButton = true
     }
     
     func setLanguageSpecificText() {

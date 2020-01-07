@@ -277,7 +277,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dtD-ca-gBP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="acw-G0-MCL"/>
+                    <navigationItem key="navigationItem" id="acw-G0-MCL">
+                        <barButtonItem key="backBarButtonItem" title="Uitloggen" id="Yzx-st-IJk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="LoginButton" destination="SG0-ae-acw" id="8pV-56-zYf"/>
                         <outlet property="needHelpDescription" destination="nM0-HV-VoR" id="AhC-B6-LKN"/>
@@ -630,7 +632,7 @@
         <!--Edit Patient-->
         <scene sceneID="7IM-em-4Ay">
             <objects>
-                <viewController storyboardIdentifier="EditPatientViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KEm-yn-oYW" userLabel="Edit Patient" customClass="EditPatientViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditPatientViewController" title="Patiënt Bewerken" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KEm-yn-oYW" userLabel="Edit Patient" customClass="EditPatientViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1wL-1d-7ou">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
