@@ -341,14 +341,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientListTableViewCell" id="1jC-Pd-3mi" customClass="PatientListTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="53.5"/>
+                                                <rect key="frame" x="0.0" y="28" width="335" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1jC-Pd-3mi" id="Fcl-6F-iLh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="53.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-wI-e12">
-                                                            <rect key="frame" x="20" y="16" width="42" height="21.5"/>
+                                                            <rect key="frame" x="20" y="11" width="42" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="8qO-Vy-Umt"/>
                                                             </constraints>
@@ -357,20 +357,21 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-Tw-xp6">
-                                                            <rect key="frame" x="82" y="16" width="233" height="21.5"/>
+                                                            <rect key="frame" x="82" y="5" width="233" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="pxa-Sj-Pqx"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="a3i-Tw-xp6" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="topMargin" constant="5" id="1Pv-JQ-J1b"/>
                                                         <constraint firstItem="a3i-Tw-xp6" firstAttribute="leading" secondItem="XQR-wI-e12" secondAttribute="trailing" constant="20" id="4Y6-xz-oNr"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="a3i-Tw-xp6" secondAttribute="trailing" constant="5" id="6Rs-Rw-cs3"/>
+                                                        <constraint firstItem="XQR-wI-e12" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="topMargin" id="FbU-q1-36w"/>
                                                         <constraint firstItem="XQR-wI-e12" firstAttribute="leading" secondItem="Fcl-6F-iLh" secondAttribute="leadingMargin" constant="5" id="G8b-45-CkE"/>
-                                                        <constraint firstItem="XQR-wI-e12" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="topMargin" constant="5" id="Hx6-4A-YoA"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="a3i-Tw-xp6" secondAttribute="bottom" constant="5" id="T9h-GG-par"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="XQR-wI-e12" secondAttribute="bottom" constant="5" id="o5P-NR-jpE"/>
+                                                        <constraint firstItem="a3i-Tw-xp6" firstAttribute="top" secondItem="Fcl-6F-iLh" secondAttribute="top" constant="5" id="agZ-bb-fto"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -986,6 +987,7 @@
                         <outlet property="passwordField" destination="dAv-6H-mn7" id="D03-aB-6aD"/>
                         <outlet property="passwordLabel" destination="pzJ-eb-FiO" id="mJ5-vL-NvE"/>
                         <outlet property="personalInfoLabel" destination="NG8-pR-NHY" id="wfb-j4-LBU"/>
+                        <outlet property="restrictionsLabel" destination="YdJ-2A-7M6" id="j4J-xJ-KpI"/>
                         <outlet property="surnameField" destination="1KM-rU-QvA" id="HyF-RM-ptP"/>
                         <outlet property="surnameLabel" destination="1Np-iN-EmG" id="Qee-nl-SDI"/>
                         <outlet property="usernameField" destination="sRm-6d-alh" id="liE-ju-4st"/>
