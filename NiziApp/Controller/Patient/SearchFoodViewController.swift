@@ -24,6 +24,12 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           // Hide the Navigation Bar
+           self.navigationController?.setNavigationBarHidden(true, animated: animated)
+       }
+    
     @IBAction func SearchButton(_ sender: Any) {
         searchFood()
     }

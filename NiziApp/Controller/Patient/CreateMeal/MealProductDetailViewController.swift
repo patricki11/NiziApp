@@ -32,6 +32,12 @@ class MealProductDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           // Hide the Navigation Bar
+           self.navigationController?.setNavigationBarHidden(true, animated: animated)
+       }
+    
     
     func SetupData()
     {
