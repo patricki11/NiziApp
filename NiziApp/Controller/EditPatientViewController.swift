@@ -20,6 +20,7 @@ class EditPatientViewController : UIViewController {
     
     @IBOutlet weak var personalInfoLabel: UILabel!
     @IBOutlet weak var loginInfoLabel: UILabel!
+    @IBOutlet weak var restrictionsLabel: UILabel!
     
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
@@ -29,6 +30,7 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var confirmPasswordField: UITextField!
     
     @IBOutlet weak var editPatientButton: UIButton!
+    
     
     var restrictions : [Restrictions] = []
     var restrictionPicker : UIPickerView! = UIPickerView()
@@ -107,7 +109,7 @@ class EditPatientViewController : UIViewController {
         usernameLabel.text = NSLocalizedString("email", comment: "")
         passwordLabel.text = NSLocalizedString("password", comment: "")
         confirmPasswordLabel.text = NSLocalizedString("confirmPassword", comment: "")
-        
+        restrictionsLabel.text = NSLocalizedString("guidelines", comment: "")
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
         editPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
