@@ -24,6 +24,49 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var guidelineTableView: UITableView!
     
     var patientGuidelines : [DietaryManagement] = []
+    var currentWeekCounter : Int = 0
+    
+    @IBOutlet weak var currentWeekLabel: UILabel!
+    
+    @IBAction func getPreviousWeek(_ sender: Any) {
+        currentWeekCounter -= 1
+        changeCurrentWeekLabel()
+    }
+    
+    @IBAction func getNextWeek(_ sender: Any) {
+        currentWeekCounter += 1
+        changeCurrentWeekLabel()
+    }
+    
+    func changeCurrentWeekLabel() {
+
+        let firstDayOfWeek : Date? = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().startOfWeek!)
+        let lastDayOfWeek : Date? = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().endOfWeek!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY"
+        
+        averageBetweenLabel.text = "Gemiddelde van \(dateFormatter.string(from: firstDayOfWeek!)) tot \(dateFormatter.string(from: lastDayOfWeek!))"
+        
+        if(currentWeekCounter == -1) {
+            currentWeekLabel.text = "Vorige Week"
+        }
+        else if(currentWeekCounter == 0) {
+            currentWeekLabel.text = "Deze Week"
+        }
+        else if(currentWeekCounter == 1) {
+            currentWeekLabel.text = "Volgende Week"
+        }
+        else {
+            currentWeekLabel.text = "\(dateFormatter.string(from: firstDayOfWeek!)) - \(dateFormatter.string(from: lastDayOfWeek!)) "
+        }
+        
+        updateGuidelines()
+    }
+    
+    func updateGuidelines() {
+        guidelineTableView?.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +74,7 @@ class PatientOverviewViewController : UIViewController
         title = "Overzicht"
         setupTableView()
         setLanguageSpecificText()
+        changeCurrentWeekLabel()
         getDietaryGuidelines()
     }
     
@@ -78,16 +122,33 @@ extension PatientOverviewViewController : UITableViewDataSource {
         let cell = guidelineTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientGuidelineTableViewCell
 
         let guideline = patientGuidelines[indexPath.row]
-        cell.averageAmountForWeekLabel.text = "temp"
+        var average : Int = 0
+        
+        if(currentWeekCounter <= 0) {
+            average = Int.random(in: guideline.amount - 20...guideline.amount + 100)
+        }
+        cell.averageAmountForWeekLabel.text = "\(average) \(getCorrespondingType(category: guideline.description))"
         cell.guidelineNameLabel.text = guideline.description
         
         var moreOrLess : String = ""
         
         if(guideline.description.contains("beperking")) {
             moreOrLess = "minder dan"
+            if(average < guideline.amount) {
+                cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
+            }
+            else {
+                cell.averageAmountForWeekLabel.textColor = UIColor(red: 255, green: 0, blue: 0)
+            }
         }
         else if(guideline.description.contains("verrijking")) {
             moreOrLess = "meer dan"
+            if(average > guideline.amount) {
+                cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
+            }
+            else {
+                cell.averageAmountForWeekLabel.textColor = UIColor(red: 255, green: 0, blue: 0)
+            }
         }
         
         cell.recommendedAmountLabel.text = "Aanbeveling \(moreOrLess)  \(guideline.amount)"
@@ -123,6 +184,30 @@ extension PatientOverviewViewController : UITableViewDataSource {
         }
     }
     
+    func getCorrespondingType(category: String) -> String {
+        if(category.contains("Calorie")) {
+            return "kcal"
+        }
+        else if(category.contains("Vocht")) {
+            return "gram"
+        }
+        else if(category.contains("Natrium")) {
+            return "gram"
+        }
+        else if(category.contains("Vezel")) {
+            return "gram"
+        }
+        else if(category.contains("Eiwit")) {
+            return "gram"
+        }
+        else if(category.contains("Kalium")) {
+            return "gram"
+        }
+        else {
+            return ""
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // TODO: Volgende patienten ophalen
     }
@@ -132,5 +217,19 @@ extension PatientOverviewViewController : UITableViewDataSource {
 extension PatientOverviewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+    }
+}
+
+extension Date {
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
     }
 }
