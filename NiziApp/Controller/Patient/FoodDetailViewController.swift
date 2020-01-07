@@ -21,6 +21,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var Calcium: UILabel!
     @IBOutlet weak var Sodium: UILabel!
     @IBOutlet weak var Picture: UIImageView!
+    @IBOutlet weak var portionSizeLabel: UILabel!
     
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
@@ -60,6 +61,9 @@ class FoodDetailViewController: UIViewController {
         
         let sodiumString : String = String(format:"%.1f",foodItem!.sodium)
         Sodium.text = sodiumString
+        
+        let portionSizeString : String = String(format:"%.1f",foodItem!.portionSize)
+        portionSizeLabel.text = portionSizeString
         
     }
     @IBAction func AddtoFavorites(_ sender: Any) {
