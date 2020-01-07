@@ -10,9 +10,9 @@ import UIKit
 import SwiftKeychainWrapper
 
 class DairyListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var consumptions: [ConsumptionView] = [] 
-
+    
     @IBOutlet weak var DiaryRecentFood: UITableView!
     @IBOutlet weak var DiaryTitleLabel: UILabel!
     @IBOutlet weak var DiaryAddLabel: UILabel!
@@ -49,6 +49,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
         SetupDatePicker()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,17 +77,17 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         saveDate(date: selectedDate)
         //print("Selected value \(selectedDate)")
     }
-
+    
     // API Calls
     func getConsumption(Date date: String) {
         NiZiAPIHelper.getAllConsumptions(forPatient: 57, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-            else { print("temp1"); return }
+                else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let consumptionlist = try? jsonDecoder.decode( Diary.self, from: jsonResponse )
-            else { print("temp2"); return }
+                else { print("temp2"); return }
             
             self.consumptions = consumptionlist.consumptions
             self.DiaryRecentFood?.reloadData()
@@ -96,7 +97,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     func Deleteconsumption(Id id: Int){
         NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard response.data != nil
-            else { print("temp1"); return }
+                else { print("temp1"); return }
         })
     }
     
@@ -148,19 +149,19 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
 
 // Working with Hex Code
 extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
-
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
 }

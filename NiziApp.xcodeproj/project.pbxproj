@@ -235,24 +235,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		934F537823C163EB007745AF /* Meal */ = {
+		934F537823C163EB007745AF /* CreateMeal */ = {
 			isa = PBXGroup;
 			children = (
 				934F537423C14DCA007745AF /* CreateMealViewController.swift */,
-				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 				934F537623C160DB007745AF /* MealSearchProductViewController.swift */,
-				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
 				934F537923C1660C007745AF /* MealProductDetailViewController.swift */,
 			);
-			path = Meal;
+			path = CreateMeal;
 			sourceTree = "<group>";
 		};
 		9375BCDB23B27287004559D3 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				934F537823C163EB007745AF /* Meal */,
+				934F537823C163EB007745AF /* CreateMeal */,
 				9375BCD923B2727C004559D3 /* FavoriteViewController.swift */,
+				93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
+				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 				9322A71823A08611003F136D /* SearchFoodViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 			);
