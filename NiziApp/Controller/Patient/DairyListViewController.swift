@@ -11,7 +11,13 @@ import SwiftKeychainWrapper
 
 class DairyListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var consumptions: [ConsumptionView] = [] 
+    var consumptions    : [ConsumptionView] = []
+    var kcalProgress    : Float = 0.0
+    var sodiumProgress  : Float = 0.0
+    var proteinProgress : Float = 0.0
+    var calciumProgress : Float = 0.0
+    var fiberProgress   : Float = 0.0
+    var vochtProgress   : Float = 0.0
     
     @IBOutlet weak var DiaryRecentFood: UITableView!
     @IBOutlet weak var DiaryTitleLabel: UILabel!
@@ -37,19 +43,28 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         DatePicker.addTarget(self, action: #selector(DairyListViewController.datePickerValueChanged(_:)), for: .valueChanged)
     }
     
+    func setProgresss(){
+        ProgressCalorie.setProgress(kcalProgress/2500, animated: true)
+        ProgressGrain.setProgress(fiberProgress/40, animated: true)
+        ProgressHumidity.setProgress(vochtProgress/80, animated: true)
+        ProgressProtein.setProgress(proteinProgress/10, animated: true)
+        ProgressSodium.setProgress(sodiumProgress/10, animated: true)
+        ProgressPotassium.setProgress(calciumProgress/20, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
-        print(formattedDate)
+        //print(formattedDate)
         saveDate(date: formattedDate)
-        print(KeychainWrapper.standard.string(forKey: "date")!)
+        //print(KeychainWrapper.standard.string(forKey: "date")!)
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
-        SetupDatePicker()
         
+        SetupDatePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +105,19 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
                 else { print("temp2"); return }
             
             self.consumptions = consumptionlist.consumptions
+            self.kcalProgress = consumptionlist.kcalTotal!
+            self.proteinProgress = consumptionlist.proteinTotal!
+            self.fiberProgress = consumptionlist.fiberTotal!
+            self.calciumProgress = consumptionlist.caliumTotal!
+            self.sodiumProgress = consumptionlist.sodiumTotal!
+            self.vochtProgress = Float.random(min: 1.00, max: 80.00)
+            print(self.kcalProgress)
+            print(self.proteinProgress)
+            print(self.fiberProgress)
+            print(self.calciumProgress)
+            print(self.sodiumProgress)
+            print(self.vochtProgress)
+            self.setProgresss()
             self.DiaryRecentFood?.reloadData()
         })
     }
@@ -99,6 +127,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             guard response.data != nil
                 else { print("temp1"); return }
         })
+        self.setProgresss()
     }
     
     func setLanguageSpecificText() {
@@ -141,6 +170,8 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     func saveDate(date: String) {
         KeychainWrapper.standard.set(date, forKey: "date")
     }
+    
+  
 }
 
 
@@ -163,5 +194,22 @@ extension UIColor {
             green: (rgb >> 8) & 0xFF,
             blue: rgb & 0xFF
         )
+    }
+}
+
+
+public extension Float {
+
+    /// Returns a random floating point number between 0.0 and 1.0, inclusive.
+    static var random: Float {
+        return Float(arc4random()) / 0xFFFFFFFF
+    }
+
+    /// Random float between 0 and n-1.
+    ///
+    /// - Parameter n:  Interval max
+    /// - Returns:      Returns a random float point number between 0 and n max
+    static func random(min: Float, max: Float) -> Float {
+        return Float.random * (max - min) + min
     }
 }
