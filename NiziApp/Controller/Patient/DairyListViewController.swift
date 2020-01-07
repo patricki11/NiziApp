@@ -63,7 +63,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         //print(KeychainWrapper.standard.string(forKey: "date")!)
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
-        
         SetupDatePicker()
     }
     
@@ -111,12 +110,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             self.calciumProgress = consumptionlist.caliumTotal!
             self.sodiumProgress = consumptionlist.sodiumTotal!
             self.vochtProgress = Float.random(min: 1.00, max: 80.00)
-            print(self.kcalProgress)
-            print(self.proteinProgress)
-            print(self.fiberProgress)
-            print(self.calciumProgress)
-            print(self.sodiumProgress)
-            print(self.vochtProgress)
             self.setProgresss()
             self.DiaryRecentFood?.reloadData()
         })
@@ -170,13 +163,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     func saveDate(date: String) {
         KeychainWrapper.standard.set(date, forKey: "date")
     }
-    
-  
 }
-
-
-
-
 
 // Working with Hex Code
 extension UIColor {

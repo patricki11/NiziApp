@@ -74,4 +74,10 @@ class MealProductDetailViewController: UIViewController {
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
+    @IBAction func BacktoSearch(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchProductViewController") as! MealSearchProductViewController;()
+        detailFoodVC.mealfoodlist = foodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
 }

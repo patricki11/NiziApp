@@ -50,7 +50,7 @@ class MealSearchProductViewController: UIViewController, UITableViewDataSource, 
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-
+    
     
     
     func searchFood() {
@@ -66,5 +66,12 @@ class MealSearchProductViewController: UIViewController, UITableViewDataSource, 
             self.foodlist = foodlistJSON
             self.MealProductsTable?.reloadData()
         })
+    }
+    @IBAction func BackToCreate(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"CreateMealViewController") as! CreateMealViewController;()
+        detailFoodVC.Mealfoodlist = mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
 }
