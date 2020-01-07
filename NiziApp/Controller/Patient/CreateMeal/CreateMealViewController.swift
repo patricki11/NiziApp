@@ -60,6 +60,9 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func CreateMeal(_ sender: Any) {
         addMeal()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     
@@ -76,6 +79,28 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            Mealfoodlist.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.kcal = 0.0
+            self.fiberMeal = 0.0
+            self.vochtMeal  = 0.0
+            self.pottassiumMeal = 0.0
+            self.sodiumMeal = 0.0
+            self.proteinMeal  = 0.0
+            self.calculateDietary()
+            tableView.endUpdates()
+        }
+    }
+    
+    
     
     func addMeal() {
         
