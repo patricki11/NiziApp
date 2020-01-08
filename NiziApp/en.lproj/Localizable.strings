@@ -24,7 +24,7 @@
 "loginAsDietist" = "Login als diëtist";
 "patientList" = "Patiënten";
 "addPatient" = "Toevoegen Patiënt";
-
+"editPatient" = "Patiënt Bewerken";
 
 "firstName" = "Voornaam";
 "surname" = "Achternaam";

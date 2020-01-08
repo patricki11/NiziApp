@@ -112,7 +112,7 @@ class EditPatientViewController : UIViewController {
         restrictionsLabel.text = NSLocalizedString("guidelines", comment: "")
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
-        editPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
+        editPatientButton.setTitle(NSLocalizedString("editPatient", comment: ""), for: .normal)
     }
     
     @IBAction func confirmEdit(_ sender: Any) {
