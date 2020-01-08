@@ -31,7 +31,7 @@ class EditPatientViewController : UIViewController {
     
     @IBOutlet weak var editPatientButton: UIButton!
     
-    
+    var patientGuidelines : [DietaryManagement] = []
     var restrictions : [Restrictions] = []
     var restrictionPicker : UIPickerView! = UIPickerView()
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
@@ -85,6 +85,7 @@ class EditPatientViewController : UIViewController {
         restrictions = getRestrictions()
         setupGuidelineFields()
         setLanguageSpecificText()
+        getPatientGuidelines()
     }
     
     func fillFieldsWithPatientInfo() {
@@ -113,6 +114,37 @@ class EditPatientViewController : UIViewController {
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
         editPatientButton.setTitle(NSLocalizedString("editPatient", comment: ""), for: .normal)
+    }
+    
+    func setPatientGuidelines() {
+        var index = 0
+        for guideline in patientGuidelines {
+            index+=1
+            if(index == 1) {
+                guideline1.text = guideline.description
+                amount1.text = String(guideline.amount)
+            }
+            else if(index == 2) {
+                guideline2.text = guideline.description
+                amount2.text = String(guideline.amount)
+            }
+            else if(index == 3) {
+                guideline3.text = guideline.description
+                amount3.text = String(guideline.amount)
+            }
+            else if(index == 4) {
+                guideline4.text = guideline.description
+                amount4.text = String(guideline.amount)
+            }
+            else if(index == 5) {
+                guideline5.text = guideline.description
+                amount5.text = String(guideline.amount)
+            }
+            else if(index == 6) {
+                guideline6.text = guideline.description
+                amount6.text = String(guideline.amount)
+            }
+        }
     }
     
     @IBAction func confirmEdit(_ sender: Any) {
@@ -150,6 +182,20 @@ class EditPatientViewController : UIViewController {
         amount4.delegate = onlyAllowNumbersDelegate
         amount5.delegate = onlyAllowNumbersDelegate
         amount6.delegate = onlyAllowNumbersDelegate
+    }
+    
+    func getPatientGuidelines() {
+        NiZiAPIHelper.getDietaryManagement(forDiet: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
+            
+            guard let jsonResponse = response.data else { return }
+
+            let jsonDecoder = JSONDecoder()
+            
+            guard let guidelines = try? jsonDecoder.decode(PatientDietaryGuidelines.self, from: jsonResponse) else { return }
+            
+            self.patientGuidelines = guidelines.dietaryManagements
+            self.setPatientGuidelines()
+        })
     }
     
     func getRestrictions() -> [Restrictions]{
