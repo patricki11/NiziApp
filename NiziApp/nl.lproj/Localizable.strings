@@ -20,5 +20,32 @@
 "wrongCredentialsTitle" = "Niet ingelogd";
 "wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
 "ok" = "Ok";
-"guidelines" = "Richtlijnen";
+"loginAsPatient" = "Login als patiënt";
+"loginAsDietist" = "Login als diëtist";
+"patientList" = "Patiënten";
+"addPatient" = "Toevoegen Patiënt";
 "editPatient" = "Patiënt Bewerken";
+
+"firstName" = "Voornaam";
+"surname" = "Achternaam";
+"dateOfBirth" = "Geboortedatum";
+"username" = "Gebruikersnaam";
+"email" = "e-mailadres";
+"password" = "Wachtwoord";
+"confirmPassword" = "Wachtwoord herhalen";
+"personalInfo" = "Persoonsgegevens";
+"loginInfo" = "Logingegevens";
+"createPatient" = "Patiënt aanmaken";
+
+"DiaryDayLabel" = "VANDAAG";
+"DiaryTitle" = "Voeding";
+"DiaryAddProduct" = "voeding toevoegen";
+"guidelines" = "Richtlijnen";
+"Calorie" = "Calorieën";
+"Grain" = "Vezel";
+"Protein" = "Proteïne";
+"Moisture" = "Vocht";
+"Potassium" = "Kalium";
+"Natrium" = "Natrium";
+
+
