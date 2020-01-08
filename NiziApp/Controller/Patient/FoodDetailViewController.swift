@@ -23,6 +23,8 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var Picture: UIImageView!
     @IBOutlet weak var portionSizeLabel: UILabel!
     
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
     }
@@ -71,7 +73,7 @@ class FoodDetailViewController: UIViewController {
     }
     
     func Addfavorite() {
-        NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
+        NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
             guard let jsonResponse = response.request
                 else { print("Not succeeded"); return }
             print(response.request)
@@ -82,7 +84,7 @@ class FoodDetailViewController: UIViewController {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: 57, foodId: foodItem!.foodId)
+        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId)
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de voedsel is toegevoegd.
         })

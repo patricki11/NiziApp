@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class MealProductDetailViewController: UIViewController {
     
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var foodItem: Food?
     var foodlist : [Food] = []
     

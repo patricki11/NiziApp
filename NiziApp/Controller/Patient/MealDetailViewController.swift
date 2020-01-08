@@ -27,6 +27,7 @@ class MealDetailViewController: UIViewController {
     @IBOutlet weak var KaliumText: UILabel!
     
     var mealItem: Meal?
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,7 @@ class MealDetailViewController: UIViewController {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: 57, foodId: mealItem!.mealId)
+        let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: mealItem!.mealId)
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de voedsel is toegevoegd.
         })

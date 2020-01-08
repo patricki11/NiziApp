@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var FavoriteTable: UITableView!
     var foodlist : [Food] = []
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func GetFavortiesFood() {
-        NiZiAPIHelper.getFavoriteProducts(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getFavoriteProducts(forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
