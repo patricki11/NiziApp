@@ -11,6 +11,8 @@ import SwiftKeychainWrapper
 
 class DairyListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var consumptions    : [ConsumptionView] = []
     var kcalProgress    : Float = 0.0
     var sodiumProgress  : Float = 0.0
@@ -54,6 +56,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
@@ -69,7 +72,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -94,7 +97,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     
     // API Calls
     func getConsumption(Date date: String) {
-        NiZiAPIHelper.getAllConsumptions(forPatient: 57, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getAllConsumptions(forPatient: patientIntID!, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

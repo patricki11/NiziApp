@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 class MealSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var MealTable: UITableView!
     var meallist : [Meal] = []
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func GetMeals() {
-        NiZiAPIHelper.getAllMeals(forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getAllMeals(forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -78,7 +79,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func DeleteMeal(Id id: Int){
-        NiZiAPIHelper.deleteMeal(withId: id, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.deleteMeal(withId: id, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard response.data != nil
                 else { print("temp1"); return }
         })

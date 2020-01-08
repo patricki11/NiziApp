@@ -12,6 +12,8 @@ import Kingfisher
 
 class CreateMealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    
     var Mealfoodlist : [Food] = []
     var kcal : Double = 0.0
     var fiberMeal : Double = 0.0
@@ -106,10 +108,10 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
         
         
         
-        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: 57, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal)
+        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal)
         
-        NiZiAPIHelper.addMeal(withDetails: meal, forPatient: 57, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            // TODO: Melden aan patient dat de maaltijd is toegevoegd.
+        NiZiAPIHelper.addMeal(withDetails: meal, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            // TODO: Melden aan patient dat de maaltijd is toegevoegd.patientId
         })
     }
     

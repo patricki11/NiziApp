@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 
 class MealSearchProductViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var foodlist : [Food] = []
     var mealfoodlist : [Food] = []
     @IBOutlet weak var MealProductsTable: UITableView!
