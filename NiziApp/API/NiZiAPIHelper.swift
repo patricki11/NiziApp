@@ -11,7 +11,7 @@ import Alamofire
 
 class NiZiAPIHelper {
     
-    static let baseUrl = "https://appnizi-api.azurewebsites.net/api/"
+    static let baseUrl = "https://appniziapi.azurewebsites.net/api/"
 
     // DOCTORS //
     static func getAllDoctors(withDoctorCode authenticationCode: String) -> DataRequest {

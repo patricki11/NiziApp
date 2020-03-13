@@ -39,6 +39,7 @@ class AddPatientViewController: UIViewController {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        picker.maximumDate = Date()
         return picker
     }
     
