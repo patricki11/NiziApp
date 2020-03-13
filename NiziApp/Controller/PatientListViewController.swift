@@ -26,6 +26,11 @@ class PatientListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getAllPatients()
+    }
+    
     func createLogoutButton() {
         let logoutButton = UIBarButtonItem(title: "Uitloggen", style: .plain, target: self, action: #selector(logout))
         self.navigationItem.leftBarButtonItem = logoutButton
