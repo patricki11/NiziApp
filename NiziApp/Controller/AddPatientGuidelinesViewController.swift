@@ -74,30 +74,32 @@ class AddPatientGuidelinesViewController : UIViewController {
     }
     
     func setLanguageSpecificText() {
-        caloriesTitle.text = ""
-        waterTitle.text = ""
-        sodiumTitle.text = ""
-        potassiumTitle.text = ""
-        proteinTitle.text = ""
-        grainTitle.text = ""
+        caloriesTitle.text = NSLocalizedString("caloriesTitle", comment: "")
+        waterTitle.text = NSLocalizedString("waterTitle", comment: "")
+        sodiumTitle.text = NSLocalizedString("sodiumTitle", comment: "")
+        potassiumTitle.text = NSLocalizedString("potassiumTItle", comment: "")
+        proteinTitle.text = NSLocalizedString("proteinTitle", comment: "")
+        grainTitle.text = NSLocalizedString("grainTitle", comment: "")
         
-        caloriesMinimumTitle.text = ""
-        waterMinimumTitle.text = ""
-        sodiumMinimumTitle.text = ""
-        potassiumMinimumTitle.text = ""
-        proteinMinimumTitle.text = ""
-        grainMinimumTitle.text = ""
+        caloriesMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        waterMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        sodiumMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        potassiumMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        proteinMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        grainMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
         
-        caloriesMaximumTitle.text = ""
-        waterMaximumTitle.text = ""
-        sodiumMaximumTitle.text = ""
-        potassiumMaximumTitle.text = ""
-        proteinMaximumTitle.text = ""
-        grainMaximumTitle.text = ""
+        caloriesMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        waterMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        sodiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        potassiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        proteinMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        grainMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
     }
     
     @IBAction func savePatientGuidelines(_ sender: Any) {
         getGuidelines()
+        
+        print(guidelines)
         // TODO: Opslaan richtlijnen in DB
     }
     

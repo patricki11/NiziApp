@@ -48,4 +48,12 @@
 "Potassium" = "Kalium";
 "Natrium" = "Natrium";
 
+"Minimum" = "Minimum";
+"Maximum" = "Maximum";
+"caloriesTitle" = "Calorieën in kcal";
+"waterTitle" = "Vocht in ml";
+"sodiumTitle" = "Natrium in mg";
+"potassiumTitle" = "Kalium in mg";
+"proteinTitle" = "Proteïne in gram";
+"grainTitle" = "Vezels in gram";
 
