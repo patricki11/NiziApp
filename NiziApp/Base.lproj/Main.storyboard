@@ -639,7 +639,7 @@
         <!--Add Patient Guidelines View Controller-->
         <scene sceneID="Uy2-1I-Qrp">
             <objects>
-                <viewController id="Aqt-lA-v57" customClass="AddPatientGuidelinesViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPatientGuidelinesViewController" id="Aqt-lA-v57" customClass="AddPatientGuidelinesViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5J-sh-5CV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -17,7 +17,6 @@ class AddPatientGuidelinesViewController : UIViewController {
     @IBOutlet weak var caloriesMaximumTitle: UILabel!
     @IBOutlet var caloriesMaximumField: UITextField!
     
-    
     @IBOutlet weak var waterTitle: UILabel!
     @IBOutlet weak var waterMinimumTitle: UILabel!
     @IBOutlet weak var waterMinimumField: UITextField!
@@ -49,6 +48,8 @@ class AddPatientGuidelinesViewController : UIViewController {
     @IBOutlet weak var grainMaximumField: UITextField!
     
     @IBOutlet weak var savePatientButton: UIButton!
+    
+    weak var patient : Patient!
     
     var guidelines : [DietaryManagement] = []
     override func viewDidLoad() {
@@ -121,7 +122,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(caloriesMinimumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -135,7 +136,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(caloriesMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -149,7 +150,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(waterMinimumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -163,7 +164,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(waterMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -177,7 +178,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(sodiumMinimumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -191,7 +192,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(sodiumMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -205,7 +206,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(potassiumMinimumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -219,7 +220,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(potassiumMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -233,7 +234,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(proteinMinimumFIeld.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -247,7 +248,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(proteinMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -261,7 +262,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(grainMinimumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
@@ -275,7 +276,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                     description : "",
                     amount : Int(grainMaximumField.text!)!,
                     isActive : true,
-                    patientId : 0
+                    patientId : patient.patientId!
                 )
             )
         }
