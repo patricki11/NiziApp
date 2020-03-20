@@ -299,7 +299,12 @@ extension EditPatientViewController : UITextFieldDelegate {
 
 class OnlyAllowNumbersDelegate : UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       if let x = string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
+        
+        if string.count == 0 {
+            return true
+        }
+        
+        if let x = string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
           return true
        } else {
           return false
