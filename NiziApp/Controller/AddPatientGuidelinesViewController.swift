@@ -49,6 +49,8 @@ class AddPatientGuidelinesViewController : UIViewController {
     
     @IBOutlet weak var savePatientButton: UIButton!
     
+    let onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
+    
     weak var patient : Patient!
     
     var guidelines : [DietaryManagement] = []
@@ -58,19 +60,25 @@ class AddPatientGuidelinesViewController : UIViewController {
         setNumericOnlyFields()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setNumericOnlyFields()
+    }
+    
     func setNumericOnlyFields() {
-        caloriesMinimumField.delegate = OnlyAllowNumbersDelegate()
-        caloriesMaximumField.delegate = OnlyAllowNumbersDelegate()
-        waterMinimumField.delegate = OnlyAllowNumbersDelegate()
-        waterMaximumField.delegate = OnlyAllowNumbersDelegate()
-        sodiumMinimumField.delegate = OnlyAllowNumbersDelegate()
-        sodiumMaximumField.delegate = OnlyAllowNumbersDelegate()
-        potassiumMinimumField.delegate = OnlyAllowNumbersDelegate()
-        potassiumMaximumField.delegate = OnlyAllowNumbersDelegate()
-        proteinMinimumFIeld.delegate = OnlyAllowNumbersDelegate()
-        proteinMaximumField.delegate = OnlyAllowNumbersDelegate()
-        grainMinimumField.delegate = OnlyAllowNumbersDelegate()
-        grainMaximumField.delegate = OnlyAllowNumbersDelegate()
+        
+        caloriesMinimumField.delegate = onlyAllowNumbersDelegate
+        caloriesMaximumField.delegate = onlyAllowNumbersDelegate
+        waterMinimumField.delegate = onlyAllowNumbersDelegate
+        waterMaximumField.delegate = onlyAllowNumbersDelegate
+        sodiumMinimumField.delegate = onlyAllowNumbersDelegate
+        sodiumMaximumField.delegate = onlyAllowNumbersDelegate
+        potassiumMinimumField.delegate = onlyAllowNumbersDelegate
+        potassiumMaximumField.delegate = onlyAllowNumbersDelegate
+        proteinMinimumFIeld.delegate = onlyAllowNumbersDelegate
+        proteinMaximumField.delegate = onlyAllowNumbersDelegate
+        grainMinimumField.delegate = onlyAllowNumbersDelegate
+        grainMaximumField.delegate = onlyAllowNumbersDelegate
     }
     
     func setLanguageSpecificText() {
