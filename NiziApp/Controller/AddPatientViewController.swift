@@ -144,8 +144,7 @@ class AddPatientViewController: UIViewController {
                             case .success(let result):
                                 let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, dateOfBirth: self.dateOfBirthField.text!, credentials: credentials, userInfo: result)
                                 NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-                                    self.showPatientAddedMessage()
-                                    self.navigateToGuidelineController(patient: patient)
+                                    self.showPatientAddedMessage(patient: patient)
                                 })
                             case .failure(let error):
                                 print(error)
@@ -315,13 +314,13 @@ class AddPatientViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func showPatientAddedMessage() {
+    func showPatientAddedMessage(patient: PatientLogin) {
         let alertController = UIAlertController(
             title: "Patiënt toegevoegd",
             message: "De patiënt is toegevoegd.",
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patient: patient)}))
         
         self.present(alertController, animated: true, completion: nil)
     }
