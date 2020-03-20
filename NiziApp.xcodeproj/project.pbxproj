@@ -21,6 +21,7 @@
 		214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB023BF804A003311A1 /* Restrictions.swift */; };
 		214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */; };
 		214F7E1223C1F850002D670A /* EditPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F7E1123C1F850002D670A /* EditPatientViewController.swift */; };
+		215303C92424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215303C82424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		214F5EB023BF804A003311A1 /* Restrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restrictions.swift; sourceTree = "<group>"; };
 		214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientGuidelineTableViewCell.swift; sourceTree = "<group>"; };
 		214F7E1123C1F850002D670A /* EditPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPatientViewController.swift; sourceTree = "<group>"; };
+		215303C82424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientGuidelinesViewController.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				93722DE523BB88BE007E7E58 /* StatisticViewController.swift */,
 				214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */,
 				214F7E1123C1F850002D670A /* EditPatientViewController.swift */,
+				215303C82424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
 				9322A702239671BF003F136D /* Consumption.swift in Sources */,
 				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
+				215303C92424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift in Sources */,
 				214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */,
 				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
