@@ -81,6 +81,11 @@ class AddPatientViewController: UIViewController {
     }
     
     @IBAction func addPatient(_ sender: Any) {
+        if(!isValidEmail()) {
+            showIncorrectEmailFormatMessage()
+            return
+        }
+        
         if(!requiredFieldsAreFilled()) {
             showRequiredFieldsNotFilledMessage()
             return
@@ -130,7 +135,8 @@ class AddPatientViewController: UIViewController {
                 usernameOrEmail: self.usernameField.text!,
                 password: self.passwordField.text!,
                 realm: "Username-Password-Authentication",
-                scope: "openid"
+                audience: "appnizi.nl/api",
+                scope: "openid profile"
             )
             .start { result in
                 DispatchQueue.main.async {
@@ -187,6 +193,12 @@ class AddPatientViewController: UIViewController {
         
         // Auth0 Requires a minimum of 3 of the conditions to be true
         return strongCounter >= 3
+    }
+    
+    func isValidEmail() -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: usernameField.text!)
     }
     
     func passwordContainsSpecialCharacter() -> Bool {
@@ -321,6 +333,17 @@ class AddPatientViewController: UIViewController {
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patient: patient)}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showIncorrectEmailFormatMessage() {
+        let alertController = UIAlertController(
+            title: "Niet aangemaakt",
+            message: "Het ingegeven emailadres is niet valide.",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
