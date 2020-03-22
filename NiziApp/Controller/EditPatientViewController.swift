@@ -14,20 +14,49 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var dateOfBirthLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var confirmPasswordLabel: UILabel!
     
     @IBOutlet weak var personalInfoLabel: UILabel!
-    @IBOutlet weak var loginInfoLabel: UILabel!
-    @IBOutlet weak var restrictionsLabel: UILabel!
+    @IBOutlet weak var guidelineInfoLabel: UILabel!
     
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var dateOfBirthField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var confirmPasswordField: UITextField!
+    
+    @IBOutlet weak var caloriesTitle: UILabel!
+    @IBOutlet weak var caloriesMinimumTitle: UILabel!
+    @IBOutlet var caloriesMinimumField: UITextField!
+    @IBOutlet weak var caloriesMaximumTitle: UILabel!
+    @IBOutlet var caloriesMaximumField: UITextField!
+    
+    @IBOutlet weak var waterTitle: UILabel!
+    @IBOutlet weak var waterMinimumTitle: UILabel!
+    @IBOutlet weak var waterMinimumField: UITextField!
+    @IBOutlet weak var waterMaximumTitle: UILabel!
+    @IBOutlet weak var waterMaximumField: UITextField!
+    
+    @IBOutlet weak var sodiumTitle: UILabel!
+    @IBOutlet weak var sodiumMinimumTitle: UILabel!
+    @IBOutlet weak var sodiumMinimumField: UITextField!
+    @IBOutlet weak var sodiumMaximumTitle: UILabel!
+    @IBOutlet weak var sodiumMaximumField: UITextField!
+    
+    @IBOutlet weak var potassiumTitle: UILabel!
+    @IBOutlet weak var potassiumMinimumTitle: UILabel!
+    @IBOutlet weak var potassiumMinimumField: UITextField!
+    @IBOutlet weak var potassiumMaximumTitle: UILabel!
+    @IBOutlet weak var potassiumMaximumField: UITextField!
+    
+    @IBOutlet weak var proteinTitle: UILabel!
+    @IBOutlet weak var proteinMinimumTitle: UILabel!
+    @IBOutlet weak var proteinMinimumFIeld: UITextField!
+    @IBOutlet weak var proteinMaximumTitle: UILabel!
+    @IBOutlet weak var proteinMaximumField: UITextField!
+    
+    @IBOutlet weak var grainTitle: UILabel!
+    @IBOutlet weak var grainMinimumTitle: UILabel!
+    @IBOutlet weak var grainMinimumField: UITextField!
+    @IBOutlet weak var grainMaximumTitle: UILabel!
+    @IBOutlet weak var grainMaximumField: UITextField!
     
     @IBOutlet weak var editPatientButton: UIButton!
     
@@ -35,21 +64,7 @@ class EditPatientViewController : UIViewController {
     var restrictions : [Restrictions] = []
     var restrictionPicker : UIPickerView! = UIPickerView()
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
-    
-    @IBOutlet weak var guideline1 : UITextField!
-    @IBOutlet weak var guideline2 : UITextField!
-    @IBOutlet weak var guideline3 : UITextField!
-    @IBOutlet weak var guideline4 : UITextField!
-    @IBOutlet weak var guideline5 : UITextField!
-    @IBOutlet weak var guideline6 : UITextField!
-     
-    @IBOutlet weak var amount1 : UITextField!
-    @IBOutlet weak var amount2 : UITextField!
-    @IBOutlet weak var amount3 : UITextField!
-    @IBOutlet weak var amount4 : UITextField!
-    @IBOutlet weak var amount5 : UITextField!
-    @IBOutlet weak var amount6 : UITextField!
-    
+
     var activeTextField : UITextField = UITextField()
     
     var patientInfo : PatientPersonalInfo? = nil
@@ -84,9 +99,34 @@ class EditPatientViewController : UIViewController {
         getPatientObject()
         createRestrictionPicker()
         restrictions = getRestrictions()
-        setupGuidelineFields()
         setLanguageSpecificText()
         getPatientGuidelines()
+        setNumbersOnlyDelegate()
+    }
+    
+    func setNumbersOnlyDelegate() {
+        caloriesMinimumField.delegate = onlyAllowNumbersDelegate
+        caloriesMaximumField.delegate = onlyAllowNumbersDelegate
+        waterMinimumField.delegate = onlyAllowNumbersDelegate
+        waterMaximumField.delegate = onlyAllowNumbersDelegate
+        sodiumMinimumField.delegate = onlyAllowNumbersDelegate
+        sodiumMaximumField.delegate = onlyAllowNumbersDelegate
+        potassiumMinimumField.delegate = onlyAllowNumbersDelegate
+        potassiumMaximumField.delegate = onlyAllowNumbersDelegate
+        proteinMinimumFIeld.delegate = onlyAllowNumbersDelegate
+        proteinMaximumField.delegate = onlyAllowNumbersDelegate
+        grainMinimumField.delegate = onlyAllowNumbersDelegate
+        grainMaximumField.delegate = onlyAllowNumbersDelegate
+    }
+    
+    func setPatientGuidelines() {
+        for guideline in patientGuidelines {
+            
+        }
+    }
+    
+    func setGuidelineFields() {
+        
     }
     
     func fillFieldsWithPatientInfo() {
@@ -108,50 +148,37 @@ class EditPatientViewController : UIViewController {
         firstNameLabel.text = NSLocalizedString("firstName", comment: "")
         surnameLabel.text = NSLocalizedString("surname", comment: "")
         dateOfBirthLabel.text = NSLocalizedString("dateOfBirth", comment: "")
-        usernameLabel.text = NSLocalizedString("email", comment: "")
-        passwordLabel.text = NSLocalizedString("password", comment: "")
-        confirmPasswordLabel.text = NSLocalizedString("confirmPassword", comment: "")
-        restrictionsLabel.text = NSLocalizedString("guidelines", comment: "")
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
-        loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
         editPatientButton.setTitle(NSLocalizedString("editPatient", comment: ""), for: .normal)
-    }
-    
-    func setPatientGuidelines() {
-        var index = 0
-        for guideline in patientGuidelines {
-            index+=1
-            if(index == 1) {
-                guideline1.text = guideline.description
-                amount1.text = String(guideline.amount)
-            }
-            else if(index == 2) {
-                guideline2.text = guideline.description
-                amount2.text = String(guideline.amount)
-            }
-            else if(index == 3) {
-                guideline3.text = guideline.description
-                amount3.text = String(guideline.amount)
-            }
-            else if(index == 4) {
-                guideline4.text = guideline.description
-                amount4.text = String(guideline.amount)
-            }
-            else if(index == 5) {
-                guideline5.text = guideline.description
-                amount5.text = String(guideline.amount)
-            }
-            else if(index == 6) {
-                guideline6.text = guideline.description
-                amount6.text = String(guideline.amount)
-            }
-        }
+        
+        caloriesTitle.text = NSLocalizedString("caloriesTitle", comment: "")
+        waterTitle.text = NSLocalizedString("waterTitle", comment: "")
+        sodiumTitle.text = NSLocalizedString("sodiumTitle", comment: "")
+        potassiumTitle.text = NSLocalizedString("potassiumTitle", comment: "")
+        proteinTitle.text = NSLocalizedString("proteinTitle", comment: "")
+        grainTitle.text = NSLocalizedString("grainTitle", comment: "")
+        
+        caloriesMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        waterMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        sodiumMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        potassiumMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        proteinMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        grainMinimumTitle.text = NSLocalizedString("Minimum", comment: "")
+        
+        caloriesMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        waterMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        sodiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        potassiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        proteinMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        grainMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        
+        // TODO: Localizable Strings
+        guidelineInfoLabel.text = "Richtlijnen"
     }
     
     @IBAction func confirmEdit(_ sender: Any) {
         if(allRequiredFieldsFilled()) {
             // TODO: Patientgegevens bewerken call van API
-            addDietaryGuidelinesToTheDatabase()
         }
         else {
             // TODO: Message - Not all fields filled
@@ -164,27 +191,6 @@ class EditPatientViewController : UIViewController {
         restrictionPicker.delegate = self
     }
     
-    func setupGuidelineFields() {
-        guideline1.inputView = restrictionPicker
-        guideline2.inputView = restrictionPicker
-        guideline3.inputView = restrictionPicker
-        guideline4.inputView = restrictionPicker
-        guideline5.inputView = restrictionPicker
-        guideline6.inputView = restrictionPicker
-        guideline1.delegate = self
-        guideline2.delegate = self
-        guideline3.delegate = self
-        guideline4.delegate = self
-        guideline5.delegate = self
-        guideline6.delegate = self
-        amount1.delegate = onlyAllowNumbersDelegate
-        amount2.delegate = onlyAllowNumbersDelegate
-        amount3.delegate = onlyAllowNumbersDelegate
-        amount4.delegate = onlyAllowNumbersDelegate
-        amount5.delegate = onlyAllowNumbersDelegate
-        amount6.delegate = onlyAllowNumbersDelegate
-    }
-    
     func getPatientGuidelines() {
         NiZiAPIHelper.getDietaryManagement(forDiet: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
@@ -195,7 +201,6 @@ class EditPatientViewController : UIViewController {
             guard let guidelines = try? jsonDecoder.decode(PatientDietaryGuidelines.self, from: jsonResponse) else { return }
             
             self.patientGuidelines = guidelines.dietaryManagements
-            self.setPatientGuidelines()
         })
     }
     
@@ -232,38 +237,6 @@ class EditPatientViewController : UIViewController {
         let dateOfBirth = dateOfBirthField.text
         
         return (firstName != "" && surname != "" && dateOfBirth != "")
-    }
-    
-    func addDietaryGuidelinesToTheDatabase() {
-        var guidelines : [DietaryManagement] = []
-        if(guideline1.text != "" && amount1.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline1.text!, amount: Int(amount1.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        if(guideline2.text != "" && amount2.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline2.text!, amount: Int(amount2.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        if(guideline3.text != "" && amount3.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline3.text!, amount: Int(amount3.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        if(guideline4.text != "" && amount4.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline4.text!, amount: Int(amount4.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        if(guideline5.text != "" && amount5.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline5.text!, amount: Int(amount5.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        if(guideline6.text != "" && amount6.text != "") {
-            guidelines.append(DietaryManagement(id: 0, description: guideline6.text!, amount: Int(amount6.text!) ?? 0, isActive: true, patientId: patientId))
-        }
-        print(guidelines.count)
-        for guideline in guidelines {
-            print(guideline.description)
-            print(guideline.amount)
-            NiZiAPIHelper.createDietaryManagement(forPatient: patientId, withGuideline: guideline, authenticationCode: "").response(completionHandler: { response in
-                print(response.data)
-                guard let jsonResponse = response.data else { return }
-                print(String(data: jsonResponse, encoding: String.Encoding.utf8))
-            })
-        }
     }
     
     func updateNewPatientObject() {

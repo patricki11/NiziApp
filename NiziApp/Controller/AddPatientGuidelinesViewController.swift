@@ -86,7 +86,7 @@ class AddPatientGuidelinesViewController : UIViewController {
         caloriesTitle.text = NSLocalizedString("caloriesTitle", comment: "")
         waterTitle.text = NSLocalizedString("waterTitle", comment: "")
         sodiumTitle.text = NSLocalizedString("sodiumTitle", comment: "")
-        potassiumTitle.text = NSLocalizedString("potassiumTItle", comment: "")
+        potassiumTitle.text = NSLocalizedString("potassiumTitle", comment: "")
         proteinTitle.text = NSLocalizedString("proteinTitle", comment: "")
         grainTitle.text = NSLocalizedString("grainTitle", comment: "")
         
