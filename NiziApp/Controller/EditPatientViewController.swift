@@ -61,6 +61,7 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var editPatientButton: UIButton!
     
     var patientGuidelines : [DietaryManagement] = []
+    var newGuidelines : [DietaryManagement] = []
     var restrictions : [Restrictions] = []
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
 
@@ -96,7 +97,6 @@ class EditPatientViewController : UIViewController {
         title = "Bewerken Patiënt"
         dateOfBirthField.inputView = datePicker()
         getPatientObject()
-        restrictions = getRestrictions()
         setLanguageSpecificText()
         getPatientGuidelines()
         setNumbersOnlyDelegate()
@@ -213,12 +213,32 @@ class EditPatientViewController : UIViewController {
         guidelineInfoLabel.text = "Richtlijnen"
     }
     
+    
     @IBAction func confirmEdit(_ sender: Any) {
         if(allRequiredFieldsFilled()) {
-            // TODO: Patientgegevens bewerken call van API
+            updateGuidelines()
         }
         else {
-            // TODO: Message - Not all fields filled
+            print("notFilled")
+        }
+    }
+    
+    func updateGuidelines() {
+        getNewGuidelines()
+        deleteOldGuidelines()
+        createNewGuidelines()
+    }
+    
+    func deleteOldGuidelines() {
+        for guideline in patientGuidelines {
+            guideline.isActive = false
+            NiZiAPIHelper.deleteDietaryManagement(forDiet: guideline.id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+        }
+    }
+    
+    func createNewGuidelines() {
+        for guideline in newGuidelines {
+            NiZiAPIHelper.createDietaryManagement(forPatient: patientId, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
         }
     }
     
@@ -236,18 +256,185 @@ class EditPatientViewController : UIViewController {
         })
     }
     
-    func getRestrictions() -> [Restrictions]{
-        return [
-            Restrictions(id: 0, description: "Kies een Richtlijn"),
-            Restrictions(id: 1, description: "Caloriebeperking"),
-            Restrictions(id: 2, description: "Calotieverrijking"),
-            Restrictions(id: 3, description: "Eiwitbeperking"),
-            Restrictions(id: 4, description: "Eiwitbverrijking"),
-            Restrictions(id: 5, description: "Kaliumbeperking"),
-            Restrictions(id: 6, description: "Natriumbeperkng"),
-            Restrictions(id: 7, description: "Vezelverrijking"),
-            Restrictions(id: 8, description: "Vochtbeperking")
-        ]
+    func getNewGuidelines() {
+        addMinimumCaloriesGuideline()
+        addMaximumCaloriesGuideline()
+        addMinimumWaterGuideilne()
+        addMaximumWaterGuideline()
+        addMinimumSodiumGuideline()
+        addMaximumSodiumGuideline()
+        addMinimumPotassiumGuideline()
+        addMaximumPotassiumGuideline()
+        addMinimumProteinGuideline()
+        addMaximumProteinGuideline()
+    }
+    
+    func addMinimumCaloriesGuideline() {
+        if(caloriesMinimumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Calorieverrijking",
+                    amount : Int(caloriesMinimumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaximumCaloriesGuideline() {
+        if(caloriesMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Caloriebeperking",
+                    amount : Int(caloriesMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMinimumWaterGuideilne() {
+        if(waterMinimumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Vochtverrijking",
+                    amount : Int(waterMinimumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaximumWaterGuideline() {
+        if(waterMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Vochtbeperking",
+                    amount : Int(waterMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMinimumSodiumGuideline() {
+        if(sodiumMinimumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Natriumverrijking",
+                    amount : Int(sodiumMinimumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaximumSodiumGuideline() {
+        if(sodiumMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Natriumbeperking",
+                    amount : Int(sodiumMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMinimumPotassiumGuideline() {
+        if(potassiumMinimumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Kaliumverrijking",
+                    amount : Int(potassiumMinimumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaximumPotassiumGuideline() {
+        if(potassiumMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Kaliumbeperking",
+                    amount : Int(potassiumMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMinimumProteinGuideline() {
+        if(proteinMinimumFIeld.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Eiwitverrijking",
+                    amount : Int(proteinMinimumFIeld.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaximumProteinGuideline() {
+        if(proteinMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Eiwitbeperking",
+                    amount : Int(proteinMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMinimumGrainGuideline() {
+        if(grainMinimumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Vezelverrijking",
+                    amount : Int(grainMinimumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
+    }
+    
+    func addMaxiumumGrainGuideline() {
+        if(grainMaximumField.text != "") {
+            newGuidelines.append(
+                DietaryManagement(
+                    id : 0,
+                    description : "Vezelbeperking",
+                    amount : Int(grainMaximumField.text!)!,
+                    isActive : true,
+                    patientId : patientId
+                )
+            )
+        }
     }
     
     func getPatientObject() {

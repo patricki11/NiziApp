@@ -213,10 +213,10 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .get , parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     
-    static func updateDieteryManagement(forDiet dietId: Int, authenticationCode: String) -> DataRequest {
+    static func updateDieteryManagement(forDiet dietId: Int, withGuideline guideline: DietaryManagement, authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/dietaryManagement/\(dietId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .put, parameters: nil, encoding: JSONEncoding.default , headers: header)
+        return AF.request(baseUrl + apiMethod, method: .put, parameters: guideline.toJson(), encoding: JSONEncoding.default , headers: header)
     }
     
     static func createDietaryManagement(forPatient patientId: Int, withGuideline guideline: DietaryManagement, authenticationCode: String) -> DataRequest {
