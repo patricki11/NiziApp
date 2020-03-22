@@ -28,7 +28,7 @@ class DietaryManagement : Codable {
         case description = "Description"
         case amount      = "Amount"
         case isActive    = "IsActive"
-        case patientId   = "Patient"
+        case patientId   = "PatientId"
     }
     
     func toJson() -> [String:Any] {
@@ -37,7 +37,7 @@ class DietaryManagement : Codable {
             "Description": description as Any,
             "Amount": amount as Any,
             "IsActive": isActive as Any,
-            "Patient": patientId as Any
+            "PatientId": patientId as Any
         ]
     }
 }

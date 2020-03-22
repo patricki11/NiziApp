@@ -62,7 +62,7 @@ class PatientPersonalInfo : Codable {
     var weightInKg  : Float? = Float()
     
     enum CodingKeys : String, CodingKey {
-        case patientId   = "Id"
+        case patientId   = "PatientId"
         case doctorId    = "HandlingDoctorId"
         case firstName   = "FirstName"
         case lastName    = "LastName"
@@ -72,7 +72,7 @@ class PatientPersonalInfo : Codable {
     
     func toJSON() -> [String:Any] {
         return [
-            "Id"               : patientId as Any,
+            "PatientId"        : patientId as Any,
             "HandlingDoctorId" : doctorId as Any,
             "firstName"        : firstName as Any,
             "lastName"         : lastName as Any,

@@ -982,7 +982,7 @@
                                     <constraint firstItem="xRl-AE-raC" firstAttribute="top" secondItem="TZ5-E2-WIt" secondAttribute="bottom" constant="15" id="xfo-EK-A4z"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axy-eK-wgr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axy-eK-wgr" userLabel="Guideline_view_6">
                                 <rect key="frame" x="0.0" y="544" width="375" height="90"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grain_s" translatesAutoresizingMaskIntoConstraints="NO" id="gLB-ET-U0J">
@@ -1057,8 +1057,7 @@
                                     <color key="titleColor" red="0.89350660479999999" green="0.89350660479999999" blue="0.89350660479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="savePatient:" destination="Aqt-lA-v57" eventType="touchUpInside" id="07H-qX-mAG"/>
-                                    <action selector="savePatientGuidelines:" destination="Aqt-lA-v57" eventType="touchUpInside" id="OGK-xI-0KK"/>
+                                    <action selector="savePatientGuidelines:" destination="Aqt-lA-v57" eventType="touchUpInside" id="V66-db-jyT"/>
                                 </connections>
                             </button>
                         </subviews>

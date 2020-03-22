@@ -150,7 +150,7 @@ class AddPatientViewController: UIViewController {
                             case .success(let result):
                                 let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, dateOfBirth: self.dateOfBirthField.text!, credentials: credentials, userInfo: result)
                                 NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-                                    self.showPatientAddedMessage(patient: patient)
+                                    self.getPatientDataFromDatabase(patient: patient)
                                 })
                             case .failure(let error):
                                 print(error)
@@ -163,6 +163,23 @@ class AddPatientViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func getPatientDataFromDatabase(patient: PatientLogin) {
+        NiZiAPIHelper.login(withPatientCode: (patient.auth?.token?.accessCode!)!).responseData(completionHandler: { response in
+            print("accessCode: ", patient.auth?.token?.accessCode)
+            print("auth-guid: ", patient.auth?.guid)
+            print("patient-guid: ", patient.patient?.guid)
+            print("response: ", response.data)
+            guard let jsonResponse = response.data
+                else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patientFromDatabase = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse)
+                else { return }
+            
+            self.showPatientAddedMessage(patient: patientFromDatabase)
+        })
     }
     
     func requiredFieldsAreFilled() -> Bool {
@@ -264,12 +281,13 @@ class AddPatientViewController: UIViewController {
     func createNewPatientObject(firstName: String, lastName: String, dateOfBirth: String, credentials: Credentials, userInfo: UserInfo) -> PatientLogin {
         let dateFormatterFrom = DateFormatter()
         dateFormatterFrom.dateFormat = "dd-MM-YYYY"
-        
+        print("dokter auth: ", KeychainWrapper.standard.string(forKey: "authToken"))
         let dateFormatterTo = DateFormatter()
         dateFormatterTo.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         let date : Date = dateFormatterFrom.date(from: dateOfBirth) ?? Date()
         print(dateFormatterTo.string(from: date))
+        print(userInfo.sub)
         let account : Account = Account(
             accountId: 0,
             role: "Patient"
@@ -362,7 +380,7 @@ class AddPatientViewController: UIViewController {
     func navigateToGuidelineController(patient: PatientLogin) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let guidelineVC = storyboard.instantiateViewController(withIdentifier: "AddPatientGuidelinesViewController") as! AddPatientGuidelinesViewController
-        guidelineVC.patient = patient.patient!
+        guidelineVC.patient = patient.patient
         self.navigationController?.pushViewController(guidelineVC, animated: true)
     }
 }

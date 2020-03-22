@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
 
 class AddPatientGuidelinesViewController : UIViewController {
     
@@ -107,8 +108,11 @@ class AddPatientGuidelinesViewController : UIViewController {
     @IBAction func savePatientGuidelines(_ sender: Any) {
         getGuidelines()
         
-        print(guidelines)
-        // TODO: Opslaan richtlijnen in DB
+        for guideline in guidelines {
+            NiZiAPIHelper.createDietaryManagement(forPatient: guideline.patientId, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+        }
+        
+        showGuidelinesAddedMessage()
     }
     
     func getGuidelines() {
@@ -129,7 +133,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Calorieverrijking",
                     amount : Int(caloriesMinimumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -143,7 +147,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Caloriebeperking",
                     amount : Int(caloriesMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -157,7 +161,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Vochtverrijking",
                     amount : Int(waterMinimumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -171,7 +175,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Vochtbeperking",
                     amount : Int(waterMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -185,7 +189,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Natriumverrijking",
                     amount : Int(sodiumMinimumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -199,7 +203,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Natriumbeperking",
                     amount : Int(sodiumMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -213,7 +217,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Kaliumverrijking",
                     amount : Int(potassiumMinimumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -227,7 +231,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Kaliumbeperking",
                     amount : Int(potassiumMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -241,7 +245,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Eiwitverrijking",
                     amount : Int(proteinMinimumFIeld.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -255,7 +259,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Eiwitbeperking",
                     amount : Int(proteinMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -269,7 +273,7 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Vezelverrijking",
                     amount : Int(grainMinimumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
@@ -283,12 +287,28 @@ class AddPatientGuidelinesViewController : UIViewController {
             guidelines.append(
                 DietaryManagement(
                     id : 0,
-                    description : "",
+                    description : "Vezelbeperking",
                     amount : Int(grainMaximumField.text!)!,
                     isActive : true,
                     patientId : patient.patientId!
                 )
             )
         }
+    }
+    
+    func showGuidelinesAddedMessage() {
+        let alertController = UIAlertController(
+            title: "Patiënt toegevoegd",
+            message: "De patiënt is toegevoegd.",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientList()}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func navigateBackToPatientList() {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
     }
 }
