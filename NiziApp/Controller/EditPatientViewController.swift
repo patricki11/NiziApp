@@ -121,12 +121,51 @@ class EditPatientViewController : UIViewController {
     
     func setPatientGuidelines() {
         for guideline in patientGuidelines {
-            
+            switch guideline.description {
+            case "Calorieverrijking":
+                setGuidelineFields(guideline: guideline, field: caloriesMinimumField)
+                break
+            case "Caloriebeperking":
+                setGuidelineFields(guideline: guideline, field: caloriesMaximumField)
+                break
+            case "Vochtverrijking":
+                setGuidelineFields(guideline: guideline, field: waterMinimumField)
+                break
+            case "Vochtbeperking":
+                setGuidelineFields(guideline: guideline, field: waterMaximumField)
+                break
+            case "Natriumverrijking":
+                setGuidelineFields(guideline: guideline, field: sodiumMinimumField)
+                break
+            case "Natriumbeperking":
+                setGuidelineFields(guideline: guideline, field: sodiumMaximumField)
+                break
+            case "Kaliumverrijking":
+                setGuidelineFields(guideline: guideline, field: potassiumMinimumField)
+                break
+            case "Kaliumbeperking":
+                setGuidelineFields(guideline: guideline, field: potassiumMaximumField)
+                break
+            case "Eiwitverrijking":
+                setGuidelineFields(guideline: guideline, field: proteinMinimumFIeld)
+                break
+            case "Eiwitbeperking":
+                setGuidelineFields(guideline: guideline, field: proteinMaximumField)
+                break
+            case "Vezelverrijking":
+                setGuidelineFields(guideline: guideline, field: grainMinimumField)
+                break
+            case "Vezelbeperking":
+                setGuidelineFields(guideline: guideline, field: grainMaximumField)
+                break
+            default:
+                break
+            }
         }
     }
     
-    func setGuidelineFields() {
-        
+    func setGuidelineFields(guideline: DietaryManagement, field: UITextField) {
+        field.text = String(guideline.amount)
     }
     
     func fillFieldsWithPatientInfo() {
@@ -201,6 +240,7 @@ class EditPatientViewController : UIViewController {
             guard let guidelines = try? jsonDecoder.decode(PatientDietaryGuidelines.self, from: jsonResponse) else { return }
             
             self.patientGuidelines = guidelines.dietaryManagements
+            self.setPatientGuidelines()
         })
     }
     
