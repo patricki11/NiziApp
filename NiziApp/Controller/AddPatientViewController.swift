@@ -64,7 +64,9 @@ class AddPatientViewController: UIViewController {
         title = NSLocalizedString("addPatient", comment: "")
         setLanguageSpecificText()
         print(loggedInAccount)
+        removeKeyboardAfterClickingOutsideField()
     }
+    
     
     func setLanguageSpecificText() {
         firstNameLabel.text = NSLocalizedString("firstName", comment: "")
@@ -382,5 +384,12 @@ class AddPatientViewController: UIViewController {
         let guidelineVC = storyboard.instantiateViewController(withIdentifier: "AddPatientGuidelinesViewController") as! AddPatientGuidelinesViewController
         guidelineVC.patient = patient.patient
         self.navigationController?.pushViewController(guidelineVC, animated: true)
+    }
+}
+
+extension UIViewController {
+    func removeKeyboardAfterClickingOutsideField() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
 }

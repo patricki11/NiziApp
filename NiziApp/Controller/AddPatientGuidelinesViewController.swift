@@ -59,6 +59,7 @@ class AddPatientGuidelinesViewController : UIViewController {
         super.viewDidLoad()
         setLanguageSpecificText()
         setNumericOnlyFields()
+        removeKeyboardAfterClickingOutsideField()
     }
     
     override func viewDidAppear(_ animated: Bool) {

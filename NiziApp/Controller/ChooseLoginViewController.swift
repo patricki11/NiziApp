@@ -74,6 +74,7 @@ class ChooseLoginViewController : UIViewController {
         title = NSLocalizedString("ApplicationName", comment: "")
         setLanguageSpecificText()
         self.navigationItem.hidesBackButton = true
+        removeKeyboardAfterClickingOutsideField()
     }
     
     func setLanguageSpecificText() {

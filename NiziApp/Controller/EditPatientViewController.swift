@@ -104,6 +104,7 @@ class EditPatientViewController : UIViewController {
         setLanguageSpecificText()
         getPatientGuidelines()
         setNumbersOnlyDelegate()
+        removeKeyboardAfterClickingOutsideField()
     }
     
     func setNumbersOnlyDelegate() {
