@@ -2828,6 +2828,9 @@
                                 <state key="normal" title="Zoek">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="filterGuideline:" destination="cIk-s1-WXa" eventType="touchUpInside" id="4YA-yX-48a"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Richtlijn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfs-dl-Q3d">
                                 <rect key="frame" x="20" y="174" width="249" height="34"/>

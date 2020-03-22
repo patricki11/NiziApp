@@ -100,6 +100,21 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
+    @IBAction func filterGuideline(_ sender: Any) {
+        guidelineTableView?.reloadData()
+    }
+    
+    func getFilteredGuidelineList() -> [DietaryManagement] {
+        let guidelineName = guidelineSearchField?.text ?? ""
+        
+        if(guidelineName == "") {
+            return patientGuidelines
+        }
+        else {
+            return patientGuidelines.filter { ("\($0.description.lowercased())").contains(guidelineName.lowercased())}
+        }
+    }
+    
     func getDietaryGuidelines() {
         NiZiAPIHelper.getDietaryManagement(forDiet: patient.patientId!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
@@ -119,14 +134,15 @@ class PatientOverviewViewController : UIViewController
 
 extension PatientOverviewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patientGuidelines.count
+        return getFilteredGuidelineList().count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PatientGuidelineTableViewCell"
         let cell = guidelineTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientGuidelineTableViewCell
 
-        let guideline = patientGuidelines[indexPath.row]
+        let filteredList = getFilteredGuidelineList()
+        let guideline = filteredList[indexPath.row]
         var average : Int = 0
         
         if(currentWeekCounter <= 0) {
