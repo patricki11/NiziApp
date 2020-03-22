@@ -62,7 +62,6 @@ class EditPatientViewController : UIViewController {
     
     var patientGuidelines : [DietaryManagement] = []
     var restrictions : [Restrictions] = []
-    var restrictionPicker : UIPickerView! = UIPickerView()
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
 
     var activeTextField : UITextField = UITextField()
@@ -97,7 +96,6 @@ class EditPatientViewController : UIViewController {
         title = "Bewerken Patiënt"
         dateOfBirthField.inputView = datePicker()
         getPatientObject()
-        createRestrictionPicker()
         restrictions = getRestrictions()
         setLanguageSpecificText()
         getPatientGuidelines()
@@ -224,12 +222,6 @@ class EditPatientViewController : UIViewController {
         }
     }
     
-    
-    func createRestrictionPicker() {
-        restrictionPicker.dataSource = self
-        restrictionPicker.delegate = self
-    }
-    
     func getPatientGuidelines() {
         NiZiAPIHelper.getDietaryManagement(forDiet: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
@@ -282,31 +274,6 @@ class EditPatientViewController : UIViewController {
     func updateNewPatientObject() {
         patientInfo?.firstName = ""
         patientInfo?.lastName = ""
-    }
-}
-extension EditPatientViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-    // Number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return restrictions.count
-    }
-    
-    // The data to return fopr the row and component (column) that's being passed in
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return restrictions[row].description
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        activeTextField.text = (row != 0) ? restrictions[row].description : ""
-    }
-}
-extension EditPatientViewController : UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeTextField = textField
     }
 }
 
