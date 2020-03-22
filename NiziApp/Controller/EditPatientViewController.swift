@@ -62,6 +62,10 @@ class EditPatientViewController : UIViewController {
     
     var patientGuidelines : [DietaryManagement] = []
     var newGuidelines : [DietaryManagement] = []
+    
+    var completedDeleting : [DietaryManagement] = []
+    var completedUpdating : [DietaryManagement] = []
+    
     var restrictions : [Restrictions] = []
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
 
@@ -217,6 +221,7 @@ class EditPatientViewController : UIViewController {
     @IBAction func confirmEdit(_ sender: Any) {
         if(allRequiredFieldsFilled()) {
             updateGuidelines()
+            // TODO: Update patientgegevens, nog geen call voor in API >.>
         }
         else {
             print("notFilled")
@@ -232,13 +237,35 @@ class EditPatientViewController : UIViewController {
     func deleteOldGuidelines() {
         for guideline in patientGuidelines {
             guideline.isActive = false
-            NiZiAPIHelper.deleteDietaryManagement(forDiet: guideline.id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+            NiZiAPIHelper.deleteDietaryManagement(forDiet: guideline.id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+                self.completedDeleting.append(guideline)
+                
+                if(self.completedAllRequests()) {
+                    self.showUpdatedMessage()
+                }
+            })
         }
     }
     
     func createNewGuidelines() {
         for guideline in newGuidelines {
-            NiZiAPIHelper.createDietaryManagement(forPatient: patientId, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+            NiZiAPIHelper.createDietaryManagement(forPatient: patientId, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseJSON(completionHandler: { response in
+
+                self.completedUpdating.append(guideline)
+                
+                if(self.completedAllRequests()) {
+                    self.showUpdatedMessage()
+                }
+            })
+        }
+    }
+    
+    func completedAllRequests() -> Bool {
+        if(completedUpdating.count == self.newGuidelines.count && completedDeleting.count == self.patientGuidelines.count) {
+            return true
+        }
+        else {
+            return false
         }
     }
     
@@ -461,6 +488,21 @@ class EditPatientViewController : UIViewController {
     func updateNewPatientObject() {
         patientInfo?.firstName = ""
         patientInfo?.lastName = ""
+    }
+    
+    func showUpdatedMessage() {
+        let alertController = UIAlertController(
+            title: "Patiënt bijgewerkt",
+            message: "De patiëntgegevens zijn bijgewerkt.",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientOverview()}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func navigateBackToPatientOverview() {
+        self.navigationController!.popViewController(animated: true)
     }
 }
 

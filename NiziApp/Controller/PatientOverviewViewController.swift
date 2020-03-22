@@ -78,6 +78,11 @@ class PatientOverviewViewController : UIViewController
         getDietaryGuidelines()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        getDietaryGuidelines()
+    }
+    
     func setLanguageSpecificText() {
         patientNameLabel.text = "\(patient.firstName!) \(patient.lastName!)"
     }
