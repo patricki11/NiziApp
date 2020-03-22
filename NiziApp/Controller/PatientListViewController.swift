@@ -57,6 +57,7 @@ class PatientListViewController: UIViewController {
     
     func removeAuthorizationToken() {
         KeychainWrapper.standard.removeObject(forKey: "authToken")
+        KeychainWrapper.standard.removeObject(forKey: "patientId")
     }
     
     func navigateToLoginPage() {
