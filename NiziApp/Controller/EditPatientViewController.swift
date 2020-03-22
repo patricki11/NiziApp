@@ -224,7 +224,7 @@ class EditPatientViewController : UIViewController {
             // TODO: Update patientgegevens, nog geen call voor in API >.>
         }
         else {
-            print("notFilled")
+            showRequiredFieldsNotFilledMessage()
         }
     }
     
@@ -497,6 +497,17 @@ class EditPatientViewController : UIViewController {
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientOverview()}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showRequiredFieldsNotFilledMessage() {
+        let alertController = UIAlertController(
+            title: "Verplichte velden",
+            message: "Niet alle verplichte velden zijn ingevuld.",
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }
