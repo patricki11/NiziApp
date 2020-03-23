@@ -17,6 +17,7 @@ class Diary : Decodable{
     var fiberTotal      : Float? = nil
     var caliumTotal     : Float? = nil
     var sodiumTotal     : Float? = nil
+    var waterTotal      : Float? = nil
     
     enum CodingKeys : String, CodingKey {
         case consumptions   = "Consumptions"
@@ -25,6 +26,6 @@ class Diary : Decodable{
         case fiberTotal     = "FiberTotal"
         case caliumTotal    = "CaliumTotal"
         case sodiumTotal    = "SodiumTotal"
+        case waterTotal     = "WaterTotal"
      }
 }
-

@@ -2352,6 +2352,7 @@
                         <outlet property="Portion" destination="tzt-ST-dI1" id="h3l-oO-VgI"/>
                         <outlet property="Protein" destination="WWt-3j-86F" id="j9h-PU-7Uf"/>
                         <outlet property="Sodium" destination="SUW-vi-LvZ" id="80f-BC-ySR"/>
+                        <outlet property="WaterLabel" destination="lWK-nd-iEn" id="8He-vG-KuR"/>
                         <outlet property="portionSizeLabel" destination="pDh-dq-5uE" id="2Gd-9m-g7V"/>
                     </connections>
                 </viewController>
@@ -3648,7 +3649,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2f-xo-IW0">
-                                <rect key="frame" x="234" y="228.5" width="256" height="256"/>
+                                <rect key="frame" x="234" y="228.5" width="128" height="128"/>
                                 <state key="normal" image="Add_s"/>
                                 <connections>
                                     <action selector="AddtoMeal:" destination="nrg-wD-hLX" eventType="touchUpInside" id="lBN-6Q-MNH"/>

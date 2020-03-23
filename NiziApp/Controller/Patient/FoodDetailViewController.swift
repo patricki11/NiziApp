@@ -22,6 +22,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var Sodium: UILabel!
     @IBOutlet weak var Picture: UIImageView!
     @IBOutlet weak var portionSizeLabel: UILabel!
+    @IBOutlet weak var WaterLabel: UILabel!
     
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
@@ -67,6 +68,9 @@ class FoodDetailViewController: UIViewController {
         let portionSizeString : String = String(format:"%.1f",foodItem!.portionSize)
         portionSizeLabel.text = portionSizeString
         
+        let waterString : String = String(format:"%.1f",foodItem!.water)
+        WaterLabel.text = waterString
+        
     }
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()
@@ -84,13 +88,13 @@ class FoodDetailViewController: UIViewController {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId)
+        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water)
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de voedsel is toegevoegd.
         })
     }
     
-    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int ) -> Consumption {
+    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double ) -> Consumption {
         
         let consumption : Consumption = Consumption(
             foodName : foodName,
@@ -103,7 +107,8 @@ class FoodDetailViewController: UIViewController {
             weightUnitId: weigthUnitId,
             date: date,
             patientId: patientid,
-            id: foodId
+            id: foodId,
+            water: water
         )
         return consumption
     }

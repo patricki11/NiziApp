@@ -48,7 +48,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     func setProgresss(){
         ProgressCalorie.setProgress(kcalProgress/2500, animated: true)
         ProgressGrain.setProgress(fiberProgress/40, animated: true)
-        ProgressHumidity.setProgress(vochtProgress/80, animated: true)
+        ProgressHumidity.setProgress(vochtProgress/3000, animated: true)
         ProgressProtein.setProgress(proteinProgress/10, animated: true)
         ProgressSodium.setProgress(sodiumProgress/10, animated: true)
         ProgressPotassium.setProgress(calciumProgress/20, animated: true)
@@ -112,7 +112,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             self.fiberProgress = consumptionlist.fiberTotal!
             self.calciumProgress = consumptionlist.caliumTotal!
             self.sodiumProgress = consumptionlist.sodiumTotal!
-            self.vochtProgress = Float.random(min: 1.00, max: 80.00)
+            self.vochtProgress = consumptionlist.waterTotal!
             self.setProgresss()
             self.DiaryRecentFood?.reloadData()
         })

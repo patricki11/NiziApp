@@ -19,8 +19,9 @@ class Food : Codable {
     var portionSize : Double = 0.0
     var weightUnit  : String = ""
     var picture     : String = ""
+    var water       : Double = 0.0
     
-    init(foodId : Int, name : String, kCal : Double, protein : Double, fiber : Double, calcium : Double, sodium : Double, portionSize : Double, weigtUnit : String, picture : String){
+    init(foodId : Int, name : String, kCal : Double, protein : Double, fiber : Double, calcium : Double, sodium : Double, portionSize : Double, weigtUnit : String, picture : String, water: Double){
         
         self.foodId = foodId
         self.name = name
@@ -32,6 +33,7 @@ class Food : Codable {
         self.portionSize = portionSize
         self.weightUnit = weigtUnit
         self.picture = picture
+        self.water = water
     }
     
     enum CodingKeys : String, CodingKey {
@@ -45,5 +47,6 @@ class Food : Codable {
         case portionSize = "PortionSize"
         case weightUnit  = "WeightUnit"
         case picture     = "Picture"
+        case water       = "Water"
     }
 }

@@ -81,6 +81,7 @@ class LoginViewController : UIViewController {
             self.savePatientId(patientId: patientString)
             print(patientAccount.patient!.patientId!)
             self.saveAuthToken(token: credentials.accessToken!)
+            print(credentials.accessToken)
             self.navigateToPatientHomepage(withPatient: patientAccount, withPatientCode: credentials.accessToken!)
         })
     }

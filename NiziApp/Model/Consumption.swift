@@ -9,19 +9,20 @@
 import Foundation
 
 class Consumption {
-    var foodName: String = ""
-    var kCal : Double = 0.0
-    var protein : Double = 0.0
-    var fiber : Double = 0.0
-    var calium : Double = 0.0
-    var sodium : Double = 0.0
-    var amount : Int = 0
-    var weightUnitId : Double = 0.0
-    var date : String = ""
-    var patientId : Int = 0
-    var id : Int = 0
+    var foodName    : String = ""
+    var kCal        : Double = 0.0
+    var protein     : Double = 0.0
+    var fiber       : Double = 0.0
+    var calium      : Double = 0.0
+    var sodium      : Double = 0.0
+    var water       : Double = 0.0
+    var amount      : Int = 0
+    var weightUnitId: Double = 0.0
+    var date        : String = ""
+    var patientId   : Int = 0
+    var id          : Int = 0
     
-    init(foodName : String, kCal : Double, protein : Double, fiber: Double, calium: Double, sodium : Double, amount : Int, weightUnitId : Double, date : String, patientId : Int, id : Int){
+    init(foodName : String, kCal : Double, protein : Double, fiber: Double, calium: Double, sodium : Double, amount : Int, weightUnitId : Double, date : String, patientId : Int, id : Int, water : Double){
         self.foodName = foodName
         self.kCal = kCal
         self.protein = protein
@@ -33,6 +34,7 @@ class Consumption {
         self.date = date
         self.patientId = patientId
         self.id = id
+        self.water = water
     }
     
     func toJSON() -> [String:Any] {
@@ -47,7 +49,9 @@ class Consumption {
                "WeightUnitId": weightUnitId as Any,
                "Date"        : date as Any,
                "PatientId"   : patientId as Any,
-               "Id"          : id as Any
+               "Id"          : id as Any,
+               "Water"       : water as Any
+                
            ]
        }
 }
