@@ -21,8 +21,9 @@ class Consumption {
     var date        : String = ""
     var patientId   : Int = 0
     var id          : Int = 0
+    var mealTime    : String = ""
     
-    init(foodName : String, kCal : Double, protein : Double, fiber: Double, calium: Double, sodium : Double, amount : Int, weightUnitId : Double, date : String, patientId : Int, id : Int, water : Double){
+    init(foodName : String, kCal : Double, protein : Double, fiber: Double, calium: Double, sodium : Double, amount : Int, weightUnitId : Double, date : String, patientId : Int, id : Int, water : Double, mealTime: String){
         self.foodName = foodName
         self.kCal = kCal
         self.protein = protein
@@ -35,6 +36,7 @@ class Consumption {
         self.patientId = patientId
         self.id = id
         self.water = water
+        self.mealTime = mealTime
     }
     
     func toJSON() -> [String:Any] {
@@ -50,7 +52,8 @@ class Consumption {
                "Date"        : date as Any,
                "PatientId"   : patientId as Any,
                "Id"          : id as Any,
-               "Water"       : water as Any
+               "Water"       : water as Any,
+               "MealTime"    : mealTime as Any
                 
            ]
        }

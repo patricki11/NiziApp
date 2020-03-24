@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HeaderView" customModule="NiziApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A0-39-9vU">
+                        <rect key="frame" x="268" y="7" width="30" height="30"/>
+                        <connections>
+                            <action selector="GotoDiary:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJT-4Y-cuT"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-fw-Zua">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="Jb4-0l-Tka"/>
+                            <constraint firstAttribute="height" constant="44" id="zob-ct-7Nl"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ontbijt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezW-d6-5RC">
+                        <rect key="frame" x="59" y="12" width="130" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="ins-w3-8Gg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="wFG-fw-Zua" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6Xk-Cg-WVB"/>
+                    <constraint firstAttribute="trailing" secondItem="7A0-39-9vU" secondAttribute="trailing" constant="22" id="FGi-oY-nbv"/>
+                    <constraint firstAttribute="bottom" secondItem="wFG-fw-Zua" secondAttribute="bottom" id="KeC-jT-yTb"/>
+                    <constraint firstItem="ezW-d6-5RC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PNm-fy-qma"/>
+                    <constraint firstAttribute="bottom" secondItem="7A0-39-9vU" secondAttribute="bottom" constant="7" id="Ym7-Vy-hd7"/>
+                    <constraint firstItem="7A0-39-9vU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ess-Ix-VR6"/>
+                    <constraint firstAttribute="bottom" secondItem="ezW-d6-5RC" secondAttribute="bottom" constant="11" id="hZm-Ed-Lb9"/>
+                    <constraint firstItem="ezW-d6-5RC" firstAttribute="leading" secondItem="wFG-fw-Zua" secondAttribute="trailing" constant="15" id="iLy-1H-2g6"/>
+                    <constraint firstAttribute="trailing" secondItem="wFG-fw-Zua" secondAttribute="trailing" constant="276" id="jO9-Rz-g5J"/>
+                    <constraint firstItem="wFG-fw-Zua" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kUc-ov-Cdm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="AddButton" destination="7A0-39-9vU" id="ehy-De-amU"/>
+                <outlet property="headerImageView" destination="wFG-fw-Zua" id="bMq-BO-SWo"/>
+                <outlet property="headerLabel" destination="ezW-d6-5RC" id="6i1-Ze-i15"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="93.75"/>
+        </tableViewCell>
+    </objects>
+</document>

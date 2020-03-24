@@ -1,8 +1,8 @@
 //
-//  SearchFoodViewController.swift
+//  FavoriteViewController.swift
 //  NiziApp
 //
-//  Created by Wing lam on 11/12/2019.
+//  Created by Wing lam on 24/12/2019.
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
 
@@ -10,29 +10,20 @@ import UIKit
 import Kingfisher
 import SwiftKeychainWrapper
 
-class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var FavoriteTable: UITableView!
     var foodlist : [Food] = []
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
-    @IBOutlet weak var FoodTable: UITableView!
-    @IBOutlet weak var SearchFoodInput: UITextField!
-    @IBOutlet weak var SearchDayLabel: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(KeychainWrapper.standard.string(forKey: "date")!)
-        // Do any additional setup after loading the view.
+        GetFavortiesFood()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           // Hide the Navigation Bar
-           self.navigationController?.setNavigationBarHidden(true, animated: animated)
-       }
-    
-    @IBAction func SearchButton(_ sender: Any) {
-        searchFood()
+        super.viewWillAppear(animated)
+        // Hide the Navigation Bar
+        //self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +31,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
+        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
         searchFoodCell.textLabel?.text = foodlist[idx].name
         let url = URL(string: foodlist[idx].picture)
@@ -48,7 +39,6 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -57,9 +47,21 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-
-    func searchFood() {
-        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            foodlist.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
+    func GetFavortiesFood() {
+        NiZiAPIHelper.getFavoriteProducts(forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -69,8 +71,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
-            self.FoodTable?.reloadData()
+            self.FavoriteTable?.reloadData()
         })
     }
-
 }

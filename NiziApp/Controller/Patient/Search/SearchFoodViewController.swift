@@ -1,8 +1,8 @@
 //
-//  FavoriteViewController.swift
+//  SearchFoodViewController.swift
 //  NiziApp
 //
-//  Created by Wing lam on 24/12/2019.
+//  Created by Wing lam on 11/12/2019.
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
 
@@ -10,36 +10,51 @@ import UIKit
 import Kingfisher
 import SwiftKeychainWrapper
 
-class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var FavoriteTable: UITableView!
+class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     var foodlist : [Food] = []
+    var buttonTag : Int = 0
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    @IBOutlet weak var FoodTable: UITableView!
+    @IBOutlet weak var SearchFoodInput: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GetFavortiesFood()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+           super.viewWillAppear(animated)
+       }
+    
+    @IBAction func SearchButton(_ sender: Any) {
+        searchFood()
     }
+    
+    @IBAction func GetFavorites(_ sender: Any) {
+        self.GetFavortiesFood()
+    }
+    
+    //MARK: Table Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodlist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
+        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
-        searchFoodCell.textLabel?.text = foodlist[idx].name
-        let url = URL(string: foodlist[idx].picture)
-        searchFoodCell.imageView?.kf.setImage(with: url)
+        let foodResult : Food = foodlist[idx]
+        searchFoodCell.foodTitle?.text = foodlist[idx].name
+        let url = URL(string: foodResult.picture)
+        searchFoodCell.foodImage?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
+        let portionSizeString : String = String(format:"%.f",foodResult.portionSize)
+        searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + foodResult.weightUnit)
+        searchFoodCell.foodItem = foodResult
         return searchFoodCell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -54,12 +69,28 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //DeleteFavorite(Id: foodlist[indexPath.row].foodId)
             foodlist.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
+    }
+    
+    //MARK: API CALLS
+
+    func searchFood() {
+        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.foodlist = foodlistJSON
+            self.FoodTable?.reloadData()
+        })
     }
     
     func GetFavortiesFood() {
@@ -73,7 +104,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
-            self.FavoriteTable?.reloadData()
+            self.FoodTable?.reloadData()
         })
     }
+
 }

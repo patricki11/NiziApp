@@ -20,6 +20,7 @@ class ConsumptionView : Codable {
     var amount        : Float?  = nil
     var weight        : Weight? = nil
     var date          : String? = ""
+    var mealTime      : String? = ""
     
     enum CodingKeys : String, CodingKey {
         case consumptionId = "ConsumptionId"
@@ -32,5 +33,6 @@ class ConsumptionView : Codable {
         case amount        = "Amount"
         case weight        = "Weight"
         case date          = "Date"
+        case mealTime      = "MealTime"
        }
 }

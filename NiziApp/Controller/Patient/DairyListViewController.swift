@@ -9,7 +9,7 @@
 import UIKit
 import SwiftKeychainWrapper
 
-class DairyListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DairyListViewController: UIViewController {
     
     
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
@@ -21,9 +21,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     var fiberProgress   : Float = 0.0
     var vochtProgress   : Float = 0.0
     
-    @IBOutlet weak var DiaryRecentFood: UITableView!
-    @IBOutlet weak var DiaryTitleLabel: UILabel!
-    @IBOutlet weak var DiaryAddLabel: UILabel!
+
     @IBOutlet weak var CalorieLabel: UILabel!
     @IBOutlet weak var GrainLabel: UILabel!
     @IBOutlet weak var ProteinLabel: UILabel!
@@ -56,6 +54,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
@@ -72,7 +71,7 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -114,20 +113,12 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
             self.sodiumProgress = consumptionlist.sodiumTotal!
             self.vochtProgress = consumptionlist.waterTotal!
             self.setProgresss()
-            self.DiaryRecentFood?.reloadData()
+          
         })
     }
     
-    func Deleteconsumption(Id id: Int){
-        NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard response.data != nil
-                else { print("temp1"); return }
-        })
-        self.setProgresss()
-    }
     
     func setLanguageSpecificText() {
-        DiaryTitleLabel.text = NSLocalizedString("DiaryTitle", comment: "")
         CalorieLabel.text = NSLocalizedString("Calorie", comment: "")
         GrainLabel.text = NSLocalizedString("Grain", comment: "")
         ProteinLabel.text = NSLocalizedString("Protein", comment: "")
@@ -136,32 +127,6 @@ class DairyListViewController: UIViewController, UITableViewDataSource, UITableV
         MoistureLabel.text = NSLocalizedString("Moisture", comment: "")
     }
     
-    
-    // table functons
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return consumptions.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let diarycell = tableView.dequeueReusableCell(withIdentifier: "diarycell", for: indexPath) as! DiaryTableViewCell
-        let idx: Int = indexPath.row
-        diarycell.productTitle?.text = consumptions[idx].foodName
-        return diarycell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
-            consumptions.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
-        }
-    }
     
     func saveDate(date: String) {
         KeychainWrapper.standard.set(date, forKey: "date")

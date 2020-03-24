@@ -38,6 +38,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         let url = URL(string: meallist[idx].picture)
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
+     
         return searchFoodCell
     }
     

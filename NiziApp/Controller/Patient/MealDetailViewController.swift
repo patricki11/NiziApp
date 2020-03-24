@@ -72,13 +72,13 @@ class MealDetailViewController: UIViewController {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: mealItem!.mealId, water: 0.0)
+        let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: mealItem!.mealId, water: 0.0, mealTime: "Ontbijt")
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de voedsel is toegevoegd.
         })
     }
     
-    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double ) -> Consumption {
+    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double, mealTime: String ) -> Consumption {
         
         let consumption : Consumption = Consumption(
             foodName : foodName,
@@ -92,7 +92,8 @@ class MealDetailViewController: UIViewController {
             date: date,
             patientId: patientid,
             id: foodId,
-            water: water
+            water: water,
+            mealTime:mealTime
         )
         return consumption
     }
