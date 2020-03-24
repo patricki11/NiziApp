@@ -189,16 +189,32 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
-            self.breakfastFoods.remove(at: indexPath.row)
+            var consumption : ConsumptionView = consumptions[indexPath.row]
+            switch consumption.mealTime {
+            case "Ontbijt":
+                self.breakfastFoods.remove(at: indexPath.row)
+                break
+            case "Lunch":
+                self.breakfastFoods.remove(at: indexPath.row)
+                break
+            case "AvondEten":
+                self.breakfastFoods.remove(at: indexPath.row)
+                break
+            case "Snack":
+                self.breakfastFoods.remove(at: indexPath.row)
+                break
+            default:
+                break
+            }
+            
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
             tableView.endUpdates()
         }
     }
@@ -213,7 +229,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
             detailFoodVC.buttonTag = section
             self.navigationController?.pushViewController(detailFoodVC, animated: true)
-            print("Hello?")
+        
         }
         return headerView
     }
@@ -228,6 +244,13 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let food = self.consumptions[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DiaryDetailViewcontroller") as! DiaryDetailViewController;()
+        detailFoodVC.foodItem = food
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
  
     
     

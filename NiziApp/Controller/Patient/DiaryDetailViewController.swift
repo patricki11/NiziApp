@@ -14,7 +14,6 @@ class DiaryDetailViewController: UIViewController {
     
     @IBOutlet weak var DetailTitle: UILabel!
     @IBOutlet weak var Portion: UILabel!
-    @IBOutlet weak var AmountPortion: UILabel!
     @IBOutlet weak var ConsumtionValues: UILabel!
     @IBOutlet weak var Kcal: UILabel!
     @IBOutlet weak var Protein: UILabel!
@@ -24,6 +23,7 @@ class DiaryDetailViewController: UIViewController {
     @IBOutlet weak var Picture: UIImageView!
     @IBOutlet weak var portionSizeLabel: UILabel!
     @IBOutlet weak var WaterLabel: UILabel!
+    @IBOutlet weak var mealtimeSegment: UISegmentedControl!
     
     var foodItem: ConsumptionView?
     
@@ -35,14 +35,13 @@ class DiaryDetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        SetupData()
         // Do any additional setup after loading the view.
     }
     
     func SetupData()
     {
         DetailTitle.text = foodItem?.foodName
-        
         
         let calorieString : String = String(format:"%.1f",foodItem!.kcal!)
         Kcal.text = calorieString
@@ -59,21 +58,23 @@ class DiaryDetailViewController: UIViewController {
         let sodiumString : String = String(format:"%.1f",foodItem!.sodium!)
         Sodium.text = sodiumString
         
+        portionSizeLabel.text = "Gram"
         
-        portionSizeLabel.text = "Portie gewicht"
-        
- 
         WaterLabel.text = "100"
         
     }
     
     func Deleteconsumption(Id id: Int){
-          NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-              guard response.data != nil
-                  else { print("temp1"); return }
-          })
-          //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
-      }
-    
-    
+        NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Success", comment: "Title"),
+                message: NSLocalizedString("Consumptie is verwijdert", comment: "Message"),
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            guard response.data != nil
+                else { print("temp1"); return }
+        })
+    }
 }

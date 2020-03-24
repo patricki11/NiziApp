@@ -13,8 +13,6 @@ import Kingfisher
 class FoodDetailViewController: UIViewController {
     @IBOutlet weak var DetailTitle: UILabel!
     @IBOutlet weak var Portion: UILabel!
-    @IBOutlet weak var AmountPortion: UILabel!
-    @IBOutlet weak var ConsumtionValues: UILabel!
     @IBOutlet weak var Kcal: UILabel!
     @IBOutlet weak var Protein: UILabel!
     @IBOutlet weak var Fiber: UILabel!
@@ -23,6 +21,8 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var Picture: UIImageView!
     @IBOutlet weak var portionSizeLabel: UILabel!
     @IBOutlet weak var WaterLabel: UILabel!
+    @IBOutlet weak var MealTime: UISegmentedControl!
+    var mealtimeString: String = ""
     
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
@@ -74,6 +74,7 @@ class FoodDetailViewController: UIViewController {
     }
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()
+        
     }
     
     func Addfavorite() {
@@ -81,14 +82,29 @@ class FoodDetailViewController: UIViewController {
             guard let jsonResponse = response.request
                 else { print("Not succeeded"); return }
             print(response.request)
-            
         })
     }
     func addConsumption() {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: "Ontbijt")
+        switch MealTime.selectedSegmentIndex {
+        case 0:
+            mealtimeString = "Ontbijt"
+            break
+        case 1:
+            mealtimeString = "Lunch"
+            break
+        case 2:
+            mealtimeString = "AvondEten"
+            break
+        case 3:
+            mealtimeString = "Snack"
+        default:
+            break
+        }
+        
+        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: mealtimeString)
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             let alertController = UIAlertController(
                 title: NSLocalizedString("Success", comment: "Title"),

@@ -290,8 +290,8 @@
 				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
-				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
 				2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */,
+				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
