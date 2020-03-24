@@ -20,8 +20,9 @@ class Meal : Codable {
     var portionSize : Double = 0.0
     var weightUnit : String = ""
     var picture : String = ""
+    var water : Double = 0.0
     
-    init(mealId : Int, name: String, patientId : Int, kCal : Double, protein : Double, fiber : Double, calcium : Double, sodium : Double, portionSize : Double, weightUnit : String, picture : String){
+    init(mealId : Int, name: String, patientId : Int, kCal : Double, protein : Double, fiber : Double, calcium : Double, sodium : Double, portionSize : Double, weightUnit : String, picture : String, water : Double){
         self.mealId = mealId
         self.name = name
         self.patientId = patientId
@@ -33,6 +34,7 @@ class Meal : Codable {
         self.portionSize = portionSize
         self.weightUnit = weightUnit
         self.picture = picture
+        self.water = water
     }
     
     enum CodingKeys : String, CodingKey {
@@ -47,6 +49,7 @@ class Meal : Codable {
          case portionSize = "PortionSize"
          case weightUnit  = "WeightUnit"
          case picture     = "Picture"
+         case water       = "Water"
      }
     
     func toJSON() -> [String:Any] {
@@ -61,7 +64,8 @@ class Meal : Codable {
                   "Sodium"      : sodium as Any,
                   "PortionSize" : portionSize as Any,
                   "WeightUnit"  : weightUnit as Any,
-                  "Picture"     : picture as Any
+                  "Picture"     : picture as Any,
+                  "Water"       : water as Any
               ]
           }
 }

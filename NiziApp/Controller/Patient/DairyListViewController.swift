@@ -21,7 +21,7 @@ class DairyListViewController: UIViewController {
     var fiberProgress   : Float = 0.0
     var vochtProgress   : Float = 0.0
     
-
+    
     @IBOutlet weak var CalorieLabel: UILabel!
     @IBOutlet weak var GrainLabel: UILabel!
     @IBOutlet weak var ProteinLabel: UILabel!
@@ -54,7 +54,7 @@ class DairyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
@@ -66,6 +66,7 @@ class DairyListViewController: UIViewController {
         setLanguageSpecificText()
         getConsumption(Date: formattedDate)
         SetupDatePicker()
+        createLogoutButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +114,7 @@ class DairyListViewController: UIViewController {
             self.sodiumProgress = consumptionlist.sodiumTotal!
             self.vochtProgress = consumptionlist.waterTotal!
             self.setProgresss()
-          
+            
         })
     }
     
@@ -130,6 +131,34 @@ class DairyListViewController: UIViewController {
     
     func saveDate(date: String) {
         KeychainWrapper.standard.set(date, forKey: "date")
+    }
+    
+    func createLogoutButton() {
+        let logoutButton = UIBarButtonItem(title: "Uitloggen", style: .plain, target: self, action: #selector(logout))
+        self.navigationItem.leftBarButtonItem = logoutButton
+    }
+    
+    @objc func logout() {
+        removeAuthorizationToken()
+        navigateToLoginPage()
+    }
+    
+    func removeAuthorizationToken() {
+        KeychainWrapper.standard.removeObject(forKey: "authToken")
+        KeychainWrapper.standard.removeObject(forKey: "patientId")
+    }
+    
+    func navigateToLoginPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "ChooseLoginViewController") as! ChooseLoginViewController
+        
+        self.navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+    @IBAction func uitloggen(_ sender: Any) {
+        removeAuthorizationToken()
+        navigateToLoginPage()
+        
     }
 }
 
@@ -154,12 +183,12 @@ extension UIColor {
 
 
 public extension Float {
-
+    
     /// Returns a random floating point number between 0.0 and 1.0, inclusive.
     static var random: Float {
         return Float(arc4random()) / 0xFFFFFFFF
     }
-
+    
     /// Random float between 0 and n-1.
     ///
     /// - Parameter n:  Interval max

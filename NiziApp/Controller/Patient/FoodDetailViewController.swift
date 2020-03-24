@@ -90,7 +90,13 @@ class FoodDetailViewController: UIViewController {
         
         let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: "Ontbijt")
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            // TODO: Melden aan patient dat de voedsel is toegevoegd.
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Success", comment: "Title"),
+                message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         })
     }
     

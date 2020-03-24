@@ -26,6 +26,8 @@
 		2154CFDF2429728900E96AEF /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFDE2429728900E96AEF /* TableTableViewController.swift */; };
 		2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE0242972E400E96AEF /* HeaderView.swift */; };
 		2154CFE3242972E400E96AEF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2154CFE1242972E400E96AEF /* HeaderView.xib */; };
+		2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE52429DA4200E96AEF /* ConversationViewController.swift */; };
+		2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -83,6 +85,8 @@
 		2154CFDE2429728900E96AEF /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
 		2154CFE0242972E400E96AEF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2154CFE1242972E400E96AEF /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		2154CFE52429DA4200E96AEF /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
+				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
+				2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 			files = (
 				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				9322A70D23A02385003F136D /* Diary.swift in Sources */,
+				2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */,
 				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
@@ -427,6 +434,7 @@
 				934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */,
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
 				934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */,
+				2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
 				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,

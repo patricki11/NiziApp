@@ -67,6 +67,13 @@ class MealProductDetailViewController: UIViewController {
     
     @IBAction func AddtoMeal(_ sender: Any) {
         foodlist.append(foodItem!)
+        let alertController = UIAlertController(
+                       title: NSLocalizedString("Success", comment: "Title"),
+                       message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+                       preferredStyle: .alert)
+                   
+                   alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                   self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func FinishMeal(_ sender: Any) {

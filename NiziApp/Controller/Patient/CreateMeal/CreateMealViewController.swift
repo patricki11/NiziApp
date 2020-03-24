@@ -39,8 +39,7 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
         calculateDietary()
         // Do any additional setup after loading the view.
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
@@ -49,7 +48,6 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidAppear(_ animated: Bool){
         MealProducts?.reloadData()
-        
     }
     
     
@@ -105,20 +103,20 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func addMeal() {
-        
-        
-        
-        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal)
+        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal, water: vochtMeal )
         
         NiZiAPIHelper.addMeal(withDetails: meal, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de maaltijd is toegevoegd.patientId
+            
         })
+        
+        
     }
     
-    func createNewMealObject(mealId: Int, name: String, patientId: Int, kcal: Double, fiber: Double, calcium: Double, sodium: Double, portionSize: Double, weightUnit: String, picture: String, protein: Double) -> Meal {
+    func createNewMealObject(mealId: Int, name: String, patientId: Int, kcal: Double, fiber: Double, calcium: Double, sodium: Double, portionSize: Double, weightUnit: String, picture: String, protein: Double, water: Double) -> Meal {
         
         let meal : Meal = Meal(
-            mealId: mealId, name: name, patientId: patientId, kCal: kcal, protein: protein, fiber: fiber, calcium: calcium, sodium: sodium, portionSize: portionSize, weightUnit: weightUnit, picture: picture)
+            mealId: mealId, name: name, patientId: patientId, kCal: kcal, protein: protein, fiber: fiber, calcium: calcium, sodium: sodium, portionSize: portionSize, weightUnit: weightUnit, picture: picture, water: water)
         return meal
     }
     
@@ -128,7 +126,7 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
             for food in Mealfoodlist {
                 kcal += food.kCal
                 fiberMeal += food.fiber
-                vochtMeal += 0.0
+                vochtMeal += food.water
                 pottassiumMeal += food.calcium
                 proteinMeal +=  food.protein
                 sodiumMeal += food.sodium

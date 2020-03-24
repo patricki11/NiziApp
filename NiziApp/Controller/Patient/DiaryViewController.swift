@@ -17,7 +17,7 @@ struct postStruct {
 class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var heightHeader : CGFloat = 44
-
+    
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var DatePicker: UIDatePicker!
     let patientIntID    : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
@@ -38,9 +38,13 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         saveDate(date: formattedDate)
-        getConsumption(Date: formattedDate)
+        //getConsumption(Date: formattedDate)
         SetupDatePicker()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     
     fileprivate func SetupDatePicker() {
@@ -115,20 +119,20 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             guard response.data != nil
                 else { print("temp1"); return }
         })
-        self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
+        //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     
     func saveDate(date: String) {
-         KeychainWrapper.standard.set(date, forKey: "date")
-     }
+        KeychainWrapper.standard.set(date, forKey: "date")
+    }
     
     //MARK: Table Functions
     
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return breakfastFoods.count
@@ -143,44 +147,44 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-     /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return NSLocalizedString("Breakfast", comment: "Category")
-        case 1:
-            return NSLocalizedString("Lunch", comment: "Category")
-        case 2:
-            return NSLocalizedString("Dinner", comment: "Category")
-        case 3:
-            return NSLocalizedString("Snacks", comment: "Category")
-        default:
-            return ""
-        }
-    }*/
+    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     switch section {
+     case 0:
+     return NSLocalizedString("Breakfast", comment: "Category")
+     case 1:
+     return NSLocalizedString("Lunch", comment: "Category")
+     case 2:
+     return NSLocalizedString("Dinner", comment: "Category")
+     case 3:
+     return NSLocalizedString("Snacks", comment: "Category")
+     default:
+     return ""
+     }
+     }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "diarytablecell", for: indexPath)
         
-             var navigationTitle = ""
-             
-             switch indexPath.section {
-             case 0:
-                navigationTitle = breakfastFoods[indexPath.row].foodName!
-                 break
-             case 1:
-                navigationTitle = lunchFoods[indexPath.row].foodName!
-                 break
-             case 2:
-                 navigationTitle = dinnerFoods[indexPath.row].foodName!
-                 break
-             case 3:
-                navigationTitle = snackFoods[indexPath.row].foodName!
-                break
-             default:
-                 break
-             }
-             cell.textLabel?.text = navigationTitle
-             cell.accessoryType = .detailButton
+        var navigationTitle = ""
+        
+        switch indexPath.section {
+        case 0:
+            navigationTitle = breakfastFoods[indexPath.row].foodName!
+            break
+        case 1:
+            navigationTitle = lunchFoods[indexPath.row].foodName!
+            break
+        case 2:
+            navigationTitle = dinnerFoods[indexPath.row].foodName!
+            break
+        case 3:
+            navigationTitle = snackFoods[indexPath.row].foodName!
+            break
+        default:
+            break
+        }
+        cell.textLabel?.text = navigationTitle
+        cell.accessoryType = .detailButton
         return cell
     }
     
@@ -189,14 +193,15 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
-               consumptions.remove(at: indexPath.row)
-               tableView.beginUpdates()
-               tableView.deleteRows(at: [indexPath], with: .automatic)
-               tableView.endUpdates()
-           }
-       }
+        if editingStyle == .delete {
+            self.Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
+            self.breakfastFoods.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
+            tableView.endUpdates()
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)?.first as! HeaderView
         
@@ -223,5 +228,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-
+ 
+    
+    
 }
