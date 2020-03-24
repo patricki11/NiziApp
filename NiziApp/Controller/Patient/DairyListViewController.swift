@@ -22,6 +22,12 @@ class DairyListViewController: UIViewController {
     var vochtProgress   : Float = 0.0
     
     
+    @IBOutlet weak var ProteinValue: UILabel!
+    @IBOutlet weak var NatriumValue: UILabel!
+    @IBOutlet weak var Kaliumvalue: UILabel!
+    @IBOutlet weak var FiberValue: UILabel!
+    @IBOutlet weak var MoistureValue: UILabel!
+    @IBOutlet weak var KcalValue: UILabel!
     @IBOutlet weak var CalorieLabel: UILabel!
     @IBOutlet weak var GrainLabel: UILabel!
     @IBOutlet weak var ProteinLabel: UILabel!
@@ -44,12 +50,19 @@ class DairyListViewController: UIViewController {
     }
     
     func setProgresss(){
-        ProgressCalorie.setProgress(kcalProgress/2500, animated: true)
+        ProgressCalorie.setProgress(kcalProgress/2000, animated: true)
         ProgressGrain.setProgress(fiberProgress/40, animated: true)
-        ProgressHumidity.setProgress(vochtProgress/3000, animated: true)
-        ProgressProtein.setProgress(proteinProgress/10, animated: true)
-        ProgressSodium.setProgress(sodiumProgress/10, animated: true)
-        ProgressPotassium.setProgress(calciumProgress/20, animated: true)
+        ProgressHumidity.setProgress(vochtProgress/4000, animated: true)
+        ProgressProtein.setProgress(proteinProgress/48, animated: true)
+        ProgressSodium.setProgress(sodiumProgress/1500, animated: true)
+        ProgressPotassium.setProgress(calciumProgress/40, animated: true)
+        ProteinValue.text = proteinProgress.description
+        NatriumValue.text = sodiumProgress.description
+        Kaliumvalue.text = calciumProgress.description
+        FiberValue.text = fiberProgress.description
+        MoistureValue.text = vochtProgress.description
+        KcalValue.text = kcalProgress.description
+        
     }
     
     override func viewDidLoad() {
@@ -63,7 +76,7 @@ class DairyListViewController: UIViewController {
         //print(formattedDate)
         saveDate(date: formattedDate)
         //print(KeychainWrapper.standard.string(forKey: "date")!)
-        setLanguageSpecificText()
+      
         getConsumption(Date: formattedDate)
         SetupDatePicker()
         createLogoutButton()
