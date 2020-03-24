@@ -18,6 +18,8 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var FoodTable: UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!
     
+    @IBOutlet weak var favorietenBtn: UIButton!
+    @IBOutlet weak var ProductenBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +29,20 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
            super.viewWillAppear(animated)
        }
     
+    @IBAction func productAction(_ sender: Any) {
+        favorietenBtn.setTitleColor(.black, for: .normal)
+        ProductenBtn.setTitleColor(.orange, for: .normal)
+    }
     @IBAction func SearchButton(_ sender: Any) {
         searchFood()
+        favorietenBtn.setTitleColor(.black, for: .normal)
+        ProductenBtn.setTitleColor(.orange, for: .normal)
     }
     
     @IBAction func GetFavorites(_ sender: Any) {
         self.GetFavortiesFood()
+        favorietenBtn.setTitleColor(.orange, for: .normal)
+        ProductenBtn.setTitleColor(.black, for: .normal)
     }
     
     //MARK: Table Functions

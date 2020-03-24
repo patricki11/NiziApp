@@ -2333,6 +2333,9 @@
                                                 <state key="normal" title="Producten">
                                                     <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="productAction:" destination="NSB-yu-ycM" eventType="touchUpInside" id="3tx-Cx-N7k"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbZ-fE-Qkn">
                                                 <rect key="frame" x="122" y="0.0" width="71" height="30"/>
@@ -2396,7 +2399,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -2459,7 +2462,9 @@
                     <navigationItem key="navigationItem" title="Voeding zoeken" id="pFe-xD-i1T"/>
                     <connections>
                         <outlet property="FoodTable" destination="fac-Ec-sIX" id="a2M-ii-6Iz"/>
+                        <outlet property="ProductenBtn" destination="mNQ-wc-8x1" id="W10-JS-RDY"/>
                         <outlet property="SearchFoodInput" destination="HfK-KZ-3XE" id="ojg-aX-oH1"/>
+                        <outlet property="favorietenBtn" destination="hTR-QH-7Hi" id="ts1-3d-TgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCm-cS-LWy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3984,6 +3989,7 @@
         <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hfK-cx-9ss"/>
         <segue reference="Igl-T5-g7P"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
