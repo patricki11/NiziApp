@@ -17,8 +17,7 @@
 		21488B1B239E53E2004D31C8 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21488B1A239E53E2004D31C8 /* Token.swift */; };
 		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */; };
-		214DB7AB255C2A4D003FFCA7 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AA255C2A4D003FFCA7 /* Food.swift */; };
-		214DB7AE255C2C37003FFCA7 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AD255C2C37003FFCA7 /* Patient.swift */; };
+		214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AD255C2C37003FFCA7 /* NewPatient.swift */; };
 		214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */; };
 		214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB023BF804A003311A1 /* Restrictions.swift */; };
 		214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */; };
@@ -78,8 +77,7 @@
 		21488B1A239E53E2004D31C8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOverviewViewController.swift; sourceTree = "<group>"; };
-		214DB7AA255C2A4D003FFCA7 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		214DB7AD255C2C37003FFCA7 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		214DB7AD255C2C37003FFCA7 /* NewPatient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatient.swift; sourceTree = "<group>"; };
 		214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDietaryGuidelines.swift; sourceTree = "<group>"; };
 		214F5EB023BF804A003311A1 /* Restrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restrictions.swift; sourceTree = "<group>"; };
 		214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientGuidelineTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,8 +159,7 @@
 		214DB7A9255C2A27003FFCA7 /* v2_API */ = {
 			isa = PBXGroup;
 			children = (
-				214DB7AA255C2A4D003FFCA7 /* Food.swift */,
-				214DB7AD255C2C37003FFCA7 /* Patient.swift */,
+				214DB7AD255C2C37003FFCA7 /* NewPatient.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -454,11 +451,10 @@
 				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
 				214F7E1223C1F850002D670A /* EditPatientViewController.swift in Sources */,
-				214DB7AB255C2A4D003FFCA7 /* Food.swift in Sources */,
 				9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */,
 				931298BF23BF6F140082D644 /* MealDetailViewController.swift in Sources */,
 				9322A70F23A02A07003F136D /* ConsumptionView.swift in Sources */,
-				214DB7AE255C2C37003FFCA7 /* Patient.swift in Sources */,
+				214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */,
 				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				2154CFDF2429728900E96AEF /* TableTableViewController.swift in Sources */,
