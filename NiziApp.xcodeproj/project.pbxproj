@@ -18,6 +18,8 @@
 		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */; };
 		214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AD255C2C37003FFCA7 /* NewPatient.swift */; };
+		214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7B9255C37BE003FFCA7 /* newFood.swift */; };
+		214DB7BD255C37D0003FFCA7 /* NewRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7BC255C37D0003FFCA7 /* NewRole.swift */; };
 		214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */; };
 		214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB023BF804A003311A1 /* Restrictions.swift */; };
 		214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */; };
@@ -78,6 +80,8 @@
 		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOverviewViewController.swift; sourceTree = "<group>"; };
 		214DB7AD255C2C37003FFCA7 /* NewPatient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatient.swift; sourceTree = "<group>"; };
+		214DB7B9255C37BE003FFCA7 /* newFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newFood.swift; sourceTree = "<group>"; };
+		214DB7BC255C37D0003FFCA7 /* NewRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRole.swift; sourceTree = "<group>"; };
 		214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDietaryGuidelines.swift; sourceTree = "<group>"; };
 		214F5EB023BF804A003311A1 /* Restrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restrictions.swift; sourceTree = "<group>"; };
 		214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientGuidelineTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				214DB7AD255C2C37003FFCA7 /* NewPatient.swift */,
+				214DB7B9255C37BE003FFCA7 /* newFood.swift */,
+				214DB7BC255C37D0003FFCA7 /* NewRole.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -436,8 +442,10 @@
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
 				2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */,
 				9322A708239697B0003F136D /* DietaryManagement.swift in Sources */,
+				214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */,
 				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,
 				214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */,
+				214DB7BD255C37D0003FFCA7 /* NewRole.swift in Sources */,
 				2154CFDC242942D300E96AEF /* DiaryViewController.swift in Sources */,
 				21488B17239E4C57004D31C8 /* Account.swift in Sources */,
 				21488B15239E4B7B004D31C8 /* Auth.swift in Sources */,

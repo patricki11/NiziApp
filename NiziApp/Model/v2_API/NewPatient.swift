@@ -32,9 +32,20 @@ class NewPatient : Codable {
         case gender         = "gender"
         case dateOfBirth    = "date_of_birth"
         case createdAt      = "created_at"
-        case doctor         = "updated_at"
-        case user           = ""
+        case updatedAt      = "updated_at"
+        case doctor         = "doctor"
+        case user           = "user"
     }
     
-    
+    func toJSON() -> [String:Any]{
+        return [
+            "id"            : id as Any,
+            "gender"        : gender as Any,
+            "date_of_birth" : dateOfBirth as Any,
+            "created_at"    : createdAt as Any,
+            "updated_at"    : updatedAt as Any,
+            "doctor"        : doctor as Any,
+            "user"          : user as Any
+        ]
+    }
 }
