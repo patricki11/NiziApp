@@ -171,7 +171,6 @@ class DairyListViewController: UIViewController {
     @IBAction func uitloggen(_ sender: Any) {
         removeAuthorizationToken()
         navigateToLoginPage()
-        
     }
 }
 
