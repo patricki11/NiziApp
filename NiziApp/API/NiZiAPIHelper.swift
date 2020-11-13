@@ -11,8 +11,29 @@ import Alamofire
 
 class NiZiAPIHelper {
     
-    static let baseUrl = "https://appniziapi.azurewebsites.net/api/"
+    static let baseUrl = "http://104.45.16.76:1337/"
 
+    // LOGIN //
+    static func login(withUsername username: String, andPassword password: String) -> DataRequest {
+        let apiMethod = "auth/local"
+        var parameters =
+        [
+            "identifier": username,
+            "password": password
+        ]
+        
+        return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+    }
+    
+    static func login(withToken token: String) ->
+        DataRequest {
+        let apiMethod = "users/me"
+        var header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+            
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    // LOGIN //
+    
     // DOCTORS //
     static func getAllDoctors(withDoctorCode authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/doctor"
@@ -31,12 +52,6 @@ class NiZiAPIHelper {
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authorizationToken)"])
         return AF.request(baseUrl + apiMethod, method: .get, headers: header)
 
-    }
-    
-    static func login(withDoctorCode authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/login/doctor"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     // DOCTORS //
     
@@ -59,12 +74,6 @@ class NiZiAPIHelper {
     
     static func getPatient(byId patientId: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/patient/\(patientId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func login(withPatientCode authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/login/patient"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }

@@ -16,52 +16,40 @@ class ChooseLoginViewController : UIViewController {
     @IBOutlet weak var loginAsDietistButton: UIButton!
     
     func checkIfLoggedIn() {
-        guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { return }
+        guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { print("No authToken saved"); return }
         
-        let isPatientAccount = KeychainWrapper.standard.string(forKey: "patientId") != nil
-        if(isPatientAccount) {
-            patientLoginToApi(authToken: authToken)
-        }
-        else {
-            dietistLoginToApi(authToken: authToken)
-        }
+        login(withSavedToken: authToken)
     }
     
-    func patientLoginToApi(authToken: String) {
-        NiZiAPIHelper.login(withPatientCode: authToken).responseData(completionHandler: { response in
+    func login(withSavedToken authToken: String) {
+        NiZiAPIHelper.login(withToken: authToken).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+                else { print("Failed to log in"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientAccount = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse )
-                else { print("temp2"); return }
+            guard let account = try? jsonDecoder.decode(NewUser.self, from: jsonResponse)
+                else { print("Unable to decode data"); return }
             
-            self.navigateToPatientHomepage(withPatient: patientAccount, withPatientCode: authToken)
+            let isPatientAccount = false // TODO: Get patient or doctor id from call
+            
+            if(isPatientAccount) {
+                self.navigateToPatientHomepage(withPatient: account, withPatientCode: authToken)
+            }
+            else {
+                self.navigateToPatientList(withAccount: account)
+            }
         })
     }
     
-    func dietistLoginToApi(authToken: String) {
-        NiZiAPIHelper.login(withDoctorCode: authToken).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data
-            else { return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let doctorAccount = try? jsonDecoder.decode(DoctorLogin.self, from: jsonResponse )
-            else { return }
-            
-            self.navigateToPatientList(withAccount: doctorAccount)
-        })
-    }
-    
-    func navigateToPatientList(withAccount doctorAccount: DoctorLogin) {
+    func navigateToPatientList(withAccount doctorAccount: NewUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
-        patientListVC.loggedInAccount = doctorAccount
+        patientListVC.loggedInAccount = DoctorLogin() // doctorAccount
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
 
     
-    func navigateToPatientHomepage(withPatient patientAccount: PatientLogin, withPatientCode: String) {
+    func navigateToPatientHomepage(withPatient patientAccount: NewUser, withPatientCode: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         homeVC.token = withPatientCode

@@ -41,6 +41,9 @@
 		2174966C2391913300243B41 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966B2391913300243B41 /* PatientListViewController.swift */; };
 		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
 		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
+		53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB5255E99F80094C3C8 /* NewDoctor.swift */; };
+		53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB7255EA2A20094C3C8 /* NewUser.swift */; };
+		53840FBA255ED9680094C3C8 /* NewUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB9255ED9680094C3C8 /* NewUserLogin.swift */; };
 		83F72D69651889CD514430FE /* Pods_NiziApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */; };
 		931298BF23BF6F140082D644 /* MealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931298BE23BF6F140082D644 /* MealDetailViewController.swift */; };
 		9322A70023966FA7003F136D /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A6FF23966FA7003F136D /* Doctor.swift */; };
@@ -105,6 +108,9 @@
 		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		53840FB5255E99F80094C3C8 /* NewDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDoctor.swift; sourceTree = "<group>"; };
+		53840FB7255EA2A20094C3C8 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
+		53840FB9255ED9680094C3C8 /* NewUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLogin.swift; sourceTree = "<group>"; };
 		931298BE23BF6F140082D644 /* MealDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewController.swift; sourceTree = "<group>"; };
 		9322A6FF23966FA7003F136D /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		9322A701239671BF003F136D /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
@@ -166,6 +172,9 @@
 				214DB7AD255C2C37003FFCA7 /* NewPatient.swift */,
 				214DB7B9255C37BE003FFCA7 /* newFood.swift */,
 				214DB7BC255C37D0003FFCA7 /* NewRole.swift */,
+				53840FB5255E99F80094C3C8 /* NewDoctor.swift */,
+				53840FB7255EA2A20094C3C8 /* NewUser.swift */,
+				53840FB9255ED9680094C3C8 /* NewUserLogin.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -435,12 +444,15 @@
 				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				9322A70D23A02385003F136D /* Diary.swift in Sources */,
 				2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */,
+				53840FBA255ED9680094C3C8 /* NewUserLogin.swift in Sources */,
 				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
+				53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
 				2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */,
+				53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */,
 				9322A708239697B0003F136D /* DietaryManagement.swift in Sources */,
 				214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */,
 				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,

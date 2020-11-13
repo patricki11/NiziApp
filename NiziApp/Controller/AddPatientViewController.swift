@@ -168,7 +168,7 @@ class AddPatientViewController: UIViewController {
     }
     
     func getPatientDataFromDatabase(patient: PatientLogin) {
-        NiZiAPIHelper.login(withPatientCode: (patient.auth?.token?.accessCode!)!).responseData(completionHandler: { response in
+        NiZiAPIHelper.login(withToken: (patient.auth?.token?.accessCode!)!).responseData(completionHandler: { response in
             print("accessCode: ", patient.auth?.token?.accessCode)
             print("auth-guid: ", patient.auth?.guid)
             print("patient-guid: ", patient.patient?.guid)

@@ -42,6 +42,7 @@ class LoginViewController : UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         title = NSLocalizedString("login", comment: "")
+        checkIfLoggedIn()
         setLanguageSpecificText()
         removeKeyboardAfterClickingOutsideField()
     }
@@ -64,41 +65,6 @@ class LoginViewController : UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func patientLoginToApi(credentials: Credentials) {
-        NiZiAPIHelper.login(withPatientCode: credentials.accessToken!).responseData(completionHandler: { response in
-            
-            print(credentials.accessToken)
-            print(credentials.idToken)
-            print(credentials)
-            guard let jsonResponse = response.data
-                else { print("temp1"); return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let patientAccount = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse )
-                else { print("temp2"); return }
-            
-            var patientString = String(patientAccount.patient!.patientId!)
-            self.savePatientId(patientId: patientString)
-            print(patientAccount.patient!.patientId!)
-            self.saveAuthToken(token: credentials.accessToken!)
-            print(credentials.accessToken)
-            self.navigateToPatientHomepage(withPatient: patientAccount, withPatientCode: credentials.accessToken!)
-        })
-    }
-    
-    func dietistLoginToApi(credentials: Credentials) {
-        NiZiAPIHelper.login(withDoctorCode: credentials.accessToken!).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data
-            else { return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let doctorAccount = try? jsonDecoder.decode(DoctorLogin.self, from: jsonResponse )
-            else { return }
-            self.saveAuthToken(token: credentials.accessToken!)
-            self.navigateToPatientList(withAccount: doctorAccount)
-        })
-    }
-    
     func savePatientId(patientId: String) {
         KeychainWrapper.standard.set(patientId, forKey: "patientId")
     }
@@ -107,17 +73,40 @@ class LoginViewController : UIViewController {
         KeychainWrapper.standard.set(token, forKey: "authToken")
     }
     
-    func navigateToPatientList(withAccount doctorAccount: DoctorLogin) {
+    func checkIfLoggedIn() {
+        guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { print("No authToken saved"); return }
+        
+        login(withSavedToken: authToken)
+    }
+    
+    func login(withSavedToken authToken: String) {
+        NiZiAPIHelper.login(withToken: authToken).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data
+                else { print("Failed to log in"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let account = try? jsonDecoder.decode(NewUser.self, from: jsonResponse)
+                else { print("Unable to decode data"); return }
+            
+            if(account.patient != nil) {
+                self.navigateToPatientHomepage(withPatient: account, withPatientCode: authToken)
+            }
+            else if(account.doctor != nil) {
+                self.navigateToPatientList(withAccount: account)
+            }
+        })
+    }
+    
+    func navigateToPatientList(withAccount doctorAccount: NewUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
         print(doctorAccount)
-        patientListVC.loggedInAccount = doctorAccount
-        print(patientListVC.loggedInAccount)
+        //patientListVC.loggedInAccount = doctorAccount
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
 
     
-    func navigateToPatientHomepage(withPatient patientAccount: PatientLogin, withPatientCode: String) {
+    func navigateToPatientHomepage(withPatient patientAccount: NewUser, withPatientCode: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         homeVC.token = withPatientCode
@@ -128,29 +117,38 @@ class LoginViewController : UIViewController {
     @IBAction func LoginButton(_ sender: Any) {
         let username = usernameField.text ?? ""
         let password = passwordField.text ?? ""
-        Auth0
-            .authentication()
-            .login(
-            usernameOrEmail: username,
-            password: password,
-            realm: "Username-Password-Authentication",
-            audience: "appnizi.nl/api",
-            scope: "openid profile")
-            .start { result in
-                print(result)
-                switch result {
-                case .success(let credentials):
-                    if(self.isPatient) { self.patientLoginToApi(credentials: credentials) }
-                    if(self.isDietist) { self.dietistLoginToApi(credentials: credentials) }
-                case .failure(let error):
-                    print("Failed with \(error)")
-                    self.showFailedToLoginMessage()
-                }
-        }
+        
+        NiZiAPIHelper.login(withUsername: username, andPassword: password).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data else { return }
+            
+            if(response.response?.statusCode == 400) {
+                self.showFailedToLoginMessage()
+                return
+            }
+            
+            var result = String(data: response.data!, encoding: .utf8)
+            //print(result)
+            
+            var jsonDecoder = JSONDecoder()
+            guard let login = try? jsonDecoder.decode(NewUserLogin.self, from: jsonResponse) else { print("Unable to decode form json"); return }
+            
+            print("Decoded")
+            self.saveAuthToken(token: login.jwt!)
+            
+            if(login.user.role?.description == "Patient") {
+                print("isPatient")
+                self.navigateToPatientHomepage(withPatient: login.user, withPatientCode: login.jwt!)
+            }
+            else if(login.user.role?.description == "Doctor"){
+                print("isDoctor")
+                self.navigateToPatientList(withAccount: login.user)
+            }
+            
+        })
     }
     
     func showFailedToLoginMessage() {
-        print("test")
         DispatchQueue.main.async {
             let alertController = UIAlertController(
                 title: NSLocalizedString("wrongCredentialsTitle", comment: "Title"),
