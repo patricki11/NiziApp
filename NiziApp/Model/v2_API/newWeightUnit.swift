@@ -9,28 +9,35 @@
 import Foundation
 
 class newWeightUnit : Codable {
-    var id : Int = 0
-    var unit : String = ""
-    var short : String = ""
-    var createdAt : String = ""
-    var updatedAt : String = ""
+    var id        : Int?    = 0
+    var unit      : String? = ""
+    var short     : String? = ""
+    var createdAt : String? = ""
+    var updatedAt : String? = ""
     
-    init(id : Int, unit : String, short : String, createdAt : String, updatedAt : String){
-        self.id = id
-        self.unit = unit
-        self.short = short
+    init(id : Int?, unit : String?, short : String?, createdAt : String?, updatedAt : String?){
+        self.id        = id
+        self.unit      = unit
+        self.short     = short
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
     
     enum CodingKeys : String, CodingKey {
-        case id = "id"
-        case unit = "unit"
-        case short = "short"
+        case id        = "id"
+        case unit      = "unit"
+        case short     = "short"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
     
-    
-    
+    func toJSON() -> [String:Any]{
+        return [
+            "id"         : id as Any,
+            "unit"       : unit as Any,
+            "short"      : short as Any,
+            "created_at" : createdAt as Any,
+            "updated_at" : updatedAt as Any
+        ]
+    }
 }
