@@ -34,6 +34,41 @@ class NiZiAPIHelper {
     }
     // LOGIN //
     
+    // NEW CONSUMPTION //
+    static func readAllConsumption(withToken token : String,withPatient patientId: Int, withStartDate startDate: String, withEndDate endDate : String) -> DataRequest{
+        let apiMethod = "consumptions"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        let parameters =
+        [
+            "patient.id":patientId,
+            "date_gt": startDate,
+            "date_lt": endDate
+        ] as [String : Any]
+        
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func readConsumption(withToken token : String,withConsumptionId consumptionId: Int) -> DataRequest{
+        let apiMethod = "consumptions/\(consumptionId)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func deleteConsumption2(withToken token : String, withConsumptionId consumptionId: Int) -> DataRequest{
+        let apiMethod = "consumptions/\(consumptionId)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    
+    
+    
+    
+    
+    //NEW CONSUMPTION //
+    
+    
+    
     // DOCTORS //
     static func getAllDoctors(withDoctorCode authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/doctor"

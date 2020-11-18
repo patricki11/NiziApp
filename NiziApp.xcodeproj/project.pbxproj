@@ -20,6 +20,8 @@
 		214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AD255C2C37003FFCA7 /* NewPatient.swift */; };
 		214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7B9255C37BE003FFCA7 /* newFood.swift */; };
 		214DB7BD255C37D0003FFCA7 /* NewRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7BC255C37D0003FFCA7 /* NewRole.swift */; };
+		214DB7D425653AD9003FFCA7 /* newWeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7D325653AD9003FFCA7 /* newWeightUnit.swift */; };
+		214DB7D725653E7C003FFCA7 /* newFoodMealComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7D625653E7C003FFCA7 /* newFoodMealComponent.swift */; };
 		214F5EAF23BF7FD8003311A1 /* PatientDietaryGuidelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */; };
 		214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB023BF804A003311A1 /* Restrictions.swift */; };
 		214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */; };
@@ -85,6 +87,8 @@
 		214DB7AD255C2C37003FFCA7 /* NewPatient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatient.swift; sourceTree = "<group>"; };
 		214DB7B9255C37BE003FFCA7 /* newFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newFood.swift; sourceTree = "<group>"; };
 		214DB7BC255C37D0003FFCA7 /* NewRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRole.swift; sourceTree = "<group>"; };
+		214DB7D325653AD9003FFCA7 /* newWeightUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newWeightUnit.swift; sourceTree = "<group>"; };
+		214DB7D625653E7C003FFCA7 /* newFoodMealComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newFoodMealComponent.swift; sourceTree = "<group>"; };
 		214F5EAE23BF7FD8003311A1 /* PatientDietaryGuidelines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDietaryGuidelines.swift; sourceTree = "<group>"; };
 		214F5EB023BF804A003311A1 /* Restrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restrictions.swift; sourceTree = "<group>"; };
 		214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientGuidelineTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				53840FB5255E99F80094C3C8 /* NewDoctor.swift */,
 				53840FB7255EA2A20094C3C8 /* NewUser.swift */,
 				53840FB9255ED9680094C3C8 /* NewUserLogin.swift */,
+				214DB7D325653AD9003FFCA7 /* newWeightUnit.swift */,
+				214DB7D625653E7C003FFCA7 /* newFoodMealComponent.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				2154CFDF2429728900E96AEF /* TableTableViewController.swift in Sources */,
+				214DB7D725653E7C003FFCA7 /* newFoodMealComponent.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
 				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
@@ -492,6 +499,7 @@
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,
 				9322A71123A02CA5003F136D /* Weight.swift in Sources */,
+				214DB7D425653AD9003FFCA7 /* newWeightUnit.swift in Sources */,
 				934F537523C14DCA007745AF /* CreateMealViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,13 +10,13 @@ import Foundation
 
 class NewFood : Codable {
     var id                : Int?               = 0
-    var weight            : WeightUnit?        = nil
+    var weight            : newWeightUnit?     = nil
     var createdAt         : String?            = ""
     var updatedAt         : String?            = ""
     var name              : String?            = ""
-    var foodMealComponent : FoodMealComponent? = nil
+    var foodMealComponent : newFoodMealComponent? = nil
     
-    init(id : Int?, weight : WeightUnit?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : FoodMealComponent?){
+    init(id : Int?, weight : newWeightUnit?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?){
         self.id                = id
         self.weight            = weight
         self.createdAt         = createdAt
