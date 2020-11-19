@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 class PatientOverviewViewController : UIViewController
 {
-    weak var patient : Patient!
+    weak var patient : NewPatient!
     @IBOutlet weak var averageBetweenLabel: UILabel!
     
     @IBOutlet weak var patientNameLabel: UILabel!
@@ -84,7 +84,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setLanguageSpecificText() {
-        patientNameLabel.text = "\(patient.firstName!) \(patient.lastName!)"
+        patientNameLabel.text = "\(patient.user?.firstname!) \(patient.user?.lastname!)"
     }
     
     func setupTableView() {
@@ -95,8 +95,8 @@ class PatientOverviewViewController : UIViewController
     @IBAction func editPatient(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientViewController
-        patientDetailVC.patientId = patient.patientId
-        print(patient.patientId)
+        patientDetailVC.patientId = patient.id
+        print(patient.id)
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
@@ -116,7 +116,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func getDietaryGuidelines() {
-        NiZiAPIHelper.getDietaryManagement(forDiet: patient.patientId!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
+        NiZiAPIHelper.getDietaryManagement(forDiet: patient.id!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
             guard let jsonResponse = response.data else { return }
 
