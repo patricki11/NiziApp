@@ -83,7 +83,7 @@ class NiZiAPIHelper {
     }
 
     static func getPatients(forDoctor doctorId: Int, withAuthorization authorizationToken: String) -> DataRequest {
-        let apiMethod = "v1/doctor/\(doctorId)/patients"
+        let apiMethod = "patients?doctor.id_eq=\(doctorId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authorizationToken)"])
         return AF.request(baseUrl + apiMethod, method: .get, headers: header)
 

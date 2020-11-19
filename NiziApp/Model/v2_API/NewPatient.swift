@@ -14,10 +14,10 @@ class NewPatient : Codable {
     var dateOfBirth : String = ""
     var createdAt   : String = ""
     var updatedAt   : String = ""
-    var doctor      : Int? = 0
-    var user        : Int? = 0
+    var doctor      : NewDoctor?
+    var user        : NewUser?
     
-    init(id: Int?, gender: String, dateOfBirth: String, createdAt: String,updatedAt: String, doctor: Int?, user: Int?){
+    init(id: Int?, gender: String, dateOfBirth: String, createdAt: String,updatedAt: String, doctor: NewDoctor?, user: NewUser){
         self.id             = id
         self.gender         = gender
         self.dateOfBirth    = dateOfBirth

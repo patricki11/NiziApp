@@ -15,10 +15,12 @@ class PatientListViewController: UIViewController {
 
     weak var loggedInAccount : NewUser!
     
-    var patientList: [Patient] = []
+    var patientList: [NewPatient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("patientList", comment: "")
+        print("Test2")
+        print(Bool(loggedInAccount == nil))
         getAllPatients()
         setupDataTable()
         setupFilterTextfield()
@@ -66,13 +68,17 @@ class PatientListViewController: UIViewController {
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
     
-    func getAllPatients() {     
-        NiZiAPIHelper.getPatients(forDoctor: 3, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+    func getAllPatients() {
+        if(loggedInAccount == nil) {
+            print("No Logged In Account?!?")
+        }
+        
+        NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctor!.id!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
             else { return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientList = try? jsonDecoder.decode( [Patient].self, from: jsonResponse )
+            guard let patientList = try? jsonDecoder.decode( [NewPatient].self, from: jsonResponse )
             else { return }
             
             self.patientList = patientList
@@ -102,19 +108,19 @@ extension PatientListViewController: UITableViewDataSource {
         let patient = filteredPatientList[indexPath.row]
         
         cell.patientNumber.text = String(indexPath.row)
-        cell.patientName.text = patient.firstName! + " " + patient.lastName!
+        cell.patientName.text = (patient.user?.firstname)! + " " + (patient.user?.lastname)!
         return cell
 
     }
 
-    func getFilteredPatientList() -> [Patient] {
+    func getFilteredPatientList() -> [NewPatient] {
         let patientName = patientSearchField?.text ?? ""
         
         if(patientName == "") {
             return patientList
         }
         else {
-            return patientList.filter { ("\($0.firstName?.lowercased()) \($0.lastName?.lowercased())").contains(patientName.lowercased())}
+            return patientList.filter { ("\($0.user?.firstname?.lowercased()) \($0.user?.lastname?.lowercased())").contains(patientName.lowercased())}
         }
     }
     
@@ -130,10 +136,10 @@ extension PatientListViewController : UITableViewDelegate {
         navigateToPatientDetailView(patient: filteredPatientList[indexPath.row])
     }
     
-    func navigateToPatientDetailView(patient: Patient) {
+    func navigateToPatientDetailView(patient: NewPatient) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
-        patientDetailVC.patient = patient
+        //patientDetailVC.patient = patient
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
 }

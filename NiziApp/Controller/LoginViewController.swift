@@ -76,6 +76,8 @@ class LoginViewController : UIViewController {
     func checkIfLoggedIn() {
         guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { print("No authToken saved"); return }
         
+        print(authToken)
+        
         login(withSavedToken: authToken)
     }
     
@@ -100,8 +102,10 @@ class LoginViewController : UIViewController {
     func navigateToPatientList(withAccount doctorAccount: NewUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
-        print(doctorAccount)
-        //patientListVC.loggedInAccount = doctorAccount
+        patientListVC.loggedInAccount = doctorAccount
+        
+        print("Test")
+        print(Bool(patientListVC.loggedInAccount == nil))
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
 
@@ -128,23 +132,19 @@ class LoginViewController : UIViewController {
             }
             
             var result = String(data: response.data!, encoding: .utf8)
-            //print(result)
+            print(result)
             
             var jsonDecoder = JSONDecoder()
             guard let login = try? jsonDecoder.decode(NewUserLogin.self, from: jsonResponse) else { print("Unable to decode form json"); return }
             
-            print("Decoded")
             self.saveAuthToken(token: login.jwt!)
             
             if(login.user.role?.description == "Patient") {
-                print("isPatient")
                 self.navigateToPatientHomepage(withPatient: login.user, withPatientCode: login.jwt!)
             }
             else if(login.user.role?.description == "Doctor"){
-                print("isDoctor")
                 self.navigateToPatientList(withAccount: login.user)
             }
-            
         })
     }
     
