@@ -9,13 +9,12 @@
 import Foundation
 
 class NewUser : Codable {
-    //var jwt        : String? = ""
     var id         : Int? = 0
     var username   : String? = ""
     var email      : String? = ""
     var provider   : String? = ""
     var confirmed  : Bool? = false
-    var role       : NewRole?
+    var role       : NewRole? = nil
     var created_at : String? = ""
     var updated_at : String? = ""
     var firstname  : String? = ""
@@ -24,10 +23,9 @@ class NewUser : Codable {
     var patient    : Int? = 0
     var first_name : String? = ""
     var last_name  : String? = ""
-    var doctor     : Int? = 0
+    var doctor     : NewDoctor? = nil
     
-    init(/*jwt: String?,*/ id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: NewRole, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String?, last_name: String?, doctor: Int?) {
-        //self.jwt        = jwt
+    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: NewRole, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String?, last_name: String?, doctor: NewDoctor?) {
         self.id         = id
         self.username   = username
         self.email      = email
@@ -46,7 +44,6 @@ class NewUser : Codable {
     }
     
     enum CodingKeys : String, CodingKey {
-        //case jwt        = "jwt"
         case id         = "id"
         case username   = "username"
         case email      = "email"
@@ -65,7 +62,6 @@ class NewUser : Codable {
     
     func toJSON() -> [String:Any] {
         return [
-            //"jwt"        : jwt as Any,
             "id"         : id as Any,
             "username"   : username as Any,
             "email"      : email as Any,

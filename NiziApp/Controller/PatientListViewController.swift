@@ -13,7 +13,7 @@ class PatientListViewController: UIViewController {
     @IBOutlet weak var patientListTableView : UITableView?
     @IBOutlet weak var patientSearchField : UITextField?
 
-    weak var loggedInAccount : DoctorLogin!
+    weak var loggedInAccount : NewUser!
     
     var patientList: [Patient] = []
     override func viewDidLoad() {
@@ -84,7 +84,7 @@ class PatientListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newPatientVC = storyboard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
         
-        newPatientVC.loggedInAccount = self.loggedInAccount
+        //newPatientVC.loggedInAccount = self.loggedInAccount
         self.navigationController?.pushViewController(newPatientVC, animated: true)
     }
 }

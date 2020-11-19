@@ -44,7 +44,7 @@ class ChooseLoginViewController : UIViewController {
     func navigateToPatientList(withAccount doctorAccount: NewUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
-        patientListVC.loggedInAccount = DoctorLogin() // doctorAccount
+        //patientListVC.loggedInAccount = DoctorLogin() // doctorAccount
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
 

@@ -26,8 +26,8 @@ class NewDoctor : Codable {
     enum CodingKeys : String, CodingKey {
         case id         = "id"
         case location   = "location"
-        case updated_at = "description"
-        case created_at = "type"
+        case updated_at = "updated_at"
+        case created_at = "created_at"
         case user       = "user"
     }
     
