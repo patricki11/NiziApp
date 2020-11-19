@@ -19,9 +19,9 @@ class PatientListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("patientList", comment: "")
-        print("Test2")
-        print(Bool(loggedInAccount == nil))
-        getAllPatients()
+        //getAllPatients()
+        print("ViewDidLoad")
+        print(loggedInAccount)
         setupDataTable()
         setupFilterTextfield()
         createLogoutButton()
@@ -139,7 +139,7 @@ extension PatientListViewController : UITableViewDelegate {
     func navigateToPatientDetailView(patient: NewPatient) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
-        patientDetailVC.patient = patient
+        //patientDetailVC.patient = patient
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
 }

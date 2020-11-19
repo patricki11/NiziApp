@@ -76,7 +76,7 @@ class LoginViewController : UIViewController {
     func checkIfLoggedIn() {
         guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { print("No authToken saved"); return }
         
-        print(authToken)
+        //print(authToken)
         
         login(withSavedToken: authToken)
     }
@@ -132,7 +132,7 @@ class LoginViewController : UIViewController {
             }
             
             var result = String(data: response.data!, encoding: .utf8)
-            print(result)
+            //print(result)
             
             var jsonDecoder = JSONDecoder()
             guard let login = try? jsonDecoder.decode(NewUserLogin.self, from: jsonResponse) else { print("Unable to decode form json"); return }
