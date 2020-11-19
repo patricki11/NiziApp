@@ -13,15 +13,13 @@ class PatientListViewController: UIViewController {
     @IBOutlet weak var patientListTableView : UITableView?
     @IBOutlet weak var patientSearchField : UITextField?
 
-    weak var loggedInAccount : NewUser!
+    var loggedInAccount : NewUser!
     
     var patientList: [NewPatient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("patientList", comment: "")
-        //getAllPatients()
-        print("ViewDidLoad")
-        print(loggedInAccount)
+        getAllPatients()
         setupDataTable()
         setupFilterTextfield()
         createLogoutButton()
@@ -69,10 +67,6 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
-        if(loggedInAccount == nil) {
-            print("No Logged In Account?!?")
-        }
-        
         NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctor!.id!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
             else { return }

@@ -103,9 +103,7 @@ class LoginViewController : UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientListVC = storyboard.instantiateViewController(withIdentifier: "PatientListViewController") as! PatientListViewController
         patientListVC.loggedInAccount = doctorAccount
-        
-        print("Test")
-        print(Bool(patientListVC.loggedInAccount == nil))
+
         self.navigationController?.pushViewController(patientListVC, animated: true)
     }
 
