@@ -67,13 +67,16 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
-        NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctor!.id!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctorObject!.id!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
-            else { return }
+                else { return }
+            
+            var result = String(data: response.data!, encoding: .utf8)
+            print(result)
             
             let jsonDecoder = JSONDecoder()
             guard let patientList = try? jsonDecoder.decode( [NewPatient].self, from: jsonResponse )
-            else { return }
+                else { print("unable to parse to [NewPatient]"); return }
             
             self.patientList = patientList
             self.patientListTableView?.reloadData()
