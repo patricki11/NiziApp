@@ -24,12 +24,12 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var MealTime: UISegmentedControl!
     var mealtimeString: String = ""
     
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
     }
-    var foodItem: Food?
+    var foodItem: NewFood?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,28 +47,28 @@ class FoodDetailViewController: UIViewController {
     {
         DetailTitle.text = foodItem?.name
         
-        let url = URL(string: foodItem!.picture)
+        let url = URL(string: (foodItem!.foodMealComponent?.imageUrl!)!)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = String(format:"%.1f",foodItem!.kCal)
+        let calorieString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         Kcal.text = calorieString
         
-        let proteinString : String = String(format:"%.1f",foodItem!.protein)
+        let proteinString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         Protein.text = proteinString
         
-        let fiberString : String = String(format:"%.1f",foodItem!.fiber)
+        let fiberString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         Fiber.text = fiberString
         
-        let calciumString : String = String(format:"%.1f",foodItem!.calcium)
+        let calciumString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         Calcium.text = calciumString
         
-        let sodiumString : String = String(format:"%.1f",foodItem!.sodium)
+        let sodiumString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         Sodium.text = sodiumString
         
-        let portionSizeString : String = String(format:"%.1f",foodItem!.portionSize)
+        let portionSizeString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         portionSizeLabel.text = portionSizeString
         
-        let waterString : String = String(format:"%.1f",foodItem!.water)
+        let waterString : String = (foodItem?.foodMealComponent!.kcal!.description)!
         WaterLabel.text = waterString
         
     }
@@ -78,13 +78,16 @@ class FoodDetailViewController: UIViewController {
     }
     
     func Addfavorite() {
+        /*
         NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
             guard let jsonResponse = response.request
                 else { print("Not succeeded"); return }
             print(response.request)
         })
+ */
     }
     func addConsumption() {
+        /*
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
@@ -114,6 +117,7 @@ class FoodDetailViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         })
+ */
     }
     
     func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double, mealTime: String ) -> Consumption {

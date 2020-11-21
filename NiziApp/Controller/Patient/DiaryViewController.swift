@@ -20,7 +20,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var DatePicker: UIDatePicker!
-    let patientIntID    : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    //let patientIntID    : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var consumptions    : [ConsumptionView] = []
     var breakfastFoods   : [ConsumptionView] = []
     var lunchFoods       : [ConsumptionView] = []
@@ -32,14 +32,14 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
-        print(KeychainWrapper.standard.string(forKey: "patientId"))
+        //print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         saveDate(date: formattedDate)
         //getConsumption(Date: formattedDate)
-        SetupDatePicker()
+        //SetupDatePicker()
         
     }
     
@@ -99,7 +99,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        NiZiAPIHelper.getAllConsumptions(forPatient: patientIntID!, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        /*NiZiAPIHelper.getAllConsumptions(forPatient: patientIntID!, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -111,7 +111,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.consumptions = consumptionlist.consumptions
             self.SortFood()
             self.diaryTable?.reloadData()
-        })
+        })*/
     }
     
     func Deleteconsumption(Id id: Int){
@@ -251,7 +251,4 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         detailFoodVC.foodItem = food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
- 
-    
-    
 }

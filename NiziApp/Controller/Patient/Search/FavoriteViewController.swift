@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var FavoriteTable: UITableView!
-    var foodlist : [Food] = []
+    var foodlist : [NewFood] = []
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
         searchFoodCell.textLabel?.text = foodlist[idx].name
-        let url = URL(string: foodlist[idx].picture)
+        let url = URL(string: foodlist[idx].name!)
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
@@ -67,7 +67,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON

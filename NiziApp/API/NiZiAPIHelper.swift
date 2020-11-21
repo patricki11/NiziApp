@@ -71,14 +71,14 @@ class NiZiAPIHelper {
     
     //NEW SEARCH FOOD//
     static func getFood(withToken token : String,withFood food: String) -> DataRequest{
-        let apiMethod = "consumptions"
+        let apiMethod = "foods?name_eq=\(food)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
         [
             "name_eq":food
         ] as [String : Any]
         
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
     //NEW SEARCH FOOD//

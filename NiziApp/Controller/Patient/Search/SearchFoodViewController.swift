@@ -12,9 +12,9 @@ import SwiftKeychainWrapper
 
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var foodlist : [Food] = []
+    var foodlist : [NewFood] = []
     var buttonTag : Int = 0
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    let patientIntID : Int? = 1
     @IBOutlet weak var FoodTable: UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!
     
@@ -54,18 +54,19 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
-        let foodResult : Food = foodlist[idx]
+        let foodResult : NewFood = foodlist[idx]
         searchFoodCell.foodTitle?.text = foodlist[idx].name
-        let url = URL(string: foodResult.picture)
+        let url = URL(string: (foodResult.foodMealComponent?.imageUrl)!)
         searchFoodCell.foodImage?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
-        let portionSizeString : String = String(format:"%.f",foodResult.portionSize)
-        searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + foodResult.weightUnit)
+        let portionSizeString : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
+        searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + (foodResult.weight?.unit)!)
         searchFoodCell.foodItem = foodResult
         return searchFoodCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Clicked cell")
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
@@ -89,13 +90,13 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     //MARK: API CALLS
 
     func searchFood() {
-        NiZiAPIHelper.searchProducts(byName: SearchFoodInput.text!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getFood(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withFood: SearchFoodInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
@@ -110,7 +111,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let foodlistJSON = try? jsonDecoder.decode( [Food].self, from: jsonResponse )
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON

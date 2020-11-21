@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 class DairyListViewController: UIViewController {
     
     
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var consumptions    : [ConsumptionView] = []
     var kcalProgress    : Float = 0.0
     var sodiumProgress  : Float = 0.0
@@ -68,7 +68,7 @@ class DairyListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(KeychainWrapper.standard.string(forKey: "patientId"))
+        //print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
@@ -77,7 +77,7 @@ class DairyListViewController: UIViewController {
         saveDate(date: formattedDate)
         //print(KeychainWrapper.standard.string(forKey: "date")!)
       
-        getConsumption(Date: formattedDate)
+        //getConsumption(Date: formattedDate)
         SetupDatePicker()
         createLogoutButton()
     }
@@ -89,7 +89,7 @@ class DairyListViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool){
-        getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
+        //getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
@@ -103,13 +103,13 @@ class DairyListViewController: UIViewController {
         // Apply date format
         let selectedDate: String = dateFormatter.string(from: sender.date)
         
-        getConsumption(Date: selectedDate)
+        //getConsumption(Date: selectedDate)
         saveDate(date: selectedDate)
         //print("Selected value \(selectedDate)")
     }
     
     // API Calls
-    func getConsumption(Date date: String) {
+    /*func getConsumption(Date date: String) {
         NiZiAPIHelper.getAllConsumptions(forPatient: patientIntID!, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
@@ -129,7 +129,7 @@ class DairyListViewController: UIViewController {
             self.setProgresss()
             
         })
-    }
+    }*/
     
     
     func setLanguageSpecificText() {
@@ -157,8 +157,8 @@ class DairyListViewController: UIViewController {
     }
     
     func removeAuthorizationToken() {
-        KeychainWrapper.standard.removeObject(forKey: "authToken")
-        KeychainWrapper.standard.removeObject(forKey: "patientId")
+        //KeychainWrapper.standard.removeObject(forKey: "authToken")
+        //KeychainWrapper.standard.removeObject(forKey: "patientId")
     }
     
     func navigateToLoginPage() {
@@ -169,7 +169,7 @@ class DairyListViewController: UIViewController {
     }
     
     @IBAction func uitloggen(_ sender: Any) {
-        removeAuthorizationToken()
+        //removeAuthorizationToken()
         navigateToLoginPage()
     }
 }

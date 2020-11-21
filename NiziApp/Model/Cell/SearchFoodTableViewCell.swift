@@ -11,8 +11,8 @@ import SwiftKeychainWrapper
 
 class SearchFoodTableViewCell: UITableViewCell {
     
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
-    var foodItem : Food?
+    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    var foodItem : NewFood?
     
 
     @IBOutlet weak var foodImage: UIImageView!
@@ -37,10 +37,10 @@ class SearchFoodTableViewCell: UITableViewCell {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00"
         
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: "Ontbijt")
+        /*let consumption = self.createNewConsumptionObject(foodName: foodItem!.name!, kCal: foodItem!.foodMealComponent.kcal!, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: "Ontbijt")
         NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de voedsel is toegevoegd.
-        })
+        })*/
     }
     
     func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double, mealTime: String ) -> Consumption {
