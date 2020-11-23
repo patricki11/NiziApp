@@ -84,7 +84,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setLanguageSpecificText() {
-        patientNameLabel.text = "\(patient.user?.firstname!) \(patient.user?.lastname!)"
+        patientNameLabel.text = "\(patient.userObject?.first_name!) \(patient.userObject?.last_name!)"
     }
     
     func setupTableView() {

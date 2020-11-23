@@ -67,7 +67,7 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
-        NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctorObject!.id!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctor!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
                 else { return }
             
@@ -105,7 +105,7 @@ extension PatientListViewController: UITableViewDataSource {
         let patient = filteredPatientList[indexPath.row]
         
         cell.patientNumber.text = String(indexPath.row)
-        cell.patientName.text = (patient.user?.firstname)! + " " + (patient.user?.lastname)!
+        cell.patientName.text = (patient.userObject?.first_name)! + " " + (patient.userObject?.last_name)!
         return cell
 
     }
@@ -117,7 +117,7 @@ extension PatientListViewController: UITableViewDataSource {
             return patientList
         }
         else {
-            return patientList.filter { ("\($0.user?.firstname?.lowercased()) \($0.user?.lastname?.lowercased())").contains(patientName.lowercased())}
+            return patientList.filter { ("\($0.userObject?.first_name?.lowercased()) \($0.userObject?.last_name?.lowercased())").contains(patientName.lowercased())}
         }
     }
     

@@ -14,7 +14,8 @@ class NewUser : Codable {
     var email      : String? = ""
     var provider   : String? = ""
     var confirmed  : Bool? = false
-    var role       : NewRole? = nil
+    var role       : Int? = 0
+    var roleObject : NewRole? = nil
     var created_at : String? = ""
     var updated_at : String? = ""
     var firstname  : String? = ""
@@ -27,7 +28,7 @@ class NewUser : Codable {
     var doctor     : Int? = 0
     var doctorObject : NewDoctor? = nil
     
-    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: NewRole, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String?, last_name: String?, doctor: Int?) {
+    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: Int?, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String?, last_name: String?, doctor: Int?) {
         self.id         = id
         self.username   = username
         self.email      = email
@@ -53,7 +54,13 @@ class NewUser : Codable {
         self.email = try container.decode(String?.self, forKey: .email)
         self.provider = try container.decode(String?.self, forKey: .provider)
         self.confirmed = try container.decode(Bool?.self, forKey: .confirmed)
-        self.role = try container.decode(NewRole?.self, forKey: .role)
+        
+        self.role = try? container.decode(Int?.self, forKey: .role)
+        self.roleObject = try? container.decode(NewRole?.self, forKey: .role)
+        if(roleObject != nil) {
+            self.role = roleObject?.id
+        }
+        
         self.created_at = try container.decode(String?.self, forKey: .created_at)
         self.firstname = try container.decode(String?.self, forKey: .firstname)
         self.lastname = try container.decode(String?.self, forKey: .lastname)
