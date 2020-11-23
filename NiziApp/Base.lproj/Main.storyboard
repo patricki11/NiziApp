@@ -2893,29 +2893,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnV-fR-675">
-                                <rect key="frame" x="0.0" y="-6" width="414" height="120"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VANDAAG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-xh-dBS">
-                                        <rect key="frame" x="8" y="70" width="398" height="23"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdB-X1-DwZ" userLabel="Header">
-                                        <rect key="frame" x="0.0" y="110" width="414" height="68"/>
-                                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.43529411764705883" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="qdB-X1-DwZ" firstAttribute="top" secondItem="HEk-xh-dBS" secondAttribute="bottom" constant="17" id="8c7-9e-5UR"/>
-                                    <constraint firstItem="qdB-X1-DwZ" firstAttribute="centerX" secondItem="UnV-fR-675" secondAttribute="centerX" id="mmi-G1-7xd"/>
-                                    <constraint firstAttribute="bottom" secondItem="qdB-X1-DwZ" secondAttribute="bottom" constant="-58" id="soA-tO-L60"/>
-                                    <constraint firstAttribute="height" constant="120" id="wey-Xh-frI"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="nd3-dI-CLG">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="nd3-dI-CLG">
                                 <rect key="frame" x="49" y="122" width="316.66666666666669" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-sZ-3Qw">
@@ -2960,23 +2938,12 @@
                         <viewLayoutGuide key="safeArea" id="xAf-Ts-zRd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HEk-xh-dBS" firstAttribute="top" secondItem="xAf-Ts-zRd" secondAttribute="top" constant="20" id="5B8-X6-oXP"/>
                             <constraint firstItem="xAf-Ts-zRd" firstAttribute="trailing" secondItem="3nx-ox-QxA" secondAttribute="trailing" id="7hA-zQ-xzx"/>
                             <constraint firstItem="3nx-ox-QxA" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" id="8jf-RO-unE"/>
                             <constraint firstItem="3nx-ox-QxA" firstAttribute="centerX" secondItem="xAf-Ts-zRd" secondAttribute="centerX" id="9Dw-f6-FHc"/>
                             <constraint firstItem="nd3-dI-CLG" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" constant="49" id="9Mi-Wy-cnd"/>
-                            <constraint firstItem="xAf-Ts-zRd" firstAttribute="trailing" secondItem="UnV-fR-675" secondAttribute="trailing" id="CAL-Ns-OVJ"/>
-                            <constraint firstItem="xAf-Ts-zRd" firstAttribute="trailing" secondItem="qdB-X1-DwZ" secondAttribute="trailing" id="JZF-Wh-fD8"/>
-                            <constraint firstItem="nd3-dI-CLG" firstAttribute="top" secondItem="UnV-fR-675" secondAttribute="bottom" constant="8" id="Lid-Rj-kYZ"/>
                             <constraint firstItem="xAf-Ts-zRd" firstAttribute="bottom" secondItem="3nx-ox-QxA" secondAttribute="bottom" id="PNt-AZ-dew"/>
                             <constraint firstItem="3nx-ox-QxA" firstAttribute="top" secondItem="xAf-Ts-zRd" secondAttribute="top" constant="174" id="Y8e-vk-XV1"/>
-                            <constraint firstItem="HEk-xh-dBS" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" constant="8" id="dh7-cl-3py"/>
-                            <constraint firstItem="xAf-Ts-zRd" firstAttribute="trailing" secondItem="HEk-xh-dBS" secondAttribute="trailing" constant="8" id="hR5-0G-et1"/>
-                            <constraint firstItem="qdB-X1-DwZ" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" id="iz7-bd-WTi"/>
-                            <constraint firstItem="UnV-fR-675" firstAttribute="top" secondItem="xAf-Ts-zRd" secondAttribute="top" constant="-50" id="jFE-6x-JLu"/>
-                            <constraint firstItem="UnV-fR-675" firstAttribute="centerX" secondItem="xAf-Ts-zRd" secondAttribute="centerX" id="vXW-hB-dyc"/>
-                            <constraint firstItem="HEk-xh-dBS" firstAttribute="centerX" secondItem="xAf-Ts-zRd" secondAttribute="centerX" id="xuK-Xg-Gft"/>
-                            <constraint firstItem="UnV-fR-675" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" id="yDB-dx-zam"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dagboek" image="Culinary_s" id="xsW-tK-5Um"/>
