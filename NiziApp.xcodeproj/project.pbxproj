@@ -44,6 +44,8 @@
 		2174966C2391913300243B41 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966B2391913300243B41 /* PatientListViewController.swift */; };
 		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
 		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
+		5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */; };
+		5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */; };
 		53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB5255E99F80094C3C8 /* NewDoctor.swift */; };
 		53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB7255EA2A20094C3C8 /* NewUser.swift */; };
 		53840FBA255ED9680094C3C8 /* NewUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB9255ED9680094C3C8 /* NewUserLogin.swift */; };
@@ -114,6 +116,8 @@
 		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryManagement.swift; sourceTree = "<group>"; };
+		5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryRestriction.swift; sourceTree = "<group>"; };
 		53840FB5255E99F80094C3C8 /* NewDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDoctor.swift; sourceTree = "<group>"; };
 		53840FB7255EA2A20094C3C8 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		53840FB9255ED9680094C3C8 /* NewUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLogin.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				214DB7D325653AD9003FFCA7 /* newWeightUnit.swift */,
 				214DB7D625653E7C003FFCA7 /* newFoodMealComponent.swift */,
 				215DA6FB2567CE1F00B242B0 /* newConsumption.swift */,
+				5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */,
+				5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */,
 				934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */,
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
+				5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */,
 				934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */,
 				2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
@@ -488,6 +495,7 @@
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				2154CFDF2429728900E96AEF /* TableTableViewController.swift in Sources */,
 				214DB7D725653E7C003FFCA7 /* newFoodMealComponent.swift in Sources */,
+				5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
 				9322A70B23A01DCE003F136D /* DiaryTableViewCell.swift in Sources */,
 				9322A70023966FA7003F136D /* Doctor.swift in Sources */,
