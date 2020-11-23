@@ -62,7 +62,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         searchFoodCell.foodImage?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         let portionSizeString : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
-        searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + (foodResult.weight?.unit)!)
+        searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + (foodResult.weightObject?.unit)!)
         searchFoodCell.foodItem = foodResult
         return searchFoodCell
     }

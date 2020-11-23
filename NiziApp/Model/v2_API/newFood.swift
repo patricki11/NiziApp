@@ -10,27 +10,46 @@ import Foundation
 
 class NewFood : Codable {
     var id                : Int?               = 0
-    var weight            : newWeightUnit?     = nil
+    var weightObject      : newWeightUnit?     = nil
+    var weightId          : Int?               = 0
     var createdAt         : String?            = ""
     var updatedAt         : String?            = ""
     var name              : String?            = ""
     var foodMealComponent : newFoodMealComponent? = nil
     
-    init(id : Int?, weight : newWeightUnit?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?){
+    init(id : Int?, weight : Int?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?, weightObject : newWeightUnit?){
         self.id                = id
-        self.weight            = weight
+        self.weightId          = weight
         self.createdAt         = createdAt
         self.updatedAt         = updatedAt
         self.name              = name
         self.foodMealComponent = foodMealComponent
+        self.weightObject      = weightObject
     }
     
     enum CodingKeys : String, CodingKey {
         case id                = "id"
-        case weight            = "weight_unit"
+        case weightId          = "weight_unit"
         case createdAt         = "created_at"
         case updatedAt         = "updated_at"
         case name              = "name"
         case foodMealComponent = "food_meal_component"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy:CodingKeys.self)
+        
+        self.id                       = try container.decode(Int?.self, forKey: .id)
+        self.createdAt                = try container.decode(String?.self, forKey: .createdAt)
+        self.updatedAt                = try container.decode(String?.self, forKey: .updatedAt)
+        self.name                     = try container.decode(String?.self, forKey: .name)
+        
+        self.weightId                 = try? container.decode(Int?.self, forKey: .weightId)
+        self.weightObject             = try? container.decode(newWeightUnit?.self, forKey: .weightId)
+        if(weightObject != nil) {
+            self.weightId = weightObject?.id
+        }
+        
+        self.foodMealComponent        = try? container.decode(newFoodMealComponent?.self, forKey: .foodMealComponent)
     }
 }

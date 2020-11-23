@@ -35,7 +35,6 @@
 		2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */; };
 		215DA6FC2567CE1F00B242B0 /* newConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DA6FB2567CE1F00B242B0 /* newConsumption.swift */; };
 		215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE884256C30D0007F05AB /* NewFavorite.swift */; };
-		215FE888256C36E8007F05AB /* NewDifferentFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE887256C36E8007F05AB /* NewDifferentFood.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -107,7 +106,6 @@
 		2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		215DA6FB2567CE1F00B242B0 /* newConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConsumption.swift; sourceTree = "<group>"; };
 		215FE884256C30D0007F05AB /* NewFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavorite.swift; sourceTree = "<group>"; };
-		215FE887256C36E8007F05AB /* NewDifferentFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDifferentFood.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */,
 				5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */,
 				215FE884256C30D0007F05AB /* NewFavorite.swift */,
-				215FE887256C36E8007F05AB /* NewDifferentFood.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -472,7 +469,6 @@
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
-				215FE888256C36E8007F05AB /* NewDifferentFood.swift in Sources */,
 				2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */,
 				53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */,
 				9322A708239697B0003F136D /* DietaryManagement.swift in Sources */,
