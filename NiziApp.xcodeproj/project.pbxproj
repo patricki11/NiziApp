@@ -34,6 +34,7 @@
 		2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE52429DA4200E96AEF /* ConversationViewController.swift */; };
 		2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */; };
 		215DA6FC2567CE1F00B242B0 /* newConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DA6FB2567CE1F00B242B0 /* newConsumption.swift */; };
+		215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE884256C30D0007F05AB /* NewFavorite.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -104,6 +105,7 @@
 		2154CFE52429DA4200E96AEF /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		215DA6FB2567CE1F00B242B0 /* newConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConsumption.swift; sourceTree = "<group>"; };
+		215FE884256C30D0007F05AB /* NewFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavorite.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				215DA6FB2567CE1F00B242B0 /* newConsumption.swift */,
 				5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */,
 				5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */,
+				215FE884256C30D0007F05AB /* NewFavorite.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
+				215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */,
 				93722DE623BB88BE007E7E58 /* StatisticViewController.swift in Sources */,
 				9322A70623968798003F136D /* Food.swift in Sources */,
 				214F7E1223C1F850002D670A /* EditPatientViewController.swift in Sources */,

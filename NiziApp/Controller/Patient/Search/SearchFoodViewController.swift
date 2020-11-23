@@ -40,7 +40,9 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func GetFavorites(_ sender: Any) {
-        self.GetFavortiesFood()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"") as! FavoriteViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
         favorietenBtn.setTitleColor(.orange, for: .normal)
         ProductenBtn.setTitleColor(.black, for: .normal)
     }
@@ -103,20 +105,4 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
             self.FoodTable?.reloadData()
         })
     }
-    
-    func GetFavortiesFood() {
-        NiZiAPIHelper.getFavoriteProducts(forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            
-            guard let jsonResponse = response.data
-                else { print("temp1"); return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
-                else { print("temp2"); return }
-            
-            self.foodlist = foodlistJSON
-            self.FoodTable?.reloadData()
-        })
-    }
-
 }
