@@ -24,11 +24,11 @@ class NewFavorite : Codable {
     }
     
     enum CodingKeys : String, CodingKey {
-        case id = "id"
-        case food = "food"
+        case id        = "id"
+        case food      = "food"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case patients = "patients_ids"
+        case patients  = "patients_ids"
     }
     
     func toJSON() -> [String:Any]{

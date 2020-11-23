@@ -41,7 +41,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func GetFavorites(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"") as! FavoriteViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FavoriteViewController;()
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
         favorietenBtn.setTitleColor(.orange, for: .normal)
         ProductenBtn.setTitleColor(.black, for: .normal)

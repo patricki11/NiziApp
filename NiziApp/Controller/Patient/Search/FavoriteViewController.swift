@@ -12,8 +12,8 @@ import SwiftKeychainWrapper
 
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var FavoriteTable: UITableView!
-    var foodlist : [NewFood] = []
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    var foodlist : [NewFavorite] = []
+    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
-        searchFoodCell.textLabel?.text = foodlist[idx].name
-        let url = URL(string: foodlist[idx].name!)
+        searchFoodCell.textLabel?.text = foodlist[idx].food?.name
+        let url = URL(string: (foodlist[idx].food?.foodMealComponent?.imageUrl!)!)
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
@@ -42,8 +42,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FoodDetailViewController;()
-        detailFoodVC.foodItem = food
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        detailFoodVC.foodItem = food.food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
@@ -67,7 +67,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFavorite].self, from: jsonResponse )
                 else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
