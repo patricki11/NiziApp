@@ -23,7 +23,7 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var weekOverviewLabel: UILabel!
     @IBOutlet weak var guidelineTableView: UITableView!
     
-    var patientGuidelines : [DietaryManagement] = []
+    var patientGuidelines : [NewDietaryManagement] = []
     var currentWeekCounter : Int = 0
     
     @IBOutlet weak var currentWeekLabel: UILabel!
@@ -84,7 +84,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setLanguageSpecificText() {
-        patientNameLabel.text = "\(patient.userObject?.first_name!) \(patient.userObject?.last_name!)"
+        patientNameLabel.text = "\(patient.userObject?.first_name) \(patient.userObject?.last_name)"
     }
     
     func setupTableView() {
@@ -104,14 +104,14 @@ class PatientOverviewViewController : UIViewController
         guidelineTableView?.reloadData()
     }
     
-    func getFilteredGuidelineList() -> [DietaryManagement] {
+    func getFilteredGuidelineList() -> [NewDietaryManagement] {
         let guidelineName = guidelineSearchField?.text ?? ""
         
         if(guidelineName == "") {
             return patientGuidelines
         }
         else {
-            return patientGuidelines.filter { ("\($0.description.lowercased())").contains(guidelineName.lowercased())}
+            return patientGuidelines.filter { ("\($0.dietaryRestrictionObject?.plural?.lowercased())").contains(guidelineName.lowercased())}
         }
     }
     
@@ -122,9 +122,9 @@ class PatientOverviewViewController : UIViewController
 
             let jsonDecoder = JSONDecoder()
             
-            guard let guidelines = try? jsonDecoder.decode(PatientDietaryGuidelines.self, from: jsonResponse) else { return }
+            guard let guidelines = try? jsonDecoder.decode([NewDietaryManagement].self, from: jsonResponse) else { print("unable to decode........"); return }
             
-            self.patientGuidelines = guidelines.dietaryManagements
+            self.patientGuidelines = guidelines
 
             print(self.patientGuidelines.count)
             self.guidelineTableView.reloadData()
@@ -146,25 +146,27 @@ extension PatientOverviewViewController : UITableViewDataSource {
         var average : Int = 0
         
         if(currentWeekCounter <= 0) {
-            average = Int.random(in: guideline.amount - 20...guideline.amount + 100)
+            //average = Int.random(in: (guideline.minimum ?? 0 - 20)...(guideline.maximum ?? 0 + 100))
         }
-        cell.averageAmountForWeekLabel.text = "\(average) \(getCorrespondingType(category: guideline.description))"
-        cell.guidelineNameLabel.text = guideline.description
         
-        var moreOrLess : String = ""
+        cell.averageAmountForWeekLabel.text = "\(average) \(guideline.dietaryRestrictionObject?.plural)"
+        cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
-        if(guideline.description.contains("beperking")) {
-            moreOrLess = "minder dan"
-            if(average < guideline.amount) {
+        if(guideline.minimum != 0 && guideline.maximum != 0) {
+            cell.recommendedAmountLabel.text = "tussen \(guideline.minimum) en \(guideline.maximum)"
+        }
+        else if(guideline.minimum != 0) {
+            cell.recommendedAmountLabel.text = "meer dan \(guideline.minimum)"
+            if(average > guideline.minimum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }
             else {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 255, green: 0, blue: 0)
             }
         }
-        else if(guideline.description.contains("verrijking")) {
-            moreOrLess = "meer dan"
-            if(average > guideline.amount) {
+        else if(guideline.maximum != 0) {
+            cell.recommendedAmountLabel.text = "minder dan \(guideline.maximum)"
+            if(average < guideline.maximum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }
             else {
@@ -172,9 +174,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         
-        cell.recommendedAmountLabel.text = "Aanbeveling \(moreOrLess)  \(guideline.amount)"
-        
-        cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.description)
+        cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")
         
         return cell
 

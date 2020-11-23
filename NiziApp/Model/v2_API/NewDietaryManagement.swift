@@ -37,14 +37,14 @@ class NewDietaryManagement : Codable {
         self.id                       = try container.decode(Int?.self, forKey: .id)
         self.is_active                = try container.decode(Bool.self, forKey: .is_active)
         
-        self.dietaryRestriction       = try container.decode(Int?.self, forKey: .dietaryRestriction)
-        self.dietaryRestrictionObject = try container.decode(NewDietaryRestriction?.self, forKey: .dietaryRestriction)
+        self.dietaryRestriction       = try? container.decode(Int?.self, forKey: .dietaryRestriction)
+        self.dietaryRestrictionObject = try? container.decode(NewDietaryRestriction?.self, forKey: .dietaryRestriction)
         if(dietaryRestrictionObject != nil) {
             self.dietaryRestriction = dietaryRestrictionObject?.id
         }
         
-        self.patient                  = try container.decode(Int?.self, forKey: .patient)
-        self.patientObject            = try container.decode(NewPatient.self, forKey: .patient)
+        self.patient                  = try? container.decode(Int?.self, forKey: .patient)
+        self.patientObject            = try? container.decode(NewPatient.self, forKey: .patient)
         if(patientObject != nil) {
             self.patient = patientObject?.id
         }

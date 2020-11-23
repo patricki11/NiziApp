@@ -23,12 +23,12 @@ class NewUser : Codable {
     var test       : String? = ""
     var patient    : Int? = 0
     var patientObject : NewPatient? = nil
-    var first_name : String? = ""
-    var last_name  : String? = ""
+    var first_name : String = ""
+    var last_name  : String = ""
     var doctor     : Int? = 0
     var doctorObject : NewDoctor? = nil
     
-    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: Int?, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String?, last_name: String?, doctor: Int?) {
+    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: Int?, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String, last_name: String, doctor: Int?) {
         self.id         = id
         self.username   = username
         self.email      = email
@@ -65,8 +65,8 @@ class NewUser : Codable {
         self.firstname = try container.decode(String?.self, forKey: .firstname)
         self.lastname = try container.decode(String?.self, forKey: .lastname)
         self.test = try container.decode(String?.self, forKey: .test)
-        self.first_name = try container.decode(String?.self, forKey: .first_name)
-        self.last_name = try container.decode(String?.self, forKey: .last_name)
+        self.first_name = try container.decode(String.self, forKey: .first_name)
+        self.last_name = try container.decode(String.self, forKey: .last_name)
         
         self.patient = try? container.decode(Int?.self, forKey: .patient)
         self.patientObject = try? container.decode(NewPatient?.self, forKey: .patient)
