@@ -35,17 +35,10 @@ class NiZiAPIHelper {
     // LOGIN //
     
     // NEW CONSUMPTION //
-    static func readAllConsumption(withToken token : String,withPatient patientId: Int, withStartDate startDate: String, withEndDate endDate : String) -> DataRequest{
-        let apiMethod = "consumptions"
+    static func readAllConsumption(withToken token : String,withPatient patientId: Int, withStartDate startDate: String) -> DataRequest{
+        let apiMethod = "consumptions?patient.id=\(patientId)&date=\(startDate)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-        let parameters =
-        [
-            "patient.id":patientId,
-            "date_gt": startDate,
-            "date_lt": endDate
-        ] as [String : Any]
-        
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
     static func readConsumption(withToken token : String,withConsumptionId consumptionId: Int) -> DataRequest{
@@ -218,6 +211,7 @@ class NiZiAPIHelper {
     // CONSUMPTION //
     
     // WATER CONSUMPTION //
+    /*
     static func createNewWaterConsumption(forPatient patientId: Int, withAmount amount: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/waterconsumption"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
@@ -253,6 +247,7 @@ class NiZiAPIHelper {
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .get , parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
+ */
     // WATER CONSUMPTION //
     
     // MEAL //

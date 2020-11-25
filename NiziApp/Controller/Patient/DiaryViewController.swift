@@ -21,12 +21,12 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var DatePicker: UIDatePicker!
     //let patientIntID    : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
-    var consumptions    : [ConsumptionView] = []
-    var breakfastFoods   : [ConsumptionView] = []
-    var lunchFoods       : [ConsumptionView] = []
-    var dinnerFoods      : [ConsumptionView] = []
-    var snackFoods       : [ConsumptionView] = []
-    var headers     : [postStruct] = []
+    var consumptions   : [NewConsumption] = []
+    var breakfastFoods : [NewConsumption] = []
+    var lunchFoods     : [NewConsumption] = []
+    var dinnerFoods    : [NewConsumption] = []
+    var snackFoods     : [NewConsumption] = []
+    var headers        : [postStruct] = []
     
     
     override func viewDidLoad() {
@@ -38,13 +38,13 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         saveDate(date: formattedDate)
-        //getConsumption(Date: formattedDate)
+        getConsumption(Date: "2020-11-18T00:00:00.000Z")
         //SetupDatePicker()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
+        getConsumption(Date: "2020-11-18T00:00:00.000Z")
     }
     
     fileprivate func SetupDatePicker() {
@@ -60,13 +60,13 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             case "Ontbijt":
                 breakfastFoods.append(food)
                 break
-            case "Snack":
+            case "Lunch":
                 snackFoods.append(food)
                 break
-            case "Lunch":
+            case "Avondeten":
                 lunchFoods.append(food)
                 break
-            case "AvondEten":
+            case "Snack":
                 dinnerFoods.append(food)
             default:
                 print("no valid food")
@@ -99,19 +99,19 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        /*NiZiAPIHelper.getAllConsumptions(forPatient: patientIntID!, between: date, and: date, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withPatient: 1, withStartDate: date).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
-            guard let consumptionlist = try? jsonDecoder.decode( Diary.self, from: jsonResponse )
+            guard let consumptionlist = try? jsonDecoder.decode( [NewConsumption].self, from: jsonResponse )
                 else { print("temp2"); return }
             
-            self.consumptions = consumptionlist.consumptions
+            self.consumptions = consumptionlist
             self.SortFood()
             self.diaryTable?.reloadData()
-        })*/
+        })
     }
     
     func Deleteconsumption(Id id: Int){
@@ -147,7 +147,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    /*func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
      switch section {
      case 0:
      return NSLocalizedString("Breakfast", comment: "Category")
@@ -160,7 +160,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
      default:
      return ""
      }
-     }*/
+     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "diarytablecell", for: indexPath)
@@ -169,16 +169,16 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         switch indexPath.section {
         case 0:
-            navigationTitle = breakfastFoods[indexPath.row].foodName!
+            navigationTitle = (breakfastFoods[indexPath.row].foodMealCompenent?.name)!
             break
         case 1:
-            navigationTitle = lunchFoods[indexPath.row].foodName!
+            navigationTitle = (lunchFoods[indexPath.row].foodMealCompenent?.name)!
             break
         case 2:
-            navigationTitle = dinnerFoods[indexPath.row].foodName!
+            navigationTitle = (dinnerFoods[indexPath.row].foodMealCompenent?.name)!
             break
         case 3:
-            navigationTitle = snackFoods[indexPath.row].foodName!
+            navigationTitle = (snackFoods[indexPath.row].foodMealCompenent?.name)!
             break
         default:
             break
@@ -194,8 +194,8 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.Deleteconsumption(Id: consumptions[indexPath.row].consumptionId)
-            var consumption : ConsumptionView = consumptions[indexPath.row]
+            self.Deleteconsumption(Id: consumptions[indexPath.row].id!)
+            var consumption : NewConsumption = consumptions[indexPath.row]
             switch consumption.mealTime {
             case "Ontbijt":
                 self.breakfastFoods.remove(at: indexPath.row)
@@ -244,6 +244,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
+    /* Did selectrowat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.consumptions[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -251,4 +252,5 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         detailFoodVC.foodItem = food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+    */
 }

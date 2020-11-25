@@ -9,16 +9,17 @@
 import Foundation
 
 class NewConsumption : Codable {
-    var id : Int? = 0
-    var amount : Float? = 0
-    var date : String? = ""
-    var mealTime : String? = ""
-    var patient : NewPatient? = nil
-    var createdAt : String? = ""
-    var updatedAt : String? = ""
-    var foodMealCompenent : [newFoodMealComponent]? = nil
+    var id                : Int? = 0
+    var amount            : Float? = 0
+    var date              : String? = ""
+    var mealTime          : String? = ""
+    var patient           : NewPatient? = nil
+    var createdAt         : String? = ""
+    var updatedAt         : String? = ""
+    var weightUnit        : newWeightUnit? = nil
+    var foodMealCompenent : newFoodMealComponent? = nil
     
-    init(id : Int?, amount : Float?, date : String?, mealTime : String?, newPatient : NewPatient?, createdAt : String?, updatedAt : String?, foodMealComponent : [newFoodMealComponent]? ){
+    init(id : Int?, amount : Float?, date : String?, mealTime : String?, newPatient : NewPatient?, createdAt : String?, updatedAt : String?, foodMealComponent : newFoodMealComponent?, weightUnit : newWeightUnit? ){
         self.id = id
         self.amount = amount
         self.date = date
@@ -26,6 +27,7 @@ class NewConsumption : Codable {
         self.patient = newPatient
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.weightUnit = weightUnit
         self.foodMealCompenent = foodMealComponent
     }
     
@@ -37,6 +39,7 @@ class NewConsumption : Codable {
         case patient = "patient"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case weightUnit = "weight_unit"
         case foodMealCompenent = "food_meal_component"
     }
     
@@ -49,10 +52,8 @@ class NewConsumption : Codable {
             "patient"             : patient as Any,
             "created_at"          : createdAt as Any,
             "updated_at"          : updatedAt as Any,
+            "weight_unit"         : weightUnit as Any,
             "food_meal_component" : foodMealCompenent as Any
         ]
     }
-    
-    
 }
-

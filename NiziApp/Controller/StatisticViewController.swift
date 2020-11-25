@@ -5,7 +5,7 @@
 //  Created by Wing lam on 31/12/2019.
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
-
+/*
 import UIKit
 
 class StatisticViewController: UIViewController {
@@ -16,3 +16,4 @@ class StatisticViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 }
+*/
