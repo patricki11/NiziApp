@@ -8,33 +8,70 @@
 
 import UIKit
 
-struct conversation {
-    var text: String!
-}
+class ConversationViewController: UIViewController {
+    var conversations : [NewConversation] = []
+    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
 
-class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    var headers     : [conversation] = []
     @IBOutlet weak var conversationtable: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        headers = [conversation.init(text: "Goed bezig"),conversation.init(text: "Meer letten op je Kalium inname"),conversation.init(text: "Volgende week"),conversation.init(text: "Blijven volhouden")]
-        // Do any additional setup after loading the view.
+        getConversation()
+        SetupTableView()
+    }
+
+    fileprivate func SetupTableView(){
+        view.addSubview(conversationtable)
+        conversationtable.translatesAutoresizingMaskIntoConstraints = false
+        conversationtable.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        conversationtable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
+        conversationtable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        conversationtable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
+        conversationtable.delegate = self
+        conversationtable.dataSource = self
     }
     
+    func getConversation() {
+        NiZiAPIHelper.GetConversations(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withPatient: 1).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewConversation].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.conversations = foodlistJSON
+            self.conversationtable?.reloadData()
+        })
+    }
+}
+
+extension ConversationViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return headers.count
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedIndex == indexPath {return 200}
+        return 60
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "ConversationCell", for: indexPath) as! SearchFoodTableViewCell
-        let idx: Int = indexPath.row
-        searchFoodCell.textLabel?.text = headers[idx].text
-        searchFoodCell.accessoryType = .disclosureIndicator
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return conversations.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! ConversationCell
+        cell.data = conversations[indexPath.row]
+        cell.selectionStyle = .none
+        cell.animate()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath
         
-        return searchFoodCell
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [selectedIndex], with: .none)
+        tableView.endUpdates()
     }
-    
 }
