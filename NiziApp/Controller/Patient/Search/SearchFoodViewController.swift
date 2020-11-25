@@ -68,11 +68,10 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Clicked cell")
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
-        detailFoodVC.foodItem = food
+        detailFoodVC.foodItem = food.foodMealComponent
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

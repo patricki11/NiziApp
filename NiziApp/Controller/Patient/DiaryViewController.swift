@@ -244,13 +244,28 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-    /* Did selectrowat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let food = self.consumptions[indexPath.row]
+        var food = self.consumptions[indexPath.row]
+        
+        switch indexPath.section {
+        case 0:
+            food = self.breakfastFoods[indexPath.row]
+            break
+        case 1:
+            food = self.lunchFoods[indexPath.row]
+            break
+        case 2:
+            food = self.dinnerFoods[indexPath.row]
+            break
+        case 3:
+            food = self.snackFoods[indexPath.row]
+            break
+        default:
+            break
+        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DiaryDetailViewcontroller") as! DiaryDetailViewController;()
-        detailFoodVC.foodItem = food
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        detailFoodVC.foodItem = food.foodMealCompenent
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
-    */
 }

@@ -43,7 +43,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
-        detailFoodVC.foodItem = food.food
+        detailFoodVC.foodItem = food.food?.foodMealComponent
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

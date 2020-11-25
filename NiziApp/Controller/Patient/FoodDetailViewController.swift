@@ -29,7 +29,7 @@ class FoodDetailViewController: UIViewController {
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
     }
-    var foodItem: NewFood?
+    var foodItem: newFoodMealComponent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,28 +47,28 @@ class FoodDetailViewController: UIViewController {
     {
         DetailTitle.text = foodItem?.name
         
-        let url = URL(string: (foodItem!.foodMealComponent?.imageUrl!)!)
+        let url = URL(string: foodItem!.imageUrl!)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let calorieString : String = (foodItem?.protein!.description)!
         Kcal.text = calorieString
         
-        let proteinString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let proteinString : String = (foodItem?.kcal!.description)!
         Protein.text = proteinString
         
-        let fiberString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let fiberString : String = (foodItem?.fiber!.description)!
         Fiber.text = fiberString
         
-        let calciumString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let calciumString : String = (foodItem?.protein?.description)!
         Calcium.text = calciumString
         
-        let sodiumString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let sodiumString : String = (foodItem?.sodium?.description)!
         Sodium.text = sodiumString
         
-        let portionSizeString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let portionSizeString : String = (foodItem?.portionSize?.description)!
         portionSizeLabel.text = portionSizeString
         
-        let waterString : String = (foodItem?.foodMealComponent!.kcal!.description)!
+        let waterString : String = (foodItem?.water?.description)!
         WaterLabel.text = waterString
         
     }
