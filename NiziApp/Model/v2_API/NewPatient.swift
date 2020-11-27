@@ -77,6 +77,14 @@ class NewPatient : Codable {
         case consumptions       = "consumptions"
     }
     
+    func toNewPatientJSON() -> [String:Any] {
+        return [
+            "gender" : gender as Any,
+            "date_of_birth" : dateOfBirth as Any,
+            "doctor" : doctor as Any
+        ]
+    }
+    
     func toJSON() -> [String:Any]{
         return [
             "id"            : id as Any,

@@ -33,7 +33,7 @@ class AddPatientViewController: UIViewController {
     
     @IBOutlet weak var addPatientButton: UIButton!
     
-    weak var loggedInAccount : DoctorLogin!
+    weak var loggedInAccount : NewUser!
     
     func datePicker() -> UIDatePicker {
         let picker = UIDatePicker()
@@ -45,7 +45,7 @@ class AddPatientViewController: UIViewController {
     
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-YYYY"
+        formatter.dateFormat = "YYYY-MM-dd"
         return formatter
     }()
     
@@ -109,78 +109,28 @@ class AddPatientViewController: UIViewController {
     }
     
     func createPatientAccount() {
-        Auth0
-        .authentication()
-        .createUser(
-            email: usernameField.text!,
-            password: passwordField.text!,
-            connection: "Username-Password-Authentication",
-            userMetadata: ["first_name": firstNameField.text,
-                           "last_name": surnameField.text]
-        )
-        .start { result in
-            switch result {
-            case .success(let user):
-                print("User Signed up: \(user)")
-                self.addPatientToAPIDatabase()
-            case .failure(let error):
-                print("Failed with \(error)")
-            }
-        }
-    }
-    
-    func addPatientToAPIDatabase() {
-        DispatchQueue.main.async {
-            Auth0
-            .authentication()
-            .login(
-                usernameOrEmail: self.usernameField.text!,
-                password: self.passwordField.text!,
-                realm: "Username-Password-Authentication",
-                audience: "appnizi.nl/api",
-                scope: "openid profile"
-            )
-            .start { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let credentials):
-                        Auth0
-                        .authentication()
-                        .userInfo(withAccessToken: credentials.accessToken!)
-                        .start { result in
-                            switch result {
-                            case .success(let result):
-                                let patient = self.createNewPatientObject(firstName: self.firstNameField.text!, lastName: self.surnameField.text!, dateOfBirth: self.dateOfBirthField.text!, credentials: credentials, userInfo: result)
-                                NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-                                    self.getPatientDataFromDatabase(patient: patient)
-                                })
-                            case .failure(let error):
-                                print(error)
-                            }
-                            
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            }
-        }
-    }
-    
-    func getPatientDataFromDatabase(patient: PatientLogin) {
-        NiZiAPIHelper.login(withToken: (patient.auth?.token?.accessCode!)!).responseData(completionHandler: { response in
-            print("accessCode: ", patient.auth?.token?.accessCode)
-            print("auth-guid: ", patient.auth?.guid)
-            print("patient-guid: ", patient.patient?.guid)
-            print("response: ", response.data)
-            guard let jsonResponse = response.data
-                else { return }
+        var patient = NewPatient(id: nil, gender: "Man", dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
+        
+        NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data else { print("noResponsseDataFromPatient");return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientFromDatabase = try? jsonDecoder.decode(PatientLogin.self, from: jsonResponse)
-                else { return }
+            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { print("unableToDecodeToPatient"); return }
             
-            self.showPatientAddedMessage(patient: patientFromDatabase)
+            self.addNewAccount(forPatient: patient.id)
+        })
+    }
+    
+    func addNewAccount(forPatient patientId: Int?) {
+        var user = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: patientId, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
+        
+        NiZiAPIHelper.addUser(withDetails: user, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data else { print("noResponseDataFromUser");return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { print("unableToDecodeToUser");return }
+            
+            self.showPatientAddedMessage(patientId: patientId)
         })
     }
     
@@ -280,50 +230,6 @@ class AddPatientViewController: UIViewController {
         return password == confirmPassword
     }
     
-    func createNewPatientObject(firstName: String, lastName: String, dateOfBirth: String, credentials: Credentials, userInfo: UserInfo) -> PatientLogin {
-        let dateFormatterFrom = DateFormatter()
-        dateFormatterFrom.dateFormat = "dd-MM-YYYY"
-        print("dokter auth: ", KeychainWrapper.standard.string(forKey: "authToken"))
-        let dateFormatterTo = DateFormatter()
-        dateFormatterTo.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        
-        let date : Date = dateFormatterFrom.date(from: dateOfBirth) ?? Date()
-        print(dateFormatterTo.string(from: date))
-        print(userInfo.sub)
-        let account : Account = Account(
-            accountId: 0,
-            role: "Patient"
-        )
-        let patient : Patient = Patient(
-            patientId: 0,
-            accountId: 0,
-            doctorId: 3,//self.loggedInAccount.doctor?.doctorId,
-            firstName: firstName,
-            lastName: lastName,
-            dateOfBirth: dateFormatterTo.string(from: date),
-            guid: userInfo.sub,
-            weightInKg: 0.00
-        )
-        let token : Token? = Token(
-            scheme: "Bearer",
-            accessCode: credentials.accessToken
-        )
-        let auth: Auth? = Auth(
-            guid: userInfo.sub,
-            token: token
-        )
-        
-        let doctor : Doctor = Doctor(doctorId: 3, firstName: "Dr", lastName: "Pepper", location: "")
-        
-        return PatientLogin(
-            account: account,
-            doctor: doctor,//self.loggedInAccount.doctor,
-            patient: patient,
-            auth: auth
-        )
-                 
-    }
-    
     func showRequiredFieldsNotFilledMessage() {
         let alertController = UIAlertController(
             title: "Niet aangemaakt",
@@ -346,13 +252,13 @@ class AddPatientViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func showPatientAddedMessage(patient: PatientLogin) {
+    func showPatientAddedMessage(patientId: Int?) {
         let alertController = UIAlertController(
             title: "Patiënt toegevoegd",
             message: "De patiënt is toegevoegd.",
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patient: patient)}))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patientId: patientId)}))
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -379,10 +285,10 @@ class AddPatientViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func navigateToGuidelineController(patient: PatientLogin) {
+    func navigateToGuidelineController(patientId: Int?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let guidelineVC = storyboard.instantiateViewController(withIdentifier: "AddPatientGuidelinesViewController") as! AddPatientGuidelinesViewController
-        guidelineVC.patient = patient.patient
+        //guidelineVC.patient = patient.patient
         self.navigationController?.pushViewController(guidelineVC, animated: true)
     }
 }

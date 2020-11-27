@@ -11,6 +11,7 @@ import Foundation
 class NewUser : Codable {
     var id         : Int? = 0
     var username   : String? = ""
+    var password    : String? = ""
     var email      : String? = ""
     var provider   : String? = ""
     var confirmed  : Bool? = false
@@ -28,9 +29,10 @@ class NewUser : Codable {
     var doctor     : Int? = 0
     var doctorObject : NewDoctor? = nil
     
-    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: Int?, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, first_name: String, last_name: String, doctor: Int?) {
+    init(id: Int?, password: String?, username: String?, email: String?, provider: String?, confirmed: Bool?, role: Int?, created_at: String?, updated_at: String?, firstname: String?, lastname: String?, test: String?, patient: Int?, patientObject: NewPatient?, first_name: String, last_name: String, doctor: Int?) {
         self.id         = id
         self.username   = username
+        self.password   = password
         self.email      = email
         self.provider   = provider
         self.confirmed  = confirmed
@@ -41,6 +43,7 @@ class NewUser : Codable {
         self.lastname   = lastname
         self.test       = test
         self.patient    = patient
+        self.patientObject = patientObject
         self.first_name = first_name
         self.last_name  = last_name
         self.doctor     = doctor
@@ -99,10 +102,27 @@ class NewUser : Codable {
         case doctor     = "doctor"
     }
     
+    func toNewPatientUserJson() -> [String:Any] {
+        return [
+            "username" : username as Any,
+            "password" : password as Any,
+            "email" : email as Any,
+            "provider" : provider as Any,
+            "confirmed" : confirmed as Any,
+            "role" : role as Any,
+            "firstname" : firstname as Any,
+            "first_name" : first_name as Any,
+            "lastname" : lastname as Any,
+            "last_name" : last_name as Any,
+            "patient" : patient as Any
+        ]
+    }
+    
     func toJSON() -> [String:Any] {
         return [
             "id"         : id as Any,
             "username"   : username as Any,
+            "password"   : password as Any,
             "email"      : email as Any,
             "provider"   : provider as Any,
             "confirmed"  : confirmed as Any,

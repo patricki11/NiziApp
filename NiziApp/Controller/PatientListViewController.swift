@@ -87,7 +87,7 @@ class PatientListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newPatientVC = storyboard.instantiateViewController(withIdentifier: "AddPatientViewController") as! AddPatientViewController
         
-        //newPatientVC.loggedInAccount = self.loggedInAccount
+        newPatientVC.loggedInAccount = self.loggedInAccount
         self.navigationController?.pushViewController(newPatientVC, animated: true)
     }
 }
