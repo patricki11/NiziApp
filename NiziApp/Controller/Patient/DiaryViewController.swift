@@ -27,11 +27,14 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var dinnerFoods    : [NewConsumption] = []
     var snackFoods     : [NewConsumption] = []
     var headers        : [postStruct] = []
+    var patient        : NewPatient?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.patient = createNewPatientObject(id: 1, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
+        print("Boogie ",self.patient?.id)
         //print(KeychainWrapper.standard.string(forKey: "patientId"))
         let date = Date()
         let format = DateFormatter()
@@ -61,19 +64,25 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
                 breakfastFoods.append(food)
                 break
             case "Lunch":
-                snackFoods.append(food)
-                break
-            case "Avondeten":
                 lunchFoods.append(food)
                 break
-            case "Snack":
+            case "Avondeten":
                 dinnerFoods.append(food)
+                break
+            case "Snack":
+                snackFoods.append(food)
             default:
                 print("no valid food")
                 break
             }
         }
         
+    }
+    
+    func createNewPatientObject(id: Int, gender: String, dateOfBirth: String, createdAt: String, updatedAt: String, doctor: Int, user: Int) -> NewPatient {
+        
+        let patient : NewPatient = NewPatient(id: id, gender: gender, dateOfBirth: dateOfBirth, createdAt: createdAt, updatedAt: updatedAt, doctor: doctor, user: user)
+        return patient
     }
     
     @objc func datePickerValueChanged(_ sender: UIDatePicker){
@@ -241,6 +250,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
         detailFoodVC.buttonTag = 0
+        detailFoodVC.patient = self.patient
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

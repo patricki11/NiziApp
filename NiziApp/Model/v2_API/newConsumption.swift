@@ -19,14 +19,12 @@ class NewConsumption : Codable {
     var weightUnit        : newWeightUnit? = nil
     var foodMealCompenent : newFoodMealComponent? = nil
     
-    init(id : Int?, amount : Float?, date : String?, mealTime : String?, newPatient : NewPatient?, createdAt : String?, updatedAt : String?, foodMealComponent : newFoodMealComponent?, weightUnit : newWeightUnit? ){
+    init(id : Int?, amount : Float?, date : String?, mealTime : String?, newPatient : NewPatient?, foodMealComponent : newFoodMealComponent?, weightUnit : newWeightUnit? ){
         self.id = id
         self.amount = amount
         self.date = date
         self.mealTime = mealTime
         self.patient = newPatient
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
         self.weightUnit = weightUnit
         self.foodMealCompenent = foodMealComponent
     }
@@ -50,8 +48,6 @@ class NewConsumption : Codable {
             "date"                : date as Any,
             "meal_time"           : mealTime as Any,
             "patient"             : patient as Any,
-            "created_at"          : createdAt as Any,
-            "updated_at"          : updatedAt as Any,
             "weight_unit"         : weightUnit as Any,
             "food_meal_component" : foodMealCompenent as Any
         ]

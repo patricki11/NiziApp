@@ -9,19 +9,19 @@
 import Foundation
 
 class newFoodMealComponent : Codable {
-    var id          : Int?    = 0;
-    var name        : String? = ""
-    var description : String? = ""
-    var kcal        : Float?  = 0.0
-    var protein     : Float?  = 0.0
-    var potassium   : Float?  = 0.0
-    var sodium      : Float?  = 0.0
-    var water       : Float?  = 0.0
-    var fiber       : Float?  = 0.0
-    var portionSize : Float?  = 0.0
-    var imageUrl    : String? = ""
+    var id          : Int    = 0;
+    var name        : String = ""
+    var description : String = ""
+    var kcal        : Float  = 0.0
+    var protein     : Float  = 0.0
+    var potassium   : Float  = 0.0
+    var sodium      : Float  = 0.0
+    var water       : Float  = 0.0
+    var fiber       : Float  = 0.0
+    var portionSize : Float  = 0.0
+    var imageUrl    : String = ""
     
-    init(id : Int?, name: String?, description : String?, kcal : Float?,protein : Float?, potassium : Float?, sodium: Float?, water : Float?, fiber: Float?, portionSize : Float?, imageUrl : String){
+    init(id : Int, name: String, description : String, kcal : Float,protein : Float, potassium : Float, sodium: Float, water : Float, fiber: Float, portionSize : Float, imageUrl : String){
         self.id          = id
         self.name        = name
         self.description = description
@@ -49,19 +49,22 @@ class newFoodMealComponent : Codable {
         case imageUrl    = "image_url"
     }
     
-    func toJSON() -> [String:Any]{
-        return [
+    func toJSON() -> [String:Any] {
+           return [
             "id"            : id as Any,
             "name"          : name as Any,
             "description"   : description as Any,
-            "kcal"          : kcal as Any,
-            "protein"       : protein as Any,
-            "potassium"     : potassium as Any,
-            "sodium"        : sodium as Any,
-            "water"         : water as Any,
-            "fiber"         : fiber as Any,
-            "portion_size"  : portionSize as Any,
             "image_url"     : imageUrl as Any
-        ]
-    }
+           ]
+       }
 }
+
+/*
+ "kcal"          : kcal as Any,
+ "protein"       : protein as Any,
+ "potassium"     : potassium as Any,
+ "sodium"        : sodium as Any,
+ "water"         : water as Any,
+ "fiber"         : fiber as Any,
+ "portion_size"  : portionSize as Any
+ */

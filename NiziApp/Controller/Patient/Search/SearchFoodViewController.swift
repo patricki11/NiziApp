@@ -20,6 +20,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var favorietenBtn: UIButton!
     @IBOutlet weak var ProductenBtn: UIButton!
+    var patient        : NewPatient?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,8 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
         detailFoodVC.foodItem = food.foodMealComponent
+        detailFoodVC.weightUnit = food.weightObject
+        detailFoodVC.patient = self.patient
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

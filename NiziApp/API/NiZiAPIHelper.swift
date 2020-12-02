@@ -53,9 +53,9 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
-    static func addNewConsumption(withToken token : String, withDetails consumption: NewConsumption, authenticationCode: String) -> DataRequest {
+    static func addNewConsumption(withToken token : String, withDetails consumption: NewConsumption) -> DataRequest {
          let apiMethod = "consumptions"
-         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
          let parameters = consumption.toJSON()
          print(parameters);
          return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)

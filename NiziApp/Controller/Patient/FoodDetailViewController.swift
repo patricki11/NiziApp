@@ -23,13 +23,15 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var WaterLabel: UILabel!
     @IBOutlet weak var MealTime: UISegmentedControl!
     var mealtimeString: String = ""
-    
+    var foodItem: newFoodMealComponent?
+    var patient : NewPatient?
+    var weightUnit : newWeightUnit?
     //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
     }
-    var foodItem: newFoodMealComponent?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,28 +49,28 @@ class FoodDetailViewController: UIViewController {
     {
         DetailTitle.text = foodItem?.name
         
-        let url = URL(string: foodItem!.imageUrl!)
+        let url = URL(string: foodItem!.imageUrl)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = (foodItem?.protein!.description)!
+        let calorieString : String = (foodItem!.protein.description)
         Kcal.text = calorieString
         
-        let proteinString : String = (foodItem?.kcal!.description)!
+        let proteinString : String = (foodItem!.kcal.description)
         Protein.text = proteinString
         
-        let fiberString : String = (foodItem?.fiber!.description)!
+        let fiberString : String = (foodItem!.fiber.description)
         Fiber.text = fiberString
         
-        let calciumString : String = (foodItem?.protein?.description)!
+        let calciumString : String = (foodItem!.protein.description)
         Calcium.text = calciumString
         
-        let sodiumString : String = (foodItem?.sodium?.description)!
+        let sodiumString : String = (foodItem!.sodium.description)
         Sodium.text = sodiumString
         
-        let portionSizeString : String = (foodItem?.portionSize?.description)!
+        let portionSizeString : String = (foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
         
-        let waterString : String = (foodItem?.water?.description)!
+        let waterString : String = (foodItem!.water.description)
         WaterLabel.text = waterString
         
     }
@@ -87,10 +89,6 @@ class FoodDetailViewController: UIViewController {
  */
     }
     func addConsumption() {
-        /*
-        let date = KeychainWrapper.standard.string(forKey: "date")!
-        let newdate = date + "T00:00:00"
-        
         switch MealTime.selectedSegmentIndex {
         case 0:
             mealtimeString = "Ontbijt"
@@ -99,7 +97,7 @@ class FoodDetailViewController: UIViewController {
             mealtimeString = "Lunch"
             break
         case 2:
-            mealtimeString = "AvondEten"
+            mealtimeString = "Avondeten"
             break
         case 3:
             mealtimeString = "Snack"
@@ -107,8 +105,15 @@ class FoodDetailViewController: UIViewController {
             break
         }
         
-        let consumption = self.createNewConsumptionObject(foodName: foodItem!.name, kCal: foodItem!.kCal, protein: foodItem!.protein, fiber: foodItem!.fiber, calium: foodItem!.calcium, sodium: foodItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: foodItem!.foodId, water: foodItem!.water, mealTime: mealtimeString)
-        NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+        let consumption = self.createNewConsumptionObject(id: 0, amount: 1, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString, patient: self.patient!, weightUnit: self.weightUnit!, foodMealComponent: self.foodItem!)
+        
+        print(consumption.patient!.toJSON())
+        print(consumption.weightUnit!.toJSON())
+        print(consumption.foodMealCompenent!.toJSON())
+        print("Final: ", consumption.toJSON())
+        
+        /*
+        NiZiAPIHelper.addNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: consumption).responseData(completionHandler: { response in
             let alertController = UIAlertController(
                 title: NSLocalizedString("Success", comment: "Title"),
                 message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
@@ -118,24 +123,15 @@ class FoodDetailViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         })
  */
+         
+ 
     }
     
-    func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double, mealTime: String ) -> Consumption {
+    
+    func createNewConsumptionObject(id: Int, amount: Float, date: String, mealTime: String, patient: NewPatient, weightUnit: newWeightUnit, foodMealComponent: newFoodMealComponent) -> NewConsumption {
         
-        let consumption : Consumption = Consumption(
-            foodName : foodName,
-            kCal: kCal,
-            protein: protein,
-            fiber: fiber,
-            calium: calium,
-            sodium: sodium,
-            amount: amount,
-            weightUnitId: weigthUnitId,
-            date: date,
-            patientId: patientid,
-            id: foodId,
-            water: water,
-            mealTime: mealTime
+        let consumption : NewConsumption = NewConsumption(
+            id: id, amount: amount, date: date, mealTime: mealTime, newPatient: patient, foodMealComponent: foodMealComponent, weightUnit: weightUnit
         )
         return consumption
     }

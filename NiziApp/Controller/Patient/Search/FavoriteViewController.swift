@@ -34,7 +34,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
         searchFoodCell.textLabel?.text = foodlist[idx].food?.name
-        let url = URL(string: (foodlist[idx].food?.foodMealComponent?.imageUrl!)!)
+        let url = URL(string: (foodlist[idx].food?.foodMealComponent?.imageUrl)!)
         searchFoodCell.imageView?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell

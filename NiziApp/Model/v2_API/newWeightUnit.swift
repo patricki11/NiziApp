@@ -9,13 +9,13 @@
 import Foundation
 
 class newWeightUnit : Codable {
-    var id        : Int?    = 0
-    var unit      : String? = ""
-    var short     : String? = ""
-    var createdAt : String? = ""
-    var updatedAt : String? = ""
+    var id        : Int    = 0
+    var unit      : String = ""
+    var short     : String = ""
+    var createdAt : String = ""
+    var updatedAt : String = ""
     
-    init(id : Int?, unit : String?, short : String?, createdAt : String?, updatedAt : String?){
+    init(id : Int, unit : String, short : String, createdAt : String, updatedAt : String){
         self.id        = id
         self.unit      = unit
         self.short     = short
