@@ -24,24 +24,30 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var guidelineTableView: UITableView!
     
     var patientGuidelines : [NewDietaryManagement] = []
+    var patientConsumption : [NewConsumption] = []
     var currentWeekCounter : Int = 0
+   
+    var firstDayOfWeek : Date?
+    var lastDayOfWeek : Date?
     
     @IBOutlet weak var currentWeekLabel: UILabel!
     
     @IBAction func getPreviousWeek(_ sender: Any) {
         currentWeekCounter -= 1
         changeCurrentWeekLabel()
+        getConsumptions()
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
         currentWeekCounter += 1
         changeCurrentWeekLabel()
+        getConsumptions()
     }
     
     func changeCurrentWeekLabel() {
 
-        let firstDayOfWeek : Date? = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().startOfWeek!)
-        let lastDayOfWeek : Date? = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().endOfWeek!)
+        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().startOfWeek!)
+        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().endOfWeek!)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-YYYY"
@@ -76,11 +82,13 @@ class PatientOverviewViewController : UIViewController
         setLanguageSpecificText()
         changeCurrentWeekLabel()
         getDietaryGuidelines()
+        getConsumptions()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         getDietaryGuidelines()
+        getConsumptions()
     }
     
     func setLanguageSpecificText() {
@@ -127,6 +135,26 @@ class PatientOverviewViewController : UIViewController
             self.patientGuidelines = guidelines
 
             print(self.patientGuidelines.count)
+            
+            self.guidelineTableView.reloadData()
+        })
+    }
+    
+    func getConsumptions() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        NiZiAPIHelper.getAllConsumptions(forPatient: patient.id!, between: dateFormatter.string(from: firstDayOfWeek!), and: dateFormatter.string(from: lastDayOfWeek!), authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: { response in
+            
+            guard let jsonResponse = response.data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            guard let consumptions = try? jsonDecoder.decode([NewConsumption].self, from: jsonResponse) else { return }
+            
+            self.patientConsumption = consumptions
+            
             self.guidelineTableView.reloadData()
         })
     }
