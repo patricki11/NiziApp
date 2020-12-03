@@ -171,7 +171,13 @@ extension PatientOverviewViewController : UITableViewDataSource {
 
         let filteredList = getFilteredGuidelineList()
         let guideline = filteredList[indexPath.row]
+        var total : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var average : Int = 0
+        
+        if(total != 0) {
+            print("total != 0")
+            average = Int(total / 7)
+        }
         
         if(currentWeekCounter <= 0) {
             //average = Int.random(in: (guideline.minimum ?? 0 - 20)...(guideline.maximum ?? 0 + 100))
@@ -206,6 +212,54 @@ extension PatientOverviewViewController : UITableViewDataSource {
         
         return cell
 
+    }
+    
+    func getTotalForCorrespondingCategory(category: String) -> Float {
+        var total : Float = 0
+        if(category.contains("Calorie"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.kcal ?? 0
+            }
+        }
+        else if(category.contains("Vocht"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.water ?? 0
+            }
+        }
+        else if(category.contains("Natrium"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.sodium ?? 0
+            }
+        }
+        else if(category.contains("Vezel"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.fiber ?? 0
+            }
+        }
+        else if(category.contains("Eiwit"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.protein ?? 0
+            }
+        }
+        else if(category.contains("Kalium"))
+        {
+            for consumption in patientConsumption
+            {
+                total += consumption.foodMealCompenent?.potassium ?? 0
+            }
+        }
+        
+        return total
     }
     
     func getCorrespondingImageForCategory(category: String) -> UIImage? {
