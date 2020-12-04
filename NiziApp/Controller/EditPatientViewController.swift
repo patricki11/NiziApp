@@ -21,6 +21,7 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var surnameField: UITextField!
     @IBOutlet weak var dateOfBirthField: UITextField!
+    var newDateOfBirth : String? = ""
     
     @IBOutlet weak var caloriesTitle: UILabel!
     @IBOutlet weak var caloriesMinimumTitle: UILabel!
@@ -89,7 +90,14 @@ class EditPatientViewController : UIViewController {
         return formatter
     }()
     
+    lazy var apiDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter
+    }()
+    
     @objc func datePickerChanged(_ sender: UIDatePicker) {
+        patient?.dateOfBirth = apiDateFormatter.string(from: sender.date)
         dateOfBirthField.text = dateFormatter.string(from: sender.date)
     }
     
@@ -159,15 +167,9 @@ class EditPatientViewController : UIViewController {
         firstNameField.text = patient?.userObject?.first_name
         surnameField.text = patient?.userObject?.last_name
         
-        let dateFormatterFrom = DateFormatter()
-        dateFormatterFrom.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date : Date = apiDateFormatter.date(from: patient?.dateOfBirth ?? "") ?? Date()
         
-        let dateFormatterTo = DateFormatter()
-        dateFormatterTo.dateFormat = "dd-MM-YYYY"
-        
-        let date : Date = dateFormatterFrom.date(from: patient?.dateOfBirth ?? "") ?? Date()
-        
-        dateOfBirthField.text = dateFormatterTo.string(from: date)
+        dateOfBirthField.text = dateFormatter.string(from: date)
     }
     
     func setLanguageSpecificText() {
@@ -214,12 +216,11 @@ class EditPatientViewController : UIViewController {
     }
     
     func updatePatientData() {
-        patient?.dateOfBirth = dateOfBirthField.text!
-        NiZiAPIHelper.updatePatientData(byId: patient!.id!, withDetails: patient!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+        NiZiAPIHelper.updatePatientData(byId: patient!.id!, withDetails: patient!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in })
         
         user?.first_name = firstNameField.text!
         user?.last_name = surnameField.text!
-        NiZiAPIHelper.updatePatientUserData(byId: user!.id!, withDetails: user!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+        NiZiAPIHelper.updatePatientUserData(byId: user!.id!, withDetails: user!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in })
     }
     
     func updateGuidelines() {

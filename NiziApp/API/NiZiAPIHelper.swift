@@ -300,7 +300,7 @@ class NiZiAPIHelper {
     
     // DIETARY MANAGEMENT //
     static func getDietaryManagement(forDiet dietId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "dietary-managements?patient.id_eq=\(dietId)"
+        let apiMethod = "dietary-managements?patient.id_eq=\(dietId)&is_active=true"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .get , parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
