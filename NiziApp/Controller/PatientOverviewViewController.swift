@@ -91,8 +91,11 @@ class PatientOverviewViewController : UIViewController
         getConsumptions()
     }
     
+    func getPatient() {
+    }
+    
     func setLanguageSpecificText() {
-        patientNameLabel.text = "\(patient.userObject?.first_name) \(patient.userObject?.last_name)"
+        patientNameLabel.text = "\(patient.userObject!.first_name) \(patient.userObject!.last_name)"
     }
     
     func setupTableView() {
@@ -183,7 +186,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             //average = Int.random(in: (guideline.minimum ?? 0 - 20)...(guideline.maximum ?? 0 + 100))
         }
         
-        cell.averageAmountForWeekLabel.text = "\(average) \(guideline.dietaryRestrictionObject?.plural)"
+        cell.averageAmountForWeekLabel.text = "\(average) \(guideline.dietaryRestrictionObject!.plural)"
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
         if(guideline.minimum != 0 && guideline.maximum != 0) {
