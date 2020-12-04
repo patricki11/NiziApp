@@ -60,18 +60,17 @@ class EditPatientViewController : UIViewController {
     
     @IBOutlet weak var editPatientButton: UIButton!
     
-    var patientGuidelines : [DietaryManagement] = []
-    var newGuidelines : [DietaryManagement] = []
+    var patientGuidelines : [NewDietaryManagement] = []
+    var newGuidelines : [NewDietaryManagement] = []
     
-    var completedDeleting : [DietaryManagement] = []
-    var completedUpdating : [DietaryManagement] = []
+    var completedDeleting : [NewDietaryManagement] = []
+    var completedUpdating : [NewDietaryManagement] = []
     
-    var restrictions : [Restrictions] = []
     var onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
 
     var activeTextField : UITextField = UITextField()
     
-    var patientInfo : PatientPersonalInfo? = nil
+    var patient : NewPatient? = nil
     var patientId : Int!
     
     func datePicker() -> UIDatePicker {
@@ -124,42 +123,24 @@ class EditPatientViewController : UIViewController {
     
     func setPatientGuidelines() {
         for guideline in patientGuidelines {
-            switch guideline.description {
-            case "Calorieverrijking":
-                setGuidelineFields(guideline: guideline, field: caloriesMinimumField)
+            switch guideline.dietaryRestrictionObject?.plural {
+            case "Calorieën":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
-            case "Caloriebeperking":
-                setGuidelineFields(guideline: guideline, field: caloriesMaximumField)
+            case "Vocht":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
-            case "Vochtverrijking":
-                setGuidelineFields(guideline: guideline, field: waterMinimumField)
+            case "Natrium":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
-            case "Vochtbeperking":
-                setGuidelineFields(guideline: guideline, field: waterMaximumField)
+            case "Kalium":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
-            case "Natriumverrijking":
-                setGuidelineFields(guideline: guideline, field: sodiumMinimumField)
+            case "Eiwiten":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
-            case "Natriumbeperking":
-                setGuidelineFields(guideline: guideline, field: sodiumMaximumField)
-                break
-            case "Kaliumverrijking":
-                setGuidelineFields(guideline: guideline, field: potassiumMinimumField)
-                break
-            case "Kaliumbeperking":
-                setGuidelineFields(guideline: guideline, field: potassiumMaximumField)
-                break
-            case "Eiwitverrijking":
-                setGuidelineFields(guideline: guideline, field: proteinMinimumFIeld)
-                break
-            case "Eiwitbeperking":
-                setGuidelineFields(guideline: guideline, field: proteinMaximumField)
-                break
-            case "Vezelverrijking":
-                setGuidelineFields(guideline: guideline, field: grainMinimumField)
-                break
-            case "Vezelbeperking":
-                setGuidelineFields(guideline: guideline, field: grainMaximumField)
+            case "Vezels":
+                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
             default:
                 break
@@ -167,13 +148,14 @@ class EditPatientViewController : UIViewController {
         }
     }
     
-    func setGuidelineFields(guideline: DietaryManagement, field: UITextField) {
-        field.text = String(guideline.amount)
+    func setGuidelineFields(guideline: NewDietaryManagement, minimumField: UITextField, maximumField: UITextField) {
+        minimumField.text = String(format: "%d", guideline.minimum ?? "")
+        maximumField.text = String(format: "%d", guideline.maximum ?? "")
     }
     
     func fillFieldsWithPatientInfo() {
-        firstNameField.text = patientInfo?.firstName
-        surnameField.text = patientInfo?.lastName
+        firstNameField.text = patient?.userObject?.first_name
+        surnameField.text = patient?.userObject?.last_name
         
         let dateFormatterFrom = DateFormatter()
         dateFormatterFrom.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -181,7 +163,7 @@ class EditPatientViewController : UIViewController {
         let dateFormatterTo = DateFormatter()
         dateFormatterTo.dateFormat = "dd-MM-YYYY"
         
-        let date : Date = dateFormatterFrom.date(from: patientInfo?.dateOfBirth ?? "") ?? Date()
+        let date : Date = dateFormatterFrom.date(from: patient?.dateOfBirth ?? "") ?? Date()
         
         dateOfBirthField.text = dateFormatterTo.string(from: date)
     }
@@ -231,14 +213,14 @@ class EditPatientViewController : UIViewController {
     
     func updateGuidelines() {
         getNewGuidelines()
-        deleteOldGuidelines()
+        deactivateOldGuidelines()
         createNewGuidelines()
     }
     
-    func deleteOldGuidelines() {
+    func deactivateOldGuidelines() {
         for guideline in patientGuidelines {
-            guideline.isActive = false
-            NiZiAPIHelper.deleteDietaryManagement(forDiet: guideline.id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guideline.is_active = false
+            NiZiAPIHelper.updateDieteryManagement(forDiet: guideline.id!, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
                 self.completedDeleting.append(guideline)
                 
                 if(self.completedAllRequests()) {
@@ -277,192 +259,193 @@ class EditPatientViewController : UIViewController {
 
             let jsonDecoder = JSONDecoder()
             
-            guard let guidelines = try? jsonDecoder.decode(PatientDietaryGuidelines.self, from: jsonResponse) else { return }
+            guard let guidelines = try? jsonDecoder.decode([NewDietaryManagement].self, from: jsonResponse) else { return }
             
-            self.patientGuidelines = guidelines.dietaryManagements
+            self.patientGuidelines = guidelines
             self.setPatientGuidelines()
         })
     }
     
     func getNewGuidelines() {
-        addMinimumCaloriesGuideline()
-        addMaximumCaloriesGuideline()
-        addMinimumWaterGuideilne()
-        addMaximumWaterGuideline()
-        addMinimumSodiumGuideline()
-        addMaximumSodiumGuideline()
-        addMinimumPotassiumGuideline()
-        addMaximumPotassiumGuideline()
-        addMinimumProteinGuideline()
-        addMaximumProteinGuideline()
+        addCaloriesGuideline()
+        addWaterGuideline()
+        addSodiumGuideline()
+        addPotassiumGuideline()
+        addProteinGuideline()
     }
     
-    func addMinimumCaloriesGuideline() {
-        if(caloriesMinimumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Calorieverrijking",
-                    amount : Int(caloriesMinimumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addCaloriesGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(caloriesMinimumField.text != nil) {
+            minimum = Int(caloriesMinimumField.text!)
         }
+        if(caloriesMaximumField.text != nil) {
+            maximum = Int(caloriesMaximumField.text!)
+        }
+        
+        if(minimum == nil && maximum == nil) {
+            return
+        }
+
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 1,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
+            )
+        )
     }
     
-    func addMaximumCaloriesGuideline() {
-        if(caloriesMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Caloriebeperking",
-                    amount : Int(caloriesMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addWaterGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(waterMinimumField.text != nil) {
+            minimum = Int(waterMinimumField.text!)
         }
+        if(waterMaximumField.text != nil) {
+            maximum = Int(waterMaximumField.text!)
+        }
+
+        if(minimum == nil && maximum == nil) {
+            return
+        }
+        
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 2,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
+            )
+        )
     }
     
-    func addMinimumWaterGuideilne() {
-        if(waterMinimumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Vochtverrijking",
-                    amount : Int(waterMinimumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addSodiumGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(sodiumMinimumField.text != nil) {
+            minimum = Int(sodiumMinimumField.text!)
         }
+        if(sodiumMaximumField.text != nil) {
+            maximum = Int(sodiumMaximumField.text!)
+        }
+        
+        if(minimum == nil && maximum == nil) {
+            return
+        }
+
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 3,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
+            )
+        )
     }
     
-    func addMaximumWaterGuideline() {
-        if(waterMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Vochtbeperking",
-                    amount : Int(waterMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addPotassiumGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(potassiumMinimumField.text != nil) {
+            minimum = Int(potassiumMinimumField.text!)
         }
+        if(potassiumMaximumField.text != nil) {
+            maximum = Int(potassiumMaximumField.text!)
+        }
+
+        if(minimum == nil && maximum == nil) {
+            return
+        }
+        
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 4,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
+            )
+        )
     }
     
-    func addMinimumSodiumGuideline() {
-        if(sodiumMinimumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Natriumverrijking",
-                    amount : Int(sodiumMinimumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addProteinGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(proteinMinimumFIeld.text != nil) {
+            minimum = Int(proteinMinimumFIeld.text!)
         }
+        if(proteinMaximumField.text != nil) {
+            maximum = Int(proteinMaximumField.text!)
+        }
+        
+        if(minimum == nil && maximum == nil) {
+            return
+        }
+
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 5,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
+            )
+        )
     }
     
-    func addMaximumSodiumGuideline() {
-        if(sodiumMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Natriumbeperking",
-                    amount : Int(sodiumMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+    func addfiberGuideline() {
+        var minimum : Int? = nil
+        var maximum : Int? = nil
+        
+        if(grainMinimumField.text != nil) {
+            minimum = Int(grainMinimumField.text!)
         }
-    }
-    
-    func addMinimumPotassiumGuideline() {
-        if(potassiumMinimumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Kaliumverrijking",
-                    amount : Int(potassiumMinimumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+        if(grainMaximumField.text != nil) {
+            maximum = Int(grainMaximumField.text!)
         }
-    }
-    
-    func addMaximumPotassiumGuideline() {
-        if(potassiumMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Kaliumbeperking",
-                    amount : Int(potassiumMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
+        
+        if(minimum == nil && maximum == nil) {
+            return
         }
-    }
-    
-    func addMinimumProteinGuideline() {
-        if(proteinMinimumFIeld.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Eiwitverrijking",
-                    amount : Int(proteinMinimumFIeld.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
+
+        newGuidelines.append(
+            NewDietaryManagement(
+                id: 0,
+                isActive: true,
+                dietaryRestriction: 6,
+                patient: patientId,
+                createdAt: nil,
+                updatedAt: nil,
+                minimum: minimum,
+                maximum: maximum
             )
-        }
-    }
-    
-    func addMaximumProteinGuideline() {
-        if(proteinMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Eiwitbeperking",
-                    amount : Int(proteinMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
-        }
-    }
-    
-    func addMinimumGrainGuideline() {
-        if(grainMinimumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Vezelverrijking",
-                    amount : Int(grainMinimumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
-        }
-    }
-    
-    func addMaxiumumGrainGuideline() {
-        if(grainMaximumField.text != "") {
-            newGuidelines.append(
-                DietaryManagement(
-                    id : 0,
-                    description : "Vezelbeperking",
-                    amount : Int(grainMaximumField.text!)!,
-                    isActive : true,
-                    patientId : patientId
-                )
-            )
-        }
+        )
     }
     
     func getPatientObject() {
@@ -470,9 +453,9 @@ class EditPatientViewController : UIViewController {
             guard let jsonResponse = response.data else { return }
             let jsonDecoder = JSONDecoder()
             
-            guard let personalInfo = try? jsonDecoder.decode(PatientPersonalInfo.self, from: jsonResponse) else { return }
+            guard let personalInfo = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
             
-            self.patientInfo = personalInfo
+            self.patient = personalInfo
             self.fillFieldsWithPatientInfo()
             
         })
@@ -487,8 +470,8 @@ class EditPatientViewController : UIViewController {
     }
     
     func updateNewPatientObject() {
-        patientInfo?.firstName = ""
-        patientInfo?.lastName = ""
+        patient?.userObject?.first_name = ""
+        patient?.userObject?.last_name = ""
     }
     
     func showUpdatedMessage() {

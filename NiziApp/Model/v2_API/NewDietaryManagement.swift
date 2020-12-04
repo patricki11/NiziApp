@@ -65,5 +65,22 @@ class NewDietaryManagement : Codable {
         case minimum            = "minimum"
         case maximum            = "maximum"
     }
+    
+    func toNewDietaryManagement() -> [String:Any] {
+        return [
+            "is_active"           : is_active as Any,
+            "dietary_restriction" : dietaryRestriction as Any,
+            "patient"             : patient as Any,
+            "minimum"             : minimum as Any,
+            "maximum"             : maximum as Any
+        ]
+    }
+    
+    func toInactiveDietaryManagement() -> [String:Any] {
+        return [
+            "id"        : id as Any,
+            "is_active" : is_active as Any
+        ]
+    }
 }
 

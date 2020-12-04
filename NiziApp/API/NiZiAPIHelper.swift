@@ -141,7 +141,7 @@ class NiZiAPIHelper {
     }
     
     static func getPatient(byId patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/patient/\(patientId)"
+        let apiMethod = "patients/\(patientId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
@@ -293,16 +293,16 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .get , parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     
-    static func updateDieteryManagement(forDiet dietId: Int, withGuideline guideline: DietaryManagement, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/dietaryManagement/\(dietId)"
+    static func updateDieteryManagement(forDiet dietId: Int, withGuideline guideline: NewDietaryManagement, authenticationCode: String) -> DataRequest {
+        let apiMethod = "dietary-managements/\(dietId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .put, parameters: guideline.toJson(), encoding: JSONEncoding.default , headers: header)
+        return AF.request(baseUrl + apiMethod, method: .put, parameters: guideline.toInactiveDietaryManagement(), encoding: JSONEncoding.default , headers: header)
     }
     
-    static func createDietaryManagement(forPatient patientId: Int, withGuideline guideline: DietaryManagement, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/dietaryManagement"
+    static func createDietaryManagement(forPatient patientId: Int, withGuideline guideline: NewDietaryManagement, authenticationCode: String) -> DataRequest {
+        let apiMethod = "dietary-managements"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .post, parameters: guideline.toJson(), encoding: JSONEncoding.default , headers: header)
+        return AF.request(baseUrl + apiMethod, method: .post, parameters: guideline.toNewDietaryManagement(), encoding: JSONEncoding.default , headers: header)
     }
     
     static func deleteDietaryManagement(forDiet dietId: Int, authenticationCode: String) -> DataRequest {
