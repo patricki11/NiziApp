@@ -71,6 +71,8 @@ class EditPatientViewController : UIViewController {
     var activeTextField : UITextField = UITextField()
     
     var patient : NewPatient? = nil
+    var user : NewUser? = nil
+    
     var patientId : Int!
     
     func datePicker() -> UIDatePicker {
@@ -128,19 +130,19 @@ class EditPatientViewController : UIViewController {
                 setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
                 break
             case "Vocht":
-                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
+                setGuidelineFields(guideline: guideline, minimumField: waterMinimumField, maximumField: waterMaximumField)
                 break
             case "Natrium":
-                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
+                setGuidelineFields(guideline: guideline, minimumField: sodiumMinimumField, maximumField: sodiumMaximumField)
                 break
             case "Kalium":
-                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
+                setGuidelineFields(guideline: guideline, minimumField: potassiumMinimumField, maximumField: potassiumMaximumField)
                 break
             case "Eiwiten":
-                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
+                setGuidelineFields(guideline: guideline, minimumField: proteinMinimumFIeld, maximumField: proteinMaximumField)
                 break
             case "Vezels":
-                setGuidelineFields(guideline: guideline, minimumField: caloriesMinimumField, maximumField: caloriesMaximumField)
+                setGuidelineFields(guideline: guideline, minimumField: grainMinimumField, maximumField: grainMaximumField)
                 break
             default:
                 break
@@ -203,12 +205,21 @@ class EditPatientViewController : UIViewController {
     
     @IBAction func confirmEdit(_ sender: Any) {
         if(allRequiredFieldsFilled()) {
+            updatePatientData()
             updateGuidelines()
-            // TODO: Update patientgegevens, nog geen call voor in API >.>
         }
         else {
             showRequiredFieldsNotFilledMessage()
         }
+    }
+    
+    func updatePatientData() {
+        patient?.dateOfBirth = dateOfBirthField.text!
+        NiZiAPIHelper.updatePatientData(byId: patient!.id!, withDetails: patient!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+        
+        user?.first_name = firstNameField.text!
+        user?.last_name = surnameField.text!
+        NiZiAPIHelper.updatePatientUserData(byId: user!.id!, withDetails: user!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
     }
     
     func updateGuidelines() {
@@ -272,6 +283,7 @@ class EditPatientViewController : UIViewController {
         addSodiumGuideline()
         addPotassiumGuideline()
         addProteinGuideline()
+        addfiberGuideline()
     }
     
     func addCaloriesGuideline() {
@@ -453,9 +465,10 @@ class EditPatientViewController : UIViewController {
             guard let jsonResponse = response.data else { return }
             let jsonDecoder = JSONDecoder()
             
-            guard let personalInfo = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
+            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
             
-            self.patient = personalInfo
+            self.patient = patient
+            self.user = patient.userObject
             self.fillFieldsWithPatientInfo()
             
         })

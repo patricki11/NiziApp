@@ -145,6 +145,18 @@ class NiZiAPIHelper {
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
+    
+    static func updatePatientData(byId patientId: Int, withDetails patient: NewPatient, authenticationCode: String) -> DataRequest {
+        let apiMethod = "patients/\(patientId)"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        return AF.request(baseUrl + apiMethod, method: .put, parameters: patient.toUpdatedPatientJSON(), encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func updatePatientUserData(byId userId: Int, withDetails user: NewUser, authenticationCode: String) -> DataRequest {
+        let apiMethod = "users/\(userId)"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        return AF.request(baseUrl + apiMethod, method: .put, parameters: user.toUpdatedPatientUserJson(), encoding: JSONEncoding.default, headers: header)
+    }
     // PATIENTS //
     
     

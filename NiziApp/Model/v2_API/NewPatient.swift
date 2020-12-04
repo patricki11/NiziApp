@@ -85,6 +85,13 @@ class NewPatient : Codable {
         ]
     }
     
+    func toUpdatedPatientJSON() -> [String:Any] {
+        return [
+            "id" : id as Any,
+            "date_of_birth" : dateOfBirth as Any,
+        ]
+    }
+    
     func toJSON() -> [String:Any]{
         return [
             "id"            : id as Any,
