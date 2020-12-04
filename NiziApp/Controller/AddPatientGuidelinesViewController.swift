@@ -52,7 +52,7 @@ class AddPatientGuidelinesViewController : UIViewController {
     
     let onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
     
-    weak var patient : NewPatient!
+    var patient : Int!
     
     var guidelines : [NewDietaryManagement] = []
     override func viewDidLoad() {
@@ -110,7 +110,7 @@ class AddPatientGuidelinesViewController : UIViewController {
         getGuidelines()
         
         for guideline in guidelines {
-            NiZiAPIHelper.createDietaryManagement(forPatient: patient.id!, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!)
+            NiZiAPIHelper.createDietaryManagement(forPatient: patient, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in })
         }
         
         showGuidelinesAddedMessage()
@@ -122,6 +122,7 @@ class AddPatientGuidelinesViewController : UIViewController {
         addSodiumGuideline()
         addPotassiumGuideline()
         addProteinGuideline()
+        addfiberGuideline()
     }
     
     func addCaloriesGuideline() {
@@ -144,7 +145,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 1,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -173,7 +174,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 2,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -202,7 +203,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 3,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -231,7 +232,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 4,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -260,7 +261,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 5,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -289,7 +290,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 6,
-                patient: patient.id,
+                patient: patient,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -300,8 +301,8 @@ class AddPatientGuidelinesViewController : UIViewController {
     
     func showGuidelinesAddedMessage() {
         let alertController = UIAlertController(
-            title: "Patiënt toegevoegd",
-            message: "De patiënt is toegevoegd.",
+            title: "Richtlijnen toegevoegd",
+            message: "De richtlijnen toegevoegd.",
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientList()}))

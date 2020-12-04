@@ -105,7 +105,7 @@ extension PatientListViewController: UITableViewDataSource {
         let patient = filteredPatientList[indexPath.row]
         
         cell.patientNumber.text = String(indexPath.row)
-        cell.patientName.text = (patient.userObject?.first_name)! + " " + (patient.userObject?.last_name)!
+        cell.patientName.text = (patient.userObject?.first_name ?? "") + " " + (patient.userObject?.last_name ?? "")
         return cell
 
     }

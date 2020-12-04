@@ -288,7 +288,7 @@ class AddPatientViewController: UIViewController {
     func navigateToGuidelineController(patientId: Int?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let guidelineVC = storyboard.instantiateViewController(withIdentifier: "AddPatientGuidelinesViewController") as! AddPatientGuidelinesViewController
-        //guidelineVC.patient = patient.patient
+        guidelineVC.patient = patientId
         self.navigationController?.pushViewController(guidelineVC, animated: true)
     }
 }
