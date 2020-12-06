@@ -22,19 +22,35 @@ class AddConversationViewController: UIViewController {
         return formatter
     }()
     
-    @IBOutlet weak var newConversationField: UITextField!
+    @IBOutlet weak var newConversationTitleField: UITextField!
+    @IBOutlet weak var newConversationDescriptionField: UITextField!
     
     @IBAction func createNewConversation(_ sender: Any) {
-        let newConversation = NewConversation(
-            id : 0,
-            title : "title",
-            comment: "comment",
-            date: dateFormatter.string(from: Date()),
-            isRead : false,
-            doctor : nil,
-            doctorId: doctorId,
-            patient : nil,
-            patientId: patientId)
+        
+        if(requiredFieldsForNewConversationFilled()) {
+            
+            var title = newConversationTitleField.text ?? ""
+            var description = newConversationDescriptionField.text ?? ""
+            
+            let newConversation = NewConversation(
+                id : 0,
+                title : title,
+                comment: description,
+                date: dateFormatter.string(from: Date()),
+                isRead : false,
+                doctor : nil,
+                doctorId: doctorId,
+                patient : nil,
+                patientId: patientId)
+            
+            NiZiAPIHelper.createConversation(withDetails: newConversation, authorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in //W.I.P
+                
+            })
+        }
+    }
+    
+    func requiredFieldsForNewConversationFilled() -> Bool {
+        return (newConversationTitleField.text != "" && newConversationDescriptionField.text != "")
     }
     
     @IBOutlet weak var conversationtable: UITableView!

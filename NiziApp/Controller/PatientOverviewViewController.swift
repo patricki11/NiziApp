@@ -112,7 +112,16 @@ class PatientOverviewViewController : UIViewController
     }
     
     @IBAction func filterGuideline(_ sender: Any) {
-        guidelineTableView?.reloadData()
+        tempNavigateToConversations()
+        //guidelineTableView?.reloadData()
+    }
+    
+    func tempNavigateToConversations() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
+        conversationVC.patientId = patient.id
+        conversationVC.doctorId = 1
+        self.navigationController?.pushViewController(conversationVC, animated: true)
     }
     
     func getFilteredGuidelineList() -> [NewDietaryManagement] {

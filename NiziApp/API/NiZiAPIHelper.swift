@@ -92,7 +92,14 @@ class NiZiAPIHelper {
     }
     //GET CONVERSATIONS //
     
-    
+    // CREATE CONVERSATIONS //
+    static func createConversation(withDetails conversation: NewConversation, authorization token: String) -> DataRequest {
+        let apiMethod = "feedbacks"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: conversation.toNewConversation(), encoding: JSONEncoding.default, headers: header)
+    }
+    // CREATE CONVERSATIONS //
     
     // DOCTORS //
     static func getAllDoctors(withDoctorCode authenticationCode: String) -> DataRequest {

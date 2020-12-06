@@ -40,4 +40,15 @@ class NewConversation : Codable {
         case doctor = "doctor"
         case patient = "patient"
     }
+    
+    func toNewConversation() -> [String:Any] {
+        return [
+            "title"   : title as Any,
+            "comment" : comment as Any,
+            "date"    : date as Any,
+            "is_read" : isRead as Any,
+            "doctor"  : doctor as Any,
+            "patient" : patient as Any
+        ]
+    }
 }
