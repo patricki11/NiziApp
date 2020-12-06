@@ -137,10 +137,10 @@ class LoginViewController : UIViewController {
             
             self.saveAuthToken(token: login.jwt!)
             
-            if(login.user.role?.description == "Patient") {
+            if(login.user.patient != nil) {
                 self.navigateToPatientHomepage(withPatient: login.user, withPatientCode: login.jwt!)
             }
-            else if(login.user.role?.description == "Doctor"){
+            else if(login.user.doctor != nil) {
                 self.navigateToPatientList(withAccount: login.user)
             }
         })

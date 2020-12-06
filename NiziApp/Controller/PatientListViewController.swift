@@ -61,7 +61,7 @@ class PatientListViewController: UIViewController {
     
     func navigateToLoginPage() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "ChooseLoginViewController") as! ChooseLoginViewController
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
