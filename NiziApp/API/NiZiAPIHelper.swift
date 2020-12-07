@@ -53,18 +53,20 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
-    static func addNewConsumption(withToken token : String, withDetails consumption: NewConsumption) -> DataRequest {
+    static func addNewConsumption(withToken token : String, withDetails consumption: NewConsumptionModel) -> DataRequest {
          let apiMethod = "consumptions"
          let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-         let parameters = consumption.toJSON()
-         print(parameters);
+         let parameters =
+        [
+            "amount": consumption.amount, "date": consumption.date, "meal_time": consumption.mealTime, "patient": ["id": consumption.patient.id], "weight_unit": ["unit": consumption.weightUnit.unit, "updated_at": consumption.weightUnit.updatedAt, "id": consumption.weightUnit.id, "created_at": consumption.weightUnit.createdAt, "short": consumption.weightUnit.short], "food_meal_component": ["protein": consumption.foodmealComponent.protein, "id": consumption.foodmealComponent.id, "sodium": consumption.foodmealComponent.sodium, "name": consumption.foodmealComponent.name, "kcal":  consumption.foodmealComponent.kcal, "potassium": consumption.foodmealComponent.potassium, "water": consumption.foodmealComponent.water, "description": consumption.foodmealComponent.description, "fiber": consumption.foodmealComponent.fiber, "image_url": consumption.foodmealComponent.imageUrl, "portion_size": consumption.foodmealComponent.portionSize]
+        ] as [String : Any]
          return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
      }
     //NEW CONSUMPTION //
     
     //NEW SEARCH FOOD//
     static func getFood(withToken token : String,withFood food: String) -> DataRequest{
-        let apiMethod = "foods?name_eq=\(food)"
+        let apiMethod = "foods?name_contains=\(food)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
         [

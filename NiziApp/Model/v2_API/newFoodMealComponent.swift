@@ -9,7 +9,7 @@
 import Foundation
 
 class newFoodMealComponent : Codable {
-    var id          : Int    = 0;
+    var id          : Int    = 0
     var name        : String = ""
     var description : String = ""
     var kcal        : Float  = 0.0
@@ -54,7 +54,14 @@ class newFoodMealComponent : Codable {
             "id"            : id as Any,
             "name"          : name as Any,
             "description"   : description as Any,
-            "image_url"     : imageUrl as Any
+            "image_url"     : imageUrl as Any,
+            "kcal"          : kcal as Any,
+            "protein"       : protein as Any,
+            "potassium"     : potassium as Any,
+            "sodium"        : sodium as Any,
+            "water"         : water as Any,
+            "fiber"         : fiber as Any,
+            "portion_size"  : portionSize as Any
            ]
        }
 }
