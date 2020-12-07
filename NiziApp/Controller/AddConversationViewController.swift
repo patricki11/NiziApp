@@ -25,6 +25,9 @@ class AddConversationViewController: UIViewController {
     @IBOutlet weak var newConversationTitleField: UITextField!
     @IBOutlet weak var newConversationDescriptionField: UITextField!
     
+    @IBOutlet weak var newConversationTitleLabel: UILabel!
+    @IBOutlet weak var newConversationDescriptionLabel: UILabel!
+    
     @IBAction func createNewConversation(_ sender: Any) {
         
         if(requiredFieldsForNewConversationFilled()) {
@@ -54,10 +57,6 @@ class AddConversationViewController: UIViewController {
     }
     
     func requiredFieldsForNewConversationFilled() -> Bool {
-        print("---")
-        print(newConversationTitleField.text ?? "")
-        print(newConversationDescriptionField.text ?? "")
-        print("---")
         return (newConversationTitleField.text != "" && newConversationDescriptionField.text != "")
     }
     
@@ -70,7 +69,6 @@ class AddConversationViewController: UIViewController {
     }
 
     fileprivate func SetupTableView(){
-        newConversationDescriptionField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.top
         view.addSubview(conversationtable)
         conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
         conversationtable.delegate = self
