@@ -64,6 +64,7 @@ class AddConversationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Gesprekken"
         getConversation()
         SetupTableView()
     }
