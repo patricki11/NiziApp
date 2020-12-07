@@ -45,14 +45,11 @@ class AddConversationViewController: UIViewController {
             
             NiZiAPIHelper.createConversation(withDetails: newConversation, authorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
                 
-                print(response.response?.statusCode ?? "no statusCode")
-                
-                print("RESPONSE")
-                guard let jsonResponse = response.data else { return }
-                
-                var result = String(data: response.data!, encoding: .utf8)
-                print(result)
+                self.showConversationAddedMessage()
             })
+        }
+        else {
+            showRequiredFieldsNotFilledMessage()
         }
     }
     
@@ -73,6 +70,7 @@ class AddConversationViewController: UIViewController {
     }
 
     fileprivate func SetupTableView(){
+        newConversationDescriptionField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.top
         view.addSubview(conversationtable)
         conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
         conversationtable.delegate = self
@@ -92,6 +90,38 @@ class AddConversationViewController: UIViewController {
             self.conversations = conversations
             self.conversationtable?.reloadData()
         })
+    }
+    
+    func showConversationAddedMessage() {
+        self.newConversationTitleField.text = ""
+        self.newConversationDescriptionField.text = ""
+        
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(
+                title: "Toegevoegd",
+                message: "Conversatie toegevoegd",
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.getConversation()}))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func showRequiredFieldsNotFilledMessage() {
+        self.newConversationTitleField.text = ""
+        self.newConversationDescriptionField.text = ""
+        
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(
+                title: "Verplichte velden",
+                message: "De verplichte velden zijn niet gevuld",
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 

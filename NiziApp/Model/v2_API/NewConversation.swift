@@ -47,8 +47,8 @@ class NewConversation : Codable {
             "comment" : comment as Any,
             "date"    : date as Any,
             "is_read" : isRead as Any,
-            "doctor"  : doctor as Any,
-            "patient" : patient as Any
+            "doctor"  : doctorId as Any,
+            "patient" : patientId as Any
         ]
     }
 }
