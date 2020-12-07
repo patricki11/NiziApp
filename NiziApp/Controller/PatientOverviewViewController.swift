@@ -13,7 +13,7 @@ import SwiftKeychainWrapper
 class PatientOverviewViewController : UIViewController
 {
     weak var patient : NewPatient!
-    @IBOutlet weak var averageBetweenLabel: UILabel!
+    @IBOutlet weak var ageGenderLabel: UILabel!
     
     @IBOutlet weak var patientNameLabel: UILabel!
     
@@ -43,14 +43,18 @@ class PatientOverviewViewController : UIViewController
         getConsumptions()
     }
     
+    func changeAgeGenderLabel() {
+        let gender = patient.gender
+        let birthDate = patient.dateOfBirth
+        ageGenderLabel.text = "\(gender) - \(birthDate)"
+    }
+    
     func changeCurrentWeekLabel() {
 
         selectedDate = Calendar.current.date(byAdding: .day, value: currentDayCounter, to: Date())
                 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-YYYY"
-        
-        averageBetweenLabel.text = "\(dateFormatter.string(from: selectedDate!))"
         
         if(currentDayCounter == -1) {
             currentWeekLabel.text = "Gisteren"
@@ -80,12 +84,14 @@ class PatientOverviewViewController : UIViewController
         setLanguageSpecificText()
         changeCurrentWeekLabel()
         getDietaryGuidelines()
+        changeAgeGenderLabel()
         getConsumptions()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         getDietaryGuidelines()
+        changeAgeGenderLabel()
         getConsumptions()
     }
     

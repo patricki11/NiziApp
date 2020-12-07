@@ -3006,7 +3006,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gemiddelde van 01-01-1900 tot 01-01-1900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-um-4Ub">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gemiddelde van 01-01-1900 tot 01-01-1900" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-um-4Ub" userLabel="Age Gender Label">
                                         <rect key="frame" x="20" y="52" width="326" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3155,7 +3155,7 @@
                     <tabBarItem key="tabBarItem" title="Dagboek" image="Diary" id="BN2-5X-9gV"/>
                     <navigationItem key="navigationItem" title="Dagboek" id="6i4-K4-Wpo"/>
                     <connections>
-                        <outlet property="averageBetweenLabel" destination="dqW-um-4Ub" id="u0f-NE-pRj"/>
+                        <outlet property="ageGenderLabel" destination="dqW-um-4Ub" id="cfV-JQ-3ry"/>
                         <outlet property="currentWeekLabel" destination="nvF-1B-cZU" id="m8S-eE-Xfb"/>
                         <outlet property="dayOverviewLabel" destination="0vq-FB-ty0" id="Lni-MT-xHv"/>
                         <outlet property="guidelineSearchField" destination="jfs-dl-Q3d" id="jJu-Uh-YzM"/>
