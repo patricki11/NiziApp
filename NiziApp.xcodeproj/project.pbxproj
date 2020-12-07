@@ -32,7 +32,6 @@
 		2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE0242972E400E96AEF /* HeaderView.swift */; };
 		2154CFE3242972E400E96AEF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2154CFE1242972E400E96AEF /* HeaderView.xib */; };
 		2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE52429DA4200E96AEF /* ConversationViewController.swift */; };
-		2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */; };
 		215DA6FC2567CE1F00B242B0 /* newConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215DA6FB2567CE1F00B242B0 /* newConsumption.swift */; };
 		215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE884256C30D0007F05AB /* NewFavorite.swift */; };
 		215FE88C256C456B007F05AB /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE88B256C456B007F05AB /* ConversationCell.swift */; };
@@ -107,7 +106,6 @@
 		2154CFE0242972E400E96AEF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2154CFE1242972E400E96AEF /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		2154CFE52429DA4200E96AEF /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		215DA6FB2567CE1F00B242B0 /* newConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConsumption.swift; sourceTree = "<group>"; };
 		215FE884256C30D0007F05AB /* NewFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavorite.swift; sourceTree = "<group>"; };
 		215FE88B256C456B007F05AB /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 				931298BE23BF6F140082D644 /* MealDetailViewController.swift */,
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
-				2154CFE72429E71100E96AEF /* DiaryDetailViewController.swift */,
 				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
 			);
 			path = Patient;
@@ -499,7 +496,6 @@
 				5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */,
 				934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */,
 				215FE88F256C4643007F05AB /* NewConversation.swift in Sources */,
-				2154CFE82429E71100E96AEF /* DiaryDetailViewController.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
 				215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */,

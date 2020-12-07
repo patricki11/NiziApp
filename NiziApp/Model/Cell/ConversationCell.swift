@@ -27,7 +27,7 @@ class ConversationCell : UITableViewCell{
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.text = "hmm course title here"
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,7 +37,7 @@ class ConversationCell : UITableViewCell{
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.text = "hmm course URL here"
-        label.textColor = .white
+        label.textColor = .black
         label.numberOfLines = -1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -47,7 +47,7 @@ class ConversationCell : UITableViewCell{
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.clipsToBounds = true
-        v.backgroundColor = UIColor.darkGray
+        v.backgroundColor = UIColor.white
         v.layer.cornerRadius = 8
         return v
     }()

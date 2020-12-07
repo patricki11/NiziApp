@@ -24,8 +24,8 @@ class ConversationViewController: UIViewController {
         view.addSubview(conversationtable)
         conversationtable.translatesAutoresizingMaskIntoConstraints = false
         conversationtable.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        conversationtable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        conversationtable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
+        conversationtable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        conversationtable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         conversationtable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
         conversationtable.delegate = self

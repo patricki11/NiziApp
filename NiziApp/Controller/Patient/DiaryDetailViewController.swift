@@ -10,6 +10,8 @@ import UIKit
 import SwiftKeychainWrapper
 import Kingfisher
 
+/*
+
 class DiaryDetailViewController: UIViewController {
     
     @IBOutlet weak var DetailTitle: UILabel!
@@ -78,3 +80,4 @@ class DiaryDetailViewController: UIViewController {
         })
     }
 }
+ */
