@@ -17,9 +17,6 @@ class PatientOverviewViewController : UIViewController
     
     @IBOutlet weak var patientNameLabel: UILabel!
     
-    @IBOutlet weak var guidelineSearchField: UITextField!
-    @IBOutlet weak var searchGuidelineButton: UIButton!
-    
     @IBOutlet weak var dayOverviewLabel: UILabel!
     @IBOutlet weak var guidelineTableView: UITableView!
     
@@ -115,28 +112,12 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
-    @IBAction func filterGuideline(_ sender: Any) {
-        tempNavigateToConversations()
-        //guidelineTableView?.reloadData()
-    }
-    
     func tempNavigateToConversations() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
         conversationVC.patientId = patient.id
         conversationVC.doctorId = 1
         self.navigationController?.pushViewController(conversationVC, animated: true)
-    }
-    
-    func getFilteredGuidelineList() -> [NewDietaryManagement] {
-        let guidelineName = guidelineSearchField?.text ?? ""
-        
-        if(guidelineName == "") {
-            return patientGuidelines
-        }
-        else {
-            return patientGuidelines.filter { ("\($0.dietaryRestrictionObject?.plural?.lowercased())").contains(guidelineName.lowercased())}
-        }
     }
     
     func getDietaryGuidelines() {
@@ -178,14 +159,14 @@ class PatientOverviewViewController : UIViewController
 
 extension PatientOverviewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getFilteredGuidelineList().count
+        return patientGuidelines.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PatientGuidelineTableViewCell"
         let cell = guidelineTableView?.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PatientGuidelineTableViewCell
 
-        let filteredList = getFilteredGuidelineList()
+        let filteredList = patientGuidelines
         let guideline = filteredList[indexPath.row]
         var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var total : Int = Int(floatTotal)
