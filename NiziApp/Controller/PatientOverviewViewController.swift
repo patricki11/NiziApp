@@ -25,46 +25,44 @@ class PatientOverviewViewController : UIViewController
     
     var patientGuidelines : [NewDietaryManagement] = []
     var patientConsumption : [NewConsumption] = []
-    var currentWeekCounter : Int = 0
+    var currentDayCounter : Int = 0
    
-    var firstDayOfWeek : Date?
-    var lastDayOfWeek : Date?
+    var selectedDate : Date?
     
     @IBOutlet weak var currentWeekLabel: UILabel!
     
     @IBAction func getPreviousWeek(_ sender: Any) {
-        currentWeekCounter -= 1
+        currentDayCounter -= 1
         changeCurrentWeekLabel()
         getConsumptions()
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
-        currentWeekCounter += 1
+        currentDayCounter += 1
         changeCurrentWeekLabel()
         getConsumptions()
     }
     
     func changeCurrentWeekLabel() {
 
-        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().startOfWeek!)
-        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentWeekCounter, to: Date().endOfWeek!)
-        
+        selectedDate = Calendar.current.date(byAdding: .day, value: currentDayCounter, to: Date())
+                
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-YYYY"
         
-        averageBetweenLabel.text = "Gemiddelde van \(dateFormatter.string(from: firstDayOfWeek!)) tot \(dateFormatter.string(from: lastDayOfWeek!))"
+        averageBetweenLabel.text = "\(dateFormatter.string(from: selectedDate!))"
         
-        if(currentWeekCounter == -1) {
-            currentWeekLabel.text = "Vorige Week"
+        if(currentDayCounter == -1) {
+            currentWeekLabel.text = "Gisteren"
         }
-        else if(currentWeekCounter == 0) {
-            currentWeekLabel.text = "Deze Week"
+        else if(currentDayCounter == 0) {
+            currentWeekLabel.text = "Vandaag"
         }
-        else if(currentWeekCounter == 1) {
-            currentWeekLabel.text = "Volgende Week"
+        else if(currentDayCounter == 1) {
+            currentWeekLabel.text = "Morgen"
         }
         else {
-            currentWeekLabel.text = "\(dateFormatter.string(from: firstDayOfWeek!)) - \(dateFormatter.string(from: lastDayOfWeek!)) "
+            currentWeekLabel.text = "\(dateFormatter.string(from: selectedDate!))"
         }
         
         updateGuidelines()
@@ -155,9 +153,9 @@ class PatientOverviewViewController : UIViewController
     func getConsumptions() {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        NiZiAPIHelper.getAllConsumptions(forPatient: patient.id!, between: dateFormatter.string(from: firstDayOfWeek!), and: dateFormatter.string(from: lastDayOfWeek!), authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             
@@ -183,27 +181,18 @@ extension PatientOverviewViewController : UITableViewDataSource {
 
         let filteredList = getFilteredGuidelineList()
         let guideline = filteredList[indexPath.row]
-        var total : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
-        var average : Int = 0
+        var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
+        var total : Int = Int(floatTotal)
         
-        if(total != 0) {
-            print("total != 0")
-            average = Int(total / 7)
-        }
-        
-        if(currentWeekCounter <= 0) {
-            //average = Int.random(in: (guideline.minimum ?? 0 - 20)...(guideline.maximum ?? 0 + 100))
-        }
-        
-        cell.averageAmountForWeekLabel.text = "\(average) \(guideline.dietaryRestrictionObject!.plural)"
+        cell.averageAmountForWeekLabel.text = "\(total) \(guideline.dietaryRestrictionObject!.plural!)"
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
         if(guideline.minimum != 0 && guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "tussen \(guideline.minimum) en \(guideline.maximum)"
+            cell.recommendedAmountLabel.text = "tussen \(guideline.minimum!) en \(guideline.maximum!)"
         }
         else if(guideline.minimum != 0) {
-            cell.recommendedAmountLabel.text = "meer dan \(guideline.minimum)"
-            if(average > guideline.minimum ?? 0) {
+            cell.recommendedAmountLabel.text = "meer dan \(guideline.minimum!)"
+            if(total > guideline.minimum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }
             else {
@@ -211,8 +200,8 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         else if(guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "minder dan \(guideline.maximum)"
-            if(average < guideline.maximum ?? 0) {
+            cell.recommendedAmountLabel.text = "minder dan \(guideline.maximum!)"
+            if(total < guideline.maximum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }
             else {
