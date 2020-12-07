@@ -3057,7 +3057,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0" userLabel="Day Overview Label">
                                 <rect key="frame" x="20" y="282" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -3157,11 +3157,11 @@
                     <connections>
                         <outlet property="averageBetweenLabel" destination="dqW-um-4Ub" id="u0f-NE-pRj"/>
                         <outlet property="currentWeekLabel" destination="nvF-1B-cZU" id="m8S-eE-Xfb"/>
+                        <outlet property="dayOverviewLabel" destination="0vq-FB-ty0" id="Lni-MT-xHv"/>
                         <outlet property="guidelineSearchField" destination="jfs-dl-Q3d" id="jJu-Uh-YzM"/>
                         <outlet property="guidelineTableView" destination="oh2-6H-Hzf" id="I55-bg-e9Y"/>
                         <outlet property="patientNameLabel" destination="eAn-89-hrf" id="ots-Ho-YxN"/>
                         <outlet property="searchGuidelineButton" destination="uQZ-YM-iCq" id="4bb-BP-HSB"/>
-                        <outlet property="weekOverviewLabel" destination="0vq-FB-ty0" id="uAD-w3-vZP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itH-PJ-3vb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3173,7 +3173,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">

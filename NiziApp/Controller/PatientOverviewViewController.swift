@@ -20,7 +20,7 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var guidelineSearchField: UITextField!
     @IBOutlet weak var searchGuidelineButton: UIButton!
     
-    @IBOutlet weak var weekOverviewLabel: UILabel!
+    @IBOutlet weak var dayOverviewLabel: UILabel!
     @IBOutlet weak var guidelineTableView: UITableView!
     
     var patientGuidelines : [NewDietaryManagement] = []
