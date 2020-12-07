@@ -43,13 +43,24 @@ class AddConversationViewController: UIViewController {
                 patient : nil,
                 patientId: patientId)
             
-            NiZiAPIHelper.createConversation(withDetails: newConversation, authorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in //W.I.P
+            NiZiAPIHelper.createConversation(withDetails: newConversation, authorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
                 
+                print(response.response?.statusCode ?? "no statusCode")
+                
+                print("RESPONSE")
+                guard let jsonResponse = response.data else { return }
+                
+                var result = String(data: response.data!, encoding: .utf8)
+                print(result)
             })
         }
     }
     
     func requiredFieldsForNewConversationFilled() -> Bool {
+        print("---")
+        print(newConversationTitleField.text ?? "")
+        print(newConversationDescriptionField.text ?? "")
+        print("---")
         return (newConversationTitleField.text != "" && newConversationDescriptionField.text != "")
     }
     
@@ -63,11 +74,6 @@ class AddConversationViewController: UIViewController {
 
     fileprivate func SetupTableView(){
         view.addSubview(conversationtable)
-        conversationtable.translatesAutoresizingMaskIntoConstraints = false
-        conversationtable.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        conversationtable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50).isActive = true
-        conversationtable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
-        conversationtable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
         conversationtable.delegate = self
         conversationtable.dataSource = self
