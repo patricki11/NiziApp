@@ -3012,7 +3012,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-zV-5Yo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-zV-5Yo" userLabel="Edit Button">
                                         <rect key="frame" x="356" y="21" width="38" height="38.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="38" id="mm6-fq-kU3"/>
@@ -3023,19 +3023,33 @@
                                             <action selector="editPatient:" destination="cIk-s1-WXa" eventType="touchUpInside" id="7Fg-BY-JtB"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zQ-EC-5qz" userLabel="Conversation Button">
+                                        <rect key="frame" x="308" y="21" width="38" height="38.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="dLs-ga-elr"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" backgroundImage="message.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="tempNavigateToConversations:" destination="cIk-s1-WXa" eventType="touchUpInside" id="5Ks-rk-fuQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.4250459969" blue="0.81971204279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="leading" secondItem="eAn-89-hrf" secondAttribute="trailing" constant="10" id="0ra-ST-ueS"/>
+                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="leading" secondItem="eAn-89-hrf" secondAttribute="trailing" constant="-38" id="0ra-ST-ueS"/>
+                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="5Qr-aK-Ie9"/>
                                     <constraint firstItem="eAn-89-hrf" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="Eej-JB-TAZ"/>
                                     <constraint firstItem="dqW-um-4Ub" firstAttribute="top" secondItem="eAn-89-hrf" secondAttribute="bottom" constant="13" id="Fj9-DO-hdV"/>
                                     <constraint firstItem="bFK-zV-5Yo" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="Rni-fD-joL"/>
                                     <constraint firstAttribute="height" constant="80" id="SeO-xS-VbY"/>
                                     <constraint firstAttribute="trailing" secondItem="bFK-zV-5Yo" secondAttribute="trailing" constant="20" id="SkB-b3-gfN"/>
                                     <constraint firstAttribute="bottom" secondItem="bFK-zV-5Yo" secondAttribute="bottom" constant="20" id="TeT-DX-4TM"/>
-                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="leading" secondItem="dqW-um-4Ub" secondAttribute="trailing" constant="10" id="eyD-7F-b6x"/>
+                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="leading" secondItem="dqW-um-4Ub" secondAttribute="trailing" constant="-38" id="eyD-7F-b6x"/>
+                                    <constraint firstAttribute="bottom" secondItem="4zQ-EC-5qz" secondAttribute="bottom" constant="20" id="fjV-Li-8gi"/>
                                     <constraint firstItem="dqW-um-4Ub" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="iJ4-PD-9o8"/>
                                     <constraint firstItem="eAn-89-hrf" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="15" id="uy6-QZ-nLK"/>
+                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="leading" secondItem="4zQ-EC-5qz" secondAttribute="trailing" constant="10" id="vtU-Pi-v8L"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0" userLabel="Day Overview Label">
@@ -3147,7 +3161,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">
@@ -4815,6 +4829,7 @@
         <image name="Water_s" width="128" height="128"/>
         <image name="Webp.net-resizeimage" width="50" height="50"/>
         <image name="Website_s" width="128" height="128"/>
+        <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
