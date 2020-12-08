@@ -2416,20 +2416,37 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugQ-gx-chA">
                                 <rect key="frame" x="0.0" y="-4" width="414" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpv-I3-4m5">
+                                        <rect key="frame" x="30" y="63.999999999999993" width="292" height="21.666666666666664"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="292" id="Hqz-GW-u1b"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ks-bJ-eh7">
+                                        <rect key="frame" x="268" y="42" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="IWJ-Ee-9fP"/>
+                                            <constraint firstAttribute="height" constant="65" id="T6p-ew-ftg"/>
+                                        </constraints>
+                                        <state key="normal" image="bin_xs"/>
+                                        <connections>
+                                            <action selector="deleteBtn:" destination="5Xy-eG-HOf" eventType="touchUpInside" id="ewG-HJ-jZN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="0ks-bJ-eh7" firstAttribute="top" secondItem="ugQ-gx-chA" secondAttribute="top" constant="42" id="14C-Gq-imU"/>
+                                    <constraint firstItem="kpv-I3-4m5" firstAttribute="leading" secondItem="ugQ-gx-chA" secondAttribute="leading" constant="30" id="MTa-Us-Qi1"/>
+                                    <constraint firstItem="kpv-I3-4m5" firstAttribute="top" secondItem="ugQ-gx-chA" secondAttribute="bottom" constant="-36.000000000000007" id="RV4-OZ-sox"/>
+                                    <constraint firstAttribute="trailing" secondItem="0ks-bJ-eh7" secondAttribute="trailing" constant="81" id="tnR-c3-nju"/>
                                     <constraint firstAttribute="height" constant="100" id="x0x-gf-nii"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpv-I3-4m5">
-                                <rect key="frame" x="30" y="59.999999999999993" width="292" height="21.666666666666664"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="Hqz-GW-u1b"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGM-AG-eiG">
                                 <rect key="frame" x="376" y="581.33333333333337" width="18" height="14.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -2604,7 +2621,6 @@
                             <constraint firstItem="BgC-LW-q8c" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" constant="10" id="BJm-dD-Jie"/>
                             <constraint firstItem="ugQ-gx-chA" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" id="BMQ-3j-ioa"/>
                             <constraint firstItem="Ave-aO-9wU" firstAttribute="top" secondItem="gaL-HO-pHe" secondAttribute="bottom" constant="7.3333333333332575" id="DCr-iw-T01"/>
-                            <constraint firstItem="kpv-I3-4m5" firstAttribute="leading" secondItem="ugQ-gx-chA" secondAttribute="leading" constant="30" id="FeP-GN-V8G"/>
                             <constraint firstItem="be0-sy-NaW" firstAttribute="top" secondItem="Aji-zp-jqN" secondAttribute="bottom" constant="17" id="FfI-6C-SgQ"/>
                             <constraint firstItem="aKu-Zq-cCU" firstAttribute="trailing" secondItem="w1w-8A-sFL" secondAttribute="trailing" constant="10" id="HpW-Wx-aF2"/>
                             <constraint firstItem="aKu-Zq-cCU" firstAttribute="trailing" secondItem="be0-sy-NaW" secondAttribute="trailing" id="IJi-tF-msS"/>
@@ -2625,7 +2641,6 @@
                             <constraint firstItem="Aji-zp-jqN" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" constant="79" id="cQk-uP-5IT"/>
                             <constraint firstItem="gaL-HO-pHe" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" constant="10" id="cg4-Hm-idF"/>
                             <constraint firstItem="LzL-Af-7ss" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" constant="10" id="d6Y-vo-O87"/>
-                            <constraint firstItem="kpv-I3-4m5" firstAttribute="top" secondItem="ugQ-gx-chA" secondAttribute="bottom" constant="-36.000000000000007" id="gJ6-XA-ABf"/>
                             <constraint firstItem="aKu-Zq-cCU" firstAttribute="trailing" secondItem="lWK-nd-iEn" secondAttribute="trailing" constant="20" id="h3V-Jc-Nql"/>
                             <constraint firstItem="w1w-8A-sFL" firstAttribute="top" secondItem="ugQ-gx-chA" secondAttribute="bottom" constant="-63.666666666666657" id="iQu-Aj-Zet"/>
                             <constraint firstItem="L8r-uF-QSA" firstAttribute="leading" secondItem="aKu-Zq-cCU" secondAttribute="leading" constant="10" id="k0d-hI-xAu"/>
@@ -2657,7 +2672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3Q-Az-Evx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-883" y="-267"/>
+            <point key="canvasLocation" x="-884.05797101449286" y="-267.1875"/>
         </scene>
         <!--Voeding zoeken-->
         <scene sceneID="xFv-50-erm">
@@ -2754,7 +2769,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -3161,7 +3176,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">
@@ -4829,6 +4844,7 @@
         <image name="Water_s" width="128" height="128"/>
         <image name="Webp.net-resizeimage" width="50" height="50"/>
         <image name="Website_s" width="128" height="128"/>
+        <image name="bin_xs" width="170.66667175292969" height="170.66667175292969"/>
         <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="darkTextColor">

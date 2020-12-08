@@ -26,6 +26,7 @@ class FoodDetailViewController: UIViewController {
     var foodItem: newFoodMealComponent?
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
+    var consumptionId : Int = 0
     //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -151,8 +152,18 @@ class FoodDetailViewController: UIViewController {
         let foodmealComponent : newFoodMealComponent = newFoodMealComponent(id: id, name: name, description: description, kcal: kcal, protein: protein, potassium: potassium, sodium: sodium, water: water, fiber: fiber, portionSize: portionSize, imageUrl: imageUrl)
         return foodmealComponent
     }
-
     
+    @IBAction func deleteBtn(_ sender: Any) {
+        NiZiAPIHelper.deleteConsumption2(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withConsumptionId: consumptionId).responseData(completionHandler: { response in
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Success", comment: "Title"),
+                message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        })
+    }
 }
 
 
