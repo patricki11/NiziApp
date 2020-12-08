@@ -277,6 +277,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
         detailFoodVC.foodItem = food.foodMealCompenent
         detailFoodVC.consumptionId = food.id!
+        detailFoodVC.isDiaryDetail = true
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
 }

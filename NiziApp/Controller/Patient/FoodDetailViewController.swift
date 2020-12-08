@@ -27,6 +27,7 @@ class FoodDetailViewController: UIViewController {
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
     var consumptionId : Int = 0
+    var isDiaryDetail : Bool = false
     //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -106,34 +107,49 @@ class FoodDetailViewController: UIViewController {
             break
         }
         
-        let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: 0.0, protein: 0.0, potassium: 0.0, sodium: 0.0, water: 0.0, fiber: 0.0, portionSize: 1.0, imageUrl: foodItem!.imageUrl)
-        
-        let weight = self.createNewWeight(id: self.weightUnit!.id, unit: self.weightUnit!.unit, short: self.weightUnit!.short, createdAt: self.weightUnit!.createdAt, updatedAt: self.weightUnit!.updatedAt)
-        
-        let patient = self.createNewPatient(id: 1)
-        
-        let consumption = self.createNewConsumptionObject(amount: 1, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
-        
-        print(consumption.patient.toJSON())
-        print(consumption.weightUnit.toJSON())
-        print(consumption.foodmealComponent.toJSON())
-        print("Final: ", consumption.toJSON())
-        
-        
-        NiZiAPIHelper.addNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: consumption).responseData(completionHandler: { response in
-            let alertController = UIAlertController(
-                title: NSLocalizedString("Success", comment: "Title"),
-                message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
-                preferredStyle: .alert)
+        if(isDiaryDetail == false){
             
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        })
+            let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl)
+            
+            let weight = self.createNewWeight(id: self.weightUnit!.id, unit: self.weightUnit!.unit, short: self.weightUnit!.short, createdAt: self.weightUnit!.createdAt, updatedAt: self.weightUnit!.updatedAt)
+            
+            let patient = self.createNewPatient(id: 1)
+            
+            let consumption = self.createNewConsumptionObject(amount: 1, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
+            
+            NiZiAPIHelper.addNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: consumption).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+        else{
+            let patchConsumption = self.createPatchConsumption(amount: 1.0, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString)
+            
+            NiZiAPIHelper.patchNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Voedsel is gewijzigd", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
     }
     
     func createNewPatient(id: Int) -> PatientConsumption {
         let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
         return consumptionPatient
+    }
+    
+    func createPatchConsumption(amount: Float, date: String, mealTime : String) -> NewConsumptionPatch {
+        let patchConsumption : NewConsumptionPatch = NewConsumptionPatch(amount: amount, date: date, mealTime: mealTime)
+        return patchConsumption
     }
     
     func createNewConsumptionObject(amount: Float, date: String, mealTime: String, patient: PatientConsumption, weightUnit: newWeightUnit, foodMealComponent: newFoodMealComponent) -> NewConsumptionModel {
