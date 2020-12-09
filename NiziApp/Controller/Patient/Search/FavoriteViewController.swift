@@ -35,7 +35,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let idx: Int = indexPath.row
         searchFoodCell.textLabel?.text = foodlist[idx].food?.name
         let url = URL(string: (foodlist[idx].food?.foodMealComponent?.imageUrl)!)
-        searchFoodCell.imageView?.kf.setImage(with: url)
+        searchFoodCell.foodImage?.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
         return searchFoodCell
     }
