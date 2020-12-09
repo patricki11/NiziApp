@@ -89,4 +89,11 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         })
         */
     }
+    
+    
+    @IBAction func goToCreateMeal(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
 }

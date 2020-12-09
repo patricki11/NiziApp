@@ -13,12 +13,14 @@ class NewMeal : Codable {
     var weightUnit        : newWeightUnit
     var patient           : NewPatient
     var foodMealComponent : newFoodMealComponent
+    var mealFoods         : [NewMealFood]
     
-    init(id : Int, weightUnit : newWeightUnit, patient : NewPatient, foodMealComponent : newFoodMealComponent){
+    init(id : Int, weightUnit : newWeightUnit, patient : NewPatient, foodMealComponent : newFoodMealComponent, mealFoods : [NewMealFood]){
         self.id                = id
         self.weightUnit        = weightUnit
         self.patient           = patient
         self.foodMealComponent = foodMealComponent
+        self.mealFoods         = mealFoods
     }
     
     enum CodingKeys : String, CodingKey {
@@ -26,5 +28,6 @@ class NewMeal : Codable {
         case weightUnit        = "weight_unit"
         case patient           = "patient"
         case foodMealComponent = "food_meal_component"
+        case mealFoods         = "meal_foods"
     }
 }
