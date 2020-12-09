@@ -2667,7 +2667,9 @@
                         <outlet property="Protein" destination="WWt-3j-86F" id="j9h-PU-7Uf"/>
                         <outlet property="Sodium" destination="SUW-vi-LvZ" id="80f-BC-ySR"/>
                         <outlet property="WaterLabel" destination="lWK-nd-iEn" id="8He-vG-KuR"/>
+                        <outlet property="favoriteBtn" destination="w1w-8A-sFL" id="edd-Ua-zQi"/>
                         <outlet property="portionSizeLabel" destination="pDh-dq-5uE" id="2Gd-9m-g7V"/>
+                        <outlet property="trashBtn" destination="0ks-bJ-eh7" id="hsv-z4-fyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3Q-Az-Evx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3177,7 +3179,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">

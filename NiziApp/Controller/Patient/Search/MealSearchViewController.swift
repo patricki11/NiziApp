@@ -46,6 +46,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
         detailFoodVC.foodItem = meal.foodMealComponent
         detailFoodVC.weightUnit = meal.weightUnit
+        detailFoodVC.isMealDetail = true
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

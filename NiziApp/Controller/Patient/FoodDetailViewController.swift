@@ -22,18 +22,23 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var portionSizeLabel: UILabel!
     @IBOutlet weak var WaterLabel: UILabel!
     @IBOutlet weak var MealTime: UISegmentedControl!
-    var mealtimeString: String = ""
+    @IBOutlet weak var trashBtn: UIButton!
+    @IBOutlet weak var favoriteBtn: UIButton!
     var foodItem: newFoodMealComponent?
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
+    var mealtimeString: String = ""
     var consumptionId : Int = 0
     var isDiaryDetail : Bool = false
-    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    var isMealDetail : Bool = false
+    
+
     
     @IBAction func AddToDiary(_ sender: Any) {
         addConsumption()
     }
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +51,19 @@ class FoodDetailViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+
+    
     
     func SetupData()
     {
+        if(isDiaryDetail == false){
+            trashBtn.isHidden = true
+        }
+        
+        if(isMealDetail){
+            favoriteBtn.isHidden = true
+        }
+        
         DetailTitle.text = foodItem?.name
         
         let url = URL(string: foodItem!.imageUrl)
