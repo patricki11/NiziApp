@@ -29,8 +29,7 @@ class MealDetailViewController: UIViewController {
     @IBOutlet weak var KaliumText: UILabel!
     
     var mealtimeString : String = ""
-    var mealItem: Meal?
-    let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+    var mealItem: NewMeal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,27 +49,27 @@ class MealDetailViewController: UIViewController {
     
     func SetupData()
     {
-        MealTitle.text = mealItem?.name
+        MealTitle.text = mealItem?.foodMealComponent.name
         
-        let url = URL(string: mealItem!.picture)
+        let url = URL(string: mealItem!.foodMealComponent.imageUrl)
         MealPicture.kf.setImage(with: url)
         
-        let calorieString : String = String(format:"%.1f",mealItem!.kCal)
+        let calorieString : String = String(format:"%.1f",mealItem!.foodMealComponent.kcal)
         CalorieText.text = calorieString
         
-        let proteinString : String = String(format:"%.1f",mealItem!.protein)
+        let proteinString : String = String(format:"%.1f",mealItem!.foodMealComponent.protein)
         ProteinText.text = proteinString
         
-        let fiberString : String = String(format:"%.1f",mealItem!.fiber)
+        let fiberString : String = String(format:"%.1f",mealItem!.foodMealComponent.fiber)
         FiberText.text = fiberString
         
-        let calciumString : String = String(format:"%.1f",mealItem!.calcium)
+        let calciumString : String = String(format:"%.1f",mealItem!.foodMealComponent.potassium)
         KaliumText.text = calciumString
         
-        let sodiumString : String = String(format:"%.1f",mealItem!.sodium)
+        let sodiumString : String = String(format:"%.1f",mealItem!.foodMealComponent.sodium)
         SodiumText.text = sodiumString
         
-        let waterString : String = String(format:"%.1f",mealItem!.water)
+        let waterString : String = String(format:"%.1f",mealItem!.foodMealComponent.water)
         WaterText.text = waterString
         
     }
@@ -93,17 +92,6 @@ class MealDetailViewController: UIViewController {
                default:
                    break
                }
-        
-        let consumption = self.createNewConsumptionObject(foodName: mealItem!.name, kCal: mealItem!.kCal, protein: mealItem!.protein, fiber: mealItem!.fiber, calium: mealItem!.calcium, sodium: mealItem!.sodium, amount: 1, weigthUnitId: 1.0, date: newdate, patientid: patientIntID!, foodId: mealItem!.mealId, water: mealItem!.water, mealTime: mealtimeString)
-        NiZiAPIHelper.addConsumption(withDetails: consumption, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-             let alertController = UIAlertController(
-                           title: NSLocalizedString("Success", comment: "Title"),
-                           message: NSLocalizedString("Maaltijd is toegevoegd", comment: "Message"),
-                           preferredStyle: .alert)
-                       
-                       alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
-                       self.present(alertController, animated: true, completion: nil)
-        })
     }
     
     func createNewConsumptionObject(foodName: String, kCal: Double, protein: Double, fiber: Double, calium: Double, sodium: Double, amount: Int, weigthUnitId: Double, date: String, patientid: Int, foodId: Int, water: Double, mealTime: String ) -> Consumption {

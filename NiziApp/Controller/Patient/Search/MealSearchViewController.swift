@@ -43,9 +43,10 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let meal = self.meallist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealDetailViewController") as! MealDetailViewController;()
-        //detailFoodVC.mealItem = meal
-        //self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        detailFoodVC.foodItem = meal.foodMealComponent
+        detailFoodVC.weightUnit = meal.weightUnit
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
