@@ -22,6 +22,9 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var ProductenBtn: UIButton!
     var patient        : NewPatient?
     
+    
+    @IBOutlet weak var results: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -105,6 +108,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
             
             self.foodlist = foodlistJSON
             self.FoodTable?.reloadData()
+            self.results.text = "Aantal(\(self.foodlist.count))"
         })
     }
 }

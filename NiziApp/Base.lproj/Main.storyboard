@@ -2681,7 +2681,7 @@
             <objects>
                 <viewController storyboardIdentifier="ProductListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NSB-yu-ycM" customClass="SearchFoodViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fyy-LL-RS9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPR-lZ-i0m">
@@ -2741,7 +2741,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fac-Ec-sIX">
-                                <rect key="frame" x="0.0" y="159" width="413.33333333333331" height="639"/>
+                                <rect key="frame" x="0.0" y="188" width="413.33333333333331" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchFoodCell" rowHeight="100" id="B60-Ep-WUG" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
@@ -2771,7 +2771,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -2809,18 +2809,26 @@
                                     <outlet property="delegate" destination="NSB-yu-ycM" id="Asf-5b-n8W"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results (0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX8-vo-rIE">
+                                <rect key="frame" x="20" y="161" width="70.333333333333329" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n1n-FF-1Op"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="gsL-2Y-BFd" secondAttribute="trailing" constant="48.333333333333314" id="1fj-ns-fFy"/>
                             <constraint firstItem="HfK-KZ-3XE" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="20" id="1lF-mK-mGU"/>
+                            <constraint firstItem="zX8-vo-rIE" firstAttribute="top" secondItem="HfK-KZ-3XE" secondAttribute="bottom" constant="20" id="4w0-b2-Bt7"/>
                             <constraint firstItem="HfK-KZ-3XE" firstAttribute="top" secondItem="HTm-zy-fBb" secondAttribute="bottom" constant="27" id="7ih-dB-h7c"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="HfK-KZ-3XE" secondAttribute="trailing" constant="114" id="9of-Vi-Cib"/>
                             <constraint firstItem="gsL-2Y-BFd" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="49" id="GwB-LU-mcs"/>
                             <constraint firstItem="gsL-2Y-BFd" firstAttribute="top" secondItem="n1n-FF-1Op" secondAttribute="top" constant="27" id="HFt-3Q-zwn"/>
+                            <constraint firstItem="zX8-vo-rIE" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="20" id="I59-sI-OkZ"/>
+                            <constraint firstItem="fac-Ec-sIX" firstAttribute="top" secondItem="zX8-vo-rIE" secondAttribute="bottom" constant="10" id="NkT-45-P5r"/>
                             <constraint firstItem="sPR-lZ-i0m" firstAttribute="top" secondItem="HTm-zy-fBb" secondAttribute="bottom" constant="31" id="RTx-Mb-ZQt"/>
-                            <constraint firstItem="fac-Ec-sIX" firstAttribute="top" secondItem="HfK-KZ-3XE" secondAttribute="bottom" constant="18" id="SdV-5d-mW4"/>
                             <constraint firstItem="HTm-zy-fBb" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" id="VaR-2x-Fl0"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="sPR-lZ-i0m" secondAttribute="trailing" constant="42" id="XnC-Qp-8FG"/>
                             <constraint firstItem="fac-Ec-sIX" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" id="a2C-rR-Tma"/>
@@ -2837,11 +2845,12 @@
                         <outlet property="ProductenBtn" destination="mNQ-wc-8x1" id="W10-JS-RDY"/>
                         <outlet property="SearchFoodInput" destination="HfK-KZ-3XE" id="ojg-aX-oH1"/>
                         <outlet property="favorietenBtn" destination="hTR-QH-7Hi" id="ts1-3d-TgU"/>
+                        <outlet property="results" destination="zX8-vo-rIE" id="NIx-Wo-bDb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCm-cS-LWy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1671" y="-267"/>
+            <point key="canvasLocation" x="-1671.0144927536232" y="-267.1875"/>
         </scene>
         <!--Gesprekken-->
         <scene sceneID="sc8-CA-5a6">
@@ -4199,6 +4208,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="hfK-cx-9ss"/>
         <segue reference="Igl-T5-g7P"/>
         <segue reference="bgz-am-Jq2"/>
     </inferredMetricsTieBreakers>
