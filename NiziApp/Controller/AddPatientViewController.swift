@@ -21,6 +21,12 @@ class AddPatientViewController: UIViewController {
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     @IBOutlet weak var passwordRequirementLabel: UILabel!
     
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var genderManButton: UIButton!
+    @IBOutlet weak var genderWomanButton: UIButton!
+    @IBOutlet weak var genderManLabel: UILabel!
+    @IBOutlet weak var genderWomanLabel: UILabel!
+    
     @IBOutlet weak var personalInfoLabel: UILabel!
     @IBOutlet weak var loginInfoLabel: UILabel!
     
@@ -34,13 +40,25 @@ class AddPatientViewController: UIViewController {
     @IBOutlet weak var addPatientButton: UIButton!
     
     weak var loggedInAccount : NewUser!
-    
+    var gender: String = ""
     func datePicker() -> UIDatePicker {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
         picker.maximumDate = Date()
         return picker
+    }
+    
+    @IBAction func genderManSelected(_ sender: Any) {
+        gender = "Man"
+        genderManButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        genderWomanButton.setImage(UIImage(systemName: "circle"), for: .normal)
+    }
+    
+    @IBAction func genderWomanSelected(_ sender: Any) {
+        gender = "Vrouw"
+        genderManButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        genderWomanButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
     }
     
     lazy var dateFormatter: DateFormatter = {
@@ -80,6 +98,9 @@ class AddPatientViewController: UIViewController {
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
         addPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
         passwordRequirementLabel.text = "Het wachtwoord moet minimaal aan 3 van de 4 volgende eisen voldoen: 1 kleine letter, 1 hoofdletter, 1 cijfer, 1 speciaal teken (!@#$%^&*)"
+        genderLabel.text = "Geslacht"
+        genderManLabel.text = "Man"
+        genderWomanLabel.text = "Vrouw"
     }
     
     @IBAction func addPatient(_ sender: Any) {
@@ -109,7 +130,7 @@ class AddPatientViewController: UIViewController {
     }
     
     func createPatientAccount() {
-        var patient = NewPatient(id: nil, gender: "Man", dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
+        var patient = NewPatient(id: nil, gender: gender, dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
         
         NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data else { print("noResponsseDataFromPatient");return }
