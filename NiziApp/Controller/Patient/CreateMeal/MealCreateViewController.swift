@@ -125,14 +125,16 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     //Needs to change the API calls
     func addMeal() {
+        /*
         let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal, water: vochtMeal )
         
         NiZiAPIHelper.addMeal(withDetails: meal, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             // TODO: Melden aan patient dat de maaltijd is toegevoegd.patientId
+
             
         })
         
-        
+         */
     }
     
     // Need to change the object

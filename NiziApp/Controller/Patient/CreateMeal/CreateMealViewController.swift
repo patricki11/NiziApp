@@ -10,7 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 import Kingfisher
 
-class CreateMealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CreateMealViewController: UIViewController {
     
     let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
