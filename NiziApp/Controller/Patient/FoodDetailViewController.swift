@@ -27,18 +27,25 @@ class FoodDetailViewController: UIViewController {
     var foodItem: newFoodMealComponent?
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
+    var food : NewFood?
+    var Mealfoodlist : [NewFood] = []
     var mealtimeString: String = ""
     var consumptionId : Int = 0
     var isDiaryDetail : Bool = false
     var isMealDetail : Bool = false
+    var isMealProductDetail : Bool = false
     
-
+    
     
     @IBAction func AddToDiary(_ sender: Any) {
-        addConsumption()
+        if(isMealProductDetail == true){
+            self.addProductToMealList()
+        }else{
+            addConsumption()
+        }
     }
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +58,7 @@ class FoodDetailViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-
+    
     
     
     func SetupData()
@@ -98,12 +105,12 @@ class FoodDetailViewController: UIViewController {
     
     func Addfavorite() {
         /*
-        NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
-            guard let jsonResponse = response.request
-                else { print("Not succeeded"); return }
-            print(response.request)
-        })
- */
+         NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
+         guard let jsonResponse = response.request
+         else { print("Not succeeded"); return }
+         print(response.request)
+         })
+         */
     }
     func addConsumption() {
         switch MealTime.selectedSegmentIndex {
@@ -194,6 +201,17 @@ class FoodDetailViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         })
+    }
+    
+    func addProductToMealList() {
+        Mealfoodlist.append(food!)
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Success", comment: "Title"),
+            message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

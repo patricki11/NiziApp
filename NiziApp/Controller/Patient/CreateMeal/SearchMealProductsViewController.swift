@@ -54,6 +54,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         detailFoodVC.foodItem = food.foodMealComponent
         detailFoodVC.weightUnit = food.weightObject
        // detailFoodVC.patient = self.patient
+        detailFoodVC.food = food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
