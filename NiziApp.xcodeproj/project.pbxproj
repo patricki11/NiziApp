@@ -53,6 +53,7 @@
 		2180FA822581027D0022920E /* NewMealFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA812581027D0022920E /* NewMealFood.swift */; };
 		2180FA8D258117800022920E /* MealCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8C2581177F0022920E /* MealCreateViewController.swift */; };
 		2180FA90258126690022920E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8F258126690022920E /* MealTableViewCell.swift */; };
+		2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */; };
 		5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */; };
 		5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */; };
 		5330AE42257A77160027A768 /* AddConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE41257A77160027A768 /* AddConversationViewController.swift */; };
@@ -133,6 +134,7 @@
 		2180FA812581027D0022920E /* NewMealFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMealFood.swift; sourceTree = "<group>"; };
 		2180FA8C2581177F0022920E /* MealCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateViewController.swift; sourceTree = "<group>"; };
 		2180FA8F258126690022920E /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealProductsViewController.swift; sourceTree = "<group>"; };
 		5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryManagement.swift; sourceTree = "<group>"; };
 		5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryRestriction.swift; sourceTree = "<group>"; };
 		5330AE41257A77160027A768 /* AddConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConversationViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,8 @@
 				934F537423C14DCA007745AF /* CreateMealViewController.swift */,
 				934F537623C160DB007745AF /* MealSearchProductViewController.swift */,
 				934F537923C1660C007745AF /* MealProductDetailViewController.swift */,
+				2180FA8C2581177F0022920E /* MealCreateViewController.swift */,
+				2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */,
 			);
 			path = CreateMeal;
 			sourceTree = "<group>";
@@ -356,7 +360,6 @@
 				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
 				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
-				2180FA8C2581177F0022920E /* MealCreateViewController.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
 				2180FA7C257FBA620022920E /* NewConsumptionPatch.swift in Sources */,
 				53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */,
+				2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
