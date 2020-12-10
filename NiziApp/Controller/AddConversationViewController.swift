@@ -16,68 +16,24 @@ class AddConversationViewController: UIViewController {
     var patientId : Int!
     var doctorId : Int!
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        return formatter
-    }()
-    
-    @IBOutlet weak var newConversationTitleField: UITextField!
-    @IBOutlet weak var newConversationDescriptionField: UITextField!
-    
-    @IBOutlet weak var newConversationTitleLabel: UILabel!
-    @IBOutlet weak var newConversationDescriptionLabel: UILabel!
-    
-    @IBOutlet weak var newConversationAddButton : UIButton!
-    
-    @IBAction func createNewConversation(_ sender: Any) {
-        
-        if(requiredFieldsForNewConversationFilled()) {
-            
-            var title = newConversationTitleField.text ?? ""
-            var description = newConversationDescriptionField.text ?? ""
-            
-            let newConversation = NewConversation(
-                id : 0,
-                title : title,
-                comment: description,
-                date: dateFormatter.string(from: Date()),
-                isRead : false,
-                doctor : nil,
-                doctorId: doctorId,
-                patient : nil,
-                patientId: patientId)
-            
-            NiZiAPIHelper.createConversation(withDetails: newConversation, authorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-                
-                self.showConversationAddedMessage()
-            })
-        }
-        else {
-            showRequiredFieldsNotFilledMessage()
-        }
-    }
-    
-    func requiredFieldsForNewConversationFilled() -> Bool {
-        return (newConversationTitleField.text != "" && newConversationDescriptionField.text != "")
-    }
-    
     @IBOutlet weak var conversationtable: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("Conversations", comment: "")
-        setLanguageSpecificText()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
         getConversation()
         SetupTableView()
     }
-    
-    func setLanguageSpecificText() {
-        newConversationTitleLabel.text = NSLocalizedString("ConversationTitle", comment: "")
-        newConversationDescriptionLabel.text = NSLocalizedString("ConversationDescription", comment: "")
-        newConversationAddButton.setTitle(NSLocalizedString("AddConversation", comment: ""), for: .normal)
-    }
 
+    @objc func showAddConversationViewModal() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationItemViewController") as! AddConversationItemViewController
+        conversationVC.patientId = patientId
+        conversationVC.doctorId = doctorId
+        self.navigationController?.present(conversationVC, animated: true)
+    }
+    
     fileprivate func SetupTableView(){
         view.addSubview(conversationtable)
         conversationtable.register(ConversationCell.self, forCellReuseIdentifier: "cell")
@@ -98,38 +54,6 @@ class AddConversationViewController: UIViewController {
             self.conversations = conversations
             self.conversationtable?.reloadData()
         })
-    }
-    
-    func showConversationAddedMessage() {
-        self.newConversationTitleField.text = ""
-        self.newConversationDescriptionField.text = ""
-        
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(
-                title: NSLocalizedString("conversationAddedTitle", comment: ""),
-                message: NSLocalizedString("conversationAddedMessage", comment: ""),
-                preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.getConversation()}))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    func showRequiredFieldsNotFilledMessage() {
-        self.newConversationTitleField.text = ""
-        self.newConversationDescriptionField.text = ""
-        
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(
-                title: NSLocalizedString("requiredFieldsTitle", comment: ""),
-                message: NSLocalizedString("requiredFieldsMessage", comment: ""),
-                preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
     }
 }
 
