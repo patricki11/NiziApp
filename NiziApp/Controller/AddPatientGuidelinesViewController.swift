@@ -57,6 +57,7 @@ class AddPatientGuidelinesViewController : UIViewController {
     var guidelines : [NewDietaryManagement] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("AddPatient", comment: "")
         setLanguageSpecificText()
         setNumericOnlyFields()
         removeKeyboardAfterClickingOutsideField()
@@ -301,8 +302,8 @@ class AddPatientGuidelinesViewController : UIViewController {
     
     func showGuidelinesAddedMessage() {
         let alertController = UIAlertController(
-            title: "Richtlijnen toegevoegd",
-            message: "De richtlijnen toegevoegd.",
+            title: NSLocalizedString("guidelinesAddedTitle", comment: ""),
+            message: NSLocalizedString("guidelinesAddedMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientList()}))
