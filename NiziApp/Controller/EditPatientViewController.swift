@@ -126,7 +126,7 @@ class EditPatientViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Bewerken Patiënt"
+        title = NSLocalizedString("EditPatient", comment: "")
         dateOfBirthField.inputView = datePicker()
         getPatientObject()
         setLanguageSpecificText()
@@ -226,12 +226,11 @@ class EditPatientViewController : UIViewController {
         potassiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
         proteinMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
         grainMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
-        
-        // TODO: Localizable Strings
-        guidelineInfoLabel.text = "Richtlijnen"
-        genderLabel.text = "Geslacht"
-        genderManLabel.text = "Man"
-        genderWomanLabel.text = "Vrouw"
+
+        guidelineInfoLabel.text = NSLocalizedString("guidelines", comment: "")
+        genderLabel.text = NSLocalizedString("Gender", comment: "")
+        genderManLabel.text = NSLocalizedString("Man", comment: "")
+        genderWomanLabel.text = NSLocalizedString("Woman", comment: "")
     }
     
     
@@ -520,8 +519,8 @@ class EditPatientViewController : UIViewController {
     
     func showUpdatedMessage() {
         let alertController = UIAlertController(
-            title: "Patiënt bijgewerkt",
-            message: "De patiëntgegevens zijn bijgewerkt.",
+            title: NSLocalizedString("patientUpdatedTitle", comment: ""),
+            message: NSLocalizedString("patientUpdatedMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientOverview()}))
@@ -531,8 +530,8 @@ class EditPatientViewController : UIViewController {
     
     func showRequiredFieldsNotFilledMessage() {
         let alertController = UIAlertController(
-            title: "Verplichte velden",
-            message: "Niet alle verplichte velden zijn ingevuld.",
+            title:NSLocalizedString("requiredFieldsTitle", comment: ""),
+            message: NSLocalizedString("requiredFieldsMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))

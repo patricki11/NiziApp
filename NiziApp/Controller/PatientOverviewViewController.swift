@@ -54,13 +54,13 @@ class PatientOverviewViewController : UIViewController
         dateFormatter.dateFormat = "dd-MM-YYYY"
         
         if(currentDayCounter == -1) {
-            currentWeekLabel.text = "Gisteren"
+            currentWeekLabel.text = NSLocalizedString("Yesterday", comment: "")
         }
         else if(currentDayCounter == 0) {
-            currentWeekLabel.text = "Vandaag"
+            currentWeekLabel.text = NSLocalizedString("Today", comment: "")
         }
         else if(currentDayCounter == 1) {
-            currentWeekLabel.text = "Morgen"
+            currentWeekLabel.text = NSLocalizedString("Tomorrow", comment: "")
         }
         else {
             currentWeekLabel.text = "\(dateFormatter.string(from: selectedDate!))"
@@ -76,7 +76,7 @@ class PatientOverviewViewController : UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isTranslucent = true
-        title = "Overzicht"
+        title = NSLocalizedString("Overview", comment: "")
         setupTableView()
         setLanguageSpecificText()
         changeCurrentWeekLabel()
@@ -175,10 +175,10 @@ extension PatientOverviewViewController : UITableViewDataSource {
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
         if(guideline.minimum != 0 && guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "tussen \(guideline.minimum!) en \(guideline.maximum!)"
+            cell.recommendedAmountLabel.text = "\(NSLocalizedString("between", comment: "")) \(guideline.minimum!) \(NSLocalizedString("and", comment: "")) \(guideline.maximum!)"
         }
         else if(guideline.minimum != 0) {
-            cell.recommendedAmountLabel.text = "meer dan \(guideline.minimum!)"
+            cell.recommendedAmountLabel.text = "\(NSLocalizedString("moreThan", comment: "")) \(guideline.minimum!)"
             if(total > guideline.minimum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }
@@ -187,7 +187,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         else if(guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "minder dan \(guideline.maximum!)"
+            cell.recommendedAmountLabel.text = "\(NSLocalizedString("lessThan", comment: "")) \(guideline.maximum!)"
             if(total < guideline.maximum ?? 0) {
                 cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
             }

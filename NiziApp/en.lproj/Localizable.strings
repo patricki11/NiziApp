@@ -57,3 +57,34 @@
 "proteinTitle" = "Proteïne in gram";
 "grainTitle" = "Vezels in gram";
 
+"between" = "Tussen";
+"and" = "en";
+"moreThan" = "Meer dan";
+"lessThan" = "Minder dan";
+
+// Dates
+"Yesterday" = "Gisteren";
+"Today" = "Vandaag";
+"Tomorrow" = "Morgen";
+// Dates
+
+
+// Gender
+"Gender" = "Geslacht";
+"Man" = "Man";
+"Woman" = "Vrouw";
+// Gender
+
+
+// Titles
+"EditPatient" = "Bewerken Patiënt";
+"Overview" = "Overzicht";
+// Titles
+
+
+// Messages
+"patientUpdatedTitle" = "Patiënt bijgewerkt";
+"patientUpdatedMessage" = "De patiëntgegevens zijn bijgewerkt.";
+"requiredFieldsTitle" = "Verplichte velden";
+"requiredFieldsMessage" = "Niet alle verplichte velden zijn ingevuld.";
+// Messages
