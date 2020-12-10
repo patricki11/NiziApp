@@ -10,7 +10,8 @@ import UIKit
 
 class MealCreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var nameLbl: UILabel!
+    //@IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var foodListTable: UITableView!
@@ -44,5 +45,15 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         productsMealCell.subTitleLbl.text = ( portionSizeString + " " + (Mealfoodlist[idx].weightObject?.unit)!)
         return productsMealCell
     }
+    
+    @IBAction func searchMealProducts(_ sender: Any) {
+    }
+    
+    @IBAction func importProducts(_ sender: Any) {
+    }
+    
+    @IBAction func saveMeal(_ sender: Any) {
+    }
+    
 
 }

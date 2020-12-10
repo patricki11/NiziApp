@@ -96,6 +96,11 @@ class NiZiAPIHelper {
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
+    
+    
+    
+    
+    
     // NEW FAVORITE FOOD //
     
     //GET CONVERSATIONS //
