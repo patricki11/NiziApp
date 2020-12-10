@@ -18,7 +18,7 @@ class PatientListViewController: UIViewController {
     var patientList: [NewPatient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = NSLocalizedString("patientList", comment: "")
+        title = NSLocalizedString("PatientList", comment: "")
         getAllPatients()
         setupDataTable()
         setupFilterTextfield()
@@ -31,7 +31,7 @@ class PatientListViewController: UIViewController {
     }
     
     func createLogoutButton() {
-        let logoutButton = UIBarButtonItem(title: "Uitloggen", style: .plain, target: self, action: #selector(logout))
+        let logoutButton = UIBarButtonItem(title: NSLocalizedString("LogOut", comment: ""), style: .plain, target: self, action: #selector(logout))
         self.navigationItem.leftBarButtonItem = logoutButton
     }
     
