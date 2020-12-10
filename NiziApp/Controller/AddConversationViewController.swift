@@ -28,6 +28,8 @@ class AddConversationViewController: UIViewController {
     @IBOutlet weak var newConversationTitleLabel: UILabel!
     @IBOutlet weak var newConversationDescriptionLabel: UILabel!
     
+    @IBOutlet weak var newConversationAddButton : UIButton!
+    
     @IBAction func createNewConversation(_ sender: Any) {
         
         if(requiredFieldsForNewConversationFilled()) {
@@ -65,8 +67,15 @@ class AddConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("Conversations", comment: "")
+        setLanguageSpecificText()
         getConversation()
         SetupTableView()
+    }
+    
+    func setLanguageSpecificText() {
+        newConversationTitleLabel.text = NSLocalizedString("ConversationTitle", comment: "")
+        newConversationDescriptionLabel.text = NSLocalizedString("ConversationDescription", comment: "")
+        newConversationAddButton.setTitle(NSLocalizedString("AddConversation", comment: ""), for: .normal)
     }
 
     fileprivate func SetupTableView(){

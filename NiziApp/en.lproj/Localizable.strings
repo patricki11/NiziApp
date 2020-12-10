@@ -71,6 +71,13 @@
 // Guideline Amount
 
 
+// Conversation
+"ConversationTitle" = "Titel";
+"ConversationDescription" = "Beschrijving";
+"AddConversation" = "Toevoegen";
+// Conversation
+
+
 // Dates
 "Yesterday" = "Gisteren";
 "Today" = "Vandaag";
