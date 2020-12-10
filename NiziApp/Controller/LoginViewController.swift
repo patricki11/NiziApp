@@ -154,15 +154,4 @@ class LoginViewController : UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
-    func showUnauthorizedMessage() {
-        let alertController = UIAlertController(
-            title: "TODO",
-            message: "User is not authorized message",
-            preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
