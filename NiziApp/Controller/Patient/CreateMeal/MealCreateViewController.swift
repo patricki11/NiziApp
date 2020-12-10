@@ -83,6 +83,10 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0;//Choose your custom row height
+    }
+    
     func calculateDietary(){
         
         if(Mealfoodlist.count > 0){

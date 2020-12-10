@@ -23,6 +23,10 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     }
     
     @IBAction func goBackToCreateMeal(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -55,6 +59,8 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         detailFoodVC.weightUnit = food.weightObject
        // detailFoodVC.patient = self.patient
         detailFoodVC.food = food
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        detailFoodVC.isMealProductDetail = true
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

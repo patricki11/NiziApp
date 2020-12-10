@@ -24,6 +24,11 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var MealTime: UISegmentedControl!
     @IBOutlet weak var trashBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
+    
+    @IBOutlet weak var mealSearchBtn: UIButton!
+    @IBOutlet weak var mealSaveBtn: UIButton!
+    
+    
     var foodItem: newFoodMealComponent?
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
@@ -63,12 +68,20 @@ class FoodDetailViewController: UIViewController {
     
     func SetupData()
     {
+        mealSearchBtn.isHidden = true
+        mealSaveBtn.isHidden = true
+        
         if(isDiaryDetail == false){
             trashBtn.isHidden = true
         }
         
         if(isMealDetail){
             favoriteBtn.isHidden = true
+        }
+        
+        if(isMealProductDetail){
+            mealSearchBtn.isHidden = false
+            mealSaveBtn.isHidden = false
         }
         
         DetailTitle.text = foodItem?.name
@@ -207,12 +220,28 @@ class FoodDetailViewController: UIViewController {
         Mealfoodlist.append(food!)
         let alertController = UIAlertController(
             title: NSLocalizedString("Success", comment: "Title"),
-            message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+            message: NSLocalizedString("Voedsel is toegevoegd aan maaltijd", comment: "Message"),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @IBAction func backToMealSearch(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    
+    @IBAction func SaveMeal(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
 }
 
 
