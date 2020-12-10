@@ -2883,7 +2883,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -3300,7 +3300,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">
@@ -4349,6 +4349,7 @@
                     <tabBarItem key="tabBarItem" title="Gesprekken" image="Webp.net-resizeimage" selectedImage="Webp.net-resizeimage" id="FeS-9Z-Jjb"/>
                     <connections>
                         <outlet property="conversationtable" destination="P5C-xj-Uxu" id="OJC-BY-DuB"/>
+                        <outlet property="newConversationAddButton" destination="vvs-8L-fle" id="amm-QR-FgJ"/>
                         <outlet property="newConversationDescriptionField" destination="aWO-La-7th" id="hnC-ko-Uab"/>
                         <outlet property="newConversationDescriptionLabel" destination="304-rq-t6h" id="Kce-qM-8fs"/>
                         <outlet property="newConversationTitleField" destination="13q-GT-6bS" id="I9x-O3-iUg"/>
@@ -4368,7 +4369,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0H-Qc-P8O">
-                                <rect key="frame" x="337" y="155" width="35" height="30"/>
+                                <rect key="frame" x="186" y="155" width="35" height="30"/>
                                 <state key="normal" title="Zoek">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -4377,13 +4378,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOI-YL-VOd">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="44" width="263" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="gwC-yF-WYG">
-                                        <rect key="frame" x="49" y="27" width="316.66666666666669" height="30"/>
+                                        <rect key="frame" x="48.999999999999986" y="27" width="165.66666666666663" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMt-HP-hNH">
-                                                <rect key="frame" x="0.0" y="0.0" width="316.66666666666669" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="165.66666666666666" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="Producten">
                                                     <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -4398,14 +4399,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xlu-hE-XJT">
-                                <rect key="frame" x="0.0" y="232" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="232" width="263" height="620"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchFoodMealTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchFoodCell" rowHeight="100" id="XkC-ez-YHn" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="263" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XkC-ez-YHn" id="hH2-LV-SHs">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="263" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aur-sp-nHr">
@@ -4416,19 +4417,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kZ-dq-cBp">
-                                                    <rect key="frame" x="115" y="10.999999999999998" width="289" height="20.333333333333329"/>
+                                                    <rect key="frame" x="115" y="10.999999999999998" width="138" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krv-qn-oSn">
-                                                    <rect key="frame" x="115" y="39" width="289" height="14.333333333333336"/>
+                                                    <rect key="frame" x="115" y="39" width="138" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-a5-6ZZ">
-                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="165" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="3RS-7G-1Np"/>
                                                         <constraint firstAttribute="height" constant="98" id="ocx-nb-dOS"/>
