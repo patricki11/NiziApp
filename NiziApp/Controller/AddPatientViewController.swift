@@ -79,7 +79,7 @@ class AddPatientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateOfBirthField.inputView = datePicker()
-        title = NSLocalizedString("addPatient", comment: "")
+        title = NSLocalizedString("AddPatient", comment: "")
         setLanguageSpecificText()
         removeKeyboardAfterClickingOutsideField()
     }
@@ -96,10 +96,11 @@ class AddPatientViewController: UIViewController {
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
         addPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
-        passwordRequirementLabel.text = "Het wachtwoord moet minimaal aan 3 van de 4 volgende eisen voldoen: 1 kleine letter, 1 hoofdletter, 1 cijfer, 1 speciaal teken (!@#$%^&*)"
-        genderLabel.text = "Geslacht"
-        genderManLabel.text = "Man"
-        genderWomanLabel.text = "Vrouw"
+        passwordRequirementLabel.text = NSLocalizedString("passwordRequirement", comment: "")
+        
+        genderLabel.text = NSLocalizedString("Gender", comment: "")
+        genderManLabel.text = NSLocalizedString("Man", comment: "")
+        genderWomanLabel.text = NSLocalizedString("Woman", comment: "")
     }
     
     @IBAction func addPatient(_ sender: Any) {
@@ -252,8 +253,8 @@ class AddPatientViewController: UIViewController {
     
     func showRequiredFieldsNotFilledMessage() {
         let alertController = UIAlertController(
-            title: "Niet aangemaakt",
-            message: "Niet alle verplichte velden zijn ingevuld.",
+            title: NSLocalizedString("requiredFieldsTitle", comment: ""),
+            message: NSLocalizedString("requiredFieldsMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
@@ -263,8 +264,8 @@ class AddPatientViewController: UIViewController {
     
     func showPasswordDoesNotMatchMessage() {
         let alertController = UIAlertController(
-            title: "Niet aangemaakt",
-            message: "Het ingegeven wachtwoord komt niet overeen",
+            title: NSLocalizedString("passwordDoesNotMatchTitle", comment: ""),
+            message: NSLocalizedString("passwordDoesNotMatchMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
@@ -274,8 +275,8 @@ class AddPatientViewController: UIViewController {
     
     func showPatientAddedMessage(patientId: Int?) {
         let alertController = UIAlertController(
-            title: "Patiënt toegevoegd",
-            message: "De patiënt is toegevoegd.",
+            title: NSLocalizedString("patientAddedTitle", comment: ""),
+            message: NSLocalizedString("patientAddedMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patientId: patientId)}))
@@ -285,8 +286,8 @@ class AddPatientViewController: UIViewController {
     
     func showIncorrectEmailFormatMessage() {
         let alertController = UIAlertController(
-            title: "Niet aangemaakt",
-            message: "Het ingegeven emailadres is niet valide.",
+            title: NSLocalizedString("invalidEmailTitle", comment: ""),
+            message: NSLocalizedString("invalidEmailMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
@@ -296,8 +297,8 @@ class AddPatientViewController: UIViewController {
     
     func showPasswordNotStrongEnoughMessage() {
         let alertController = UIAlertController(
-            title: "Niet aangemaakt",
-            message: "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.",
+            title: NSLocalizedString("passwordNotStrongEnoughTitle", comment: ""),
+            message: NSLocalizedString("passwordNotStrongEnoughMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))

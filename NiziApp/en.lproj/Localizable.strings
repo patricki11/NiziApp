@@ -23,8 +23,6 @@
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
 "patientList" = "Patiënten";
-"addPatient" = "Toevoegen Patiënt";
-"editPatient" = "Patiënt Bewerken";
 
 "firstName" = "Voornaam";
 "surname" = "Achternaam";
@@ -32,6 +30,7 @@
 "username" = "Gebruikersnaam";
 "email" = "e-mailadres";
 "password" = "Wachtwoord";
+"passwordRequirement" = "Het wachtwoord moet minimaal aan 3 van de 4 volgende eisen voldoen: 1 kleine letter, 1 hoofdletter, 1 cijfer, 1 speciaal teken (!@#$%^&*)";
 "confirmPassword" = "Wachtwoord herhalen";
 "personalInfo" = "Persoonsgegevens";
 "loginInfo" = "Logingegevens";
@@ -77,14 +76,23 @@
 
 
 // Titles
+"AddPatient" = "Toevoegen Patiënt";
 "EditPatient" = "Bewerken Patiënt";
 "Overview" = "Overzicht";
 // Titles
 
 
 // Messages
+"patientAddedTitle" = "Patiënt toegevoegd";
+"patientAddedMessage" = "De patiënt is toegevoegd";
 "patientUpdatedTitle" = "Patiënt bijgewerkt";
 "patientUpdatedMessage" = "De patiëntgegevens zijn bijgewerkt.";
 "requiredFieldsTitle" = "Verplichte velden";
 "requiredFieldsMessage" = "Niet alle verplichte velden zijn ingevuld.";
+"invalidEmailTitle" = "Ongeldige Email";
+"invalidEmailMessage" = "Het ingegeven emailadres is ongeldig.";
+"passwordNotStrongEnoughTitle" = "Wachtwoord niet sterk genoeg";
+"passwordNotStrongEnoughMessage" = "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.";
+"passwordDoesNotMatchTitle" = "Niet aangemaakt";
+"passwordDoesNotMatchMessage" = "Het ingegeven wachtwoord komt niet overeen.";
 // Messages
