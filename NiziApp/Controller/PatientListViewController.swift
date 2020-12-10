@@ -40,7 +40,6 @@ class PatientListViewController: UIViewController {
     }
     
     @objc func filterTextfieldChanged(_ textField: UITextField) {
-        print("test")
         patientListTableView?.reloadData()
     }
     
@@ -71,12 +70,9 @@ class PatientListViewController: UIViewController {
             guard let jsonResponse = response.data
                 else { return }
             
-            var result = String(data: response.data!, encoding: .utf8)
-            print(result)
-            
             let jsonDecoder = JSONDecoder()
             guard let patientList = try? jsonDecoder.decode( [NewPatient].self, from: jsonResponse )
-                else { print("unable to parse to [NewPatient]"); return }
+                else { return }
             
             self.patientList = patientList
             self.patientListTableView?.reloadData()

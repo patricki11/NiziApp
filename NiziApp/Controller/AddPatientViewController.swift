@@ -81,7 +81,6 @@ class AddPatientViewController: UIViewController {
         dateOfBirthField.inputView = datePicker()
         title = NSLocalizedString("addPatient", comment: "")
         setLanguageSpecificText()
-        print(loggedInAccount)
         removeKeyboardAfterClickingOutsideField()
     }
     
@@ -133,10 +132,10 @@ class AddPatientViewController: UIViewController {
         var patient = NewPatient(id: nil, gender: gender, dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
         
         NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data else { print("noResponsseDataFromPatient");return }
+            guard let jsonResponse = response.data else { return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { print("unableToDecodeToPatient"); return }
+            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
             
             self.addNewAccount(forPatient: patient.id)
         })
@@ -146,10 +145,10 @@ class AddPatientViewController: UIViewController {
         var user = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: patientId, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
         
         NiZiAPIHelper.addUser(withDetails: user, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data else { print("noResponseDataFromUser");return }
+            guard let jsonResponse = response.data else { return }
             
             let jsonDecoder = JSONDecoder()
-            guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { print("unableToDecodeToUser");return }
+            guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { return }
             
             self.showPatientAddedMessage(patientId: patientId)
         })

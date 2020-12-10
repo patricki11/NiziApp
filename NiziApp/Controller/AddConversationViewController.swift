@@ -80,11 +80,11 @@ class AddConversationViewController: UIViewController {
         NiZiAPIHelper.GetConversations(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientId).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+                else { return }
             
             let jsonDecoder = JSONDecoder()
             guard let conversations = try? jsonDecoder.decode( [NewConversation].self, from: jsonResponse )
-                else { print("temp2"); return }
+                else { return }
             
             self.conversations = conversations
             self.conversationtable?.reloadData()

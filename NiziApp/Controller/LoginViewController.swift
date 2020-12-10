@@ -75,9 +75,7 @@ class LoginViewController : UIViewController {
     }
     
     func checkIfLoggedIn() {
-        guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { print("No authToken saved"); return }
-        
-        //print(authToken)
+        guard let authToken = KeychainWrapper.standard.string(forKey: "authToken") else { return }
         
         login(withSavedToken: authToken)
     }
@@ -85,11 +83,11 @@ class LoginViewController : UIViewController {
     func login(withSavedToken authToken: String) {
         NiZiAPIHelper.login(withToken: authToken).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
-                else { print("Failed to log in"); return }
+                else { return }
             
             let jsonDecoder = JSONDecoder()
             guard let account = try? jsonDecoder.decode(NewUser.self, from: jsonResponse)
-                else { print("Unable to decode data"); return }
+                else { return }
             
             if(account.patient != nil) {
                 self.navigateToPatientHomepage(withPatient: account, withPatientCode: authToken)
@@ -130,11 +128,8 @@ class LoginViewController : UIViewController {
                 return
             }
             
-            var result = String(data: response.data!, encoding: .utf8)
-            //print(result)
-            
             var jsonDecoder = JSONDecoder()
-            guard let login = try? jsonDecoder.decode(NewUserLogin.self, from: jsonResponse) else { print("Unable to decode form json"); return }
+            guard let login = try? jsonDecoder.decode(NewUserLogin.self, from: jsonResponse) else { return }
             
             self.saveAuthToken(token: login.jwt!)
             
