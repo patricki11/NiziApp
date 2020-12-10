@@ -79,6 +79,7 @@
 "EditPatient" = "Bewerken Patiënt";
 "Overview" = "Overzicht";
 "PatientList" = "Patiënten";
+"Conversations" = "Gesprekken";
 // Titles
 
 
@@ -99,4 +100,6 @@
 "guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd.";
 "wrongCredentialsTitle" = "Niet ingelogd";
 "wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
+"conversationAddedTitle" = "Toegevoegd";
+"conversationAddedMessage" = "Conversatie toegevoegd.";
 // Messages

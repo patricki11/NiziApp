@@ -64,7 +64,7 @@ class AddConversationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Gesprekken"
+        title = NSLocalizedString("Conversations", comment: "")
         getConversation()
         SetupTableView()
     }
@@ -97,8 +97,8 @@ class AddConversationViewController: UIViewController {
         
         DispatchQueue.main.async {
             let alertController = UIAlertController(
-                title: "Toegevoegd",
-                message: "Conversatie toegevoegd",
+                title: NSLocalizedString("conversationAddedTitle", comment: ""),
+                message: NSLocalizedString("conversationAddedMessage", comment: ""),
                 preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.getConversation()}))
@@ -113,8 +113,8 @@ class AddConversationViewController: UIViewController {
         
         DispatchQueue.main.async {
             let alertController = UIAlertController(
-                title: "Verplichte velden",
-                message: "De verplichte velden zijn niet gevuld",
+                title: NSLocalizedString("requiredFieldsTitle", comment: ""),
+                message: NSLocalizedString("requiredFieldsMessage", comment: ""),
                 preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
