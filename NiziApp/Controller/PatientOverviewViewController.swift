@@ -108,7 +108,6 @@ class PatientOverviewViewController : UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientViewController
         patientDetailVC.patientId = patient.id
-        print(patient.id)
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
@@ -127,11 +126,9 @@ class PatientOverviewViewController : UIViewController
 
             let jsonDecoder = JSONDecoder()
             
-            guard let guidelines = try? jsonDecoder.decode([NewDietaryManagement].self, from: jsonResponse) else { print("unable to decode........"); return }
+            guard let guidelines = try? jsonDecoder.decode([NewDietaryManagement].self, from: jsonResponse) else { return }
             
             self.patientGuidelines = guidelines
-
-            print(self.patientGuidelines.count)
             
             self.guidelineTableView.reloadData()
         })
@@ -308,19 +305,5 @@ extension PatientOverviewViewController : UITableViewDataSource {
 extension PatientOverviewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-    }
-}
-
-extension Date {
-    var startOfWeek: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 1, to: sunday)
-    }
-
-    var endOfWeek: Date? {
-        let gregorian = Calendar(identifier: .gregorian)
-        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 7, to: sunday)
     }
 }
