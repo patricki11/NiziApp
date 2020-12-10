@@ -28,7 +28,6 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var genderWomanButton: UIButton!
     @IBOutlet weak var genderManLabel: UILabel!
     @IBOutlet weak var genderWomanLabel: UILabel!
-    var gender : String = ""
     
     @IBOutlet weak var caloriesTitle: UILabel!
     @IBOutlet weak var caloriesMinimumTitle: UILabel!
@@ -109,13 +108,13 @@ class EditPatientViewController : UIViewController {
     }
     
     @IBAction func genderManSelected(_ sender: Any) {
-        gender = "Man"
+        patient?.gender = "Man"
         genderManButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
         genderWomanButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
     
     @IBAction func genderWomanSelected(_ sender: Any) {
-        gender = "Vrouw"
+        patient?.gender = "Vrouw"
         genderManButton.setImage(UIImage(systemName: "circle"), for: .normal)
         genderWomanButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
     }
@@ -190,6 +189,14 @@ class EditPatientViewController : UIViewController {
         let date : Date = apiDateFormatter.date(from: patient?.dateOfBirth ?? "") ?? Date()
         
         dateOfBirthField.text = dateFormatter.string(from: date)
+        
+        let gender = patient?.gender ?? ""
+        if(gender == "Man") {
+            genderManButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        }
+        else if(gender == "Vrouw") {
+            genderWomanButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        }
     }
     
     func setLanguageSpecificText() {
