@@ -23,6 +23,13 @@ class EditPatientViewController : UIViewController {
     @IBOutlet weak var dateOfBirthField: UITextField!
     var newDateOfBirth : String? = ""
     
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var genderManButton: UIButton!
+    @IBOutlet weak var genderWomanButton: UIButton!
+    @IBOutlet weak var genderManLabel: UILabel!
+    @IBOutlet weak var genderWomanLabel: UILabel!
+    var gender : String = ""
+    
     @IBOutlet weak var caloriesTitle: UILabel!
     @IBOutlet weak var caloriesMinimumTitle: UILabel!
     @IBOutlet var caloriesMinimumField: UITextField!
@@ -100,6 +107,19 @@ class EditPatientViewController : UIViewController {
         patient?.dateOfBirth = apiDateFormatter.string(from: sender.date)
         dateOfBirthField.text = dateFormatter.string(from: sender.date)
     }
+    
+    @IBAction func genderManSelected(_ sender: Any) {
+        gender = "Man"
+        genderManButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        genderWomanButton.setImage(UIImage(systemName: "circle"), for: .normal)
+    }
+    
+    @IBAction func genderWomanSelected(_ sender: Any) {
+        gender = "Vrouw"
+        genderManButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        genderWomanButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -202,6 +222,9 @@ class EditPatientViewController : UIViewController {
         
         // TODO: Localizable Strings
         guidelineInfoLabel.text = "Richtlijnen"
+        genderLabel.text = "Geslacht"
+        genderManLabel.text = "Man"
+        genderWomanLabel.text = "Vrouw"
     }
     
     
