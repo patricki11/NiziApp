@@ -74,8 +74,6 @@
 		9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71623A084AF003F136D /* DiaryNavigationController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
-		934F537523C14DCA007745AF /* CreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537423C14DCA007745AF /* CreateMealViewController.swift */; };
-		934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537623C160DB007745AF /* MealSearchProductViewController.swift */; };
 		934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934F537923C1660C007745AF /* MealProductDetailViewController.swift */; };
 		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
@@ -154,8 +152,6 @@
 		9322A71623A084AF003F136D /* DiaryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryNavigationController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
-		934F537423C14DCA007745AF /* CreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMealViewController.swift; sourceTree = "<group>"; };
-		934F537623C160DB007745AF /* MealSearchProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchProductViewController.swift; sourceTree = "<group>"; };
 		934F537923C1660C007745AF /* MealProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealProductDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -342,8 +338,6 @@
 		934F537823C163EB007745AF /* CreateMeal */ = {
 			isa = PBXGroup;
 			children = (
-				934F537423C14DCA007745AF /* CreateMealViewController.swift */,
-				934F537623C160DB007745AF /* MealSearchProductViewController.swift */,
 				934F537923C1660C007745AF /* MealProductDetailViewController.swift */,
 				2180FA8C2581177F0022920E /* MealCreateViewController.swift */,
 				2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */,
@@ -509,7 +503,6 @@
 				21488B15239E4B7B004D31C8 /* Auth.swift in Sources */,
 				2180FA71257E563B0022920E /* PatientConsumption.swift in Sources */,
 				9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */,
-				934F537723C160DB007745AF /* MealSearchProductViewController.swift in Sources */,
 				9322A704239680D7003F136D /* Meal.swift in Sources */,
 				5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */,
 				934F537A23C1660C007745AF /* MealProductDetailViewController.swift in Sources */,
@@ -548,7 +541,6 @@
 				9322A71123A02CA5003F136D /* Weight.swift in Sources */,
 				215DA6FC2567CE1F00B242B0 /* newConsumption.swift in Sources */,
 				214DB7D425653AD9003FFCA7 /* newWeightUnit.swift in Sources */,
-				934F537523C14DCA007745AF /* CreateMealViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

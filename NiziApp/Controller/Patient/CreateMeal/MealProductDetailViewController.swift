@@ -75,7 +75,7 @@ class MealProductDetailViewController: UIViewController {
                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
                    self.present(alertController, animated: true, completion: nil)
     }
-    
+    /*
     @IBAction func FinishMeal(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"CreateMealViewController") as! CreateMealViewController;()
@@ -89,4 +89,5 @@ class MealProductDetailViewController: UIViewController {
         detailFoodVC.mealfoodlist = foodlist
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+ */
 }
