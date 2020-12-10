@@ -96,5 +96,5 @@
 "passwordDoesNotMatchTitle" = "Niet aangemaakt";
 "passwordDoesNotMatchMessage" = "Het ingegeven wachtwoord komt niet overeen.";
 "guidelinesAddedTitle" = "Richtlijnen toegevoegd";
-"guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd."
+"guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd.";
 // Messages
