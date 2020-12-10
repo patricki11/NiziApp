@@ -36,7 +36,6 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calculateDietary()
         // Do any additional setup after loading the view.
     }
 
@@ -50,114 +49,5 @@ class CreateMealViewController: UIViewController, UITableViewDataSource, UITable
         MealProducts?.reloadData()
     }
     
-    
-    @IBAction func SearchProducts(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchProductViewController") as! MealSearchProductViewController;()
-        detailFoodVC.mealfoodlist = Mealfoodlist
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
-    
-    @IBAction func CreateMeal(_ sender: Any) {
-        addMeal()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Mealfoodlist.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "FoodMeal", for: indexPath) as! SearchFoodTableViewCell
-        let idx: Int = indexPath.row
-        searchFoodCell.textLabel?.text = Mealfoodlist[idx].name
-        let url = URL(string: Mealfoodlist[idx].picture)
-        searchFoodCell.imageView?.kf.setImage(with: url)
-        searchFoodCell.accessoryType = .disclosureIndicator
-        return searchFoodCell
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            Mealfoodlist.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.kcal = 0.0
-            self.fiberMeal = 0.0
-            self.vochtMeal  = 0.0
-            self.pottassiumMeal = 0.0
-            self.sodiumMeal = 0.0
-            self.proteinMeal  = 0.0
-            self.calculateDietary()
-            tableView.endUpdates()
-        }
-    }
-    
-    
-    
-    func addMeal() {
-        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal, water: vochtMeal )
-        
-        NiZiAPIHelper.addMeal(withDetails: meal, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            // TODO: Melden aan patient dat de maaltijd is toegevoegd.patientId
-            
-        })
-        
-        
-    }
-    
-    func createNewMealObject(mealId: Int, name: String, patientId: Int, kcal: Double, fiber: Double, calcium: Double, sodium: Double, portionSize: Double, weightUnit: String, picture: String, protein: Double, water: Double) -> Meal {
-        
-        let meal : Meal = Meal(
-            mealId: mealId, name: name, patientId: patientId, kCal: kcal, protein: protein, fiber: fiber, calcium: calcium, sodium: sodium, portionSize: portionSize, weightUnit: weightUnit, picture: picture, water: water)
-        return meal
-    }
-    
-    func calculateDietary(){
-        
-        if(Mealfoodlist.count > 0){
-            for food in Mealfoodlist {
-                kcal += food.kCal
-                fiberMeal += food.fiber
-                vochtMeal += food.water
-                pottassiumMeal += food.calcium
-                proteinMeal +=  food.protein
-                sodiumMeal += food.sodium
-                
-            }
-            let kcalText:String = String(format:"%.1f", kcal)
-            KcalLabel.text = kcalText
-            
-            let fiberText:String = String(format:"%.1f", fiberMeal)
-            FiberLabel.text = fiberText
-            
-            let vochtText:String = String(format:"%.1f", vochtMeal)
-            VochtLabel.text = vochtText
-            
-            let pottassiumText:String = String(format:"%.1f", pottassiumMeal)
-            PotassiumLabel.text = pottassiumText
-            
-            let proteinText:String = String(format:"%.1f", proteinMeal)
-            ProteinLabel.text = proteinText
-            
-            let sodiumText:String = String(format:"%.1f", sodiumMeal)
-            SodiumLabel.text = sodiumText
-        }
-        else{
-            KcalLabel.text = "0.0"
-            FiberLabel.text = "0.0"
-            VochtLabel.text = "0.0"
-            PotassiumLabel.text = "0.0"
-            ProteinLabel.text = "0.0"
-            SodiumLabel.text = "0.0"
-        }
-    }
     
 }

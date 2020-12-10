@@ -11,6 +11,7 @@ import UIKit
 class SearchMealProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var foodlist : [NewFood] = []
+    var Mealfoodlist : [NewFood] = []
     let patientIntID : Int = 1
 
     @IBOutlet weak var searchFoodInput: UITextField!
@@ -18,6 +19,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     @IBOutlet weak var productTable: UITableView!
     
     @IBAction func searchFoodAction(_ sender: Any) {
+        searchFood()
     }
     
     @IBAction func goBackToCreateMeal(_ sender: Any) {
@@ -53,6 +55,24 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         detailFoodVC.weightUnit = food.weightObject
        // detailFoodVC.patient = self.patient
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    //MARK: API CALLS
+
+    func searchFood() {
+        NiZiAPIHelper.getFood(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withFood: searchFoodInput.text!).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.foodlist = foodlistJSON
+            self.productTable?.reloadData()
+            self.totalLbl.text = "Aantal(\(self.foodlist.count))"
+        })
     }
     
     
