@@ -10,15 +10,8 @@
 "LoginPageTitle" = "Inloggen";
 "UsernameLabel" = "Gebruikersnaam";
 "PasswordLabel" = "Wachtwoord";
-"Login" = "Inloggen";
+"login" = "Inloggen";
 "LogOut" = "Uitloggen";
-"NeedHelp" = "Hulp Nodig?";
-"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
-"NierstichtingWeb" = "http://www.nierstichting.nl";
-"NierstichtingPhone" = "035 697 80 00";
-"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
-"NierstichtingMail" = "info@nierstichting.nl";
-
 "ok" = "Ok";
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
@@ -38,6 +31,20 @@
 "DiaryDayLabel" = "VANDAAG";
 "DiaryTitle" = "Voeding";
 "DiaryAddProduct" = "voeding toevoegen";
+
+
+// Nierstichting Info Login Page
+"NeedHelp" = "Hulp Nodig?";
+"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
+"NierstichtingWeb" = "http://www.nierstichting.nl";
+"NierstichtingPhone" = "035 697 80 00";
+"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
+"NierstichtingMail" = "info@nierstichting.nl";
+// Nierstichting Info Login Page
+
+
+
+// Guidelines
 "guidelines" = "Richtlijnen";
 "Calorie" = "Calorieën";
 "Grain" = "Vezel";
@@ -45,7 +52,6 @@
 "Moisture" = "Vocht";
 "Potassium" = "Kalium";
 "Natrium" = "Natrium";
-
 "Minimum" = "Minimum";
 "Maximum" = "Maximum";
 "caloriesTitle" = "Calorieën in kcal";
@@ -54,11 +60,16 @@
 "potassiumTitle" = "Kalium in mg";
 "proteinTitle" = "Proteïne in gram";
 "grainTitle" = "Vezels in gram";
+// Guidelines
 
+
+// Guideline Amount
 "between" = "Tussen";
 "and" = "en";
 "moreThan" = "Meer dan";
 "lessThan" = "Minder dan";
+// Guideline Amount
+
 
 // Dates
 "Yesterday" = "Gisteren";
@@ -75,6 +86,7 @@
 
 
 // Titles
+"Login" = "Inloggen";
 "AddPatient" = "Toevoegen Patiënt";
 "EditPatient" = "Bewerken Patiënt";
 "Overview" = "Overzicht";
@@ -86,20 +98,28 @@
 // Messages
 "patientAddedTitle" = "Patiënt toegevoegd";
 "patientAddedMessage" = "De patiënt is toegevoegd";
+
 "patientUpdatedTitle" = "Patiënt bijgewerkt";
 "patientUpdatedMessage" = "De patiëntgegevens zijn bijgewerkt.";
+
 "requiredFieldsTitle" = "Verplichte velden";
 "requiredFieldsMessage" = "Niet alle verplichte velden zijn ingevuld.";
+
 "invalidEmailTitle" = "Ongeldige Email";
 "invalidEmailMessage" = "Het ingegeven emailadres is ongeldig.";
+
 "passwordNotStrongEnoughTitle" = "Wachtwoord niet sterk genoeg";
 "passwordNotStrongEnoughMessage" = "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.";
+
 "passwordDoesNotMatchTitle" = "Niet aangemaakt";
 "passwordDoesNotMatchMessage" = "Het ingegeven wachtwoord komt niet overeen.";
+
 "guidelinesAddedTitle" = "Richtlijnen toegevoegd";
 "guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd.";
+
 "wrongCredentialsTitle" = "Niet ingelogd";
 "wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
+
 "conversationAddedTitle" = "Toegevoegd";
 "conversationAddedMessage" = "Conversatie toegevoegd.";
 // Messages

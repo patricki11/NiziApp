@@ -41,7 +41,7 @@ class LoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        title = NSLocalizedString("login", comment: "")
+        title = NSLocalizedString("Login", comment: "")
         self.navigationItem.hidesBackButton = true
         checkIfLoggedIn()
         setLanguageSpecificText()
@@ -54,7 +54,7 @@ class LoginViewController : UIViewController {
         passwordLabel.text = NSLocalizedString("PasswordLabel", comment: "")
         needHelpLabel.text = NSLocalizedString("NeedHelp", comment: "")
         needHelpDescription.text = NSLocalizedString("NeedHelpSubtitle", comment: "")
-        LoginButton.setTitle("Login", for: .normal)
+        LoginButton.setTitle("login", for: .normal)
         nierstichtingWebLabel.text = NSLocalizedString("NierstichtingWeb", comment: "")
         nierstichtingPhoneLabel.text = NSLocalizedString("NierstichtingPhone", comment: "")
         nierstichtingPhoneTimeLabel.text = NSLocalizedString("NierstichtingPhoneTime", comment: "")
