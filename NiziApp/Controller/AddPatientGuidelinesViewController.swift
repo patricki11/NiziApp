@@ -52,7 +52,8 @@ class AddPatientGuidelinesViewController : UIViewController {
     
     let onlyAllowNumbersDelegate = OnlyAllowNumbersDelegate()
     
-    var patient : Int!
+    var newPatient : NewPatient!
+    var newUser : NewUser!
     
     var guidelines : [NewDietaryManagement] = []
     override func viewDidLoad() {
@@ -105,16 +106,12 @@ class AddPatientGuidelinesViewController : UIViewController {
         potassiumMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
         proteinMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
         grainMaximumTitle.text = NSLocalizedString("Maximum", comment: "")
+        
+        savePatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
     }
     
     @IBAction func savePatientGuidelines(_ sender: Any) {
-        getGuidelines()
-        
-        for guideline in guidelines {
-            NiZiAPIHelper.createDietaryManagement(forPatient: patient, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in })
-        }
-        
-        showGuidelinesAddedMessage()
+        addNewPatient()
     }
     
     func getGuidelines() {
@@ -146,7 +143,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 1,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -175,7 +172,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 2,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -204,7 +201,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 3,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -233,7 +230,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 4,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -262,7 +259,7 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 5,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
@@ -291,13 +288,59 @@ class AddPatientGuidelinesViewController : UIViewController {
                 id: 0,
                 isActive: true,
                 dietaryRestriction: 6,
-                patient: patient,
+                patient: newPatient.id,
                 createdAt: nil,
                 updatedAt: nil,
                 minimum: minimum,
                 maximum: maximum
             )
         )
+    }
+    
+    func addNewPatient() {
+        NiZiAPIHelper.addPatient(withDetails: newPatient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
+            
+            self.newPatient = patient
+            self.newUser.patient = patient.id!
+            self.addNewAccount()
+        })
+    }
+    
+    func addNewAccount() {
+        NiZiAPIHelper.addUser(withDetails: newUser, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { return }
+            
+            self.newUser = patientUser
+            
+            self.addNewGuidelines()
+        })
+    }
+    
+    func addNewGuidelines() {
+        getGuidelines()
+        var completedGuidelines = 0
+        
+        for guideline in guidelines {
+            NiZiAPIHelper.createDietaryManagement(forPatient: newPatient.id!, withGuideline: guideline, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in
+                
+                completedGuidelines += 1
+                
+                if(self.guidelines.count == completedGuidelines) {
+                    self.showPatientAddedMessage()
+                }
+            })
+        }
+        
+        if(guidelines.count == 0) {
+            self.showPatientAddedMessage()
+        }
     }
     
     func showGuidelinesAddedMessage() {
@@ -310,6 +353,18 @@ class AddPatientGuidelinesViewController : UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func showPatientAddedMessage() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("patientAddedTitle", comment: ""),
+            message: NSLocalizedString("patientAddedMessage", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientList()}))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     
     func navigateBackToPatientList() {
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]

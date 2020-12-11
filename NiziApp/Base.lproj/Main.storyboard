@@ -861,7 +861,7 @@
                                 <rect key="frame" x="0.0" y="208" width="414" height="688"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bD8-EU-2wJ" userLabel="Contentview">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="640"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="610"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKU-tz-8rq" userLabel="Guideline_view_1">
                                                 <rect key="frame" x="0.0" y="20" width="414" height="90"/>
@@ -1254,10 +1254,9 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKU-XW-h5Y">
-                                                <rect key="frame" x="244" y="580" width="150" height="32"/>
+                                                <rect key="frame" x="0.0" y="578" width="414" height="32"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="eFB-1B-sNm"/>
                                                     <constraint firstAttribute="height" constant="32" id="tFX-fF-Kxk"/>
                                                 </constraints>
                                                 <state key="normal" title="Richtlijnen opslaan">
@@ -1272,6 +1271,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="HCc-fF-s1f" secondAttribute="trailing" id="0Hj-BN-Qaj"/>
                                             <constraint firstAttribute="trailing" secondItem="4DF-vW-fDK" secondAttribute="trailing" id="0fN-UY-pMR"/>
+                                            <constraint firstItem="VKU-XW-h5Y" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="4eq-M8-TVm"/>
                                             <constraint firstItem="axy-eK-wgr" firstAttribute="top" secondItem="4DF-vW-fDK" secondAttribute="bottom" id="CcJ-Xx-CXq"/>
                                             <constraint firstItem="HCc-fF-s1f" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="FR9-k9-H6f"/>
                                             <constraint firstAttribute="trailing" secondItem="qu9-93-q9A" secondAttribute="trailing" id="Hdy-lg-Bfd"/>
@@ -1279,17 +1279,17 @@
                                             <constraint firstItem="4DF-vW-fDK" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="UdC-ix-2Jr"/>
                                             <constraint firstItem="qu9-93-q9A" firstAttribute="top" secondItem="BKU-tz-8rq" secondAttribute="bottom" id="Uuc-r9-9y7"/>
                                             <constraint firstItem="4DF-vW-fDK" firstAttribute="top" secondItem="1LF-n8-RvV" secondAttribute="bottom" id="Vgr-9d-jKr"/>
-                                            <constraint firstAttribute="height" constant="640" id="WJQ-29-d1t"/>
+                                            <constraint firstAttribute="height" constant="610" id="WJQ-29-d1t"/>
                                             <constraint firstItem="BKU-tz-8rq" firstAttribute="top" secondItem="bD8-EU-2wJ" secondAttribute="top" constant="20" symbolic="YES" id="XbJ-lC-7XN"/>
                                             <constraint firstItem="BKU-tz-8rq" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="YUp-fw-yqi"/>
                                             <constraint firstItem="axy-eK-wgr" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="ZGf-kJ-jhh"/>
                                             <constraint firstItem="qu9-93-q9A" firstAttribute="leading" secondItem="bD8-EU-2wJ" secondAttribute="leading" id="cbe-0Y-XTf"/>
+                                            <constraint firstAttribute="bottom" secondItem="VKU-XW-h5Y" secondAttribute="bottom" id="d2y-AF-pqi"/>
                                             <constraint firstAttribute="trailing" secondItem="BKU-tz-8rq" secondAttribute="trailing" id="eLS-1k-70R"/>
                                             <constraint firstAttribute="trailing" secondItem="axy-eK-wgr" secondAttribute="trailing" id="fYn-Jh-7p7"/>
                                             <constraint firstItem="HCc-fF-s1f" firstAttribute="top" secondItem="qu9-93-q9A" secondAttribute="bottom" id="hXm-6P-l6d"/>
                                             <constraint firstAttribute="trailing" secondItem="1LF-n8-RvV" secondAttribute="trailing" id="kI8-SV-bEm"/>
-                                            <constraint firstItem="VKU-XW-h5Y" firstAttribute="top" secondItem="axy-eK-wgr" secondAttribute="bottom" constant="20" id="nq1-r9-V7s"/>
-                                            <constraint firstItem="axy-eK-wgr" firstAttribute="trailing" secondItem="VKU-XW-h5Y" secondAttribute="trailing" constant="20" id="ocN-03-MjJ"/>
+                                            <constraint firstItem="axy-eK-wgr" firstAttribute="trailing" secondItem="VKU-XW-h5Y" secondAttribute="trailing" id="ocN-03-MjJ"/>
                                             <constraint firstItem="1LF-n8-RvV" firstAttribute="top" secondItem="HCc-fF-s1f" secondAttribute="bottom" id="r7e-3q-OBo"/>
                                         </constraints>
                                     </view>
@@ -3331,7 +3331,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">

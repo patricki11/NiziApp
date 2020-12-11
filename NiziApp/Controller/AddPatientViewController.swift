@@ -40,6 +40,10 @@ class AddPatientViewController: UIViewController {
     @IBOutlet weak var addPatientButton: UIButton!
     
     weak var loggedInAccount : NewUser!
+    
+    var newPatient : NewPatient!
+    var newUser : NewUser!
+    
     var gender: String = ""
     func datePicker() -> UIDatePicker {
         let picker = UIDatePicker()
@@ -95,7 +99,7 @@ class AddPatientViewController: UIViewController {
         
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
         loginInfoLabel.text = NSLocalizedString("loginInfo", comment: "")
-        addPatientButton.setTitle(NSLocalizedString("createPatient", comment: ""), for: .normal)
+        addPatientButton.setTitle(NSLocalizedString("nextStep", comment: ""), for: .normal)
         passwordRequirementLabel.text = NSLocalizedString("passwordRequirement", comment: "")
         
         genderLabel.text = NSLocalizedString("Gender", comment: "")
@@ -124,36 +128,18 @@ class AddPatientViewController: UIViewController {
             return
         }
 
-        createPatientAccount()
+        createPatientAccountObjects()
+    }
+    
+    func createPatientAccountObjects() {
+        newPatient = NewPatient(id: nil, gender: gender, dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
+       
+       newUser = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: nil, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
+       
+       self.navigateToGuidelineController()
+    }
 
-        
-    }
-    
-    func createPatientAccount() {
-        var patient = NewPatient(id: nil, gender: gender, dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
-        
-        NiZiAPIHelper.addPatient(withDetails: patient, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data else { return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse) else { return }
-            
-            self.addNewAccount(forPatient: patient.id)
-        })
-    }
-    
-    func addNewAccount(forPatient patientId: Int?) {
-        var user = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: patientId, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
-        
-        NiZiAPIHelper.addUser(withDetails: user, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data else { return }
-            
-            let jsonDecoder = JSONDecoder()
-            guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { return }
-            
-            self.showPatientAddedMessage(patientId: patientId)
-        })
-    }
+   
     
     func requiredFieldsAreFilled() -> Bool {
         let firstName = firstNameField.text ?? ""
@@ -273,17 +259,6 @@ class AddPatientViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func showPatientAddedMessage(patientId: Int?) {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("patientAddedTitle", comment: ""),
-            message: NSLocalizedString("patientAddedMessage", comment: ""),
-            preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateToGuidelineController(patientId: patientId)}))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     func showIncorrectEmailFormatMessage() {
         let alertController = UIAlertController(
             title: NSLocalizedString("invalidEmailTitle", comment: ""),
@@ -306,10 +281,11 @@ class AddPatientViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func navigateToGuidelineController(patientId: Int?) {
+    func navigateToGuidelineController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let guidelineVC = storyboard.instantiateViewController(withIdentifier: "AddPatientGuidelinesViewController") as! AddPatientGuidelinesViewController
-        guidelineVC.patient = patientId
+        guidelineVC.newPatient = newPatient
+        guidelineVC.newUser = newUser
         self.navigationController?.pushViewController(guidelineVC, animated: true)
     }
 }
