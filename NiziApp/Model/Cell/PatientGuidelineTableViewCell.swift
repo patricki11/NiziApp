@@ -17,6 +17,8 @@ class PatientGuidelineTableViewCell : UITableViewCell {
     
     @IBOutlet weak var guidelineIconImageView: UIImageView!
     
+    @IBOutlet weak var guidelineChartView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         guidelineNameLabel.text = ""

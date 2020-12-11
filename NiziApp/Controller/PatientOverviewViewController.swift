@@ -182,6 +182,9 @@ extension PatientOverviewViewController : UITableViewDataSource {
         var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var total : Int = Int(floatTotal)
         
+        var progressView = cell.guidelineChartView as! CircularProgressView
+        progressView.progressAnimation(minimum: guideline.minimum, maximum: guideline.maximum, currentTotal: total)
+        
         cell.averageAmountForWeekLabel.text = "\(total) \(guideline.dietaryRestrictionObject!.plural!)"
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
