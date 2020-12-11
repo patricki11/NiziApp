@@ -20,6 +20,18 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var dayOverviewLabel: UILabel!
     @IBOutlet weak var guidelineTableView: UITableView!
     
+    lazy var apiDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter
+    }()
+    
+    lazy var readableDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM YYYY"
+        return formatter
+    }()
+    
     var patientGuidelines : [NewDietaryManagement] = []
     var patientConsumption : [NewConsumption] = []
     var currentDayCounter : Int = 0
@@ -30,23 +42,28 @@ class PatientOverviewViewController : UIViewController
     
     @IBAction func getPreviousWeek(_ sender: Any) {
         currentDayCounter -= 1
-        changeCurrentWeekLabel()
+        changeCurrentDayLabel()
         getConsumptions()
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
         currentDayCounter += 1
-        changeCurrentWeekLabel()
+        changeCurrentDayLabel()
         getConsumptions()
     }
     
     func changeAgeGenderLabel() {
         let gender = patient.gender
-        let birthDate = patient.dateOfBirth
-        ageGenderLabel.text = "\(gender) - \(birthDate)"
+        let birthdate = apiDateFormatter.date(from: patient.dateOfBirth)
+        let readableDateOfBirth = readableDateFormatter.string(from: birthdate!)
+        
+        let ageComponents = Calendar.current.dateComponents([.year], from: birthdate!, to: Date())
+        let age = ageComponents.year!
+        
+        ageGenderLabel.text = "\(gender) - \(readableDateOfBirth) (\(age))"
     }
     
-    func changeCurrentWeekLabel() {
+    func changeCurrentDayLabel() {
 
         selectedDate = Calendar.current.date(byAdding: .day, value: currentDayCounter, to: Date())
                 
@@ -79,7 +96,7 @@ class PatientOverviewViewController : UIViewController
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()
         setLanguageSpecificText()
-        changeCurrentWeekLabel()
+        changeCurrentDayLabel()
         getDietaryGuidelines()
         changeAgeGenderLabel()
         getConsumptions()
@@ -90,9 +107,6 @@ class PatientOverviewViewController : UIViewController
         getDietaryGuidelines()
         changeAgeGenderLabel()
         getConsumptions()
-    }
-    
-    func getPatient() {
     }
     
     func setLanguageSpecificText() {
