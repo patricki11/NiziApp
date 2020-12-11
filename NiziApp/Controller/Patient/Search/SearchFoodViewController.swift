@@ -97,7 +97,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     //MARK: API CALLS
 
     func searchFood() {
-        NiZiAPIHelper.getFood(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withFood: SearchFoodInput.text!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: SearchFoodInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class MealCreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -25,18 +26,19 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var sodiumResultLbl: UILabel!
     @IBOutlet weak var potassiumResultLbl: UILabel!
     
-    var Mealfoodlist : [NewFood] = []
-    var kcal : Float = 0.0
-    var fiberMeal : Float = 0.0
-    var vochtMeal : Float = 0.0
-    var pottassiumMeal : Float = 0.0
-    var sodiumMeal : Float = 0.0
-    var proteinMeal : Float = 0.0
+    var Mealfoodlist    : [NewFood] = []
+    var newMealFoodList : [NewMealFood] = []
+    var kcal            : Float = 0.0
+    var fiberMeal       : Float = 0.0
+    var vochtMeal       : Float = 0.0
+    var pottassiumMeal  : Float = 0.0
+    var sodiumMeal      : Float = 0.0
+    var proteinMeal     : Float = 0.0
+    var createdMeal     : NewMeal?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calculateDietary()
-
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -129,16 +131,34 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     //Needs to change the API calls
     func addMeal() {
-        /*
-        let meal = self.createNewMealObject(mealId: 4, name: NameText.text!, patientId: patientIntID!, kcal: kcal, fiber: fiberMeal, calcium: pottassiumMeal, sodium: sodiumMeal, portionSize: 1.0, weightUnit: "gram", picture: "https://image.flaticon.com/icons/png/512/45/45332.png", protein: proteinMeal, water: vochtMeal )
+        let weight = self.createNewWeight(id: 8, unit: "", short: "", createdAt: "", updatedAt: "")
         
-        NiZiAPIHelper.addMeal(withDetails: meal, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            // TODO: Melden aan patient dat de maaltijd is toegevoegd.patientId
-
+        let patient = self.createNewPatient(id: 1, gender: "", createdAt: "", updatedAt: "", doctor: 0, user: 0)
+        
+        let kcalFloat = (calorieResultLbl.text as! NSString).floatValue
+        
+        let foodMealComponent = self.createNewFoodMealComponent(id: 0, name: self.nameInput.text!, description: "Self made meal", kcal: kcalFloat, protein: kcalFloat, potassium: kcalFloat, sodium: kcalFloat, water: kcalFloat, fiber: kcalFloat, portionSize: 1, imageUrl: "https://image.flaticon.com/icons/png/512/45/45332.png")
+        
+        let meal = self.createNewMealObject(id: 0, weightUnit: weight, patient: patient, foodMealComponent: foodMealComponent, mealFoods: self.newMealFoodList)
+        
+        NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal).responseData(completionHandler: { response in
             
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let mealJSON = try? jsonDecoder.decode( NewMeal.self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.createdMeal = mealJSON
+            print("-------------------------------")
+            print(self.createdMeal?.id)
         })
+        //TODO : add MEAL FOODs
         
-         */
+        for product in self.Mealfoodlist {
+            
+        }
     }
     
     
@@ -156,8 +176,8 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         return consumptionWeight
     }
     
-    func createNewPatient(id: Int) -> PatientConsumption {
-        let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
+    func createNewPatient(id: Int, gender : String, createdAt : String, updatedAt : String, doctor : Int, user : Int) -> NewPatient {
+        let consumptionPatient : NewPatient = NewPatient(id: id, gender: gender, dateOfBirth: "", createdAt: createdAt, updatedAt: updatedAt, doctor: doctor, user: user)
         return consumptionPatient
     }
     
@@ -173,10 +193,13 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func saveMeal(_ sender: Any) {
         addMeal()
+        /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
+ */
     }
+    
     
 
 }
