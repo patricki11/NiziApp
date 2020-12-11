@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 class PatientOverviewViewController : UIViewController
 {
+    var doctorId : Int!
     weak var patient : NewPatient!
     @IBOutlet weak var ageGenderLabel: UILabel!
     
@@ -129,7 +130,7 @@ class PatientOverviewViewController : UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
         conversationVC.patientId = patient.id
-        conversationVC.doctorId = 1
+        conversationVC.doctorId = doctorId
         self.navigationController?.pushViewController(conversationVC, animated: true)
     }
     

@@ -148,6 +148,7 @@ extension PatientListViewController : UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
         patientDetailVC.patient = patient
+        patientDetailVC.doctorId = loggedInAccount.doctor
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
 }
