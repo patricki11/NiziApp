@@ -15,7 +15,7 @@
 "ok" = "Ok";
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
-
+"edit" = "Bewerken";
 "firstName" = "Voornaam";
 "surname" = "Achternaam";
 "dateOfBirth" = "Geboortedatum";

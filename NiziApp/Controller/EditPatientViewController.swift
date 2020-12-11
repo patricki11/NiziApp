@@ -204,7 +204,7 @@ class EditPatientViewController : UIViewController {
         surnameLabel.text = NSLocalizedString("surname", comment: "")
         dateOfBirthLabel.text = NSLocalizedString("dateOfBirth", comment: "")
         personalInfoLabel.text = NSLocalizedString("personalInfo", comment: "")
-        editPatientButton.setTitle(NSLocalizedString("editPatient", comment: ""), for: .normal)
+        editPatientButton.setTitle(NSLocalizedString("edit", comment: ""), for: .normal)
         
         caloriesTitle.text = NSLocalizedString("caloriesTitle", comment: "")
         waterTitle.text = NSLocalizedString("waterTitle", comment: "")
