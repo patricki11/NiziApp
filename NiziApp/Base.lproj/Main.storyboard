@@ -2903,7 +2903,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -3733,16 +3733,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f3-W0-cyO" userLabel="ProductTitle">
-                                                    <rect key="frame" x="22" y="11" width="376" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEp-uN-S7j">
+                                                    <rect key="frame" x="11" y="27" width="13" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbu-Lw-q5p">
+                                                    <rect key="frame" x="352" y="24" width="21" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0f3-W0-cyO" userLabel="ProductTitle">
+                                                    <rect key="frame" x="55" y="24" width="240" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="NMh-1M-IhV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JEp-uN-S7j" firstAttribute="top" secondItem="j5G-Xd-lUd" secondAttribute="top" constant="27.000000000000057" id="2Qy-1B-7zH"/>
+                                                <constraint firstItem="0f3-W0-cyO" firstAttribute="top" secondItem="j5G-Xd-lUd" secondAttribute="top" constant="24" id="AjX-s1-fg4"/>
+                                                <constraint firstItem="JEp-uN-S7j" firstAttribute="leading" secondItem="j5G-Xd-lUd" secondAttribute="leading" constant="11" id="FwM-2J-efk"/>
+                                                <constraint firstAttribute="trailing" secondItem="bbu-Lw-q5p" secondAttribute="trailing" constant="41" id="PUT-fQ-4oJ"/>
+                                                <constraint firstItem="0f3-W0-cyO" firstAttribute="leading" secondItem="JEp-uN-S7j" secondAttribute="trailing" constant="31" id="ZeJ-mz-WzY"/>
+                                                <constraint firstItem="bbu-Lw-q5p" firstAttribute="top" secondItem="j5G-Xd-lUd" secondAttribute="top" constant="24.000000000000057" id="hh2-KB-ymF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="amountLbl" destination="JEp-uN-S7j" id="313-Mn-rIy"/>
+                                            <outlet property="portionLbl" destination="bbu-Lw-q5p" id="9vx-0z-9jp"/>
                                             <outlet property="productTitle" destination="0f3-W0-cyO" id="yg4-pN-cCe"/>
                                         </connections>
                                     </tableViewCell>
@@ -4045,7 +4070,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-a5-6ZZ">
-                                                    <rect key="frame" x="165" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="165" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="3RS-7G-1Np"/>
                                                         <constraint firstAttribute="height" constant="98" id="ocx-nb-dOS"/>

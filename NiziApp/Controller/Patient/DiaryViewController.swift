@@ -201,28 +201,46 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
      }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "diarytablecell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "diarytablecell", for: indexPath) as! DiaryTableViewCell
         
         var navigationTitle = ""
+        var amountText = ""
+        var portionSize = ""
+        var portion : Float = 0.0
+        
         
         switch indexPath.section {
         case 0:
             navigationTitle = (breakfastFoods[indexPath.row].foodMealCompenent?.name)!
+            amountText = (breakfastFoods[indexPath.row].amount?.description)!
+            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
+            
             break
         case 1:
             navigationTitle = (lunchFoods[indexPath.row].foodMealCompenent?.name)!
+            amountText = (lunchFoods[indexPath.row].amount?.description)!
+            portion = (lunchFoods[indexPath.row].amount)! * (lunchFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + lunchFoods[indexPath.row].weightUnit!.short
             break
         case 2:
             navigationTitle = (dinnerFoods[indexPath.row].foodMealCompenent?.name)!
+            amountText = (dinnerFoods[indexPath.row].amount?.description)!
+            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
             break
         case 3:
             navigationTitle = (snackFoods[indexPath.row].foodMealCompenent?.name)!
+            amountText = (snackFoods[indexPath.row].amount?.description)!
+            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
             break
         default:
             break
         }
-        cell.textLabel?.text = navigationTitle
-        cell.accessoryType = .detailButton
+        cell.productTitle?.text = navigationTitle
+        cell.amountLbl.text = amountText
+        cell.portionLbl.text = portionSize
         return cell
     }
     
@@ -230,6 +248,10 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         return false
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0;//Choose your custom row height
+    }
+    /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.Deleteconsumption(Id: consumptions[indexPath.row].id!)
@@ -256,6 +278,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.endUpdates()
         }
     }
+ */
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)?.first as! HeaderView
         

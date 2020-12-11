@@ -10,7 +10,9 @@ import UIKit
 
 class DiaryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var amountLbl: UILabel!
     @IBOutlet var productTitle: UILabel!
+    @IBOutlet weak var portionLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
