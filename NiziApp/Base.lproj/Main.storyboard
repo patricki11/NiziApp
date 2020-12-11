@@ -3190,7 +3190,7 @@
                                         <color key="tintColor" systemColor="systemOrangeColor"/>
                                         <state key="normal" backgroundImage="message.circle.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="tempNavigateToConversations:" destination="cIk-s1-WXa" eventType="touchUpInside" id="5Ks-rk-fuQ"/>
+                                            <action selector="navigateToConversations:" destination="cIk-s1-WXa" eventType="touchUpInside" id="f6A-E3-XGx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3331,7 +3331,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">

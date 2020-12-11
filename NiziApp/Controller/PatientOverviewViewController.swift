@@ -125,7 +125,7 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
-    @IBAction func tempNavigateToConversations(_ sender: Any) {
+    @IBAction func navigateToConversations(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
         conversationVC.patientId = patient.id
