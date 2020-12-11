@@ -60,6 +60,7 @@
 		5330AE42257A77160027A768 /* AddConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE41257A77160027A768 /* AddConversationViewController.swift */; };
 		5330AE48258267A00027A768 /* AddConversationItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE472582679F0027A768 /* AddConversationItemViewController.swift */; };
 		5330AE502583870B0027A768 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE4F2583870B0027A768 /* CircularProgressView.swift */; };
+		5330AE542583BEE20027A768 /* ShowPatientDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */; };
 		53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB5255E99F80094C3C8 /* NewDoctor.swift */; };
 		53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB7255EA2A20094C3C8 /* NewUser.swift */; };
 		53840FBA255ED9680094C3C8 /* NewUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53840FB9255ED9680094C3C8 /* NewUserLogin.swift */; };
@@ -137,6 +138,7 @@
 		5330AE41257A77160027A768 /* AddConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConversationViewController.swift; sourceTree = "<group>"; };
 		5330AE472582679F0027A768 /* AddConversationItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConversationItemViewController.swift; sourceTree = "<group>"; };
 		5330AE4F2583870B0027A768 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPatientDiaryViewController.swift; sourceTree = "<group>"; };
 		53840FB5255E99F80094C3C8 /* NewDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDoctor.swift; sourceTree = "<group>"; };
 		53840FB7255EA2A20094C3C8 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		53840FB9255ED9680094C3C8 /* NewUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLogin.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				5330AE41257A77160027A768 /* AddConversationViewController.swift */,
 				5330AE472582679F0027A768 /* AddConversationItemViewController.swift */,
 				5330AE4F2583870B0027A768 /* CircularProgressView.swift */,
+				5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */,
 				2180FA7F2580CE590022920E /* NewMeal.swift in Sources */,
 				2174966E2391937A00243B41 /* Patient.swift in Sources */,
+				5330AE542583BEE20027A768 /* ShowPatientDiaryViewController.swift in Sources */,
 				215FE88C256C456B007F05AB /* ConversationCell.swift in Sources */,
 				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
 				215303C92424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift in Sources */,

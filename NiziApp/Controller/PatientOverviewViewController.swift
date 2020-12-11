@@ -134,6 +134,13 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.pushViewController(conversationVC, animated: true)
     }
     
+    @IBAction func navigateToDiary(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let diaryVC = storyboard.instantiateViewController(withIdentifier: "ShowPatientDiaryViewController") as! ShowPatientDiaryViewController
+        diaryVC.patient = patient
+        self.navigationController?.pushViewController(diaryVC, animated: true)
+    }
+    
     func getDietaryGuidelines() {
         NiZiAPIHelper.getDietaryManagement(forDiet: patient.id!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
