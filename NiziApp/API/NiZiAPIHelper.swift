@@ -96,11 +96,6 @@ class NiZiAPIHelper {
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
-    
-    
-    
-    
-    
     // NEW FAVORITE FOOD //
     
     //GET CONVERSATIONS //
@@ -193,71 +188,7 @@ class NiZiAPIHelper {
     }
     
     // NEW MEAL //
-    
-    
-    // FOOD //
-    static func getProduct(byId productId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/food/\(productId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func searchProducts(byName name: String, authenticationCode: String) -> DataRequest {
-        let productSearchCount = 30;
-        let apiMethod = "v1/food/partial/\(name)/\(productSearchCount)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func getFavoriteProducts(forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/food/favorite/\(patientId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func addProductToFavorite(forproductId productId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/food/favorite?patientId=\(patientId)&foodId=\(productId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .post, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func removeProductFromFavorites(productId productId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/food/favorite"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .delete ,parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    // FOOD //
-    
-    
-    // MEAL //
-    static func addMeal(withDetails meal: Meal, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/meal/\(patientId)"
-        let parameters = meal.toJSON()
-        print(parameters)
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .post , parameters: parameters, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func updateMeal(withId mealId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/meal/\(patientId)/\(mealId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .put, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    /*
-    static func getAllMeals(forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/meal/\(patientId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get , parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
- */
-    
-    static func deleteMeal(withId mealId: Int, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/meal?patientId=\(patientId)&mealId=\(mealId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .delete , parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    // MEAL //
-    
+            
     // DIETARY MANAGEMENT //
     static func getDietaryManagement(forDiet dietId: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "dietary-managements?patient.id_eq=\(dietId)&is_active=true"

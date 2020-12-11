@@ -6,6 +6,7 @@
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
 
+/*
 import Foundation
 
 class Meal : Codable {
@@ -69,3 +70,4 @@ class Meal : Codable {
               ]
           }
 }
+*/
