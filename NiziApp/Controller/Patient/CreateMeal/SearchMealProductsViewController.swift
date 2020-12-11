@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class SearchMealProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -67,7 +68,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     //MARK: API CALLS
 
     func searchFood() {
-        NiZiAPIHelper.getFood(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withFood: searchFoodInput.text!).responseData(completionHandler: { response in
+        NiZiAPIHelper.getFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: searchFoodInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

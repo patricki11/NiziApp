@@ -35,6 +35,8 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var sodiumMeal      : Float = 0.0
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
+    var mealId          : [HelperId]?
+    var productId       : [HelperId]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,10 +156,17 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
             print("-------------------------------")
             print(self.createdMeal?.id)
         })
-        //TODO : add MEAL FOODs
+        
+        mealId?.append(HelperId(id: createdMeal!.id))
         
         for product in self.Mealfoodlist {
-            
+            productId?.append(HelperId(id: product.id!))
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: productId!, withMeal: mealId!, withAmount: 1).responseData(completionHandler: { response in
+                
+                guard let jsonResponse = response.data
+                    else { print("temp1"); return }
+            })
+            productId?.removeAll()
         }
     }
     
