@@ -28,26 +28,53 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var snackFoods     : [NewConsumption] = []
     var headers        : [postStruct] = []
     var patient        : NewPatient?
+    @IBOutlet weak var calendar: UIDatePicker!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.patient = createNewPatientObject(id: 1, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
-        print("Boogie ",self.patient?.id)
-        //print(KeychainWrapper.standard.string(forKey: "patientId"))
+        
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
-        saveDate(date: formattedDate)
-        getConsumption(Date: "2020-11-18T00:00:00.000Z")
-        //SetupDatePicker()
+        let finalDate = formattedDate + "T00:00:00.000Z"
+        saveDate(date: finalDate)
+        getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
         
+        calendar.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+    }
+    
+    @objc func datePickerChanged(picker: UIDatePicker) {
+        
+        // Create date formatter
+        let dateFormatter: DateFormatter = DateFormatter()
+        
+        // Set date format
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Apply date format
+        let selectedDate: String = dateFormatter.string(from: picker.date)
+        let finalDate = selectedDate + "T00:00:00.000Z"
+        
+        getConsumption(Date: selectedDate)
+        saveDate(date: selectedDate)
+        
+        print(finalDate)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getConsumption(Date: "2020-11-18T00:00:00.000Z")
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate = format.string(from: date)
+        let finalDate = formattedDate + "T00:00:00.000Z"
+        getConsumption(Date: finalDate)
+        calendar.setDate(date, animated: false)
+        self.diaryTable.reloadData()
+        
     }
     
     fileprivate func SetupDatePicker() {
@@ -108,7 +135,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        NiZiAPIHelper.readAllConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withPatient: 1, withStartDate: date).responseData(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1, withStartDate: date).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -280,4 +307,12 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         detailFoodVC.isDiaryDetail = true
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+    
+    @IBAction func previousDay(_ sender: Any) {
+    }
+    
+    @IBAction func nextDay(_ sender: Any) {
+        calendar.date.addingTimeInterval(1)
+    }
+    
 }

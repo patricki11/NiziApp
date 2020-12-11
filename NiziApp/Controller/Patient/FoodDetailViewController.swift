@@ -150,9 +150,9 @@ class FoodDetailViewController: UIViewController {
             
             let patient = self.createNewPatient(id: 1)
             
-            let consumption = self.createNewConsumptionObject(amount: 1, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
+            let consumption = self.createNewConsumptionObject(amount: 1, date: KeychainWrapper.standard.string(forKey: "date")!, mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
             
-            NiZiAPIHelper.addNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: consumption).responseData(completionHandler: { response in
+            NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
@@ -165,7 +165,7 @@ class FoodDetailViewController: UIViewController {
         else{
             let patchConsumption = self.createPatchConsumption(amount: 1.0, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString)
             
-            NiZiAPIHelper.patchNewConsumption(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
+            NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Voedsel is gewijzigd", comment: "Message"),
@@ -205,7 +205,7 @@ class FoodDetailViewController: UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
-        NiZiAPIHelper.deleteConsumption2(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withConsumptionId: consumptionId).responseData(completionHandler: { response in
+        NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
             let alertController = UIAlertController(
                 title: NSLocalizedString("Success", comment: "Title"),
                 message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Diary : Decodable{
-    var consumptions    : [ConsumptionView] = []
+    //var consumptions    : [ConsumptionView] = []
     
     var kcalTotal       : Float? = nil
     var proteinTotal    : Float? = nil
@@ -20,7 +20,7 @@ class Diary : Decodable{
     var waterTotal      : Float? = nil
     
     enum CodingKeys : String, CodingKey {
-        case consumptions   = "Consumptions"
+        //case consumptions   = "Consumptions"
         case kcalTotal      = "KCalTotal"
         case proteinTotal   = "ProteinTotal"
         case fiberTotal     = "FiberTotal"

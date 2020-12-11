@@ -13,7 +13,7 @@ class DairyListViewController: UIViewController {
     
     
     //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
-    var consumptions    : [ConsumptionView] = []
+    //var consumptions    : [ConsumptionView] = []
     var kcalProgress    : Float = 0.0
     var sodiumProgress  : Float = 0.0
     var proteinProgress : Float = 0.0

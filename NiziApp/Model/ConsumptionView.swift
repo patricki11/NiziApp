@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+/*
 class ConsumptionView : Codable {
     var consumptionId : Int    = 0
     var foodName      : String? = ""
@@ -36,3 +36,4 @@ class ConsumptionView : Codable {
         case mealTime      = "MealTime"
        }
 }
+ */

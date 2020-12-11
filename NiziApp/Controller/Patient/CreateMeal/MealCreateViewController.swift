@@ -84,7 +84,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0;//Choose your custom row height
+        return 80.0;//Choose your custom row height
     }
     
     func calculateDietary(){
@@ -141,12 +141,30 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
          */
     }
     
+    
+    
+    
     // Need to change the object
-    func createNewMealObject(mealId: Int, name: String, patientId: Int, kcal: Double, fiber: Double, calcium: Double, sodium: Double, portionSize: Double, weightUnit: String, picture: String, protein: Double, water: Double) -> Meal {
+    func createNewMealObject(id: Int, weightUnit: newWeightUnit, patient: NewPatient, foodMealComponent: newFoodMealComponent, mealFoods: [NewMealFood]) -> NewMeal {
         
-        let meal : Meal = Meal(
-            mealId: mealId, name: name, patientId: patientId, kCal: kcal, protein: protein, fiber: fiber, calcium: calcium, sodium: sodium, portionSize: portionSize, weightUnit: weightUnit, picture: picture, water: water)
+        let meal : NewMeal = NewMeal(id: id, weightUnit: weightUnit, patient: patient, foodMealComponent: foodMealComponent, mealFoods: mealFoods)
         return meal
+    }
+    
+    func createNewWeight(id: Int, unit : String, short : String, createdAt: String, updatedAt : String) -> newWeightUnit {
+        let consumptionWeight : newWeightUnit = newWeightUnit(id: id, unit: unit, short: short, createdAt: createdAt, updatedAt: updatedAt)
+        return consumptionWeight
+    }
+    
+    func createNewPatient(id: Int) -> PatientConsumption {
+        let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
+        return consumptionPatient
+    }
+    
+    func createNewFoodMealComponent(id: Int, name: String, description: String, kcal: Float, protein: Float, potassium: Float, sodium: Float, water: Float, fiber: Float, portionSize: Float, imageUrl: String) -> newFoodMealComponent {
+        
+        let foodmealComponent : newFoodMealComponent = newFoodMealComponent(id: id, name: name, description: description, kcal: kcal, protein: protein, potassium: potassium, sodium: sodium, water: water, fiber: fiber, portionSize: portionSize, imageUrl: imageUrl)
+        return foodmealComponent
     }
     
     @IBAction func importProducts(_ sender: Any) {
