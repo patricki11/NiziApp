@@ -229,43 +229,6 @@ class NiZiAPIHelper {
     // FOOD //
     
     
-    // CONSUMPTION //
-    static func deleteConsumption(withId consumptionId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/consumption/\(consumptionId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func getConsumption(withId consumptionId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/consumption/\(consumptionId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func updateConsumption(withId consumptionId: Int, authenticationCode: String) -> DataRequest {
-        let apiMethod = "v1/consumption/\(consumptionId)"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: .put, parameters: nil, encoding: JSONEncoding.default , headers: header)
-    }
-    
-    static func getAllConsumptions(forPatient patientId: Int, between startDate: String, and endDate: String, authenticationCode: String) -> DataRequest {
-        let parameter = ["patientId": patientId, "startDate": startDate, "endDate": endDate ] as [String : Any]
-        let apiMethod = "v1/consumptions"
-        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-        return AF.request(baseUrl + apiMethod, method: HTTPMethod.get , parameters: parameter , headers: header)
-    }
-    
-    static func addConsumption(withDetails consumption: Consumption, authenticationCode: String) -> DataRequest {
-         let apiMethod = "v1/consumptions"
-         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
-         let jsonEncoder = JSONDecoder()
-         let parameters = consumption.toJSON()
-         print(parameters);
-         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
-     }
-    // CONSUMPTION //
-    
-    
     // MEAL //
     static func addMeal(withDetails meal: Meal, forPatient patientId: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "v1/meal/\(patientId)"

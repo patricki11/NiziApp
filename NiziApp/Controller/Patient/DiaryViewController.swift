@@ -151,10 +151,12 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func Deleteconsumption(Id id: Int){
+        /*
         NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard response.data != nil
                 else { print("temp1"); return }
         })
+ */
         //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     

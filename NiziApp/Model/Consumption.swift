@@ -6,6 +6,8 @@
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
 
+/*
+
 import Foundation
 
 class Consumption {
@@ -58,3 +60,4 @@ class Consumption {
            ]
        }
 }
+*/
