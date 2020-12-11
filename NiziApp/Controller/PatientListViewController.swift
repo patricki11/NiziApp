@@ -27,6 +27,19 @@ class PatientListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        setupActivityIndicator()
+        getAllPatients()
+    }
+    
+    func setupActivityIndicator() {
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshPatientList), for: .valueChanged)
+        patientListTableView?.refreshControl = refreshControl
+    }
+    
+    @objc func refreshPatientList() {
+        patientList = []
+        patientListTableView?.reloadData()
         getAllPatients()
     }
     
@@ -66,6 +79,7 @@ class PatientListViewController: UIViewController {
     }
     
     func getAllPatients() {
+        patientListTableView?.refreshControl?.beginRefreshing()
         NiZiAPIHelper.getPatients(forDoctor: loggedInAccount.doctor!, withAuthorization: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data
                 else { return }
@@ -75,6 +89,7 @@ class PatientListViewController: UIViewController {
                 else { return }
             
             self.patientList = patientList
+            self.patientListTableView?.refreshControl?.endRefreshing()
             self.patientListTableView?.reloadData()
         })
     }
