@@ -78,19 +78,18 @@ class ConversationCell : UITableViewCell{
         container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4).isActive = true
         container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive = true
         
-        container.addSubview(title)
         container.addSubview(dateAdded)
+        container.addSubview(title)
         container.addSubview(url)
         
-        title.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
-        title.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
-        title.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        dateAdded.topAnchor.constraint(equalTo: container.topAnchor, constant: 5).isActive = true
+        dateAdded.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10).isActive = true
+        dateAdded.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        dateAdded.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
-        dateAdded.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
-        dateAdded.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
-        dateAdded.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        title.topAnchor.constraint(equalTo: container.topAnchor, constant: 5).isActive = true
+        title.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
+        title.trailingAnchor.constraint(equalTo: dateAdded.trailingAnchor, constant: -4).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         url.topAnchor.constraint(equalTo: dateAdded.bottomAnchor, constant: 5).isActive = true
         url.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
