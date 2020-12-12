@@ -178,8 +178,12 @@ class EditPatientViewController : UIViewController {
     }
     
     func setGuidelineFields(guideline: NewDietaryManagement, minimumField: UITextField, maximumField: UITextField) {
-        minimumField.text = String(format: "%d", guideline.minimum ?? "")
-        maximumField.text = String(format: "%d", guideline.maximum ?? "")
+        if(guideline.minimum != nil) {
+            minimumField.text = String(format: "%d", guideline.minimum ?? "")
+        }
+        if(guideline.maximum != nil) {
+            maximumField.text = String(format: "%d", guideline.maximum ?? "")
+        }
     }
     
     func fillFieldsWithPatientInfo() {
