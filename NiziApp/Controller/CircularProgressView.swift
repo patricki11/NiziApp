@@ -14,7 +14,8 @@ class CircularProgressView: UIView {
     // First create two layer properties
 private var circleLayer = CAShapeLayer()
 private var progressLayer = CAShapeLayer()
-
+private var totalLabel = CATextLayer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createCircularPath()
@@ -37,8 +38,14 @@ private var progressLayer = CAShapeLayer()
         progressLayer.lineWidth = 9.0
         progressLayer.strokeEnd = 0
         progressLayer.strokeColor = UIColor.red.cgColor
+        totalLabel.alignmentMode = .center
+        totalLabel.fontSize = 20
+        totalLabel.foregroundColor = UIColor.black.cgColor
+        totalLabel.frame = CGRect(x: (frame.size.width / 2) - 20, y: (frame.size.height / 2) - 10, width: 40, height: 40)
+        totalLabel.string = "0"
         layer.addSublayer(circleLayer)
         layer.addSublayer(progressLayer)
+        layer.addSublayer(totalLabel)
     }
     
     func progressAnimation(minimum: Int?, maximum: Int?, currentTotal: Int) {
@@ -47,6 +54,7 @@ private var progressLayer = CAShapeLayer()
         let min = Double(minimum!)
         let max = Double(maximum!)
         let total = Double(currentTotal)
+        totalLabel.string = String(currentTotal)
         if(currentTotal != 0) {
            
             if(minimum != 0 && maximum != 0) {
