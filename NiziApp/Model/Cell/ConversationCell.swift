@@ -14,6 +14,13 @@ class ConversationCell : UITableViewCell{
             guard let data = data else {return}
             self.title.text = data.title
             self.url.text = data.comment
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
+            let date = dateFormatter.date(from:data.date!)
+            dateFormatter.dateFormat = "dd MMMM YYYY"
+            let dateString = dateFormatter.string(from: date!)
+            self.dateAdded.text = dateString
         }
     }
     
@@ -28,7 +35,7 @@ class ConversationCell : UITableViewCell{
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.text = "hmm course title here"
         label.textColor = .black
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -39,6 +46,16 @@ class ConversationCell : UITableViewCell{
         label.text = "hmm course URL here"
         label.textColor = .black
         label.numberOfLines = -1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    fileprivate let dateAdded : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.text = "date"
+        label.textColor = .black
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,14 +79,20 @@ class ConversationCell : UITableViewCell{
         container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive = true
         
         container.addSubview(title)
+        container.addSubview(dateAdded)
         container.addSubview(url)
         
         title.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
         title.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
         title.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        url.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
+        dateAdded.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 0).isActive = true
+        dateAdded.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
+        dateAdded.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
+        dateAdded.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        
+        url.topAnchor.constraint(equalTo: dateAdded.bottomAnchor, constant: 5).isActive = true
         url.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
         url.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
         url.heightAnchor.constraint(equalToConstant: 60).isActive = true
