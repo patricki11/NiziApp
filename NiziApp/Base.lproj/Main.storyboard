@@ -3202,7 +3202,6 @@
                                         <state key="normal" backgroundImage="folder.circle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="navigateToDiary:" destination="cIk-s1-WXa" eventType="touchUpInside" id="ZvA-eD-FJh"/>
-                                            <segue destination="zcp-Ij-gU0" kind="push" id="nhI-lg-0d8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3336,6 +3335,7 @@
                         <outlet property="guidelineTableView" destination="oh2-6H-Hzf" id="I55-bg-e9Y"/>
                         <outlet property="patientNameLabel" destination="eAn-89-hrf" id="ots-Ho-YxN"/>
                         <segue destination="OHK-pA-puD" kind="push" id="aOn-4L-wNm"/>
+                        <segue destination="zcp-Ij-gU0" kind="push" id="GnC-ia-3Qv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itH-PJ-3vb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3347,7 +3347,7 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">
