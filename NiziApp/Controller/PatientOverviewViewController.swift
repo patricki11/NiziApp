@@ -200,15 +200,15 @@ extension PatientOverviewViewController : UITableViewDataSource {
        
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
-        if(guideline.minimum != 0 && guideline.maximum != 0) {
+        if((guideline.minimum != 0 && guideline.minimum != nil) && (guideline.maximum != 0 && guideline.maximum != nil)) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
             cell.secondGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
         }
-        else if(guideline.minimum != 0) {
+        else if(guideline.minimum != 0 && guideline.minimum != nil) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
             cell.secondGuidelineValueLabel.text = ""
         }
-        else if(guideline.maximum != 0) {
+        else if(guideline.maximum != 0 && guideline.maximum != nil) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
             cell.secondGuidelineValueLabel.text = ""
         }

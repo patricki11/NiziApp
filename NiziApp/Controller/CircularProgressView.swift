@@ -31,13 +31,13 @@ private var totalLabel = CATextLayer()
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = .round
         circleLayer.lineWidth = 12.0
-        circleLayer.strokeColor = UIColor.black.cgColor
+        circleLayer.strokeColor = UIColor.lightGray.cgColor
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
-        progressLayer.lineWidth = 7.0
+        progressLayer.lineWidth = 12.0
         progressLayer.strokeEnd = 0
-        progressLayer.strokeColor = UIColor.red.cgColor
+        progressLayer.strokeColor = UIColor.lightGray.cgColor
         totalLabel.alignmentMode = .center
         totalLabel.fontSize = 20
         totalLabel.foregroundColor = UIColor.black.cgColor
@@ -51,44 +51,63 @@ private var totalLabel = CATextLayer()
     func progressAnimation(minimum: Int?, maximum: Int?, currentTotal: Int) {
         
         var toValue : Double = 0.0
-        let min = Double(minimum!)
-        let max = Double(maximum!)
+        let min = Double(minimum ?? 0)
+        let max = Double(maximum ?? 0)
         let total = Double(currentTotal)
         totalLabel.string = String(currentTotal)
+        
+        if(min != 0) {
+            circleLayer.strokeColor = UIColor.yellow.cgColor
+        }
+        else if(max != 0) {
+            circleLayer.strokeColor = UIColor.green.cgColor
+        }
+        
         if(currentTotal != 0) {
            
-            if(minimum != 0 && maximum != 0) {
-                toValue = min / max
-                if(currentTotal < minimum!) {
+            if(min != 0 && max != 0) {
+                toValue = total / min
+                if(total < min) {
+                    circleLayer.strokeColor = UIColor.yellow.cgColor
+                    progressLayer.strokeColor = UIColor.green.cgColor
+                }
+                else if(total >= min && total <= max) {
+                    circleLayer.strokeColor = UIColor.lightGray.cgColor
+                    progressLayer.strokeColor = UIColor.green.cgColor
+                }
+                else if(total > max) {
+                    circleLayer.strokeColor = UIColor.lightGray.cgColor
+                    progressLayer.strokeColor = UIColor.red.cgColor
+                }
+            }
+            else if(min != 0) {
+                toValue = total / min
+                if(total >= min) {
+                    circleLayer.strokeColor = UIColor.lightGray.cgColor
+                    progressLayer.strokeColor = UIColor.green.cgColor
+                }
+                else if(total < min) {
+                    circleLayer.strokeColor = UIColor.yellow.cgColor
+                    progressLayer.strokeColor = UIColor.green.cgColor
+                }
+            }
+            else if(max != 0) {
+                var toValue = total / max
+                if(total <= max) {
+                    circleLayer.strokeColor = UIColor.green.cgColor
                     progressLayer.strokeColor = UIColor.yellow.cgColor
                 }
-                else if(currentTotal >= minimum! && currentTotal <= maximum!) {
-                    progressLayer.strokeColor = UIColor.green.cgColor
-                }
-                else if(currentTotal > maximum!) {
-                    progressLayer.strokeColor = UIColor.red.cgColor
-                }
-            }
-            else if(minimum != 0) {
-                toValue = total / min
-                if(currentTotal >= minimum!) {
-                    progressLayer.strokeColor = UIColor.green.cgColor
-                }
-                else if(currentTotal < minimum!) {
-                    progressLayer.strokeColor = UIColor.red.cgColor
-                }
-            }
-            else if(maximum != 0) {
-                var toValue = total / max
-                if(currentTotal <= maximum!) {
-                    progressLayer.strokeColor = UIColor.green.cgColor
-                }
-                else if(currentTotal > maximum!) {
+                else if(total > max) {
+                    circleLayer.strokeColor = UIColor.lightGray.cgColor
                     progressLayer.strokeColor = UIColor.red.cgColor
                 }
             }
         }
 
+        if(toValue > 1) {
+            toValue = 1
+        }
+        
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
         circularProgressAnimation.duration = 1
         circularProgressAnimation.toValue = toValue
