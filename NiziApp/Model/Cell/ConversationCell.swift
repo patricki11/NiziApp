@@ -32,7 +32,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let title : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.text = "hmm course title here"
         label.textColor = .black
         label.textAlignment = .left
@@ -42,7 +42,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let url : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.text = "hmm course URL here"
         label.textColor = .black
         label.numberOfLines = -1
@@ -52,7 +52,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let dateAdded : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.text = "date"
         label.textColor = .black
         label.textAlignment = .left
@@ -84,16 +84,16 @@ class ConversationCell : UITableViewCell{
         
         dateAdded.topAnchor.constraint(equalTo: container.topAnchor, constant: 5).isActive = true
         dateAdded.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10).isActive = true
-        dateAdded.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        dateAdded.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         title.topAnchor.constraint(equalTo: container.topAnchor, constant: 5).isActive = true
         title.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
         title.trailingAnchor.constraint(equalTo: dateAdded.trailingAnchor, constant: -4).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         url.topAnchor.constraint(equalTo: dateAdded.bottomAnchor, constant: 5).isActive = true
         url.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4).isActive = true
-        url.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -4).isActive = true
+        url.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10).isActive = true
         url.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     

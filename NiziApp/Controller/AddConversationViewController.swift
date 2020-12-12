@@ -60,8 +60,8 @@ class AddConversationViewController: UIViewController {
 extension AddConversationViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath {return 200}
-        return 60
+        if selectedIndex == indexPath { return 150 }
+        return 40
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
