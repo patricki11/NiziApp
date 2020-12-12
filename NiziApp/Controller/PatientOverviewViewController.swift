@@ -180,6 +180,10 @@ extension PatientOverviewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return patientGuidelines.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "PatientGuidelineTableViewCell"
@@ -193,29 +197,20 @@ extension PatientOverviewViewController : UITableViewDataSource {
         var progressView = cell.guidelineChartView as! CircularProgressView
         progressView.progressAnimation(minimum: guideline.minimum, maximum: guideline.maximum, currentTotal: total)
         
-        cell.averageAmountForWeekLabel.text = "\(total) \(guideline.dietaryRestrictionObject!.plural!)"
+       
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
         if(guideline.minimum != 0 && guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "\(NSLocalizedString("between", comment: "")) \(guideline.minimum!) \(NSLocalizedString("and", comment: "")) \(guideline.maximum!)"
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
+            cell.secondGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
         }
         else if(guideline.minimum != 0) {
-            cell.recommendedAmountLabel.text = "\(NSLocalizedString("moreThan", comment: "")) \(guideline.minimum!)"
-            if(total > guideline.minimum ?? 0) {
-                cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
-            }
-            else {
-                cell.averageAmountForWeekLabel.textColor = UIColor(red: 255, green: 0, blue: 0)
-            }
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
+            cell.secondGuidelineValueLabel.text = ""
         }
         else if(guideline.maximum != 0) {
-            cell.recommendedAmountLabel.text = "\(NSLocalizedString("lessThan", comment: "")) \(guideline.maximum!)"
-            if(total < guideline.maximum ?? 0) {
-                cell.averageAmountForWeekLabel.textColor = UIColor(red: 0, green: 100, blue: 0)
-            }
-            else {
-                cell.averageAmountForWeekLabel.textColor = UIColor(red: 255, green: 0, blue: 0)
-            }
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
+            cell.secondGuidelineValueLabel.text = ""
         }
         
         cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")

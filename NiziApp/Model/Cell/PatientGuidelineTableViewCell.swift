@@ -12,8 +12,8 @@ import UIKit
 class PatientGuidelineTableViewCell : UITableViewCell {
 
     @IBOutlet weak var guidelineNameLabel: UILabel!
-    @IBOutlet weak var averageAmountForWeekLabel: UILabel!
-    @IBOutlet weak var recommendedAmountLabel: UILabel!
+    @IBOutlet weak var firstGuidelineValueLabel: UILabel!
+    @IBOutlet weak var secondGuidelineValueLabel: UILabel!
     
     @IBOutlet weak var guidelineIconImageView: UIImageView!
     
@@ -22,8 +22,8 @@ class PatientGuidelineTableViewCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         guidelineNameLabel.text = ""
-        averageAmountForWeekLabel.text = ""
-        recommendedAmountLabel.text = ""
+        firstGuidelineValueLabel.text = ""
+        secondGuidelineValueLabel.text = ""
         guidelineIconImageView.image = nil
     }
 
