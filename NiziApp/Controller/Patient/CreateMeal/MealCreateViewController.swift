@@ -35,9 +35,12 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var sodiumMeal      : Float = 0.0
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
-    var mealListId          : [HelperId]?
+    var mealListId      : [HelperId]?
     var productId       : [HelperId]?
+    var editMeal        : Bool = false
 
+    typealias FinishedDownload = () -> ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calculateDietary()
@@ -88,7 +91,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0;//Choose your custom row height
+        return 80.0
     }
     
     func calculateDietary(){
@@ -131,7 +134,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    //Needs to change the API calls
     func addMeal() {
         let weight = self.createNewWeight(id: 8, unit: "", short: "", createdAt: "", updatedAt: "")
         
@@ -139,10 +141,11 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         
         let kcalFloat = (calorieResultLbl.text as! NSString).floatValue
         
-        let foodMealComponent = self.createNewFoodMealComponent(id: 0, name: self.nameInput.text!, description: "Self made meal", kcal: kcalFloat, protein: kcalFloat, potassium: kcalFloat, sodium: kcalFloat, water: kcalFloat, fiber: kcalFloat, portionSize: 1, imageUrl: "https://image.flaticon.com/icons/png/512/45/45332.png")
+        let foodMealComponent = self.createNewFoodMealComponent(id: 0, name: self.nameInput.text!, description: "Self made meal", kcal: kcal, protein: proteinMeal, potassium: pottassiumMeal, sodium: sodiumMeal, water: vochtMeal, fiber: fiberMeal, portionSize: 1, imageUrl: "https://image.flaticon.com/icons/png/512/45/45332.png")
         
         let meal = self.createNewMealObject(id: 0, weightUnit: weight, patient: patient, foodMealComponent: foodMealComponent, mealFoods: self.newMealFoodList)
         
+
         NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal, withPatient: 1).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
@@ -153,27 +156,9 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                 else { print("temp2"); return }
             
             self.createdMeal = mealJSON
+            print("----------------------------")
             print(self.createdMeal?.id)
         })
-        
-        /*
-        let mealId = self.createHelperId(id: createdMeal!.id)
-        mealListId?.append(mealId)
-        print(mealListId![0].id)
- */
-        
-        /*
-        
-        for product in self.Mealfoodlist {
-            productId?.append(HelperId(id: product.id!))
-            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: productId!, withMeal: mealId, withAmount: 1).responseData(completionHandler: { response in
-                
-                guard let jsonResponse = response.data
-                    else { print("temp1"); return }
-            })
-            productId?.removeAll()
-        }
- */
     }
     
     func createHelperId(id : Int) -> HelperId {
@@ -181,8 +166,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         return helperId
     }
     
-    
-    // Need to change the object
     func createNewMealObject(id: Int, weightUnit: newWeightUnit, patient: NewPatient, foodMealComponent: newFoodMealComponent, mealFoods: [NewMealFood]) -> NewMeal {
         
         let meal : NewMeal = NewMeal(id: id, weightUnit: weightUnit, patient: patient, foodMealComponent: foodMealComponent, mealFoods: mealFoods)
@@ -205,16 +188,33 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         return foodmealComponent
     }
     
+    
+    func addMealProducts(){
+        
+        let mealId = createdMeal?.id
+        
+        for product in self.Mealfoodlist {
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: mealId!, withAmount: 1).responseData(completionHandler: { response in
+                
+                guard let jsonResponse = response.data
+                    else { print("temp1"); return }
+            })
+        }
+    }
+    
     @IBAction func importProducts(_ sender: Any) {
         // Needs to be done later on
     }
     
     @IBAction func saveMeal(_ sender: Any) {
         addMeal()
+        //addMealProducts()
         /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
  */
     }
+    
+    
 }

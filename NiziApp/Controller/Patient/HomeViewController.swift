@@ -27,9 +27,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var currentWeekLabel: UILabel!
     
     @IBAction func getPreviousWeek(_ sender: Any) {
+        currentDayCounter -= 1
+        changeCurrentDayLabel()
+        getConsumptions()
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
+        currentDayCounter += 1
+        changeCurrentDayLabel()
+        getConsumptions()
     }
     
     lazy var apiDateFormatter: DateFormatter = {
@@ -49,10 +55,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()
-        //setLanguageSpecificText()
         changeCurrentDayLabel()
         getDietaryGuidelines()
-        //changeAgeGenderLabel()
         getConsumptions()
     }
     
@@ -61,22 +65,6 @@ class HomeViewController: UIViewController {
         getDietaryGuidelines()
         //changeAgeGenderLabel()
         getConsumptions()
-    }
-
-    
-    // Not Needed
-   
-    func changeAgeGenderLabel() {
-        /*
-        let gender = patient.gender
-        let birthdate = apiDateFormatter.date(from: patient.dateOfBirth)
-        let readableDateOfBirth = readableDateFormatter.string(from: birthdate!)
-        
-        let ageComponents = Calendar.current.dateComponents([.year], from: birthdate!, to: Date())
-        let age = ageComponents.year!
-        
-        ageGenderLabel.text = "\(gender) - \(readableDateOfBirth) (\(age))"
-     */
     }
 
     
@@ -107,13 +95,6 @@ class HomeViewController: UIViewController {
         updateGuidelines()
     }
     
-    // Not needed
-    func setLanguageSpecificText() {
-        /*
-        patientNameLabel.text = "\(patient.userObject!.first_name) \(patient.userObject!.last_name)"
- */
-    }
-    
     func setupTableView() {
         guidelineTableView.delegate = self
         guidelineTableView.dataSource = self
@@ -139,7 +120,7 @@ class HomeViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             

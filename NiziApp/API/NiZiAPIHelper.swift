@@ -209,14 +209,20 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
     
-    static func addMealFood(withToken token : String, withFoods foodId: [HelperId], withMeal mealId: [HelperId], withAmount amount : Float) -> DataRequest {
+    static func addMealFood(withToken token : String, withFoods foodId: Int, withMeal mealId: Int, withAmount amount : Float) -> DataRequest {
         let apiMethod = "meal-foods"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
             [
-                "amount": amount, "meals": mealId, "foods": foodId
+                "amount": amount, "meal": mealId, "food": foodId
             ] as [String : Any]
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func deleteMeal(withToken token : String, withMealId mealId: Int) -> DataRequest{
+        let apiMethod = "Meals/\(mealId)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
     
