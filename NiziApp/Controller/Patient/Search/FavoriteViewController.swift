@@ -42,6 +42,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         searchFoodCell.accessoryType = .disclosureIndicator
         let portionSize : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
         searchFoodCell.portionSize.text = ("")
+        print(foodResult.weightId)
         return searchFoodCell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

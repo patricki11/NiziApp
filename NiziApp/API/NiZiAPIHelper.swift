@@ -60,6 +60,7 @@ class NiZiAPIHelper {
             [
                 "amount": consumption.amount, "date": consumption.date, "meal_time": consumption.mealTime, "patient": ["id": consumption.patient.id], "weight_unit": ["unit": consumption.weightUnit.unit, "updated_at": consumption.weightUnit.updatedAt, "id": consumption.weightUnit.id, "created_at": consumption.weightUnit.createdAt, "short": consumption.weightUnit.short], "food_meal_component": ["protein": consumption.foodmealComponent.protein, "id": consumption.foodmealComponent.id, "sodium": consumption.foodmealComponent.sodium, "name": consumption.foodmealComponent.name, "kcal":  consumption.foodmealComponent.kcal, "potassium": consumption.foodmealComponent.potassium, "water": consumption.foodmealComponent.water, "description": consumption.foodmealComponent.description, "fiber": consumption.foodmealComponent.fiber, "image_url": consumption.foodmealComponent.imageUrl, "portion_size": consumption.foodmealComponent.portionSize]
             ] as [String : Any]
+        print(parameters)
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
     

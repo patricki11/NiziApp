@@ -2,8 +2,8 @@
 //  SearchFoodTableViewCell.swift
 //  NiziApp
 //
-//  Created by Wing lam on 11/12/2019.
-//  Copyright © 2019 Samir Yeasin. All rights reserved.
+//  Created by Samir Yeasin on 11/12/2020.
+//  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ import SwiftKeychainWrapper
 
 class SearchFoodTableViewCell: UITableViewCell {
     var foodItem : NewFood?
+    var weightUnit : Int = 0
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
@@ -32,21 +33,29 @@ class SearchFoodTableViewCell: UITableViewCell {
 
     func addConsumption() {
         let date = KeychainWrapper.standard.string(forKey: "date")!
-        let newdate = date + "T00:00:00"
+        let newdate = date + "T00:00:00.000Z"
         
         let patient = self.createNewPatient(id: 1)
         
-        let weight = self.createNewWeight(id: (self.foodItem?.weightObject!.id)!, unit: (self.foodItem?.weightObject!.unit)!, short: (self.foodItem?.weightObject!.short)!, createdAt: (self.foodItem?.weightObject!.createdAt)!, updatedAt: (self.foodItem?.weightObject!.updatedAt)!)
+        if(self.foodItem?.weightId == nil){
+            self.weightUnit = 8
+        }
+        else{
+            self.weightUnit = (foodItem?.weightId)!
+        }
         
-        let consumption = self.createNewConsumptionObject(amount: 1, date: "2020-11-18T00:00:00.000Z", mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
+        let weight = self.createNewWeight(id: self.weightUnit, unit: "", short: "", createdAt: "", updatedAt: "")
+        
+        let consumption = self.createNewConsumptionObject(amount: 1, date: newdate, mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
         
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
-            guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Success", comment: "Title"),
+                message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
+                preferredStyle: .alert)
             
-            let jsonDecoder = JSONDecoder()
-            guard let consumptionlist = try? jsonDecoder.decode( [NewConsumption].self, from: jsonResponse )
-                else { print("temp2"); return }
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+            //self.present(alertController, animated: true, completion: nil)
         })
     }
     

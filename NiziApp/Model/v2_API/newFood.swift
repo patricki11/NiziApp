@@ -24,7 +24,7 @@ class NewFood : Codable {
         self.updatedAt         = updatedAt
         self.name              = name
         self.foodMealComponent = foodMealComponent
-        self.weightObject      = weightObject
+        //self.weightObject      = weightObject
     }
     
     enum CodingKeys : String, CodingKey {
@@ -49,7 +49,6 @@ class NewFood : Codable {
         if(weightObject != nil) {
             self.weightId = weightObject?.id
         }
-        
         self.foodMealComponent        = try? container.decode(newFoodMealComponent?.self, forKey: .foodMealComponent)
     }
 }

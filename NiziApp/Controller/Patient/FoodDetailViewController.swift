@@ -39,7 +39,7 @@ class FoodDetailViewController: UIViewController {
     var isDiaryDetail : Bool = false
     var isMealDetail : Bool = false
     var isMealProductDetail : Bool = false
-    
+    var weightId : Int = 0
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -146,7 +146,15 @@ class FoodDetailViewController: UIViewController {
             
             let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl)
             
-            let weight = self.createNewWeight(id: self.weightUnit!.id, unit: self.weightUnit!.unit, short: self.weightUnit!.short, createdAt: self.weightUnit!.createdAt, updatedAt: self.weightUnit!.updatedAt)
+            
+            if(self.weightUnit?.id == nil){
+                self.weightId = 8
+            }
+            else {
+                self.weightUnit?.id
+            }
+            
+            let weight = self.createNewWeight(id: self.weightId, unit: "", short: "", createdAt: "", updatedAt: "")
             
             let patient = self.createNewPatient(id: 1)
             
