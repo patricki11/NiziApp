@@ -16,13 +16,14 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //removeKeyboardAfterClickingOutsideField()
         GetMeals()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func navigateSearchProducts(_ sender: Any) {

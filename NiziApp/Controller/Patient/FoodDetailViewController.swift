@@ -25,6 +25,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var trashBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
     
+    @IBOutlet weak var portionSizeInput: UITextField!
     @IBOutlet weak var mealSearchBtn: UIButton!
     @IBOutlet weak var mealSaveBtn: UIButton!
     
@@ -40,17 +41,22 @@ class FoodDetailViewController: UIViewController {
     var isMealDetail : Bool = false
     var isMealProductDetail : Bool = false
     var weightId : Int = 0
+    var amount : Float = 0.0
     
     
     @IBAction func AddToDiary(_ sender: Any) {
-        if(isMealProductDetail == true){
-            self.addProductToMealList()
-        }else{
-            addConsumption()
+        if let floatValue = Float(portionSizeInput.text!) {
+            amount = floatValue
+            if(isMealProductDetail == true){
+                self.addProductToMealList()
+            }else{
+                addConsumption()
+            }
+        } else {
+            print("String does not contain Float")
+            displayErrorMessage()
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,7 +164,7 @@ class FoodDetailViewController: UIViewController {
             
             let patient = self.createNewPatient(id: 1)
             
-            let consumption = self.createNewConsumptionObject(amount: 1, date: KeychainWrapper.standard.string(forKey: "date")!, mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
+            let consumption = self.createNewConsumptionObject(amount: self.amount, date: KeychainWrapper.standard.string(forKey: "date")!, mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
             
             NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
@@ -248,6 +254,16 @@ class FoodDetailViewController: UIViewController {
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    func displayErrorMessage(){
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Error", comment: "Title"),
+            message: NSLocalizedString("Portie waarde klopt niet", comment: "Message"),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }
