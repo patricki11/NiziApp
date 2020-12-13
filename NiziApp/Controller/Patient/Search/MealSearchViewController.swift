@@ -25,6 +25,19 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    @IBAction func navigateSearchProducts(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    @IBAction func navigateFavoriteProducts(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FavoriteViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meallist.count
     }

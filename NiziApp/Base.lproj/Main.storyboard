@@ -2324,7 +2324,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPR-lZ-i0m">
-                                <rect key="frame" x="336.33333333333331" y="111" width="35" height="30"/>
+                                <rect key="frame" x="337" y="155" width="35" height="30"/>
                                 <state key="normal" title="Zoek">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
@@ -2333,10 +2333,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTm-zy-fBb">
-                                <rect key="frame" x="0.0" y="0.0" width="413.33333333333331" height="80"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="gsL-2Y-BFd">
-                                        <rect key="frame" x="49" y="27" width="316" height="30"/>
+                                        <rect key="frame" x="49" y="27" width="316.66666666666669" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNQ-wc-8x1">
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="30"/>
@@ -2349,16 +2349,16 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbZ-fE-Qkn">
-                                                <rect key="frame" x="122" y="0.0" width="71" height="30"/>
+                                                <rect key="frame" x="122.66666666666666" y="0.0" width="71" height="30"/>
                                                 <state key="normal" title="Maaltijden">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="w0Y-9M-giY" kind="show" id="hfK-cx-9ss"/>
+                                                    <action selector="navigateMealSearch:" destination="NSB-yu-ycM" eventType="touchUpInside" id="WSD-W5-go5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTR-QH-7Hi">
-                                                <rect key="frame" x="244" y="0.0" width="72" height="30"/>
+                                                <rect key="frame" x="244.66666666666669" y="0.0" width="72" height="30"/>
                                                 <state key="normal" title="Favorieten">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -2374,20 +2374,15 @@
                                     <constraint firstAttribute="height" constant="80" id="2fd-gq-WBp"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product zoeken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfK-KZ-3XE">
-                                <rect key="frame" x="20" y="107" width="280" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fac-Ec-sIX">
-                                <rect key="frame" x="0.0" y="188" width="413.33333333333331" height="610"/>
+                                <rect key="frame" x="0.0" y="232" width="414" height="620"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="searchFoodCell" rowHeight="100" id="B60-Ep-WUG" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="413.33333333333331" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B60-Ep-WUG" id="NQq-b8-Y6m">
-                                            <rect key="frame" x="0.0" y="0.0" width="413.33333333333331" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R5I-cz-E3g">
@@ -2398,19 +2393,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82o-fr-VHF">
-                                                    <rect key="frame" x="114.99999999999997" y="10.999999999999998" width="288.33333333333326" height="20.333333333333329"/>
+                                                    <rect key="frame" x="115" y="10.999999999999998" width="289" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rg-nd-lOJ">
-                                                    <rect key="frame" x="114.99999999999997" y="39" width="288.33333333333326" height="14.333333333333336"/>
+                                                    <rect key="frame" x="115" y="39" width="289" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="315.33333333333331" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -2449,30 +2444,36 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results (0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zX8-vo-rIE">
-                                <rect key="frame" x="20" y="161" width="70.333333333333329" height="17"/>
+                                <rect key="frame" x="20" y="205" width="70.333333333333329" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product zoeken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfK-KZ-3XE">
+                                <rect key="frame" x="20" y="150" width="280" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="e57-ht-Oga"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n1n-FF-1Op"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="gsL-2Y-BFd" secondAttribute="trailing" constant="48.333333333333314" id="1fj-ns-fFy"/>
-                            <constraint firstItem="HfK-KZ-3XE" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="20" id="1lF-mK-mGU"/>
-                            <constraint firstItem="zX8-vo-rIE" firstAttribute="top" secondItem="HfK-KZ-3XE" secondAttribute="bottom" constant="20" id="4w0-b2-Bt7"/>
-                            <constraint firstItem="HfK-KZ-3XE" firstAttribute="top" secondItem="HTm-zy-fBb" secondAttribute="bottom" constant="27" id="7ih-dB-h7c"/>
-                            <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="HfK-KZ-3XE" secondAttribute="trailing" constant="114" id="9of-Vi-Cib"/>
+                            <constraint firstItem="HfK-KZ-3XE" firstAttribute="top" secondItem="HTm-zy-fBb" secondAttribute="bottom" constant="26" id="BAV-u6-3ho"/>
                             <constraint firstItem="gsL-2Y-BFd" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="49" id="GwB-LU-mcs"/>
                             <constraint firstItem="gsL-2Y-BFd" firstAttribute="top" secondItem="n1n-FF-1Op" secondAttribute="top" constant="27" id="HFt-3Q-zwn"/>
                             <constraint firstItem="zX8-vo-rIE" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="20" id="I59-sI-OkZ"/>
                             <constraint firstItem="fac-Ec-sIX" firstAttribute="top" secondItem="zX8-vo-rIE" secondAttribute="bottom" constant="10" id="NkT-45-P5r"/>
                             <constraint firstItem="sPR-lZ-i0m" firstAttribute="top" secondItem="HTm-zy-fBb" secondAttribute="bottom" constant="31" id="RTx-Mb-ZQt"/>
+                            <constraint firstItem="HfK-KZ-3XE" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" constant="20" id="RhW-kf-Y3Y"/>
                             <constraint firstItem="HTm-zy-fBb" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" id="VaR-2x-Fl0"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="sPR-lZ-i0m" secondAttribute="trailing" constant="42" id="XnC-Qp-8FG"/>
                             <constraint firstItem="fac-Ec-sIX" firstAttribute="leading" secondItem="n1n-FF-1Op" secondAttribute="leading" id="a2C-rR-Tma"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="fac-Ec-sIX" secondAttribute="trailing" id="c7u-rP-FXu"/>
-                            <constraint firstItem="HfK-KZ-3XE" firstAttribute="width" secondItem="Fyy-LL-RS9" secondAttribute="width" multiplier="0.676329" id="dqZ-La-sMF"/>
+                            <constraint firstItem="zX8-vo-rIE" firstAttribute="top" secondItem="HfK-KZ-3XE" secondAttribute="bottom" constant="21" id="f0c-DL-lob"/>
                             <constraint firstItem="HTm-zy-fBb" firstAttribute="top" secondItem="n1n-FF-1Op" secondAttribute="top" id="faV-CC-6Pc"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="bottom" secondItem="fac-Ec-sIX" secondAttribute="bottom" constant="10" id="gsE-6F-8fL"/>
                             <constraint firstItem="n1n-FF-1Op" firstAttribute="trailing" secondItem="HTm-zy-fBb" secondAttribute="trailing" id="xfL-GN-SPV"/>
@@ -2543,83 +2544,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXy-BJ-abE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5054" y="-280"/>
-        </scene>
-        <!--Favoriet Zoeken-->
-        <scene sceneID="Edt-NU-hdl">
-            <objects>
-                <viewController storyboardIdentifier="FavoriteViewControllerDec" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZCw-2c-xQQ" customClass="FavoriteViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tPX-9N-9fi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-ox-QxA">
-                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favoriteFoodCell" rowHeight="98" id="dCF-ql-Yno" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dCF-ql-Yno" id="7c2-fu-pgX" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8N-SQ-FCG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="nd3-dI-CLG">
-                                        <rect key="frame" x="49" y="27" width="316.66666666666669" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIq-sZ-3Qw">
-                                                <rect key="frame" x="0.0" y="0.0" width="71" height="30"/>
-                                                <state key="normal" title="Producten">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdG-CE-rnZ">
-                                                <rect key="frame" x="122.66666666666666" y="0.0" width="71" height="30"/>
-                                                <state key="normal" title="Maaltijden">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oO3-7u-e93">
-                                                <rect key="frame" x="244.66666666666669" y="0.0" width="72" height="30"/>
-                                                <state key="normal" title="Favorieten">
-                                                    <color key="titleColor" systemColor="systemOrangeColor"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="nd3-dI-CLG" secondAttribute="trailing" constant="48.329999999999998" id="VP6-Ty-u8P"/>
-                                    <constraint firstAttribute="height" constant="80" id="gni-p9-NZ7"/>
-                                    <constraint firstItem="nd3-dI-CLG" firstAttribute="top" secondItem="K8N-SQ-FCG" secondAttribute="top" constant="27" id="vQ0-1n-Aw0"/>
-                                    <constraint firstItem="nd3-dI-CLG" firstAttribute="leading" secondItem="K8N-SQ-FCG" secondAttribute="leading" constant="49" id="wWD-XR-njc"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="xAf-Ts-zRd"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="K8N-SQ-FCG" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" id="Dph-VI-nSP"/>
-                            <constraint firstItem="3nx-ox-QxA" firstAttribute="leading" secondItem="xAf-Ts-zRd" secondAttribute="leading" id="Eb2-aQ-aMi"/>
-                            <constraint firstItem="3nx-ox-QxA" firstAttribute="trailing" secondItem="xAf-Ts-zRd" secondAttribute="trailing" id="Faj-La-G1m"/>
-                            <constraint firstItem="K8N-SQ-FCG" firstAttribute="top" secondItem="tPX-9N-9fi" secondAttribute="top" id="lVN-6l-817"/>
-                            <constraint firstItem="3nx-ox-QxA" firstAttribute="top" secondItem="K8N-SQ-FCG" secondAttribute="bottom" constant="24" id="qjF-nm-rV3"/>
-                            <constraint firstItem="3nx-ox-QxA" firstAttribute="bottom" secondItem="xAf-Ts-zRd" secondAttribute="bottom" id="v2k-wa-irr"/>
-                            <constraint firstItem="K8N-SQ-FCG" firstAttribute="trailing" secondItem="xAf-Ts-zRd" secondAttribute="trailing" id="zua-gE-IFK"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Dagboek" image="Culinary_s" id="xsW-tK-5Um"/>
-                    <navigationItem key="navigationItem" title="Favoriet Zoeken" id="pHY-uK-kki"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jQk-t7-mhu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1671.0144927536232" y="-984.375"/>
         </scene>
         <!--Patient Detail-->
         <scene sceneID="r3e-sF-lX8">
@@ -2865,11 +2789,11 @@
             <objects>
                 <viewController storyboardIdentifier="MealSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w0Y-9M-giY" customClass="MealSearchViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY8-HA-Omi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Vd-P0-Wl6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-Jn-9gP">
                                         <rect key="frame" x="49" y="25" width="316.66666666666669" height="30"/>
@@ -2880,7 +2804,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="NSB-yu-ycM" kind="show" id="Igl-T5-g7P"/>
+                                                    <action selector="navigateSearchProducts:" destination="w0Y-9M-giY" eventType="touchUpInside" id="pTl-xJ-CIF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTl-yM-dhg">
@@ -2895,7 +2819,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="NSB-yu-ycM" kind="show" id="kej-L4-agA"/>
+                                                    <action selector="navigateFavoriteProducts:" destination="w0Y-9M-giY" eventType="touchUpInside" id="3Xp-z1-r5w"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2907,7 +2831,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecM-TO-uc7">
-                                <rect key="frame" x="0.0" y="169" width="414" height="639"/>
+                                <rect key="frame" x="0.0" y="213" width="414" height="649"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCell" rowHeight="98" id="eoG-1S-YQm" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
@@ -2925,7 +2849,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lka-5e-U00">
-                                <rect key="frame" x="178" y="87" width="216" height="100"/>
+                                <rect key="frame" x="178" y="131" width="216" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="fgY-1f-BdF"/>
                                 </constraints>
@@ -4031,12 +3955,18 @@
                                                 <state key="normal" title="Producten">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="navigateProduct:" destination="EDM-IG-yip" eventType="touchUpInside" id="kmu-Jg-2Vz"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDh-AF-rQd">
                                                 <rect key="frame" x="122.66666666666666" y="0.0" width="71" height="30"/>
                                                 <state key="normal" title="Maaltijden">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="navigateMeal:" destination="EDM-IG-yip" eventType="touchUpInside" id="2Ox-hn-MFq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVh-JR-5Ye">
                                                 <rect key="frame" x="244.66666666666669" y="0.0" width="72" height="30"/>
@@ -4166,12 +4096,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2p-Ac-SOm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2396" y="-984"/>
+            <point key="canvasLocation" x="-1671" y="-896"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hfK-cx-9ss"/>
-        <segue reference="Igl-T5-g7P"/>
         <segue reference="bgz-am-Jq2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

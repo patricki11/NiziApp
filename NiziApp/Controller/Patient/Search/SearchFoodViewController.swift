@@ -12,18 +12,15 @@ import SwiftKeychainWrapper
 
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var foodlist : [NewFood] = []
-    var buttonTag : Int = 0
-    let patientIntID : Int? = 1
-    @IBOutlet weak var FoodTable: UITableView!
+    var foodlist                      : [NewFood] = []
+    var buttonTag                     : Int = 0
+    let patientIntID                  : Int? = 1
+    var patient                       : NewPatient?
+    @IBOutlet weak var FoodTable      : UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!
-    
-    @IBOutlet weak var favorietenBtn: UIButton!
-    @IBOutlet weak var ProductenBtn: UIButton!
-    var patient        : NewPatient?
-    
-    
-    @IBOutlet weak var results: UILabel!
+    @IBOutlet weak var favorietenBtn  : UIButton!
+    @IBOutlet weak var ProductenBtn   : UIButton!
+    @IBOutlet weak var results        : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,21 +31,22 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
        }
     
     @IBAction func productAction(_ sender: Any) {
-        favorietenBtn.setTitleColor(.black, for: .normal)
-        ProductenBtn.setTitleColor(.orange, for: .normal)
     }
+    
     @IBAction func SearchButton(_ sender: Any) {
         searchFood()
-        favorietenBtn.setTitleColor(.black, for: .normal)
-        ProductenBtn.setTitleColor(.orange, for: .normal)
     }
     
     @IBAction func GetFavorites(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FavoriteViewController;()
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
-        favorietenBtn.setTitleColor(.orange, for: .normal)
-        ProductenBtn.setTitleColor(.black, for: .normal)
+    }
+    
+    @IBAction func navigateMealSearch(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     //MARK: Table Functions

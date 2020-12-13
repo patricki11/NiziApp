@@ -28,6 +28,18 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         //self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    @IBAction func navigateProduct(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    @IBAction func navigateMeal(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodlist.count
     }
