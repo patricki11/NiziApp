@@ -34,7 +34,10 @@ class FoodDetailViewController: UIViewController {
     var patient : NewPatient?
     var weightUnit : newWeightUnit?
     var food : NewFood?
+    var meal : NewMeal?
+    var favorite : NewFavoriteShort?
     var Mealfoodlist : [NewFood] = []
+    var patientList : [ApiHelper] = []
     var mealtimeString: String = ""
     var consumptionId : Int = 0
     var isDiaryDetail : Bool = false
@@ -61,6 +64,7 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
+        //print("Hellloooooo \(favorite!.food)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +87,7 @@ class FoodDetailViewController: UIViewController {
         
         if(isMealDetail){
             favoriteBtn.isHidden = true
+            trashBtn.isHidden = false
         }
         
         if(isMealProductDetail){
@@ -123,13 +128,37 @@ class FoodDetailViewController: UIViewController {
     }
     
     func Addfavorite() {
-        /*
-         NiZiAPIHelper.addProductToFavorite(forproductId: foodItem!.foodId, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseString(completionHandler: {response in
-         guard let jsonResponse = response.request
-         else { print("Not succeeded"); return }
-         print(response.request)
-         })
-         */
+        
+        if(favorite?.id != nil){
+            NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: favorite!.id).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Favoriet is verwijdert", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+        else{
+            let patient = self.createApiHelper(id: 1)
+            patientList.append(patient)
+
+            
+            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: self.patientList, withFoodId: self.foodItem!.id).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Favoriet is toegevoegd", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+        
+        
+ 
+
     }
     func addConsumption() {
         switch MealTime.selectedSegmentIndex {
@@ -218,16 +247,36 @@ class FoodDetailViewController: UIViewController {
         return foodmealComponent
     }
     
+    func createApiHelper(id : Int) -> ApiHelper{
+        let helper : ApiHelper = ApiHelper(id: id)
+        return helper
+    }
+    
     @IBAction func deleteBtn(_ sender: Any) {
-        NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
-            let alertController = UIAlertController(
-                title: NSLocalizedString("Success", comment: "Title"),
-                message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
-                preferredStyle: .alert)
+        
+        if(isMealDetail){
+            NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Maaltijd is verwijdert", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
             
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        })
+        }else{
+            NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+       
     }
     
     func addProductToMealList() {

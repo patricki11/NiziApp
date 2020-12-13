@@ -16,14 +16,16 @@ class NewFood : Codable {
     var updatedAt         : String?            = ""
     var name              : String?            = ""
     var foodMealComponent : newFoodMealComponent? = nil
+    var favoriteFoods     : NewFavoriteShort?  = nil
     
-    init(id : Int?, weight : Int?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?, weightObject : newWeightUnit?){
+    init(id : Int?, weight : Int?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?, weightObject : newWeightUnit?, favoriteFoods : NewFavoriteShort){
         self.id                = id
         self.weightId          = weight
         self.createdAt         = createdAt
         self.updatedAt         = updatedAt
         self.name              = name
         self.foodMealComponent = foodMealComponent
+        self.favoriteFoods     = favoriteFoods
         //self.weightObject      = weightObject
     }
     
@@ -34,6 +36,7 @@ class NewFood : Codable {
         case updatedAt         = "updated_at"
         case name              = "name"
         case foodMealComponent = "food_meal_component"
+        case favoriteFoods     = "my_food"
     }
     
     required init(from decoder: Decoder) throws {
@@ -50,5 +53,6 @@ class NewFood : Codable {
             self.weightId = weightObject?.id
         }
         self.foodMealComponent        = try? container.decode(newFoodMealComponent?.self, forKey: .foodMealComponent)
+        self.favoriteFoods            = try? container.decode(NewFavoriteShort?.self, forKey: .favoriteFoods)
     }
 }

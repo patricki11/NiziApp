@@ -97,16 +97,21 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
-    static func addMyFood(withToken token : String, withPatientId patientId: [Int], withFoodId foodId: Int) -> DataRequest {
+    static func addMyFood(withToken token : String, withPatientId patientId: [ApiHelper], withFoodId foodId: Int) -> DataRequest {
         let apiMethod = "My-Foods"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
             [
-                "food": foodId, "patients_ids": patientId
+                "food": foodId, "patients_ids": [["id":[1]]]
             ] as [String : Any]
         print(parameters)
-        print(baseUrl+apiMethod)
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func deleteFavorite(withToken token : String, withConsumptionId favoriteId: Int) -> DataRequest{
+        let apiMethod = "My-Foods/\(favoriteId)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     // NEW FAVORITE FOOD //
     

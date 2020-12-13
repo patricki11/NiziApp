@@ -3196,7 +3196,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNQ-gf-Ff4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNQ-gf-Ff4">
                                 <rect key="frame" x="0.0" y="191.66666666666669" width="414" height="621.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -3300,6 +3300,7 @@
                             <constraint firstItem="AlI-se-bTu" firstAttribute="leading" secondItem="Uzz-mf-Ejb" secondAttribute="trailing" constant="5" id="axR-e2-aLx"/>
                             <constraint firstItem="Uzz-mf-Ejb" firstAttribute="top" secondItem="Z3g-Aq-27a" secondAttribute="top" constant="15" id="kvE-PG-uyL"/>
                             <constraint firstItem="AlI-se-bTu" firstAttribute="top" secondItem="Z3g-Aq-27a" secondAttribute="top" constant="4" id="l8V-2n-xPc"/>
+                            <constraint firstItem="ZNQ-gf-Ff4" firstAttribute="top" secondItem="AlI-se-bTu" secondAttribute="bottom" constant="39.666666666666686" id="q5F-Xc-tEp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="baS-ex-4Mc"/>

@@ -26,6 +26,11 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.GetMeals()
+    }
+    
+    
     @IBAction func navigateSearchProducts(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
@@ -61,11 +66,12 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         detailFoodVC.foodItem = meal.foodMealComponent
         detailFoodVC.weightUnit = meal.weightUnit
         detailFoodVC.isMealDetail = true
+        detailFoodVC.meal = meal
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

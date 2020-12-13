@@ -54,6 +54,9 @@
 		2180FA90258126690022920E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8F258126690022920E /* MealTableViewCell.swift */; };
 		2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */; };
 		2180FAE3258604D30022920E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAE2258604D20022920E /* HomeViewController.swift */; };
+		21C58C782586B156004944AA /* MealSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C58C772586B155004944AA /* MealSearchTableViewCell.swift */; };
+		21C58C7B2586B9B7004944AA /* NewFavoriteShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */; };
+		21C58C7E2586BD79004944AA /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C58C7D2586BD78004944AA /* ApiHelper.swift */; };
 		5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */; };
 		5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */; };
 		5330AE42257A77160027A768 /* AddConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE41257A77160027A768 /* AddConversationViewController.swift */; };
@@ -131,6 +134,9 @@
 		2180FA8F258126690022920E /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealProductsViewController.swift; sourceTree = "<group>"; };
 		2180FAE2258604D20022920E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		21C58C772586B155004944AA /* MealSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchTableViewCell.swift; sourceTree = "<group>"; };
+		21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoriteShort.swift; sourceTree = "<group>"; };
+		21C58C7D2586BD78004944AA /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryManagement.swift; sourceTree = "<group>"; };
 		5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryRestriction.swift; sourceTree = "<group>"; };
 		5330AE41257A77160027A768 /* AddConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConversationViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 				2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */,
 				2180FA7E2580CE590022920E /* NewMeal.swift */,
 				2180FA812581027D0022920E /* NewMealFood.swift */,
+				21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */,
+				21C58C7D2586BD78004944AA /* ApiHelper.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -326,6 +334,7 @@
 				214F5EB223BF85C8003311A1 /* PatientGuidelineTableViewCell.swift */,
 				215FE88B256C456B007F05AB /* ConversationCell.swift */,
 				2180FA8F258126690022920E /* MealTableViewCell.swift */,
+				21C58C772586B155004944AA /* MealSearchTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -480,6 +489,7 @@
 				53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */,
 				2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
+				21C58C7E2586BD79004944AA /* ApiHelper.swift in Sources */,
 				21488B19239E4CC9004D31C8 /* Login.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
@@ -504,6 +514,7 @@
 				2180FA822581027D0022920E /* NewMealFood.swift in Sources */,
 				21488B1B239E53E2004D31C8 /* Token.swift in Sources */,
 				9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */,
+				21C58C782586B156004944AA /* MealSearchTableViewCell.swift in Sources */,
 				215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */,
 				214F7E1223C1F850002D670A /* EditPatientViewController.swift in Sources */,
 				9322A71723A084AF003F136D /* DiaryNavigationController.swift in Sources */,
@@ -513,6 +524,7 @@
 				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,
 				217496702391A4F500243B41 /* LoginViewController.swift in Sources */,
 				2154CFDF2429728900E96AEF /* TableTableViewController.swift in Sources */,
+				21C58C7B2586B9B7004944AA /* NewFavoriteShort.swift in Sources */,
 				214DB7D725653E7C003FFCA7 /* newFoodMealComponent.swift in Sources */,
 				5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */,
 				211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */,
