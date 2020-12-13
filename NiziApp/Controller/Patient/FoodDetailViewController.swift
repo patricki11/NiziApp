@@ -151,7 +151,7 @@ class FoodDetailViewController: UIViewController {
                 self.weightId = 8
             }
             else {
-                self.weightUnit?.id
+                self.weightId = self.weightUnit!.id
             }
             
             let weight = self.createNewWeight(id: self.weightId, unit: "", short: "", createdAt: "", updatedAt: "")
