@@ -61,7 +61,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func GetFavortiesFood() {
-        NiZiAPIHelper.GetMyFoods(withToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjA1MTA0Njk3LCJleHAiOjE2MDc2OTY2OTd9.VQqpsXC4IrdPjcNE9cuMpwumiLncAKorGB8eIDAWS2Y", withPatient: 1).responseData(completionHandler: { response in
+        NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

@@ -35,7 +35,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var sodiumMeal      : Float = 0.0
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
-    var mealId          : [HelperId]?
+    var mealListId          : [HelperId]?
     var productId       : [HelperId]?
 
     override func viewDidLoad() {
@@ -143,7 +143,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         
         let meal = self.createNewMealObject(id: 0, weightUnit: weight, patient: patient, foodMealComponent: foodMealComponent, mealFoods: self.newMealFoodList)
         
-        NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal).responseData(completionHandler: { response in
+        NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal, withPatient: 1).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -153,24 +153,33 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                 else { print("temp2"); return }
             
             self.createdMeal = mealJSON
-            print("-------------------------------")
             print(self.createdMeal?.id)
         })
         
-        mealId?.append(HelperId(id: createdMeal!.id))
+        /*
+        let mealId = self.createHelperId(id: createdMeal!.id)
+        mealListId?.append(mealId)
+        print(mealListId![0].id)
+ */
+        
+        /*
         
         for product in self.Mealfoodlist {
             productId?.append(HelperId(id: product.id!))
-            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: productId!, withMeal: mealId!, withAmount: 1).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: productId!, withMeal: mealId, withAmount: 1).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
                     else { print("temp1"); return }
             })
             productId?.removeAll()
         }
+ */
     }
     
-    
+    func createHelperId(id : Int) -> HelperId {
+        let helperId : HelperId = HelperId(id: id)
+        return helperId
+    }
     
     
     // Need to change the object
@@ -208,7 +217,4 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
  */
     }
-    
-    
-
 }
