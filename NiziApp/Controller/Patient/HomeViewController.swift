@@ -64,7 +64,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         getDietaryGuidelines()
-        //changeAgeGenderLabel()
         getConsumptions()
     }
 
@@ -102,7 +101,10 @@ class HomeViewController: UIViewController {
     }
     
     func getDietaryGuidelines() {
-        NiZiAPIHelper.getDietaryManagement(forDiet: 1, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
+        
+        let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+        
+        NiZiAPIHelper.getDietaryManagement(forDiet: patient!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
             guard let jsonResponse = response.data else { return }
 
@@ -121,7 +123,9 @@ class HomeViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
+        let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+        
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             
