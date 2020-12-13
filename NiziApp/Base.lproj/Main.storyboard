@@ -2902,25 +2902,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="423" height="102"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUh-Bf-4zi">
-                                        <rect key="frame" x="22" y="52" width="45" height="20.333333333333329"/>
+                                        <rect key="frame" x="16" y="69" width="45" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the meal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GU7-fU-PCK">
-                                        <rect key="frame" x="81" y="45" width="306" height="34"/>
+                                        <rect key="frame" x="77" y="62" width="192" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="192" id="PYi-gh-8et"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GV-gb-1L3">
+                                        <rect key="frame" x="346" y="59" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="C7Q-Ri-sOh"/>
+                                            <constraint firstAttribute="height" constant="40" id="CLP-ml-VTY"/>
+                                        </constraints>
+                                        <state key="normal" image="bin_xs"/>
+                                        <connections>
+                                            <action selector="deleteMeal:" destination="sJT-Ob-fQ6" eventType="touchUpInside" id="bBZ-CO-uwZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
-                                    <constraint firstItem="RUh-Bf-4zi" firstAttribute="top" secondItem="lkI-Jc-3Af" secondAttribute="top" constant="52" id="BNq-Ql-6Pw"/>
+                                    <constraint firstAttribute="bottom" secondItem="5GV-gb-1L3" secondAttribute="bottom" constant="3" id="HhR-ql-iLa"/>
                                     <constraint firstAttribute="height" constant="102" id="IZX-Z3-0sb"/>
-                                    <constraint firstItem="GU7-fU-PCK" firstAttribute="top" secondItem="lkI-Jc-3Af" secondAttribute="top" constant="45" id="NbI-gI-n7a"/>
-                                    <constraint firstItem="RUh-Bf-4zi" firstAttribute="leading" secondItem="lkI-Jc-3Af" secondAttribute="leading" constant="22" id="UQT-H0-spe"/>
-                                    <constraint firstItem="GU7-fU-PCK" firstAttribute="leading" secondItem="RUh-Bf-4zi" secondAttribute="trailing" constant="14" id="aah-WS-IsM"/>
-                                    <constraint firstAttribute="trailing" secondItem="GU7-fU-PCK" secondAttribute="trailing" constant="36" id="agx-hP-E3c"/>
+                                    <constraint firstAttribute="bottom" secondItem="GU7-fU-PCK" secondAttribute="bottom" constant="6" id="OPp-QR-PLf"/>
+                                    <constraint firstItem="GU7-fU-PCK" firstAttribute="leading" secondItem="RUh-Bf-4zi" secondAttribute="trailing" constant="16" id="POI-FI-UXH"/>
+                                    <constraint firstAttribute="bottom" secondItem="RUh-Bf-4zi" secondAttribute="bottom" constant="12.666666666666671" id="nx7-3B-Qxa"/>
+                                    <constraint firstAttribute="trailing" secondItem="5GV-gb-1L3" secondAttribute="trailing" constant="37" id="zcI-hn-Lby"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Fh-K8-aYU">
@@ -3118,6 +3132,7 @@
                             <constraint firstItem="lkI-Jc-3Af" firstAttribute="leading" secondItem="MIt-U2-rZF" secondAttribute="leading" id="BTo-bo-flj"/>
                             <constraint firstItem="MIt-U2-rZF" firstAttribute="trailing" secondItem="hSd-le-VYR" secondAttribute="trailing" constant="15" id="CTM-U4-yQC"/>
                             <constraint firstItem="MIt-U2-rZF" firstAttribute="trailing" secondItem="g19-N6-bWJ" secondAttribute="trailing" constant="20" id="EeR-Pe-eK1"/>
+                            <constraint firstItem="RUh-Bf-4zi" firstAttribute="leading" secondItem="MIt-U2-rZF" secondAttribute="leading" constant="16" id="INV-02-gyv"/>
                             <constraint firstItem="whN-Jf-Vna" firstAttribute="leading" secondItem="MIt-U2-rZF" secondAttribute="leading" constant="15" id="JlR-IW-JSh"/>
                             <constraint firstItem="lkI-Jc-3Af" firstAttribute="trailing" secondItem="MIt-U2-rZF" secondAttribute="trailing" constant="9" id="KEn-FX-NAX"/>
                             <constraint firstItem="bYH-9g-y2Y" firstAttribute="top" secondItem="97z-So-JVS" secondAttribute="bottom" constant="24" id="KlM-Ni-jN7"/>
@@ -3152,6 +3167,7 @@
                     </view>
                     <connections>
                         <outlet property="calorieResultLbl" destination="hSd-le-VYR" id="hyU-hM-HqX"/>
+                        <outlet property="deleteBtn" destination="5GV-gb-1L3" id="n38-TL-tja"/>
                         <outlet property="fiberResultLbl" destination="Z5E-KI-lKu" id="Bcz-fe-wJe"/>
                         <outlet property="foodListTable" destination="3Fh-K8-aYU" id="13E-Z9-BAa"/>
                         <outlet property="importBtn" destination="VFp-9L-MjP" id="Dae-iD-o1a"/>
@@ -3934,7 +3950,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b9-vQ-P64">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b9-vQ-P64">
                                 <rect key="frame" x="337" y="155" width="35" height="30"/>
                                 <state key="normal" title="Zoek">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
@@ -4057,7 +4073,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product zoeken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qD-44-Idr">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product zoeken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qD-44-Idr">
                                 <rect key="frame" x="20" y="150" width="280" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="fJP-Bw-2xB"/>

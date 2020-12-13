@@ -39,6 +39,11 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
 
     typealias FinishedDownload = () -> ()
     
+    @IBOutlet weak var deleteBtn: UIButton!
+    @IBAction func deleteMeal(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calculateDietary()
