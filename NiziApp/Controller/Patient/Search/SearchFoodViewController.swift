@@ -61,6 +61,8 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
         let foodResult : NewFood = foodlist[idx]
+        
+        
         searchFoodCell.foodTitle?.text = foodlist[idx].name
         let url = URL(string: (foodResult.foodMealComponent?.imageUrl)!)
         searchFoodCell.foodImage?.kf.setImage(with: url)

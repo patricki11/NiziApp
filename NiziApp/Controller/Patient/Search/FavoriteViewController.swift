@@ -3,7 +3,7 @@
 //  NiziApp
 //
 //  Created by Wing lam on 24/12/2019.
-//  Copyright © 2019 Samir Yeasin. All rights reserved.
+//  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
 
 import UIKit
@@ -11,9 +11,11 @@ import Kingfisher
 import SwiftKeychainWrapper
 
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var searchInput: UITextField!
     @IBOutlet weak var FavoriteTable: UITableView!
+    @IBOutlet weak var totalResultLbl: UILabel!
+    
     var foodlist : [NewFavorite] = []
-    //let patientIntID : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +35,13 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "favoriteFoodCell", for: indexPath) as! SearchFoodTableViewCell
         let idx: Int = indexPath.row
-        searchFoodCell.textLabel?.text = foodlist[idx].food?.name
-        let url = URL(string: (foodlist[idx].food?.foodMealComponent?.imageUrl)!)
-        searchFoodCell.foodImage?.kf.setImage(with: url)
+        let foodResult : NewFood = foodlist[idx].food!
+        searchFoodCell.foodTitle.text = foodResult.name
+        let url = URL(string: foodResult.foodMealComponent!.imageUrl)
+        searchFoodCell.foodImage.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
+        let portionSize : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
+        searchFoodCell.portionSize.text = ("")
         return searchFoodCell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -48,7 +53,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -72,6 +77,13 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             
             self.foodlist = foodlistJSON
             self.FavoriteTable?.reloadData()
+            self.totalResultLbl.text = "Aantal(\(self.foodlist.count))"
         })
+        
     }
+    
+    @IBAction func searchFoodByText(_ sender: Any) {
+        print("Searching Favorite Food")
+    }
+    
 }

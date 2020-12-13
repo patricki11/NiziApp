@@ -42,7 +42,6 @@
 		217496592391832900243B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 217496582391832900243B41 /* Assets.xcassets */; };
 		2174965C2391832900243B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2174965A2391832900243B41 /* LaunchScreen.storyboard */; };
 		2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966723918F3100243B41 /* AddPatientViewController.swift */; };
-		2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21749669239190FD00243B41 /* DairyListViewController.swift */; };
 		2174966C2391913300243B41 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966B2391913300243B41 /* PatientListViewController.swift */; };
 		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
 		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
@@ -54,7 +53,6 @@
 		2180FA8D258117800022920E /* MealCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8C2581177F0022920E /* MealCreateViewController.swift */; };
 		2180FA90258126690022920E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8F258126690022920E /* MealTableViewCell.swift */; };
 		2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */; };
-		2180FAD82583BF0B0022920E /* HelperId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAD72583BF0A0022920E /* HelperId.swift */; };
 		2180FAE3258604D30022920E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAE2258604D20022920E /* HomeViewController.swift */; };
 		5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */; };
 		5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */; };
@@ -121,7 +119,6 @@
 		2174965B2391832900243B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2174965D2391832900243B41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2174966723918F3100243B41 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
-		21749669239190FD00243B41 /* DairyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DairyListViewController.swift; sourceTree = "<group>"; };
 		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 		2180FA8C2581177F0022920E /* MealCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateViewController.swift; sourceTree = "<group>"; };
 		2180FA8F258126690022920E /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealProductsViewController.swift; sourceTree = "<group>"; };
-		2180FAD72583BF0A0022920E /* HelperId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperId.swift; sourceTree = "<group>"; };
 		2180FAE2258604D20022920E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryManagement.swift; sourceTree = "<group>"; };
 		5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryRestriction.swift; sourceTree = "<group>"; };
@@ -211,7 +207,6 @@
 				2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */,
 				2180FA7E2580CE590022920E /* NewMeal.swift */,
 				2180FA812581027D0022920E /* NewMealFood.swift */,
-				2180FAD72583BF0A0022920E /* HelperId.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -350,7 +345,6 @@
 				2154CFE424299FE100E96AEF /* Search */,
 				934F537823C163EB007745AF /* CreateMeal */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
-				21749669239190FD00243B41 /* DairyListViewController.swift */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
 				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
 				2180FAE2258604D20022920E /* HomeViewController.swift */,
@@ -533,13 +527,11 @@
 				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
 				215303C92424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift in Sources */,
 				214F5EB123BF804A003311A1 /* Restrictions.swift in Sources */,
-				2174966A239190FD00243B41 /* DairyListViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,
 				2180FAE3258604D30022920E /* HomeViewController.swift in Sources */,
 				9322A71123A02CA5003F136D /* Weight.swift in Sources */,
 				215DA6FC2567CE1F00B242B0 /* newConsumption.swift in Sources */,
-				2180FAD82583BF0B0022920E /* HelperId.swift in Sources */,
 				214DB7D425653AD9003FFCA7 /* newWeightUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -80,7 +80,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     fileprivate func SetupDatePicker() {
         DatePicker.setValue(UIColor.white, forKeyPath: "textColor")
         DatePicker.setValue(false, forKeyPath: "highlightsToday")
-        DatePicker.backgroundColor = UIColor(red: 0x0A, green: 0x71, blue: 0xCB)
+        //DatePicker.backgroundColor = UIColor(red: 0x0A, green: 0x71, blue: 0xCB, alpha: <#CGFloat#>)
         DatePicker.addTarget(self, action: #selector(DiaryViewController.datePickerValueChanged(_:)), for: .valueChanged)
     }
     
