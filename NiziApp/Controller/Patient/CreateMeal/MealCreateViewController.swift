@@ -35,8 +35,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var sodiumMeal      : Float = 0.0
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
-    var mealListId      : [HelperId]?
-    var productId       : [HelperId]?
     var editMeal        : Bool = false
 
     typealias FinishedDownload = () -> ()
@@ -159,11 +157,8 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
             print("----------------------------")
             print(self.createdMeal?.id)
         })
-    }
-    
-    func createHelperId(id : Int) -> HelperId {
-        let helperId : HelperId = HelperId(id: id)
-        return helperId
+        
+        self.presentAlert()
     }
     
     func createNewMealObject(id: Int, weightUnit: newWeightUnit, patient: NewPatient, foodMealComponent: newFoodMealComponent, mealFoods: [NewMealFood]) -> NewMeal {
@@ -188,7 +183,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         return foodmealComponent
     }
     
-    
     func addMealProducts(){
         
         let mealId = createdMeal?.id
@@ -200,6 +194,10 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                     else { print("temp1"); return }
             })
         }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     @IBAction func importProducts(_ sender: Any) {
@@ -208,13 +206,13 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBAction func saveMeal(_ sender: Any) {
         addMeal()
-        //addMealProducts()
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
- */
     }
     
-    
+    func presentAlert(){
+        let alert = UIAlertController(title: "Success", message: "Meal has been made", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            self.addMealProducts()
+        }))
+        present(alert, animated: true)
+    }
 }
