@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(KeychainWrapper.standard.string(forKey: "patientId")!)
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()

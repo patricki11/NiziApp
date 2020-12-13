@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class MainTabBarController: UITabBarController {
 
     var token : String?
+    var user : NewUser?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("---------- my token ----------")
+        print("---------- my token ----------\(user?.patient)")
+        //let patientId = user?.patient
+        //KeychainWrapper.standard.set(patientId!, forKey: "patientId")
         // Do any additional setup after loading the view.
     }
 }

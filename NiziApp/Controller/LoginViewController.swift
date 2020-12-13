@@ -90,6 +90,7 @@ class LoginViewController : UIViewController {
                 else { return }
             
             if(account.patient != nil) {
+                self.savePatientId(patientId: account.patient!.description)
                 self.navigateToPatientHomepage(withPatient: account, withPatientCode: authToken)
             }
             else if(account.doctor != nil) {
@@ -111,6 +112,7 @@ class LoginViewController : UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         homeVC.token = withPatientCode
+        homeVC.user = patientAccount
         self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
@@ -134,6 +136,7 @@ class LoginViewController : UIViewController {
             self.saveAuthToken(token: login.jwt!)
             
             if(login.user.patient != nil) {
+                self.savePatientId(patientId: login.user.patient!.description)
                 self.navigateToPatientHomepage(withPatient: login.user, withPatientCode: login.jwt!)
             }
             else if(login.user.doctor != nil) {
