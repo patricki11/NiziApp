@@ -42,7 +42,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         let formattedDate = format.string(from: date)
         let finalDate = formattedDate + "T00:00:00.000Z"
         saveDate(date: finalDate)
-        getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
+        //getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
         
         calendar.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
     }

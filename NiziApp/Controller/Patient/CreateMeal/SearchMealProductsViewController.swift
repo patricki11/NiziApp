@@ -14,6 +14,9 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     var foodlist : [NewFood] = []
     var Mealfoodlist : [NewFood] = []
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
+    var editMealObject : NewMeal?
+    var editMeal : Bool = false
+    var editMealsHasbeenRetrieved : Bool = false
 
     @IBOutlet weak var searchFoodInput: UITextField!
     @IBOutlet weak var totalLbl: UILabel!
@@ -27,6 +30,12 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
+        
+        if(editMeal){
+            detailFoodVC.editMealObject = self.editMealObject
+            detailFoodVC.editMeal = true
+            detailFoodVC.editMealsHasbeenRetrieved = true
+        }
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
@@ -67,6 +76,11 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         detailFoodVC.food = food
         detailFoodVC.Mealfoodlist = Mealfoodlist
         detailFoodVC.isMealProductDetail = true
+        if(editMeal){
+            detailFoodVC.editMeal = true
+            detailFoodVC.editMealObject = self.editMealObject
+            detailFoodVC.editMealsHasbeenRetrieved = true
+        }
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     

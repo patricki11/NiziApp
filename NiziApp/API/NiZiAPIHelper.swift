@@ -228,6 +228,7 @@ class NiZiAPIHelper {
             [
                 "amount": amount, "meal": mealId, "food": foodId
             ] as [String : Any]
+        print(parameters)
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
     
@@ -235,6 +236,24 @@ class NiZiAPIHelper {
         let apiMethod = "Meals/\(mealId)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func removeMealFood(withToken token : String, withFoods mealFoodId: Int) -> DataRequest {
+        let apiMethod = "meal-foods/\(mealFoodId)"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        print(apiMethod)
+        return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    
+    static func patchMeal(withToken token : String, withDetails consumption: newFoodMealComponent, withMeal mealId : Int) -> DataRequest {
+        let apiMethod = "Meals/\(mealId)"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        let parameters =
+            [
+                "food_meal_component": ["protein": consumption.protein, "id": consumption.id, "sodium": consumption.sodium, "name": consumption.name, "kcal":  consumption.kcal, "potassium": consumption.potassium, "water": consumption.water, "description": consumption.description, "fiber": consumption.fiber, "image_url": consumption.imageUrl]
+            ] as [String : Any]
+        print(parameters)
+        return AF.request(baseUrl + apiMethod, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
     
     

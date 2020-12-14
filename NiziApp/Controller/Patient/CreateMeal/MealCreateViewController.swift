@@ -37,8 +37,10 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var createdMeal     : NewMeal?
     var editMeal        : Bool = false
     var editMealObject  : NewMeal?
-    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
+    let patientIntID    : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     var retrievedFoodItem: NewFood?
+    var mealId          : Int = 0
+    var editMealsHasbeenRetrieved : Bool = false
 
     typealias FinishedDownload = () -> ()
     
@@ -49,14 +51,25 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(editMeal){
-            self.getProducts()
+        
+        if(editMealsHasbeenRetrieved == false){
+            if(editMeal){
+                self.getProducts()
+                self.editMealsHasbeenRetrieved = true
+            }
         }
+        
         self.calculateDietary()
     }
 
     
     override func viewDidAppear(_ animated: Bool){
+        /*
+        if(editMeal){
+            self.getProducts()
+        }
+        self.calculateDietary()
+        */
         foodListTable?.reloadData()
     }
     
@@ -77,6 +90,11 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
+        if(editMeal){
+            detailFoodVC.editMeal = true
+            detailFoodVC.editMealObject = self.editMealObject
+            detailFoodVC.editMealsHasbeenRetrieved = true
+        }
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
@@ -196,16 +214,21 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func addMealProducts(){
-        
-        let mealId = createdMeal?.id
-        
+        if(editMeal){
+            self.mealId = editMealObject!.id
+        }
+        else{
+            self.mealId = createdMeal!.id
+        }
+
         for product in self.Mealfoodlist {
-            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: mealId!, withAmount: 1).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: 1).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
                     else { print("temp1"); return }
             })
         }
+        
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
@@ -217,11 +240,18 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func saveMeal(_ sender: Any) {
-        addMeal()
+        if(editMeal){
+            self.removeOldFoodItems()
+            self.patchMeal()
+        }
+        else{
+            addMeal()
+        }
+       
     }
     
     func presentAlert(){
-        let alert = UIAlertController(title: "Success", message: "Meal has been made", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Success", message: "Maaltijd is gemaakt", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             self.addMealProducts()
         }))
@@ -252,7 +282,31 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func removeOldFoodItems(){
-        
+        for mealFood in editMealObject!.mealFoods{
+            NiZiAPIHelper.removeMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: mealFood.id).responseData(completionHandler: { response in
+                print("Meal item is deleted")
+            })
+        }
     }
+    
+    func patchMeal(){
+        let foodMealComponent = self.createNewFoodMealComponent(id: self.editMealObject!.foodMealComponent.id, name: self.nameInput.text!, description: "Self made meal", kcal: kcal, protein: proteinMeal, potassium: pottassiumMeal, sodium: sodiumMeal, water: vochtMeal, fiber: fiberMeal, portionSize: 1, imageUrl: "https://image.flaticon.com/icons/png/512/45/45332.png")
+        
+        NiZiAPIHelper.patchMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: foodMealComponent, withMeal: self.editMealObject!.id).responseData(completionHandler: { response in
+            print("Meal item is being patched")
+        })
+        
+        self.presentPatchAlert()
+    }
+    
+    func presentPatchAlert(){
+        let alert = UIAlertController(title: "Success", message: "Maaltijd is aangepast", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            self.addMealProducts()
+        }))
+        present(alert, animated: true)
+    }
+    
+    
     
 }

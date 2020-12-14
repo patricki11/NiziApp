@@ -31,6 +31,7 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var mealEditBtn: UIButton!
     
     
+    
     var foodItem        : newFoodMealComponent?
     var patient         : NewPatient?
     var weightUnit      : newWeightUnit?
@@ -46,6 +47,9 @@ class FoodDetailViewController: UIViewController {
     var isMealProductDetail : Bool = false
     var weightId        : Int = 0
     var amount          : Float = 0.0
+    var editMealObject  : NewMeal?
+    var editMeal        : Bool = false
+    var editMealsHasbeenRetrieved : Bool = false
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -66,6 +70,11 @@ class FoodDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
+        if(editMeal){
+            detailFoodVC.editMeal = true
+            detailFoodVC.editMealObject = self.editMealObject
+            detailFoodVC.editMealsHasbeenRetrieved = true
+        }
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
@@ -341,6 +350,12 @@ class FoodDetailViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
             detailFoodVC.Mealfoodlist = self.Mealfoodlist
+            if(self.editMeal){
+                detailFoodVC.editMeal = true
+                detailFoodVC.editMealObject = self.editMealObject
+                detailFoodVC.editMealsHasbeenRetrieved = true
+            }
+        
             self.navigationController?.pushViewController(detailFoodVC, animated: true)
         }))
         self.present(alertController, animated: true, completion: nil)
@@ -376,6 +391,7 @@ class FoodDetailViewController: UIViewController {
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
         detailFoodVC.editMeal = true
         detailFoodVC.editMealObject = self.meal
+        detailFoodVC.editMealsHasbeenRetrieved = false
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
         
     }

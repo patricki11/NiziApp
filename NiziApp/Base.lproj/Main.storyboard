@@ -3119,14 +3119,14 @@
                                 <rect key="frame" x="20" y="439.33333333333331" width="374" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-t2-ZX6">
-                                        <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
                                         <state key="normal" title="Voeding zoeken"/>
                                         <connections>
                                             <action selector="searchMealProducts:" destination="sJT-Ob-fQ6" eventType="touchUpInside" id="nhP-8G-SvF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFp-9L-MjP">
-                                        <rect key="frame" x="271" y="0.0" width="103" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFp-9L-MjP">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                         <state key="normal" title="Import voedsel"/>
                                         <connections>
                                             <action selector="importProducts:" destination="sJT-Ob-fQ6" eventType="touchUpInside" id="qP1-ht-N7X"/>
