@@ -27,6 +27,8 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var portionSizeInput: UITextField!
     @IBOutlet weak var mealSearchBtn: UIButton!
     @IBOutlet weak var mealSaveBtn: UIButton!
+    @IBOutlet weak var datepicker: UIDatePicker!
+    @IBOutlet weak var mealEditBtn: UIButton!
     
     
     var foodItem        : newFoodMealComponent?
@@ -60,6 +62,59 @@ class FoodDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func backToMealSearch(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    @IBAction func SaveMeal(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        detailFoodVC.Mealfoodlist = Mealfoodlist
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    @IBAction func AddtoFavorites(_ sender: Any) {
+        Addfavorite()
+    }
+    
+    @IBAction func goToEditMeal(_ sender: Any) {
+    }
+    
+    
+    @IBAction func deleteBtn(_ sender: Any) {
+        
+        if(isMealDetail){
+            NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Maaltijd is verwijdert", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                    self.navigateToMeal()
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            })
+            
+        }else{
+            NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Success", comment: "Title"),
+                    message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
+                    preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                    self.navigateToDiary()
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            })
+        }
+       
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
@@ -80,9 +135,12 @@ class FoodDetailViewController: UIViewController {
     {
         mealSearchBtn.isHidden = true
         mealSaveBtn.isHidden = true
+        datepicker.isHidden = true
         
-        if(isDiaryDetail == false){
-            trashBtn.isHidden = true
+        if(isDiaryDetail){
+            trashBtn.isHidden = false
+            datepicker.isHidden = false
+            favoriteBtn.isHidden = true
         }
         
         if(isMealDetail){
@@ -92,7 +150,7 @@ class FoodDetailViewController: UIViewController {
         
         if(isMealProductDetail){
             mealSearchBtn.isHidden = false
-            mealSaveBtn.isHidden = false
+            mealSaveBtn.isHidden = true
         }
         
         DetailTitle.text = foodItem?.name
@@ -122,10 +180,7 @@ class FoodDetailViewController: UIViewController {
         WaterLabel.text = waterString
         
     }
-    @IBAction func AddtoFavorites(_ sender: Any) {
-        Addfavorite()
-        
-    }
+  
     
     func Addfavorite() {
         
@@ -156,9 +211,6 @@ class FoodDetailViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             })
         }
-        
-        
- 
 
     }
     func addConsumption() {
@@ -209,7 +261,17 @@ class FoodDetailViewController: UIViewController {
             })
         }
         else{
-            let patchConsumption = self.createPatchConsumption(amount: self.amount, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString)
+            
+            let dateFormatter: DateFormatter = DateFormatter()
+            
+            // Set date format
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            // Apply date format
+            let selectedDate: String = dateFormatter.string(from: datepicker.date)
+            let finalDate = selectedDate + "T00:00:00.000Z"
+            
+            let patchConsumption = self.createPatchConsumption(amount: self.amount, date: finalDate, mealTime: self.mealtimeString)
             
             NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
@@ -217,7 +279,9 @@ class FoodDetailViewController: UIViewController {
                     message: NSLocalizedString("Voedsel is gewijzigd", comment: "Message"),
                     preferredStyle: .alert)
                 
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                    self.navigateToDiary()
+                }))
                 self.present(alertController, animated: true, completion: nil)
             })
         }
@@ -255,39 +319,19 @@ class FoodDetailViewController: UIViewController {
         return helper
     }
     
-    @IBAction func deleteBtn(_ sender: Any) {
-        
-        if(isMealDetail){
-            NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
-                let alertController = UIAlertController(
-                    title: NSLocalizedString("Success", comment: "Title"),
-                    message: NSLocalizedString("Maaltijd is verwijdert", comment: "Message"),
-                    preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
-                    self.navigateToMeal()
-                }))
-                self.present(alertController, animated: true, completion: nil)
-            })
-            
-        }else{
-            NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
-                let alertController = UIAlertController(
-                    title: NSLocalizedString("Success", comment: "Title"),
-                    message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
-                    preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
-                    self.navigateToDiary()
-                }))
-                self.present(alertController, animated: true, completion: nil)
-            })
-        }
-       
-    }
-    
     func addProductToMealList() {
-        Mealfoodlist.append(food!)
+        var productExist = false
+        
+        for product in Mealfoodlist {
+            if(product.id == food?.id){
+                productExist = true
+            }
+        }
+        
+        if(productExist == false){
+            Mealfoodlist.append(food!)
+        }
+ 
         let alertController = UIAlertController(
             title: NSLocalizedString("Success", comment: "Title"),
             message: NSLocalizedString("Voedsel is toegevoegd aan maaltijd", comment: "Message"),
@@ -300,21 +344,8 @@ class FoodDetailViewController: UIViewController {
             self.navigationController?.pushViewController(detailFoodVC, animated: true)
         }))
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    @IBAction func backToMealSearch(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
-        detailFoodVC.Mealfoodlist = Mealfoodlist
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
-    
-    
-    @IBAction func SaveMeal(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
-        detailFoodVC.Mealfoodlist = Mealfoodlist
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        
+   
     }
     
     func displayErrorMessage(){
