@@ -63,17 +63,18 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
-        //print("Hellloooooo \(favorite!.food)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        if(isMealProductDetail){
+            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        }else{
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+        
     }
-    
-    
-    
     
     func SetupData()
     {
