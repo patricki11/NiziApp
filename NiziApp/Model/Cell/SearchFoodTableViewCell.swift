@@ -34,7 +34,7 @@ class SearchFoodTableViewCell: UITableViewCell {
 
     func addConsumption() {
         let date = KeychainWrapper.standard.string(forKey: "date")!
-        let newdate = date + "T00:00:00.000Z"
+        //let newdate = date + "T00:00:00.000Z"
         
         let patient = self.createNewPatient(id: patientIntID)
         
@@ -47,7 +47,7 @@ class SearchFoodTableViewCell: UITableViewCell {
         
         let weight = self.createNewWeight(id: self.weightUnit, unit: "", short: "", createdAt: "", updatedAt: "")
         
-        let consumption = self.createNewConsumptionObject(amount: 1, date: newdate, mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
+        let consumption = self.createNewConsumptionObject(amount: 1, date: date, mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
         
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
             let alertController = UIAlertController(
