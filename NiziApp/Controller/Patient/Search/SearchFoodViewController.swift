@@ -79,11 +79,12 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         detailFoodVC.weightUnit = food.weightObject
         detailFoodVC.patient = self.patient
         detailFoodVC.favorite = food.favoriteFoods
+        detailFoodVC.favoriteFood = food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return false
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

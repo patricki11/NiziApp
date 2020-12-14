@@ -23,6 +23,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         GetFavortiesFood()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        GetFavortiesFood()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
@@ -63,6 +67,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
         detailFoodVC.foodItem = food.food?.foodMealComponent
+        detailFoodVC.favorite = self.createFavoriteShort(id: food.id!, food: (food.food?.id)!)
+        detailFoodVC.favoriteFood = food.food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
@@ -98,6 +104,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func searchFoodByText(_ sender: Any) {
         print("Searching Favorite Food")
+    }
+    
+    func createFavoriteShort(id: Int, food : Int) -> NewFavoriteShort {
+        let favoriteShort : NewFavoriteShort = NewFavoriteShort(id: id, food: food)
+        return favoriteShort
     }
     
 }

@@ -50,6 +50,7 @@ class FoodDetailViewController: UIViewController {
     var editMealObject  : NewMeal?
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
+    var favoriteFood    : NewFood?
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -144,7 +145,9 @@ class FoodDetailViewController: UIViewController {
     {
         mealSearchBtn.isHidden = true
         mealSaveBtn.isHidden = true
+        mealEditBtn.isHidden = true
         datepicker.isHidden = true
+        trashBtn.isHidden = true
         
         if(isDiaryDetail){
             trashBtn.isHidden = false
@@ -155,6 +158,7 @@ class FoodDetailViewController: UIViewController {
         if(isMealDetail){
             favoriteBtn.isHidden = true
             trashBtn.isHidden = false
+            mealEditBtn.isHidden = false
         }
         
         if(isMealProductDetail){
@@ -210,7 +214,7 @@ class FoodDetailViewController: UIViewController {
             patientList.append(patient)
 
             
-            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: self.patientList, withFoodId: self.foodItem!.id).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: self.patientList, withFoodId: (self.favoriteFood?.id)!).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Favoriet is toegevoegd", comment: "Message"),
