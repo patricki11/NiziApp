@@ -146,9 +146,7 @@ extension PatientListViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deletePatient(patient: patientList[indexPath.row])
-            patientList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            showConfirmPatientDeleteMessage(indexPath: indexPath)
         }
     }
     
@@ -175,6 +173,21 @@ extension PatientListViewController : UITableViewDelegate {
         NiZiAPIHelper.deleteUser(byId: userId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in
             self.showPatientDeletedMessage()
         })
+    }
+    
+    func showConfirmPatientDeleteMessage(indexPath: IndexPath) {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("patientDeleteConfirmationTitle", comment: ""),
+            message: NSLocalizedString("patientDeleteConfirmationMessage", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.deletePatient(patient: self.patientList[indexPath.row])
+            self.patientList.remove(at: indexPath.row)
+            self.patientListTableView?.deleteRows(at: [indexPath], with: .fade)            
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func showPatientDeletedMessage() {

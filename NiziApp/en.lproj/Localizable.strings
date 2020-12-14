@@ -12,6 +12,7 @@
 "PasswordLabel" = "Wachtwoord";
 "login" = "Inloggen";
 "LogOut" = "Uitloggen";
+"cancel" = "Annuleren";
 "ok" = "Ok";
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
@@ -134,4 +135,7 @@
 
 "patientDeletedTitle" = "Verwijderd";
 "patientDeletedMessage" = "De patiënt is successvol verwijderd.";
+
+"patientDeleteConfirmationTitle" = "Verwijderen";
+"patientDeleteConfirmationMessage" = "Weet u zeker datu de patiënt wilt verwijderen?";
 // Messages
