@@ -88,6 +88,12 @@ class NiZiAPIHelper {
         
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
+    
+    static func getSingleFood(withToken token : String,withFood foodId: Int) -> DataRequest{
+        let apiMethod = "foods/\(foodId)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
     //NEW SEARCH FOOD//
     
     // NEW FAVORITE FOOD //

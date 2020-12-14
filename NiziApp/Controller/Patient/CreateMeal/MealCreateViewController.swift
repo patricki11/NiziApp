@@ -36,7 +36,9 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
     var editMeal        : Bool = false
+    var editMealObject  : NewMeal?
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
+    var retrievedFoodItem: NewFood?
 
     typealias FinishedDownload = () -> ()
     
@@ -47,8 +49,12 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(editMeal){
+            self.getProducts()
+        }
         self.calculateDietary()
     }
+
     
     override func viewDidAppear(_ animated: Bool){
         foodListTable?.reloadData()
@@ -221,4 +227,32 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         }))
         present(alert, animated: true)
     }
+    
+    func getProducts(){
+        
+        nameInput.text = editMealObject?.foodMealComponent.name
+        
+        for mealFood in editMealObject!.mealFoods {
+            
+            NiZiAPIHelper.getSingleFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: mealFood.food).responseData(completionHandler: { response in
+                
+                guard let jsonResponse = response.data
+                    else { print("temp1"); return }
+                
+                let jsonDecoder = JSONDecoder()
+                guard let FoodItem = try? jsonDecoder.decode( NewFood.self, from: jsonResponse )
+                    else { print("temp2"); return }
+                
+                self.retrievedFoodItem = FoodItem
+                self.Mealfoodlist.append(self.retrievedFoodItem!)
+                self.foodListTable.reloadData()
+                self.calculateDietary()
+            })
+        }
+    }
+    
+    func removeOldFoodItems(){
+        
+    }
+    
 }

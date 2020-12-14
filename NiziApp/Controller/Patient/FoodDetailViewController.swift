@@ -81,8 +81,8 @@ class FoodDetailViewController: UIViewController {
     }
     
     @IBAction func goToEditMeal(_ sender: Any) {
+        self.navigateToEditMeal()
     }
-    
     
     @IBAction func deleteBtn(_ sender: Any) {
         
@@ -367,6 +367,15 @@ class FoodDetailViewController: UIViewController {
     func navigateToDiary(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DairyViewController") as! DiaryViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        
+    }
+    
+    func navigateToEditMeal(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        detailFoodVC.editMeal = true
+        detailFoodVC.editMealObject = self.meal
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
         
     }
