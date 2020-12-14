@@ -14,7 +14,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     var foodlist                      : [NewFood] = []
     var buttonTag                     : Int = 0
-    let patientIntID                  : Int? = 1
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     var patient                       : NewPatient?
     @IBOutlet weak var FoodTable      : UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!

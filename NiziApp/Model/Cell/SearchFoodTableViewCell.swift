@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 class SearchFoodTableViewCell: UITableViewCell {
     var foodItem : NewFood?
     var weightUnit : Int = 0
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
@@ -35,7 +36,7 @@ class SearchFoodTableViewCell: UITableViewCell {
         let date = KeychainWrapper.standard.string(forKey: "date")!
         let newdate = date + "T00:00:00.000Z"
         
-        let patient = self.createNewPatient(id: 1)
+        let patient = self.createNewPatient(id: patientIntID)
         
         if(self.foodItem?.weightId == nil){
             self.weightUnit = 8
