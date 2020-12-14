@@ -196,14 +196,14 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
         case 2:
             navigationTitle = (dinnerFoods[indexPath.row].foodMealCompenent?.name)!
             amountText = (dinnerFoods[indexPath.row].amount?.description)!
-            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
-            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
+            portion = (dinnerFoods[indexPath.row].amount)! * (dinnerFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + dinnerFoods[indexPath.row].weightUnit!.short
             break
         case 3:
             navigationTitle = (snackFoods[indexPath.row].foodMealCompenent?.name)!
             amountText = (snackFoods[indexPath.row].amount?.description)!
-            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
-            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
+            portion = (snackFoods[indexPath.row].amount)! * (snackFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + snackFoods[indexPath.row].weightUnit!.short
             break
         default:
             break
