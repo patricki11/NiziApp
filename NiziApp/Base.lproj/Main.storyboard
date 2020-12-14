@@ -3270,6 +3270,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="7xK-m3-goA"/>
                                 </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="602074800">
+                                    <!--2020-01-30 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="629593200">
+                                    <!--2020-12-13 23:00:00 +0000-->
+                                </date>
                             </datePicker>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uzz-mf-Ejb">
                                 <rect key="frame" x="26" y="103" width="34" height="30"/>
