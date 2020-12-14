@@ -24,7 +24,27 @@ class AddConversationViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
         getConversation()
         SetupTableView()
+        setupActivityIndicator()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
+        getConversation()
+        SetupTableView()
+    }
+    
+    func setupActivityIndicator() {
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshPatientList), for: .valueChanged)
+        self.conversationtable?.refreshControl = refreshControl
+    }
+    
+    @objc func refreshPatientList() {
+        conversations = []
+        self.conversationtable?.reloadData()
+        getConversation()
+    }
+    
 
     @objc func showAddConversationViewModal() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -42,6 +62,7 @@ class AddConversationViewController: UIViewController {
     }
     
     func getConversation() {
+        conversationtable?.refreshControl?.beginRefreshing()
         NiZiAPIHelper.GetConversations(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientId).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
@@ -53,6 +74,7 @@ class AddConversationViewController: UIViewController {
             
             self.conversations = conversations
             self.conversationtable?.reloadData()
+            self.conversationtable?.refreshControl?.endRefreshing()
         })
     }
 }
