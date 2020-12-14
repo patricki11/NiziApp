@@ -24,27 +24,26 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var MealTime: UISegmentedControl!
     @IBOutlet weak var trashBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
-    
     @IBOutlet weak var portionSizeInput: UITextField!
     @IBOutlet weak var mealSearchBtn: UIButton!
     @IBOutlet weak var mealSaveBtn: UIButton!
     
     
-    var foodItem: newFoodMealComponent?
-    var patient : NewPatient?
-    var weightUnit : newWeightUnit?
-    var food : NewFood?
-    var meal : NewMeal?
-    var favorite : NewFavoriteShort?
-    var Mealfoodlist : [NewFood] = []
-    var patientList : [ApiHelper] = []
-    var mealtimeString: String = ""
-    var consumptionId : Int = 0
-    var isDiaryDetail : Bool = false
-    var isMealDetail : Bool = false
+    var foodItem        : newFoodMealComponent?
+    var patient         : NewPatient?
+    var weightUnit      : newWeightUnit?
+    var food            : NewFood?
+    var meal            : NewMeal?
+    var favorite        : NewFavoriteShort?
+    var Mealfoodlist    : [NewFood] = []
+    var patientList     : [ApiHelper] = []
+    var mealtimeString  : String = ""
+    var consumptionId   : Int = 0
+    var isDiaryDetail   : Bool = false
+    var isMealDetail    : Bool = false
     var isMealProductDetail : Bool = false
-    var weightId : Int = 0
-    var amount : Float = 0.0
+    var weightId        : Int = 0
+    var amount          : Float = 0.0
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -264,7 +263,9 @@ class FoodDetailViewController: UIViewController {
                     message: NSLocalizedString("Maaltijd is verwijdert", comment: "Message"),
                     preferredStyle: .alert)
                 
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                    self.navigateToMeal()
+                }))
                 self.present(alertController, animated: true, completion: nil)
             })
             
@@ -275,7 +276,9 @@ class FoodDetailViewController: UIViewController {
                     message: NSLocalizedString("Voedsel is verwijdert", comment: "Message"),
                     preferredStyle: .alert)
                 
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                    self.navigateToDiary()
+                }))
                 self.present(alertController, animated: true, completion: nil)
             })
         }
@@ -289,7 +292,12 @@ class FoodDetailViewController: UIViewController {
             message: NSLocalizedString("Voedsel is toegevoegd aan maaltijd", comment: "Message"),
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
+            detailFoodVC.Mealfoodlist = self.Mealfoodlist
+            self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        }))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -316,6 +324,19 @@ class FoodDetailViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func navigateToMeal(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    func navigateToDiary(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DairyViewController") as! DiaryViewController;()
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        
     }
     
 }

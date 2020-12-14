@@ -16,6 +16,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var totalResultLbl: UILabel!
     
     var foodlist : [NewFavorite] = []
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func GetFavortiesFood() {
-        NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1).responseData(completionHandler: { response in
+        NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
