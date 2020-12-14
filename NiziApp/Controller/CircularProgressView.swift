@@ -15,6 +15,11 @@ class CircularProgressView: UIView {
 private var circleLayer = CAShapeLayer()
 private var progressLayer = CAShapeLayer()
 private var totalLabel = CATextLayer()
+  
+    private var greenColor : CGColor = UIColor.systemGreen.cgColor
+    private var yellowColor : CGColor = UIColor.systemYellow.cgColor
+    private var redColor : CGColor = UIColor.systemRed.cgColor
+    private var grayColor : CGColor = UIColor.systemGray.cgColor
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,13 +36,13 @@ private var totalLabel = CATextLayer()
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = .round
         circleLayer.lineWidth = 12.0
-        circleLayer.strokeColor = UIColor.lightGray.cgColor
+        circleLayer.strokeColor = grayColor
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
         progressLayer.lineWidth = 12.0
         progressLayer.strokeEnd = 0
-        progressLayer.strokeColor = UIColor.lightGray.cgColor
+        progressLayer.strokeColor = grayColor
         totalLabel.alignmentMode = .center
         totalLabel.fontSize = 20
         totalLabel.foregroundColor = UIColor.black.cgColor
@@ -57,10 +62,10 @@ private var totalLabel = CATextLayer()
         totalLabel.string = String(currentTotal)
         
         if(min != 0) {
-            circleLayer.strokeColor = UIColor.yellow.cgColor
+            circleLayer.strokeColor = yellowColor
         }
         else if(max != 0) {
-            circleLayer.strokeColor = UIColor.green.cgColor
+            circleLayer.strokeColor = greenColor
         }
         
         if(currentTotal != 0) {
@@ -68,38 +73,38 @@ private var totalLabel = CATextLayer()
             if(min != 0 && max != 0) {
                 toValue = total / min
                 if(total < min) {
-                    circleLayer.strokeColor = UIColor.yellow.cgColor
-                    progressLayer.strokeColor = UIColor.green.cgColor
+                    circleLayer.strokeColor = yellowColor
+                    progressLayer.strokeColor = greenColor
                 }
                 else if(total >= min && total <= max) {
-                    circleLayer.strokeColor = UIColor.lightGray.cgColor
-                    progressLayer.strokeColor = UIColor.green.cgColor
+                    circleLayer.strokeColor = grayColor
+                    progressLayer.strokeColor = greenColor
                 }
                 else if(total > max) {
-                    circleLayer.strokeColor = UIColor.lightGray.cgColor
-                    progressLayer.strokeColor = UIColor.red.cgColor
+                    circleLayer.strokeColor = grayColor
+                    progressLayer.strokeColor = redColor
                 }
             }
             else if(min != 0) {
                 toValue = total / min
                 if(total >= min) {
-                    circleLayer.strokeColor = UIColor.lightGray.cgColor
-                    progressLayer.strokeColor = UIColor.green.cgColor
+                    circleLayer.strokeColor = grayColor
+                    progressLayer.strokeColor = greenColor
                 }
                 else if(total < min) {
-                    circleLayer.strokeColor = UIColor.yellow.cgColor
-                    progressLayer.strokeColor = UIColor.green.cgColor
+                    circleLayer.strokeColor = yellowColor
+                    progressLayer.strokeColor = greenColor
                 }
             }
             else if(max != 0) {
                 var toValue = total / max
                 if(total <= max) {
-                    circleLayer.strokeColor = UIColor.green.cgColor
-                    progressLayer.strokeColor = UIColor.yellow.cgColor
+                    circleLayer.strokeColor = greenColor
+                    progressLayer.strokeColor = yellowColor
                 }
                 else if(total > max) {
-                    circleLayer.strokeColor = UIColor.lightGray.cgColor
-                    progressLayer.strokeColor = UIColor.red.cgColor
+                    circleLayer.strokeColor = grayColor
+                    progressLayer.strokeColor = redColor
                 }
             }
         }
