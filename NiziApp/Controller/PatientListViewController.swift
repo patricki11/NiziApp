@@ -144,11 +144,47 @@ extension PatientListViewController : UITableViewDelegate {
         navigateToPatientDetailView(patient: filteredPatientList[indexPath.row])
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deletePatient(patient: patientList[indexPath.row])
+            patientList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func navigateToPatientDetailView(patient: NewPatient) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
         patientDetailVC.patient = patient
         patientDetailVC.doctorId = loggedInAccount.doctor
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
+    }
+    
+    func deletePatient(patient: NewPatient) {
+        deletePatientObject(forPatient: patient)
+    }
+    
+    func deletePatientObject(forPatient patient: NewPatient) {
+        NiZiAPIHelper.deletePatient(byId: patient.id!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in
+            
+            self.deletePatientUser(forUser: patient.user ?? patient.userObject?.id ?? 0)
+        })
+    }
+    
+    func deletePatientUser(forUser userId: Int) {
+        NiZiAPIHelper.deleteUser(byId: userId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { _ in
+            self.showPatientDeletedMessage()
+        })
+    }
+    
+    func showPatientDeletedMessage() {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("patientDeletedTitle", comment: ""),
+            message: NSLocalizedString("patientDeletedMessage", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

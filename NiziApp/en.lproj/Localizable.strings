@@ -131,4 +131,7 @@
 
 "conversationAddedTitle" = "Toegevoegd";
 "conversationAddedMessage" = "Conversatie toegevoegd.";
+
+"patientDeletedTitle" = "Verwijderd";
+"patientDeletedMessage" = "De patiënt is successvol verwijderd.";
 // Messages
