@@ -141,7 +141,8 @@ class FoodDetailViewController: UIViewController {
             })
         }
         else{
-            let patient = self.createApiHelper(id: 1)
+            let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+            let patient = self.createApiHelper(id: patientId!)
             patientList.append(patient)
 
             
@@ -179,6 +180,8 @@ class FoodDetailViewController: UIViewController {
         
         if(isDiaryDetail == false){
             
+            let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+            
             let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl)
             
             
@@ -191,7 +194,7 @@ class FoodDetailViewController: UIViewController {
             
             let weight = self.createNewWeight(id: self.weightId, unit: "", short: "", createdAt: "", updatedAt: "")
             
-            let patient = self.createNewPatient(id: 1)
+            let patient = self.createNewPatient(id: patientId!)
             
             let consumption = self.createNewConsumptionObject(amount: self.amount, date: KeychainWrapper.standard.string(forKey: "date")!, mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
             
@@ -206,7 +209,7 @@ class FoodDetailViewController: UIViewController {
             })
         }
         else{
-            let patchConsumption = self.createPatchConsumption(amount: 1.0, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString)
+            let patchConsumption = self.createPatchConsumption(amount: self.amount, date: "2020-11-18T00:00:00.000Z", mealTime: self.mealtimeString)
             
             NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
                 let alertController = UIAlertController(

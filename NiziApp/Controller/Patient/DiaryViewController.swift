@@ -20,7 +20,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var DatePicker: UIDatePicker!
-    //let patientIntID    : Int? = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
     var consumptions   : [NewConsumption] = []
     var breakfastFoods : [NewConsumption] = []
     var lunchFoods     : [NewConsumption] = []
@@ -33,7 +32,8 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.patient = createNewPatientObject(id: 1, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
+        let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+        self.patient = createNewPatientObject(id: patient!, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
         
         let date = Date()
@@ -131,11 +131,12 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // API Calls
     func getConsumption(Date date: String) {
+        let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
         breakfastFoods  = []
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1, withStartDate: date).responseData(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient!, withStartDate: date).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -226,14 +227,14 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         case 2:
             navigationTitle = (dinnerFoods[indexPath.row].foodMealCompenent?.name)!
             amountText = (dinnerFoods[indexPath.row].amount?.description)!
-            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
-            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
+            portion = (dinnerFoods[indexPath.row].amount)! * (dinnerFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + dinnerFoods[indexPath.row].weightUnit!.short
             break
         case 3:
             navigationTitle = (snackFoods[indexPath.row].foodMealCompenent?.name)!
             amountText = (snackFoods[indexPath.row].amount?.description)!
-            portion = (breakfastFoods[indexPath.row].amount)! * (breakfastFoods[indexPath.row].foodMealCompenent?.portionSize)!
-            portionSize = portion.description + " " + breakfastFoods[indexPath.row].weightUnit!.short
+            portion = (snackFoods[indexPath.row].amount)! * (snackFoods[indexPath.row].foodMealCompenent?.portionSize)!
+            portionSize = portion.description + " " + snackFoods[indexPath.row].weightUnit!.short
             break
         default:
             break
@@ -251,34 +252,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0;//Choose your custom row height
     }
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.Deleteconsumption(Id: consumptions[indexPath.row].id!)
-            var consumption : NewConsumption = consumptions[indexPath.row]
-            switch consumption.mealTime {
-            case "Ontbijt":
-                self.breakfastFoods.remove(at: indexPath.row)
-                break
-            case "Lunch":
-                self.breakfastFoods.remove(at: indexPath.row)
-                break
-            case "AvondEten":
-                self.breakfastFoods.remove(at: indexPath.row)
-                break
-            case "Snack":
-                self.breakfastFoods.remove(at: indexPath.row)
-                break
-            default:
-                break
-            }
-            
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
-        }
-    }
- */
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("HeaderView", owner: self, options: nil)?.first as! HeaderView
         

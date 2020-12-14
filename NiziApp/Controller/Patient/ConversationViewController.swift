@@ -34,7 +34,9 @@ class ConversationViewController: UIViewController {
     }
     
     func getConversation() {
-        NiZiAPIHelper.GetConversations(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1).responseData(completionHandler: { response in
+        let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
+        
+        NiZiAPIHelper.GetConversations(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
