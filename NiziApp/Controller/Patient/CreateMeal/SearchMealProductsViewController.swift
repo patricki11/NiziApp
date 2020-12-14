@@ -13,7 +13,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     
     var foodlist : [NewFood] = []
     var Mealfoodlist : [NewFood] = []
-    let patientIntID : Int = 1
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
 
     @IBOutlet weak var searchFoodInput: UITextField!
     @IBOutlet weak var totalLbl: UILabel!
@@ -58,7 +58,6 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
         detailFoodVC.foodItem = food.foodMealComponent
         detailFoodVC.weightUnit = food.weightObject
-       // detailFoodVC.patient = self.patient
         detailFoodVC.food = food
         detailFoodVC.Mealfoodlist = Mealfoodlist
         detailFoodVC.isMealProductDetail = true
