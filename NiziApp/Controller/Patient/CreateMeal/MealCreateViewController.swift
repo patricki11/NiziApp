@@ -36,6 +36,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     var proteinMeal     : Float = 0.0
     var createdMeal     : NewMeal?
     var editMeal        : Bool = false
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
 
     typealias FinishedDownload = () -> ()
     
@@ -140,7 +141,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     func addMeal() {
         let weight = self.createNewWeight(id: 8, unit: "", short: "", createdAt: "", updatedAt: "")
         
-        let patient = self.createNewPatient(id: 1, gender: "", createdAt: "", updatedAt: "", doctor: 0, user: 0)
+        let patient = self.createNewPatient(id: self.patientIntID, gender: "", createdAt: "", updatedAt: "", doctor: 0, user: 0)
         
         let kcalFloat = (calorieResultLbl.text as! NSString).floatValue
         
@@ -149,7 +150,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         let meal = self.createNewMealObject(id: 0, weightUnit: weight, patient: patient, foodMealComponent: foodMealComponent, mealFoods: self.newMealFoodList)
         
 
-        NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal, withPatient: 1).responseData(completionHandler: { response in
+        NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal, withPatient: self.patientIntID).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
