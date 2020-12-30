@@ -13,9 +13,9 @@ class NewFavorite : Codable {
     var food : NewFood? = nil
     var createdAt : String? = ""
     var updatedAt : String? = ""
-    var patients : [NewPatient]? = nil
+    var patients : NewPatient? = nil
     
-    init(id : Int?, food : NewFood?, createdAt : String?, updatedAt : String?, patients : [NewPatient]?){
+    init(id : Int?, food : NewFood?, createdAt : String?, updatedAt : String?, patients : NewPatient?){
         self.id = id
         self.food = food
         self.createdAt = createdAt
@@ -28,7 +28,7 @@ class NewFavorite : Codable {
         case food      = "food"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case patients  = "patients_ids"
+        case patients  = "patients_id"
     }
     
     func toJSON() -> [String:Any]{
@@ -37,7 +37,7 @@ class NewFavorite : Codable {
             "food"         : food as Any,
             "created_at"   : createdAt as Any,
             "updated_at"   : updatedAt as Any,
-            "patients_ids" : patients as Any
+            "patients_id"  : patients as Any
         ]
     }
 }

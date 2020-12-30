@@ -98,7 +98,7 @@ class NiZiAPIHelper {
     
     // NEW FAVORITE FOOD //
     static func GetMyFoods(withToken token : String, withPatient patientId: Int) -> DataRequest{
-        let apiMethod = "My-Foods?patients_ids.id=\(patientId)"
+        let apiMethod = "My-Foods?patients_id.id=\(patientId)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
