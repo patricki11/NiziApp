@@ -5,7 +5,7 @@
 //  Created by Samir Yeasin on 03/01/2020.
 //  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
-
+/*
 import Foundation
 
 class Restrictions : Codable {
@@ -22,3 +22,4 @@ class Restrictions : Codable {
         case description = "Description"
     }
 }
+*/

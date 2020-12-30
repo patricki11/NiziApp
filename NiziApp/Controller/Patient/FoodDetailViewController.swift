@@ -2,8 +2,8 @@
 //  FoodDetailViewController.swift
 //  NiziApp
 //
-//  Created by Wing lam on 23/12/2019.
-//  Copyright © 2019 Samir Yeasin. All rights reserved.
+//  Created by Samir Yeasin on 30/12/2020.
+//  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
 
 import UIKit
@@ -30,8 +30,6 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var mealEditBtn: UIButton!
     
-    
-    
     var foodItem        : newFoodMealComponent?
     var patient         : NewPatient?
     var weightUnit      : newWeightUnit?
@@ -40,6 +38,7 @@ class FoodDetailViewController: UIViewController {
     var favorite        : NewFavoriteShort?
     var Mealfoodlist    : [NewFood] = []
     var patientList     : [ApiHelper] = []
+    var foodlist        : [NewFavorite] = []
     var mealtimeString  : String = ""
     var consumptionId   : Int = 0
     var isDiaryDetail   : Bool = false
@@ -51,6 +50,7 @@ class FoodDetailViewController: UIViewController {
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
     var favoriteFood    : NewFood?
+    var isfavoritedFood : Bool = false
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -95,7 +95,6 @@ class FoodDetailViewController: UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
-        
         if(isMealDetail){
             NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
@@ -122,7 +121,6 @@ class FoodDetailViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             })
         }
-       
     }
     
     override func viewDidLoad() {
@@ -132,13 +130,13 @@ class FoodDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Hide the Navigation Bar
         if(isMealProductDetail){
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
-        
+
+ 
     }
     
     func SetupData()
@@ -192,12 +190,13 @@ class FoodDetailViewController: UIViewController {
         let waterString : String = (foodItem!.water.description)
         WaterLabel.text = waterString
         
+        self.checkIfFavorite()
+       
     }
-  
+    
     
     func Addfavorite() {
-        
-        if(favorite?.id != nil){
+        if(self.foodlist.count >= 1){
             NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: favorite!.id).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
@@ -212,9 +211,9 @@ class FoodDetailViewController: UIViewController {
             let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
             let patient = self.createApiHelper(id: patientId!)
             patientList.append(patient)
-
             
-            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: self.patientList, withFoodId: (self.favoriteFood?.id)!).responseData(completionHandler: { response in
+            
+            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.favoriteFood?.id)!).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Favoriet is toegevoegd", comment: "Message"),
@@ -224,8 +223,8 @@ class FoodDetailViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             })
         }
-
     }
+    
     func addConsumption() {
         switch MealTime.selectedSegmentIndex {
         case 0:
@@ -248,7 +247,6 @@ class FoodDetailViewController: UIViewController {
             let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
             
             let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl)
-            
             
             if(self.weightUnit?.id == nil){
                 self.weightId = 8
@@ -344,7 +342,7 @@ class FoodDetailViewController: UIViewController {
         if(productExist == false){
             Mealfoodlist.append(food!)
         }
- 
+        
         let alertController = UIAlertController(
             title: NSLocalizedString("Success", comment: "Title"),
             message: NSLocalizedString("Voedsel is toegevoegd aan maaltijd", comment: "Message"),
@@ -359,12 +357,10 @@ class FoodDetailViewController: UIViewController {
                 detailFoodVC.editMealObject = self.editMealObject
                 detailFoodVC.editMealsHasbeenRetrieved = true
             }
-        
+            
             self.navigationController?.pushViewController(detailFoodVC, animated: true)
         }))
         self.present(alertController, animated: true, completion: nil)
-        
-   
     }
     
     func displayErrorMessage(){
@@ -400,6 +396,18 @@ class FoodDetailViewController: UIViewController {
         
     }
     
+    func checkIfFavorite(){
+        NiZiAPIHelper.searchOneFoodFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: favoriteFood!.id!, withPatient: KeychainWrapper.standard.string(forKey: "patientId")!).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+            else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFavorite].self, from: jsonResponse )
+            else { print("temp2"); return }
+            
+            self.foodlist = foodlistJSON
+            print(self.foodlist.count)
+        })
+    }
 }
-
-

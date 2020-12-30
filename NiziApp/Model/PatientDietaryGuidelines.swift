@@ -5,7 +5,7 @@
 //  Created by Samir Yeasin on 03/01/2020.
 //  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
-
+/*
 import Foundation
 
 class PatientDietaryGuidelines : Codable {
@@ -17,3 +17,4 @@ class PatientDietaryGuidelines : Codable {
         case dietaryManagements = "Dietarymanagement"
     }
 }
+*/

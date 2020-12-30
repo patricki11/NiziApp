@@ -6,6 +6,7 @@
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
 
+/*
 import Foundation
 import UIKit
 
@@ -29,3 +30,4 @@ class Diary : Decodable{
         case waterTotal     = "WaterTotal"
      }
 }
+ */

@@ -5,7 +5,7 @@
 //  Created by Wing lam on 03/12/2019.
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
-
+/*
 import Foundation
 
 class Doctor : Codable{
@@ -37,3 +37,4 @@ class Doctor : Codable{
         ]
     }
 }
+*/

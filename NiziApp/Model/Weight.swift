@@ -5,7 +5,7 @@
 //  Created by Wing lam on 10/12/2019.
 //  Copyright © 2019 Samir Yeasin. All rights reserved.
 //
-
+/*
 import Foundation
 import UIKit
 
@@ -20,3 +20,4 @@ class Weight : Codable {
         case short = "Short"
     }
 }
+*/
