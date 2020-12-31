@@ -5,7 +5,7 @@
 //  Created by Samir Yeasin on 13/12/2020.
 //  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
-
+/*
 import Foundation
 
 class ApiHelper {
@@ -15,3 +15,4 @@ class ApiHelper {
         self.id = id
     }
 }
+ */
