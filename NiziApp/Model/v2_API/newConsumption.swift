@@ -34,7 +34,7 @@ class NewConsumption : Codable {
         case amount = "amount"
         case date = "date"
         case mealTime = "meal_time"
-        case patient = "patient"
+        //case patient = "patient"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case weightUnit = "weight_unit"

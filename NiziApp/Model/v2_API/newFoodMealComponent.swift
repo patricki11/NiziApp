@@ -20,8 +20,9 @@ class newFoodMealComponent : Codable {
     var fiber       : Float  = 0.0
     var portionSize : Float  = 0.0
     var imageUrl    : String = ""
+    var foodId      : Int    = 0
     
-    init(id : Int, name: String, description : String, kcal : Float,protein : Float, potassium : Float, sodium: Float, water : Float, fiber: Float, portionSize : Float, imageUrl : String){
+    init(id : Int, name: String, description : String, kcal : Float,protein : Float, potassium : Float, sodium: Float, water : Float, fiber: Float, portionSize : Float, imageUrl : String, foodId : Int){
         self.id          = id
         self.name        = name
         self.description = description
@@ -33,6 +34,7 @@ class newFoodMealComponent : Codable {
         self.fiber       = fiber
         self.portionSize = portionSize
         self.imageUrl    = imageUrl
+        self.foodId      = foodId
     }
     
     enum CodingKeys : String, CodingKey {
@@ -47,6 +49,7 @@ class newFoodMealComponent : Codable {
         case fiber       = "fiber"
         case portionSize = "portion_size"
         case imageUrl    = "image_url"
+        case foodId      = "foodId"
     }
     
     func toJSON() -> [String:Any] {
@@ -61,17 +64,8 @@ class newFoodMealComponent : Codable {
             "sodium"        : sodium as Any,
             "water"         : water as Any,
             "fiber"         : fiber as Any,
-            "portion_size"  : portionSize as Any
+            "portion_size"  : portionSize as Any,
+            "foodId"        : foodId as Any
            ]
        }
 }
-
-/*
- "kcal"          : kcal as Any,
- "protein"       : protein as Any,
- "potassium"     : potassium as Any,
- "sodium"        : sodium as Any,
- "water"         : water as Any,
- "fiber"         : fiber as Any,
- "portion_size"  : portionSize as Any
- */

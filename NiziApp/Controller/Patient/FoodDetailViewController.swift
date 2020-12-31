@@ -37,7 +37,6 @@ class FoodDetailViewController: UIViewController {
     var meal            : NewMeal?
     var favorite        : NewFavoriteShort?
     var Mealfoodlist    : [NewFood] = []
-    var patientList     : [ApiHelper] = []
     var foodlist        : [NewFavorite] = []
     var mealtimeString  : String = ""
     var consumptionId   : Int = 0
@@ -49,8 +48,7 @@ class FoodDetailViewController: UIViewController {
     var editMealObject  : NewMeal?
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
-    var favoriteFood    : NewFood?
-    var isfavoritedFood : Bool = false
+    var foodObject      : NewFood?
     
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -62,8 +60,7 @@ class FoodDetailViewController: UIViewController {
                 addConsumption()
             }
         } else {
-            print("String does not contain Float")
-            displayErrorMessage()
+            displayErrorMessage(title: "Portie fout", message: "Portie waarde is onjuist" )
         }
     }
     
@@ -164,30 +161,30 @@ class FoodDetailViewController: UIViewController {
             mealSaveBtn.isHidden = true
         }
         
-        DetailTitle.text = foodItem?.name
+        DetailTitle.text = self.foodItem!.name
         
-        let url = URL(string: foodItem!.imageUrl)
+        let url = URL(string: self.foodItem!.imageUrl)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = (foodItem!.protein.description)
+        let calorieString : String = (self.foodItem!.kcal.description)
         Kcal.text = calorieString
         
-        let proteinString : String = (foodItem!.kcal.description)
+        let proteinString : String = (self.foodItem!.protein.description)
         Protein.text = proteinString
         
-        let fiberString : String = (foodItem!.fiber.description)
+        let fiberString : String = (self.foodItem!.fiber.description)
         Fiber.text = fiberString
         
-        let calciumString : String = (foodItem!.protein.description)
+        let calciumString : String = (self.foodItem!.potassium.description)
         Calcium.text = calciumString
         
-        let sodiumString : String = (foodItem!.sodium.description)
+        let sodiumString : String = (self.foodItem!.sodium.description)
         Sodium.text = sodiumString
         
-        let portionSizeString : String = (foodItem!.portionSize.description)
+        let portionSizeString : String = (self.foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
         
-        let waterString : String = (foodItem!.water.description)
+        let waterString : String = (self.foodItem!.water.description)
         WaterLabel.text = waterString
         
         self.checkIfFavorite()
@@ -197,7 +194,7 @@ class FoodDetailViewController: UIViewController {
     
     func Addfavorite() {
         if(self.foodlist.count >= 1){
-            NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: favorite!.id).responseData(completionHandler: { response in
+            NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: self.foodlist[0].id!).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Favoriet is verwijdert", comment: "Message"),
@@ -208,12 +205,7 @@ class FoodDetailViewController: UIViewController {
             })
         }
         else{
-            let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
-            let patient = self.createApiHelper(id: patientId!)
-            patientList.append(patient)
-            
-            
-            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.favoriteFood?.id)!).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.foodObject?.id)!).responseData(completionHandler: { response in
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Success", comment: "Title"),
                     message: NSLocalizedString("Favoriet is toegevoegd", comment: "Message"),
@@ -246,7 +238,7 @@ class FoodDetailViewController: UIViewController {
             
             let patientId = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
             
-            let foodComponent = self.createNewFoodMealComponent(id: foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl)
+            let foodComponent = self.createNewFoodMealComponent(id:foodItem!.id, name: foodItem!.name, description: foodItem!.description, kcal: foodItem!.kcal, protein: foodItem!.protein, potassium: foodItem!.potassium, sodium: foodItem!.sodium, water: foodItem!.water, fiber: foodItem!.fiber, portionSize: foodItem!.portionSize, imageUrl: foodItem!.imageUrl, foodId: foodItem!.foodId)
             
             if(self.weightUnit?.id == nil){
                 self.weightId = 8
@@ -272,7 +264,6 @@ class FoodDetailViewController: UIViewController {
             })
         }
         else{
-            
             let dateFormatter: DateFormatter = DateFormatter()
             
             // Set date format
@@ -284,51 +275,11 @@ class FoodDetailViewController: UIViewController {
             
             let patchConsumption = self.createPatchConsumption(amount: self.amount, date: finalDate, mealTime: self.mealtimeString)
             
-            NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: patchConsumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
-                let alertController = UIAlertController(
-                    title: NSLocalizedString("Success", comment: "Title"),
-                    message: NSLocalizedString("Voedsel is gewijzigd", comment: "Message"),
-                    preferredStyle: .alert)
-                
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
-                    self.navigateToDiary()
-                }))
-                self.present(alertController, animated: true, completion: nil)
-            })
+            editConsumption(consumption: patchConsumption)
         }
     }
     
-    func createNewPatient(id: Int) -> PatientConsumption {
-        let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
-        return consumptionPatient
-    }
-    
-    func createPatchConsumption(amount: Float, date: String, mealTime : String) -> NewConsumptionPatch {
-        let patchConsumption : NewConsumptionPatch = NewConsumptionPatch(amount: amount, date: date, mealTime: mealTime)
-        return patchConsumption
-    }
-    
-    func createNewConsumptionObject(amount: Float, date: String, mealTime: String, patient: PatientConsumption, weightUnit: newWeightUnit, foodMealComponent: newFoodMealComponent) -> NewConsumptionModel {
-        
-        let consumption : NewConsumptionModel = NewConsumptionModel(amount: amount, date: date, mealTime: mealTime, weightUnit: weightUnit, foodmealComponent: foodMealComponent, patient: patient)
-        return consumption
-    }
-    
-    func createNewWeight(id: Int, unit : String, short : String, createdAt: String, updatedAt : String) -> newWeightUnit {
-        let consumptionWeight : newWeightUnit = newWeightUnit(id: id, unit: unit, short: short, createdAt: createdAt, updatedAt: updatedAt)
-        return consumptionWeight
-    }
-    
-    func createNewFoodMealComponent(id: Int, name: String, description: String, kcal: Float, protein: Float, potassium: Float, sodium: Float, water: Float, fiber: Float, portionSize: Float, imageUrl: String) -> newFoodMealComponent {
-        
-        let foodmealComponent : newFoodMealComponent = newFoodMealComponent(id: id, name: name, description: description, kcal: kcal, protein: protein, potassium: potassium, sodium: sodium, water: water, fiber: fiber, portionSize: portionSize, imageUrl: imageUrl)
-        return foodmealComponent
-    }
-    
-    func createApiHelper(id : Int) -> ApiHelper{
-        let helper : ApiHelper = ApiHelper(id: id)
-        return helper
-    }
+  
     
     func addProductToMealList() {
         var productExist = false
@@ -363,15 +314,17 @@ class FoodDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func displayErrorMessage(){
+    func displayErrorMessage(title:String, message: String){
         let alertController = UIAlertController(
-            title: NSLocalizedString("Error", comment: "Title"),
-            message: NSLocalizedString("Portie waarde klopt niet", comment: "Message"),
+            title: NSLocalizedString(title, comment: "Title"),
+            message: NSLocalizedString(message, comment: "Message"),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    //MARK: Navigations
     
     func navigateToMeal(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -393,11 +346,43 @@ class FoodDetailViewController: UIViewController {
         detailFoodVC.editMealObject = self.meal
         detailFoodVC.editMealsHasbeenRetrieved = false
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
-        
     }
     
+    //MARK: Creating Object
+    func createNewPatient(id: Int) -> PatientConsumption {
+        let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
+        return consumptionPatient
+    }
+    
+    func createPatchConsumption(amount: Float, date: String, mealTime : String) -> NewConsumptionPatch {
+        let patchConsumption : NewConsumptionPatch = NewConsumptionPatch(amount: amount, date: date, mealTime: mealTime)
+        return patchConsumption
+    }
+    
+    func createNewConsumptionObject(amount: Float, date: String, mealTime: String, patient: PatientConsumption, weightUnit: newWeightUnit, foodMealComponent: newFoodMealComponent) -> NewConsumptionModel {
+        
+        let consumption : NewConsumptionModel = NewConsumptionModel(amount: amount, date: date, mealTime: mealTime, weightUnit: weightUnit, foodmealComponent: foodMealComponent, patient: patient)
+        return consumption
+    }
+    
+    func createNewWeight(id: Int, unit : String, short : String, createdAt: String, updatedAt : String) -> newWeightUnit {
+        let consumptionWeight : newWeightUnit = newWeightUnit(id: id, unit: unit, short: short, createdAt: createdAt, updatedAt: updatedAt)
+        return consumptionWeight
+    }
+    
+    func createNewFoodMealComponent(id: Int, name: String, description: String, kcal: Float, protein: Float, potassium: Float, sodium: Float, water: Float, fiber: Float, portionSize: Float, imageUrl: String, foodId : Int) -> newFoodMealComponent {
+        
+        let foodmealComponent : newFoodMealComponent = newFoodMealComponent(id: id, name: name, description: description, kcal: kcal, protein: protein, potassium: potassium, sodium: sodium, water: water, fiber: fiber, portionSize: portionSize, imageUrl: imageUrl, foodId: foodId)
+        return foodmealComponent
+    }
+    
+    
+    //MARK: API CALLS
+    
+    //Favorites
+    
     func checkIfFavorite(){
-        NiZiAPIHelper.searchOneFoodFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: favoriteFood!.id!, withPatient: KeychainWrapper.standard.string(forKey: "patientId")!).responseData(completionHandler: { response in
+        NiZiAPIHelper.searchOneFoodFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: foodItem!.foodId, withPatient: KeychainWrapper.standard.string(forKey: "patientId")!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
             else { print("temp1"); return }
@@ -410,4 +395,23 @@ class FoodDetailViewController: UIViewController {
             print(self.foodlist.count)
         })
     }
+    
+    //Consumption
+    
+    func editConsumption(consumption : NewConsumptionPatch){
+        NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Success", comment: "Title"),
+                message: NSLocalizedString("Voedsel is gewijzigd", comment: "Message"),
+                preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: {action in
+                self.navigateToDiary()
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    
+    
 }
