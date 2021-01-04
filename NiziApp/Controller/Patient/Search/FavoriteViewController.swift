@@ -63,8 +63,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
-        //detailFoodVC.foodItem = food.food?.foodMealComponent
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DetailFoodViewController") as! DetailFoodViewController;()
+        detailFoodVC.foodItem = food.food?.foodMealComponent
         detailFoodVC.favorite = self.createFavoriteShort(id: food.id!, food: (food.food?.id)!)
         detailFoodVC.foodObject = food.food
         self.navigationController?.pushViewController(detailFoodVC, animated: true)

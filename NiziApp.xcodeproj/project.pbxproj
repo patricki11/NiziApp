@@ -50,6 +50,7 @@
 		2180FAE3258604D30022920E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAE2258604D20022920E /* HomeViewController.swift */; };
 		21C58C782586B156004944AA /* MealSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C58C772586B155004944AA /* MealSearchTableViewCell.swift */; };
 		21C58C7B2586B9B7004944AA /* NewFavoriteShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */; };
+		21D8793725A348DE00E75037 /* DetailFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8793625A348DD00E75037 /* DetailFoodViewController.swift */; };
 		5330AE3B256BEAEE0027A768 /* NewDietaryManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */; };
 		5330AE3E256BEB490027A768 /* NewDietaryRestriction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */; };
 		5330AE42257A77160027A768 /* AddConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330AE41257A77160027A768 /* AddConversationViewController.swift */; };
@@ -118,6 +119,7 @@
 		2180FAE2258604D20022920E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		21C58C772586B155004944AA /* MealSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchTableViewCell.swift; sourceTree = "<group>"; };
 		21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFavoriteShort.swift; sourceTree = "<group>"; };
+		21D8793625A348DD00E75037 /* DetailFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFoodViewController.swift; sourceTree = "<group>"; };
 		5330AE3A256BEAEE0027A768 /* NewDietaryManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryManagement.swift; sourceTree = "<group>"; };
 		5330AE3D256BEB490027A768 /* NewDietaryRestriction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDietaryRestriction.swift; sourceTree = "<group>"; };
 		5330AE41257A77160027A768 /* AddConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConversationViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				5330AE472582679F0027A768 /* AddConversationItemViewController.swift */,
 				5330AE4F2583870B0027A768 /* CircularProgressView.swift */,
 				5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */,
+				21D8793625A348DD00E75037 /* DetailFoodViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				5330AE542583BEE20027A768 /* ShowPatientDiaryViewController.swift in Sources */,
 				215FE88C256C456B007F05AB /* ConversationCell.swift in Sources */,
 				214F5EB323BF85C8003311A1 /* PatientGuidelineTableViewCell.swift in Sources */,
+				21D8793725A348DE00E75037 /* DetailFoodViewController.swift in Sources */,
 				215303C92424DBDB00D58C9C /* AddPatientGuidelinesViewController.swift in Sources */,
 				217496522391832700243B41 /* SceneDelegate.swift in Sources */,
 				9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */,

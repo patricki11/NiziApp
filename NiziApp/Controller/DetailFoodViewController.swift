@@ -1,16 +1,17 @@
 //
-//  FoodDetailViewController.swift
+//  DetailFoodViewController.swift
 //  NiziApp
 //
-//  Created by Samir Yeasin on 30/12/2020.
-//  Copyright © 2020 Samir Yeasin. All rights reserved.
+//  Created by Samir Yeasin on 04/01/2021.
+//  Copyright © 2021 Samir Yeasin. All rights reserved.
 //
 
 import UIKit
 import SwiftKeychainWrapper
 import Kingfisher
 
-class FoodDetailViewController: UIViewController {
+class DetailFoodViewController: UIViewController {
+    
     @IBOutlet weak var DetailTitle: UILabel!
     @IBOutlet weak var Portion: UILabel!
     @IBOutlet weak var Kcal: UILabel!
@@ -49,8 +50,13 @@ class FoodDetailViewController: UIViewController {
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
     var foodObject      : NewFood?
-    
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        SetupData()
+        // Do any additional setup after loading the view.
+    }
+
     @IBAction func AddToDiary(_ sender: Any) {
         if let floatValue = Float(portionSizeInput.text!) {
             amount = floatValue
@@ -97,11 +103,6 @@ class FoodDetailViewController: UIViewController {
         }else{
             deleteConsumptionCall()
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        SetupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,7 +167,6 @@ class FoodDetailViewController: UIViewController {
         
         self.checkIfFavoriteCall()
     }
-    
     
     func Addfavorite() {
         if(self.foodlist.count >= 1){
@@ -262,8 +262,6 @@ class FoodDetailViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //MARK: Navigations
-    
     func navigateToMeal(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
@@ -297,7 +295,7 @@ class FoodDetailViewController: UIViewController {
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-    //MARK: Creating Object
+    
     func createNewPatient(id: Int) -> PatientConsumption {
         let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
         return consumptionPatient
@@ -378,4 +376,5 @@ class FoodDetailViewController: UIViewController {
             self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijdert", location: "toMeal")
         })
     }
+
 }

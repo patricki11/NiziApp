@@ -70,7 +70,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DetailFoodViewController") as! DetailFoodViewController;()
         detailFoodVC.foodItem = food.foodMealComponent
         detailFoodVC.weightUnit = food.weightObject
         detailFoodVC.food = food

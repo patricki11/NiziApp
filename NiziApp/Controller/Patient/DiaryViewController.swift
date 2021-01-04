@@ -28,6 +28,20 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var headers        : [postStruct] = []
     var patient        : NewPatient?
     @IBOutlet weak var calendar: UIDatePicker!
+    var currentDayCounter : Int = 0
+    var selectedDate : Date?
+    
+    lazy var apiDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter
+    }()
+    
+    lazy var readableDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM YYYY"
+        return formatter
+    }()
     
     
     override func viewDidLoad() {
@@ -36,6 +50,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.patient = createNewPatientObject(id: patient!, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
         
+        /*
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
@@ -45,6 +60,9 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         //getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
         
         calendar.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+ */
+        changeCurrentDayLabel()
+        //getConsumption(Date: "")
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {
@@ -66,13 +84,15 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        /*
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: date)
         let finalDate = formattedDate + "T00:00:00.000Z"
-        getConsumption(Date: finalDate)
-        calendar.setDate(date, animated: false)
+ */
+        getConsumption(Date: "")
+        //calendar.setDate(date, animated: false)
         self.diaryTable.reloadData()
         
     }
@@ -131,12 +151,15 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // API Calls
     func getConsumption(Date date: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
         breakfastFoods  = []
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient!, withStartDate: date).responseData(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient!, withStartDate: dateFormatter.string(from: selectedDate!)).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -300,7 +323,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             break
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductDetailListViewController") as! FoodDetailViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DetailFoodViewController") as! DetailFoodViewController;()
         detailFoodVC.foodItem = food.foodMealCompenent
         detailFoodVC.consumptionId = food.id!
         detailFoodVC.isDiaryDetail = true
@@ -308,10 +331,47 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @IBAction func previousDay(_ sender: Any) {
+        currentDayCounter -= 1
+        changeCurrentDayLabel()
+        getConsumption(Date: "")
     }
     
     @IBAction func nextDay(_ sender: Any) {
-        calendar.date.addingTimeInterval(1)
+        currentDayCounter += 1
+        changeCurrentDayLabel()
+        getConsumption(Date: "")
+    }
+    
+    
+    @IBOutlet weak var currentWeekLabel: UILabel!
+    
+    func changeCurrentDayLabel() {
+
+        selectedDate = Calendar.current.date(byAdding: .day, value: currentDayCounter, to: Date())
+                
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY"
+        
+        let secondDateFormatter = DateFormatter()
+        secondDateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = secondDateFormatter.string(from: selectedDate!)
+        let finalDate = formattedDate + "T00:00:00.000Z"
+        
+        saveDate(date: finalDate)
+        
+        if(currentDayCounter == -1) {
+            currentWeekLabel.text = NSLocalizedString("Yesterday", comment: "")
+        }
+        else if(currentDayCounter == 0) {
+            currentWeekLabel.text = NSLocalizedString("Today", comment: "")
+        }
+        else if(currentDayCounter == 1) {
+            currentWeekLabel.text = NSLocalizedString("Tomorrow", comment: "")
+        }
+        else {
+            currentWeekLabel.text = "\(dateFormatter.string(from: selectedDate!))"
+        }
+        
     }
     
 }
