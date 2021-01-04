@@ -73,6 +73,11 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         foodListTable?.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Mealfoodlist.count
     }

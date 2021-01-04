@@ -97,6 +97,11 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     fileprivate func SetupDatePicker() {
         DatePicker.setValue(UIColor.white, forKeyPath: "textColor")
         DatePicker.setValue(false, forKeyPath: "highlightsToday")

@@ -27,8 +27,9 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-       }
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     @IBAction func productAction(_ sender: Any) {
     }
@@ -97,16 +98,16 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: API CALLS
-
+    
     func searchFood() {
         NiZiAPIHelper.getFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: SearchFoodInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
             self.FoodTable?.reloadData()
