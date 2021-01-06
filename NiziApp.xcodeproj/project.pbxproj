@@ -39,6 +39,7 @@
 		2174966C2391913300243B41 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966B2391913300243B41 /* PatientListViewController.swift */; };
 		2174966E2391937A00243B41 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966D2391937A00243B41 /* Patient.swift */; };
 		217496702391A4F500243B41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174966F2391A4F500243B41 /* LoginViewController.swift */; };
+		21781EEA25A62BAD0069356A /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781EE925A62BAD0069356A /* protocol.swift */; };
 		2180FA6E257E557D0022920E /* NewConsumptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA6D257E557D0022920E /* NewConsumptionModel.swift */; };
 		2180FA71257E563B0022920E /* PatientConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA70257E563B0022920E /* PatientConsumption.swift */; };
 		2180FA7C257FBA620022920E /* NewConsumptionPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */; };
@@ -108,6 +109,7 @@
 		2174966B2391913300243B41 /* PatientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
 		2174966D2391937A00243B41 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		2174966F2391A4F500243B41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		21781EE925A62BAD0069356A /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 		2180FA6D257E557D0022920E /* NewConsumptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsumptionModel.swift; sourceTree = "<group>"; };
 		2180FA70257E563B0022920E /* PatientConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientConsumption.swift; sourceTree = "<group>"; };
 		2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsumptionPatch.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				2180FA7E2580CE590022920E /* NewMeal.swift */,
 				2180FA812581027D0022920E /* NewMealFood.swift */,
 				21C58C7A2586B9B7004944AA /* NewFavoriteShort.swift */,
+				21781EE925A62BAD0069356A /* protocol.swift */,
 			);
 			path = v2_API;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				214DB7BD255C37D0003FFCA7 /* NewRole.swift in Sources */,
 				2154CFDC242942D300E96AEF /* DiaryViewController.swift in Sources */,
 				2180FA71257E563B0022920E /* PatientConsumption.swift in Sources */,
+				21781EEA25A62BAD0069356A /* protocol.swift in Sources */,
 				5330AE48258267A00027A768 /* AddConversationItemViewController.swift in Sources */,
 				5330AE502583870B0027A768 /* CircularProgressView.swift in Sources */,
 				9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */,

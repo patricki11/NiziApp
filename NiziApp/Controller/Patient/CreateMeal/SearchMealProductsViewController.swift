@@ -46,7 +46,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,11 +71,13 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DetailFoodViewController") as! DetailFoodViewController;()
+        
         detailFoodVC.foodItem = food.foodMealComponent
         detailFoodVC.weightUnit = food.weightObject
         detailFoodVC.food = food
         detailFoodVC.Mealfoodlist = Mealfoodlist
         detailFoodVC.isMealProductDetail = true
+        
         if(editMeal){
             detailFoodVC.editMeal = true
             detailFoodVC.editMealObject = self.editMealObject

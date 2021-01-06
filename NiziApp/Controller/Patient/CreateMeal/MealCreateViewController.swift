@@ -9,7 +9,17 @@
 import UIKit
 import SwiftKeychainWrapper
 
-class MealCreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MealCreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CartSelection {
+    
+    func addProductToCart(product: NewFood, atindex: Int) {
+        Mealfoodlist[atindex] = product
+        for product in Mealfoodlist {
+            print(product.foodMealComponent?.portionSize)
+        }
+        self.calculateDietary()
+        foodListTable.reloadData()
+    }
+    
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var nameInput: UITextField!
@@ -88,6 +98,9 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         productsMealCell.titleLbl.text = Mealfoodlist[idx].foodMealComponent?.name
         let portionSizeString : String = String(format:"%.f",Mealfoodlist[idx].foodMealComponent?.portionSize as! CVarArg)
         productsMealCell.subTitleLbl.text = ( portionSizeString + " " + (Mealfoodlist[idx].weightObject?.unit)!)
+        productsMealCell.food = Mealfoodlist[indexPath.row]
+        productsMealCell.index = indexPath.row
+        productsMealCell.cartSelectionDelegate = self
         return productsMealCell
     }
     
@@ -128,6 +141,13 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func calculateDietary(){
+        
+        calorieResultLbl.text = "0.0"
+        fiberResultLbl.text = "0.0"
+        waterResultLbl.text = "0.0"
+        potassiumResultLbl.text = "0.0"
+        proteinResultLbl.text = "0.0"
+        sodiumResultLbl.text = "0.0"
         
         if(Mealfoodlist.count > 0){
             for food in Mealfoodlist {
@@ -227,7 +247,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         }
 
         for product in self.Mealfoodlist {
-            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: 1).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: product.foodMealComponent!.portionSize).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
                     else { print("temp1"); return }

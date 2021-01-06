@@ -26,8 +26,8 @@ class DetailFoodViewController: UIViewController {
     @IBOutlet weak var trashBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var portionSizeInput: UITextField!
-    @IBOutlet weak var mealSearchBtn: UIButton!
-    @IBOutlet weak var mealSaveBtn: UIButton!
+    //@IBOutlet weak var mealSearchBtn: UIButton!
+    //@IBOutlet weak var mealSaveBtn: UIButton!
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var mealEditBtn: UIButton!
     
@@ -108,7 +108,7 @@ class DetailFoodViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if(isMealProductDetail){
-            self.navigationController?.setNavigationBarHidden(true, animated: animated)
+            self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
@@ -116,8 +116,8 @@ class DetailFoodViewController: UIViewController {
     
     func SetupData()
     {
-        mealSearchBtn.isHidden = true
-        mealSaveBtn.isHidden = true
+        //mealSearchBtn.isHidden = true
+        //mealSaveBtn.isHidden = true
         mealEditBtn.isHidden = true
         datepicker.isHidden = true
         trashBtn.isHidden = true
@@ -135,8 +135,8 @@ class DetailFoodViewController: UIViewController {
         }
         
         if(isMealProductDetail){
-            mealSearchBtn.isHidden = false
-            mealSaveBtn.isHidden = true
+            //mealSearchBtn.isHidden = false
+            //mealSaveBtn.isHidden = true
         }
         
         DetailTitle.text = self.foodItem!.name
@@ -377,4 +377,10 @@ class DetailFoodViewController: UIViewController {
         })
     }
 
+}
+
+extension FoodDetailViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        (viewController as? SearchMealProductsViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
+    }
 }

@@ -33,13 +33,13 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func navigateSearchProducts(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
     @IBAction func navigateFavoriteProducts(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FavoriteViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
     

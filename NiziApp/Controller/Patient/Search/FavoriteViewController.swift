@@ -40,13 +40,13 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func navigateProduct(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
     @IBAction func navigateMeal(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+        self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

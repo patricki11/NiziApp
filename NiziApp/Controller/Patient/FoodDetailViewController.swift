@@ -104,19 +104,9 @@ class FoodDetailViewController: UIViewController {
         SetupData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        /*
-        if(isMealProductDetail){
-            self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        }else{
-            self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        }
- */
-    }
-    
     func SetupData()
     {
+        
         mealSearchBtn.isHidden = true
         mealSaveBtn.isHidden = true
         mealEditBtn.isHidden = true
@@ -136,7 +126,7 @@ class FoodDetailViewController: UIViewController {
         }
         
         if(isMealProductDetail){
-            mealSearchBtn.isHidden = false
+            mealSearchBtn.isHidden = true
             mealSaveBtn.isHidden = true
         }
         
@@ -382,8 +372,10 @@ class FoodDetailViewController: UIViewController {
     }
 }
 
+/*
 extension FoodDetailViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         (viewController as? MealCreateViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
     }
 }
+*/
