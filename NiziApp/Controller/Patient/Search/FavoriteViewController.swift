@@ -21,6 +21,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         GetFavortiesFood()
+        searchInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        GetFavortiesFoodSearch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +91,23 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func GetFavortiesFood() {
         NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data
+                else { print("temp1"); return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let foodlistJSON = try? jsonDecoder.decode( [NewFavorite].self, from: jsonResponse )
+                else { print("temp2"); return }
+            
+            self.foodlist = foodlistJSON
+            self.FavoriteTable?.reloadData()
+            self.totalResultLbl.text = "Aantal(\(self.foodlist.count))"
+        })
+        
+    }
+    
+    func GetFavortiesFoodSearch() {
+        NiZiAPIHelper.GetMyFoodsSearch(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID, withFood: searchInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

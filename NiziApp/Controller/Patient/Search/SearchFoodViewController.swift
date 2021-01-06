@@ -29,10 +29,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @objc func textFieldDidChange(textField: UITextField){
-
-    print("Text changed")
     searchFood()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
