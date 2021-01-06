@@ -180,6 +180,61 @@ extension HomeViewController : UITableViewDataSource {
         
         cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")
         
+        var min = Double(guideline.minimum ?? 0)
+        var max = Double(guideline.maximum ?? 0)
+        var total2 = Double(total)
+        
+        if(total == 0) {
+            cell.feedbackLabel.text = "Geen inname"
+            cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
+            if(total2 < max && min == 0){
+                cell.feedbackLabel.text = "Goed bezig"
+                cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
+            }
+        }
+        
+        if(total != 0) {
+           
+            if(min != 0 && max != 0) {
+                if(total2 < max) {
+                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
+                }
+                else if(total2 >= min && total <= guideline.maximum!) {
+                    cell.feedbackLabel.text = "Goed bezig"
+                    cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
+                    
+                }
+                else if(total2 > max) {
+                    cell.feedbackLabel.text = "Beperk uw inname"
+                    cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
+                }
+            }
+            else if(min != 0) {
+                if(total2 >= min) {
+                    cell.feedbackLabel.text = "Goed bezig"
+                    cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
+                }
+                else if(total2 < min) {
+                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
+                }
+            }
+            else if(max != 0) {
+                if(total2 <= max) {
+                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
+                }
+                else if(total2 > max) {
+                    cell.feedbackLabel.text = "Beperk uw inname"
+                    cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
+                }
+            }
+        }
+        
+        cell.feedbackLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
+        cell.backgroundColor = UIColor(red: 0xFF, green: 0xFF, blue: 0xFF)
+        
         return cell
     }
     
@@ -291,4 +346,22 @@ extension HomeViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
     }
+}
+
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }

@@ -106,11 +106,13 @@ class FoodDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        /*
         if(isMealProductDetail){
             self.navigationController?.setNavigationBarHidden(true, animated: animated)
         }else{
             self.navigationController?.setNavigationBarHidden(false, animated: animated)
         }
+ */
     }
     
     func SetupData()
@@ -377,5 +379,11 @@ class FoodDetailViewController: UIViewController {
         NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
             self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijdert", location: "toMeal")
         })
+    }
+}
+
+extension FoodDetailViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        (viewController as? MealCreateViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
     }
 }

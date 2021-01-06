@@ -24,6 +24,15 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SearchFoodInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+    }
+    
+    
+    @objc func textFieldDidChange(textField: UITextField){
+
+    print("Text changed")
+    searchFood()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

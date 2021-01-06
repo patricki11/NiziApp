@@ -19,12 +19,16 @@ class PatientGuidelineTableViewCell : UITableViewCell {
     
     @IBOutlet weak var guidelineChartView: UIView!
     
+    @IBOutlet weak var feedbackLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         guidelineNameLabel.text = ""
         firstGuidelineValueLabel.text = ""
         secondGuidelineValueLabel.text = ""
         guidelineIconImageView.image = nil
+        feedbackLabel.text = ""
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

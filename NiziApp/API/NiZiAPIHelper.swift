@@ -132,7 +132,7 @@ class NiZiAPIHelper {
     
     //GET CONVERSATIONS //
     static func GetConversations(withToken token : String, withPatient patientId: Int) -> DataRequest{
-        let apiMethod = "feedbacks?patient.id=\(patientId)"
+        let apiMethod = "feedbacks?patient.id=\(patientId)&_sort=date:DESC"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
@@ -276,9 +276,6 @@ class NiZiAPIHelper {
         print(parameters)
         return AF.request(baseUrl + apiMethod, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
-    
-    
-    
     // NEW MEAL //
     
     // DIETARY MANAGEMENT //

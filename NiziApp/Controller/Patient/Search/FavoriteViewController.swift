@@ -29,6 +29,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @IBAction func navigateProduct(_ sender: Any) {

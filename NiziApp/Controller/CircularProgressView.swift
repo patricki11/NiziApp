@@ -16,9 +16,9 @@ private var circleLayer = CAShapeLayer()
 private var progressLayer = CAShapeLayer()
 private var totalLabel = CATextLayer()
   
-    private var greenColor : CGColor = UIColor.systemGreen.cgColor
-    private var yellowColor : CGColor = UIColor.systemYellow.cgColor
-    private var redColor : CGColor = UIColor.systemRed.cgColor
+    private var greenColor : CGColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96).cgColor
+    private var yellowColor : CGColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76).cgColor
+    private var redColor : CGColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87).cgColor
     private var grayColor : CGColor = UIColor.systemGray.cgColor
     
     override init(frame: CGRect) {
@@ -120,4 +120,10 @@ private var totalLabel = CATextLayer()
         circularProgressAnimation.isRemovedOnCompletion = false
         progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
     }
+    
+    
 }
+
+
+
+
