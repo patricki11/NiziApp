@@ -2987,13 +2987,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0" userLabel="Day Overview Label">
-                                <rect key="frame" x="19.999999999999993" y="223" width="114.33333333333331" height="21"/>
+                                <rect key="frame" x="19.999999999999993" y="218" width="114.33333333333331" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oh2-6H-Hzf">
-                                <rect key="frame" x="20" y="261" width="374" height="540"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oh2-6H-Hzf">
+                                <rect key="frame" x="20" y="259" width="374" height="583"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientGuidelineTableViewCell" rowHeight="120" id="4EB-wf-545" userLabel="guidelineCell" customClass="PatientGuidelineTableViewCell" customModule="NiziApp" customModuleProvider="target">
@@ -3100,9 +3100,10 @@
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="bottom" secondItem="oh2-6H-Hzf" secondAttribute="bottom" constant="20" id="Dsi-uE-sg7"/>
                             <constraint firstItem="0vq-FB-ty0" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" constant="20" id="KAG-85-Z2W"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="Vdd-eb-D4E" secondAttribute="trailing" id="LKu-ha-4U9"/>
-                            <constraint firstItem="0vq-FB-ty0" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="15" id="OkF-iQ-VvJ"/>
+                            <constraint firstItem="0vq-FB-ty0" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="10" id="OkF-iQ-VvJ"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="QUT-fL-OqJ" secondAttribute="trailing" id="OkJ-9E-HUY"/>
                             <constraint firstItem="4gV-VL-M91" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" id="QP1-2k-qqG"/>
+                            <constraint firstItem="oh2-6H-Hzf" firstAttribute="top" secondItem="9Pb-lX-qtf" secondAttribute="bottom" constant="10" id="Rfi-x0-3Fu"/>
                             <constraint firstItem="dLB-32-0LK" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="15" id="UBM-YV-xnP"/>
                             <constraint firstItem="uTx-zh-EeN" firstAttribute="leading" secondItem="9Pb-lX-qtf" secondAttribute="trailing" constant="5" id="WWX-z9-qsB"/>
                             <constraint firstAttribute="trailing" secondItem="uTx-zh-EeN" secondAttribute="trailing" constant="20" id="XdA-qr-JjG"/>
