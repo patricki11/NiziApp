@@ -89,6 +89,10 @@
 "Yesterday" = "Gisteren";
 "Today" = "Vandaag";
 "Tomorrow" = "Morgen";
+
+"lastWeek" = "Vorige Week";
+"thisWeek" = "Deze Week";
+"nextWeek" = "Volgende Week";
 // Dates
 
 
