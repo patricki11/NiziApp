@@ -21,6 +21,10 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var dayOverviewLabel: UILabel!
     @IBOutlet weak var guidelineTableView: UITableView!
     
+    @IBOutlet weak var useWeekLabel: UILabel!
+    @IBOutlet weak var useDayLabel: UILabel!
+    @IBOutlet weak var selectDayWeekSwitch: UISwitch!
+    
     lazy var apiDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
@@ -85,6 +89,7 @@ class PatientOverviewViewController : UIViewController
     
     func changeCurrentDayLabel() {
 
+        dayOverviewLabel.text = NSLocalizedString("dayOverview", comment: "")
         selectedDate = Calendar.current.date(byAdding: .day, value: currentDayCounter, to: Date())
                 
         let dateFormatter = DateFormatter()
@@ -107,6 +112,8 @@ class PatientOverviewViewController : UIViewController
     }
     
     func changeCurrentWeekLabel() {
+        
+        dayOverviewLabel.text = NSLocalizedString("weekOverview", comment: "")
         
         firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().startOfWeek!)
         lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().endOfWeek!)
@@ -136,6 +143,7 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()
+        setupDayWeekSelector()
         setLanguageSpecificText()
         getDietaryGuidelines()
         changeAgeGenderLabel()
@@ -172,6 +180,14 @@ class PatientOverviewViewController : UIViewController
         guidelineTableView?.refreshControl = refreshControl
     }
     
+    func setupDayWeekSelector() {
+        selectDayWeekSwitch.onTintColor = UIColor.green
+        selectDayWeekSwitch.backgroundColor = UIColor.systemGreen
+        selectDayWeekSwitch.layer.cornerRadius = selectDayWeekSwitch.frame.height / 2.0
+        selectDayWeekSwitch.backgroundColor = UIColor.systemGreen
+        selectDayWeekSwitch.clipsToBounds = true
+    }
+    
     @objc func refreshGuidelineList() {
         patientGuidelines = []
         guidelineTableView?.reloadData()
@@ -180,6 +196,28 @@ class PatientOverviewViewController : UIViewController
     
     func setLanguageSpecificText() {
         patientNameLabel.text = "\(patient.userObject!.first_name) \(patient.userObject!.last_name)"
+        useDayLabel.text = "Dag"
+        useWeekLabel.text = "Week"
+    }
+    
+    @IBAction func ChangeDayWeekSelection(_ sender: Any) {
+        if(selectDayWeekSwitch.isOn) {
+            useWeek = true
+            currentDayCounter = currentDayCounter / 7
+        }
+        else {
+            useWeek = false
+            currentDayCounter = currentDayCounter * 7
+        }
+        
+        if(useWeek) {
+            changeCurrentWeekLabel()
+            getConsumptionsForWeek()
+        }
+        else {
+            changeCurrentDayLabel()
+            getConsumptions()
+        }
     }
     
     func setupTableView() {

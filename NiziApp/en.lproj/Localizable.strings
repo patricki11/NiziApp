@@ -32,7 +32,8 @@
 "DiaryDayLabel" = "VANDAAG";
 "DiaryTitle" = "Voeding";
 "DiaryAddProduct" = "voeding toevoegen";
-
+"dayOverview" = "Dagoverzicht";
+"weekOverview" = "Weekoverzicht";
 
 // Nierstichting Info Login Page
 "NeedHelp" = "Hulp Nodig?";

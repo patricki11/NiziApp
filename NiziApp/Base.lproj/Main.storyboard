@@ -2722,7 +2722,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="316" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -2987,7 +2987,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0" userLabel="Day Overview Label">
-                                <rect key="frame" x="20" y="218" width="374" height="21"/>
+                                <rect key="frame" x="19.999999999999993" y="223" width="114.33333333333331" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3072,20 +3072,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTx-zh-EeN">
+                                <rect key="frame" x="352" y="223" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLB-32-0LK">
+                                <rect key="frame" x="251" y="223" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-lX-qtf">
+                                <rect key="frame" x="298" y="218" width="51" height="31"/>
+                                <connections>
+                                    <action selector="ChangeDayWeekSelection:" destination="cIk-s1-WXa" eventType="valueChanged" id="y2W-KG-Hej"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MoH-Tn-ELv"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oh2-6H-Hzf" firstAttribute="leading" secondItem="3bF-E1-Sc8" secondAttribute="leading" constant="20" id="1cD-dH-Hzj"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="4gV-VL-M91" secondAttribute="trailing" id="8HT-dI-Nne"/>
+                            <constraint firstItem="9Pb-lX-qtf" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="10" id="9bU-FE-3jb"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="bottom" secondItem="oh2-6H-Hzf" secondAttribute="bottom" constant="20" id="Dsi-uE-sg7"/>
                             <constraint firstItem="0vq-FB-ty0" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" constant="20" id="KAG-85-Z2W"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="Vdd-eb-D4E" secondAttribute="trailing" id="LKu-ha-4U9"/>
-                            <constraint firstItem="0vq-FB-ty0" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="10" id="OkF-iQ-VvJ"/>
+                            <constraint firstItem="0vq-FB-ty0" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="15" id="OkF-iQ-VvJ"/>
                             <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="QUT-fL-OqJ" secondAttribute="trailing" id="OkJ-9E-HUY"/>
                             <constraint firstItem="4gV-VL-M91" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" id="QP1-2k-qqG"/>
-                            <constraint firstItem="MoH-Tn-ELv" firstAttribute="trailing" secondItem="0vq-FB-ty0" secondAttribute="trailing" constant="20" id="SeE-8P-u8f"/>
+                            <constraint firstItem="dLB-32-0LK" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="15" id="UBM-YV-xnP"/>
+                            <constraint firstItem="uTx-zh-EeN" firstAttribute="leading" secondItem="9Pb-lX-qtf" secondAttribute="trailing" constant="5" id="WWX-z9-qsB"/>
+                            <constraint firstAttribute="trailing" secondItem="uTx-zh-EeN" secondAttribute="trailing" constant="20" id="XdA-qr-JjG"/>
                             <constraint firstItem="QUT-fL-OqJ" firstAttribute="top" secondItem="Vdd-eb-D4E" secondAttribute="bottom" id="dNQ-Nk-Yb4"/>
+                            <constraint firstItem="9Pb-lX-qtf" firstAttribute="leading" secondItem="dLB-32-0LK" secondAttribute="trailing" constant="5" id="jFC-14-tw9"/>
+                            <constraint firstItem="uTx-zh-EeN" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="bottom" constant="15" id="l5x-qL-dbR"/>
                             <constraint firstItem="oh2-6H-Hzf" firstAttribute="trailing" secondItem="3bF-E1-Sc8" secondAttribute="trailing" constant="-20" id="lBW-gy-ayI"/>
                             <constraint firstItem="Vdd-eb-D4E" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" id="nz7-ez-hiL"/>
                             <constraint firstItem="QUT-fL-OqJ" firstAttribute="leading" secondItem="MoH-Tn-ELv" secondAttribute="leading" id="owS-I5-1et"/>
@@ -3102,6 +3125,9 @@
                         <outlet property="dayOverviewLabel" destination="0vq-FB-ty0" id="Lni-MT-xHv"/>
                         <outlet property="guidelineTableView" destination="oh2-6H-Hzf" id="I55-bg-e9Y"/>
                         <outlet property="patientNameLabel" destination="eAn-89-hrf" id="ots-Ho-YxN"/>
+                        <outlet property="selectDayWeekSwitch" destination="9Pb-lX-qtf" id="mXM-oD-hQ5"/>
+                        <outlet property="useDayLabel" destination="dLB-32-0LK" id="03D-eK-tMt"/>
+                        <outlet property="useWeekLabel" destination="uTx-zh-EeN" id="sRf-1z-X5l"/>
                         <segue destination="OHK-pA-puD" kind="push" id="aOn-4L-wNm"/>
                         <segue destination="zcp-Ij-gU0" kind="push" id="GnC-ia-3Qv"/>
                     </connections>
@@ -3877,7 +3903,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-a5-6ZZ">
-                                                    <rect key="frame" x="165" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="165" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="3RS-7G-1Np"/>
                                                         <constraint firstAttribute="height" constant="98" id="ocx-nb-dOS"/>
@@ -4360,7 +4386,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKQ-do-WTW">
-                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="316" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="F7Z-lU-axS"/>
                                                         <constraint firstAttribute="height" constant="98" id="ucb-7o-P1W"/>
@@ -4471,7 +4497,7 @@
         <image name="Webp.net-resizeimage" width="50" height="50"/>
         <image name="Website_s" width="128" height="128"/>
         <image name="bin_xs" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="circle" catalog="system" width="32" height="32"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
         <image name="folder.circle.fill" catalog="system" width="128" height="121"/>
         <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
