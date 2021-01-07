@@ -105,9 +105,22 @@ class PatientOverviewViewController : UIViewController
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        setupActivityIndicator()
         getDietaryGuidelines()
         changeAgeGenderLabel()
         getConsumptions()
+    }
+    
+    func setupActivityIndicator() {
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshGuidelineList), for: .valueChanged)
+        guidelineTableView?.refreshControl = refreshControl
+    }
+    
+    @objc func refreshGuidelineList() {
+        patientGuidelines = []
+        guidelineTableView?.reloadData()
+        getDietaryGuidelines()
     }
     
     func setLanguageSpecificText() {
@@ -142,6 +155,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func getDietaryGuidelines() {
+        guidelineTableView.refreshControl?.beginRefreshing()
         NiZiAPIHelper.getDietaryManagement(forDiet: patient.id!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
             guard let jsonResponse = response.data else { return }
@@ -153,6 +167,7 @@ class PatientOverviewViewController : UIViewController
             self.patientGuidelines = guidelines
             
             self.guidelineTableView.reloadData()
+            self.guidelineTableView.refreshControl?.endRefreshing()
         })
     }
     
