@@ -17,8 +17,9 @@ class NewFood : Codable {
     var name              : String?            = ""
     var foodMealComponent : newFoodMealComponent? = nil
     var favoriteFoods     : NewFavoriteShort?  = nil
+    var amount            : Float?               = 0
     
-    init(id : Int?, weight : Int?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?, weightObject : newWeightUnit?, favoriteFoods : NewFavoriteShort){
+    init(id : Int?, weight : Int?, createdAt : String?, updatedAt : String?, name : String?, foodMealComponent : newFoodMealComponent?, weightObject : newWeightUnit?, favoriteFoods : NewFavoriteShort, amount : Float?){
         self.id                = id
         self.weightId          = weight
         self.createdAt         = createdAt
@@ -27,6 +28,7 @@ class NewFood : Codable {
         self.foodMealComponent = foodMealComponent
         self.favoriteFoods     = favoriteFoods
         //self.weightObject      = weightObject
+        self.amount            = amount
     }
     
     enum CodingKeys : String, CodingKey {

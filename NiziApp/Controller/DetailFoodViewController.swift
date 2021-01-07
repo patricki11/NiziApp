@@ -236,6 +236,8 @@ class DetailFoodViewController: UIViewController {
             }
         }
         
+        food?.amount = 2
+        
         if(productExist == false){
             Mealfoodlist.append(food!)
         }
@@ -379,7 +381,7 @@ class DetailFoodViewController: UIViewController {
 
 }
 
-extension FoodDetailViewController: UINavigationControllerDelegate {
+extension DetailFoodViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         (viewController as? SearchMealProductsViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
     }

@@ -101,6 +101,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         productsMealCell.food = Mealfoodlist[indexPath.row]
         productsMealCell.index = indexPath.row
         productsMealCell.cartSelectionDelegate = self
+        productsMealCell.amountInput.text = Mealfoodlist[idx].amount?.description
         return productsMealCell
     }
     
@@ -247,7 +248,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         }
 
         for product in self.Mealfoodlist {
-            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: product.foodMealComponent!.portionSize).responseData(completionHandler: { response in
+            NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: product.amount!).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
                     else { print("temp1"); return }
@@ -299,6 +300,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                     else { print("temp2"); return }
                 
                 self.retrievedFoodItem = FoodItem
+                self.retrievedFoodItem?.amount = mealFood.amount
                 self.Mealfoodlist.append(self.retrievedFoodItem!)
                 self.foodListTable.reloadData()
                 self.calculateDietary()

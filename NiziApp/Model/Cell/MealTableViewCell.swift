@@ -10,7 +10,7 @@ import UIKit
 
 class MealTableViewCell: UITableViewCell {
     
-    var number : Int = 0
+    var number : Float = 0
     var cartSelectionDelegate: CartSelection?
     var food : NewFood!
     var index : Int = 0
@@ -20,15 +20,17 @@ class MealTableViewCell: UITableViewCell {
     @IBOutlet weak var amountInput: UITextField!
     
     @IBAction func substractAction(_ sender: Any) {
-        var numberon = Int(amountInput.text!)
+        var numberon = Float(amountInput.text!)
         numberon!-=1
         amountInput.text = numberon?.description
+        food.amount = Float(numberon!)
+        cartSelectionDelegate?.addProductToCart(product: food, atindex: index)
     }
     @IBAction func IncrementAction(_ sender: Any) {
-        var numberon = Int(amountInput.text!)
+        var numberon = Float(amountInput.text!)
         numberon!+=1
         amountInput.text = numberon?.description
-        food.foodMealComponent?.portionSize = Float(2)
+        food.amount = Float(numberon!)
         cartSelectionDelegate?.addProductToCart(product: food, atindex: index)
     }
     
