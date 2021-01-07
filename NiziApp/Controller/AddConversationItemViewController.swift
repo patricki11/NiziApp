@@ -30,6 +30,7 @@ class AddConversationItemViewController : UIViewController
     
     var patientId : Int!
     var doctorId : Int!
+    var listViewController : AddConversationViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +91,8 @@ class AddConversationItemViewController : UIViewController
                 preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
+                self.listViewController.getConversation()
+                self.dismiss(animated: true, completion: {})
             }))
             
             self.present(alertController, animated: true, completion: nil)

@@ -31,6 +31,7 @@ class AddConversationViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
         getConversation()
         SetupTableView()
+        print("test")
     }
     
     func setupActivityIndicator() {
@@ -51,7 +52,11 @@ class AddConversationViewController: UIViewController {
         let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationItemViewController") as! AddConversationItemViewController
         conversationVC.patientId = patientId
         conversationVC.doctorId = doctorId
-        self.navigationController?.present(conversationVC, animated: true)
+        conversationVC.listViewController = self
+        self.navigationController?.present(conversationVC, animated: true, completion: {
+            
+            print("test-shown")
+        })
     }
     
     fileprivate func SetupTableView(){
