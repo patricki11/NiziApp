@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fd9-I8-H7P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fd9-I8-H7P">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -3036,6 +3036,12 @@
                                                         <constraint firstAttribute="width" constant="120" id="eXl-qe-87o"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qhd-6E-Wse" userLabel="Feedback Label">
+                                                    <rect key="frame" x="30" y="91.666666666666671" width="33" height="15.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.89350660478808297" green="0.89350660478808297" blue="0.89350660478808297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -3046,14 +3052,17 @@
                                                 <constraint firstItem="UH8-5w-3eK" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" constant="20" id="FI3-IT-wiS"/>
                                                 <constraint firstItem="m9U-97-e5R" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="JBe-ak-Qhb"/>
                                                 <constraint firstItem="gop-sX-B6i" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="Loq-hV-ORB"/>
+                                                <constraint firstItem="qhd-6E-Wse" firstAttribute="top" secondItem="gop-sX-B6i" secondAttribute="bottom" constant="5" id="Mgg-f3-vWS"/>
                                                 <constraint firstItem="cvc-Kb-8sC" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" constant="20" id="QtJ-tg-yHm"/>
                                                 <constraint firstItem="2nd-dk-hVj" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" id="TLc-8i-Htu"/>
                                                 <constraint firstItem="UH8-5w-3eK" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="gVR-tR-fAN"/>
                                                 <constraint firstAttribute="bottom" secondItem="2nd-dk-hVj" secondAttribute="bottom" id="i3E-hT-C95"/>
+                                                <constraint firstItem="qhd-6E-Wse" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="n4P-gv-ggs"/>
                                                 <constraint firstItem="m9U-97-e5R" firstAttribute="top" secondItem="cvc-Kb-8sC" secondAttribute="bottom" constant="5" id="sZ7-sV-Lvd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="feedbackLabel" destination="qhd-6E-Wse" id="ZCS-G6-Nz8"/>
                                             <outlet property="firstGuidelineValueLabel" destination="m9U-97-e5R" id="KxU-UZ-Rb5"/>
                                             <outlet property="guidelineChartView" destination="2nd-dk-hVj" id="NIs-V4-U5w"/>
                                             <outlet property="guidelineIconImageView" destination="UH8-5w-3eK" id="iru-5g-rIA"/>
