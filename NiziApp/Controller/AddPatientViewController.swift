@@ -50,6 +50,9 @@ class AddPatientViewController: UIViewController {
         picker.datePickerMode = .date
         picker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
         picker.maximumDate = Date()
+        if #available(iOS 13.4, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
         return picker
     }
     
