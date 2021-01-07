@@ -41,6 +41,12 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
     
+    static func readAllConsumption(withToken token: String, withPatient patientId: Int, betweenDate startDate: String, and endDate: String) -> DataRequest {
+        let apiMethod = "consumptions?patient.id=\(patientId)&date_gte=\(startDate)&date_lte=\(endDate)"
+        let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    
     static func readConsumption(withToken token : String,withConsumptionId consumptionId: Int) -> DataRequest{
         let apiMethod = "consumptions/\(consumptionId)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
