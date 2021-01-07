@@ -38,19 +38,38 @@ class PatientOverviewViewController : UIViewController
     var currentDayCounter : Int = 0
    
     var selectedDate : Date?
+    var firstDayOfWeek : Date?
+    var lastDayOfWeek : Date?
+    
+    var useWeek : Bool = false
+    var currentDayOfWeek : Int = Calendar.current.component(.weekday, from: Date())
     
     @IBOutlet weak var currentWeekLabel: UILabel!
     
     @IBAction func getPreviousWeek(_ sender: Any) {
         currentDayCounter -= 1
-        changeCurrentDayLabel()
-        getConsumptions()
+        
+        if(useWeek) {
+            changeCurrentWeekLabel()
+            getConsumptionsForWeek()
+        }
+        else {
+            changeCurrentDayLabel()
+            getConsumptions()
+        }
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
         currentDayCounter += 1
-        changeCurrentDayLabel()
-        getConsumptions()
+        
+        if(useWeek) {
+            changeCurrentWeekLabel()
+            getConsumptionsForWeek()
+        }
+        else {
+            changeCurrentDayLabel()
+            getConsumptions()
+        }
     }
     
     func changeAgeGenderLabel() {
@@ -87,6 +106,27 @@ class PatientOverviewViewController : UIViewController
         updateGuidelines()
     }
     
+    func changeCurrentWeekLabel() {
+        
+        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().startOfWeek!)
+        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().endOfWeek!)
+        
+        if(currentDayCounter == -1) {
+            currentWeekLabel.text = NSLocalizedString("lastWeek", comment: "")
+        }
+        else if(currentDayCounter == 0) {
+            currentWeekLabel.text = NSLocalizedString("thisWeek", comment: "")
+        }
+        else if(currentDayCounter == 1) {
+            currentWeekLabel.text = NSLocalizedString("nextWeek", comment: "")
+        }
+        else {
+            currentWeekLabel.text = "\(readableDateFormatter.string(from: firstDayOfWeek!)) - \(readableDateFormatter.string(from:lastDayOfWeek!))"
+        }
+        
+        updateGuidelines()
+    }
+    
     func updateGuidelines() {
         guidelineTableView?.reloadData()
     }
@@ -97,10 +137,17 @@ class PatientOverviewViewController : UIViewController
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()
         setLanguageSpecificText()
-        changeCurrentDayLabel()
         getDietaryGuidelines()
         changeAgeGenderLabel()
-        getConsumptions()
+        
+        if(useWeek) {
+            changeCurrentWeekLabel()
+            getConsumptionsForWeek()
+        }
+        else {
+            changeCurrentDayLabel()
+            getConsumptions()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,7 +155,15 @@ class PatientOverviewViewController : UIViewController
         setupActivityIndicator()
         getDietaryGuidelines()
         changeAgeGenderLabel()
-        getConsumptions()
+
+        if(useWeek) {
+            changeCurrentWeekLabel()
+            getConsumptionsForWeek()
+        }
+        else {
+            changeCurrentDayLabel()
+            getConsumptions()
+        }
     }
     
     func setupActivityIndicator() {
@@ -177,6 +232,21 @@ class PatientOverviewViewController : UIViewController
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
+            
+            guard let jsonResponse = response.data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            guard let consumptions = try? jsonDecoder.decode([NewConsumption].self, from: jsonResponse) else { return }
+            
+            self.patientConsumption = consumptions
+            
+            self.guidelineTableView.reloadData()
+        })
+    }
+    
+    func getConsumptionsForWeek() {
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, betweenDate: apiDateFormatter.string(from: firstDayOfWeek!), and: apiDateFormatter.string(from: lastDayOfWeek!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             
@@ -376,5 +446,19 @@ extension PatientOverviewViewController : UITableViewDataSource {
 extension PatientOverviewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+    }
+}
+
+extension Date {
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
     }
 }
