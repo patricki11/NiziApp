@@ -53,10 +53,7 @@ class AddConversationViewController: UIViewController {
         conversationVC.patientId = patientId
         conversationVC.doctorId = doctorId
         conversationVC.listViewController = self
-        self.navigationController?.present(conversationVC, animated: true, completion: {
-            
-            print("test-shown")
-        })
+        self.navigationController?.present(conversationVC, animated: true)
     }
     
     fileprivate func SetupTableView(){
