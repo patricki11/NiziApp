@@ -181,7 +181,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setupDayWeekSelector() {
-        selectDayWeekSwitch.onTintColor = UIColor.green
+        selectDayWeekSwitch.onTintColor = UIColor.systemGreen
         selectDayWeekSwitch.backgroundColor = UIColor.systemGreen
         selectDayWeekSwitch.layer.cornerRadius = selectDayWeekSwitch.frame.height / 2.0
         selectDayWeekSwitch.backgroundColor = UIColor.systemGreen
