@@ -41,7 +41,7 @@ class PatientOverviewViewController : UIViewController
     var firstDayOfWeek : Date?
     var lastDayOfWeek : Date?
     
-    var useWeek : Bool = false
+    var useWeek : Bool = true
     var currentDayOfWeek : Int = Calendar.current.component(.weekday, from: Date())
     
     @IBOutlet weak var currentWeekLabel: UILabel!
@@ -281,7 +281,6 @@ extension PatientOverviewViewController : UITableViewDataSource {
         
         var progressView = cell.guidelineChartView as! CircularProgressView
         progressView.progressAnimation(minimum: guideline.minimum, maximum: guideline.maximum, currentTotal: total)
-        
        
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
 
@@ -382,6 +381,15 @@ extension PatientOverviewViewController : UITableViewDataSource {
             for consumption in patientConsumption
             {
                 total += consumption.foodMealCompenent?.potassium ?? 0
+            }
+        }
+        
+        if(useWeek) {
+            if(currentDayCounter == 0) {
+                total = total / Float(currentDayOfWeek)
+            }
+            else {
+                total = total / 7
             }
         }
         
