@@ -200,54 +200,17 @@ extension PatientOverviewViewController : UITableViewDataSource {
        
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
-        
         if((guideline.minimum != 0 && guideline.minimum != nil) && (guideline.maximum != 0 && guideline.maximum != nil)) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
             cell.secondGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
-            
-            if(total < guideline.maximum!) {
-                cell.feedbackLabel.text = NSLocalizedString("keepGoingIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
-            }
-            else if(total > guideline.minimum! && total < guideline.maximum!) {
-                cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
-            }
-            else if(total > guideline.maximum!) {
-                cell.feedbackLabel.text = NSLocalizedString("limitIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
-            }
         }
         else if(guideline.minimum != 0 && guideline.minimum != nil) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
             cell.secondGuidelineValueLabel.text = ""
-            
-            if(total > guideline.minimum!) {
-                cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
-            }
-            else if(total < guideline.minimum!) {
-                cell.feedbackLabel.text = NSLocalizedString("keepGoingIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
-            }
         }
         else if(guideline.maximum != 0 && guideline.maximum != nil) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
             cell.secondGuidelineValueLabel.text = ""
-            
-            if(total <= guideline.maximum!) {
-                cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
-            }
-            else if(total > guideline.maximum!) {
-                cell.feedbackLabel.text = NSLocalizedString("limitIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
-            }
-        }
-        
-        if(total == 0) {
-            cell.feedbackLabel.text = NSLocalizedString("noIntake", comment: "")
-            cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
         }
         
         cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")
