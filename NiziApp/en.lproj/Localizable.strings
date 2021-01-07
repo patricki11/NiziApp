@@ -71,6 +71,12 @@
 "lessThan" = "Minder dan";
 // Guideline Amount
 
+// Intake Feedback
+"noIntake" = "Geen inname";
+"goodIntake" = "Goed bezig";
+"keepGoingIntake" = "Blijf zo doorgan!";
+"limitIntake" = "Beperk uw inname";
+// Intake Feedback
 
 // Conversation
 "ConversationTitle" = "Titel";

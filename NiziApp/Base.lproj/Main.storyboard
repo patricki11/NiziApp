@@ -2722,7 +2722,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U57-cQ-7Eg">
-                                                    <rect key="frame" x="316" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="1cc-gD-Xmm"/>
                                                         <constraint firstAttribute="height" constant="98" id="dn3-pu-3ZT"/>
@@ -3036,6 +3036,12 @@
                                                         <constraint firstAttribute="width" constant="120" id="eXl-qe-87o"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1X-YQ-0PS">
+                                                    <rect key="frame" x="30" y="91.666666666666671" width="60" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.89350660478808297" green="0.89350660478808297" blue="0.89350660478808297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -3045,15 +3051,18 @@
                                                 <constraint firstAttribute="trailing" secondItem="cvc-Kb-8sC" secondAttribute="trailing" constant="120" id="D6Q-8Q-J7e"/>
                                                 <constraint firstItem="UH8-5w-3eK" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" constant="20" id="FI3-IT-wiS"/>
                                                 <constraint firstItem="m9U-97-e5R" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="JBe-ak-Qhb"/>
+                                                <constraint firstItem="U1X-YQ-0PS" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="Liv-81-1Ql"/>
                                                 <constraint firstItem="gop-sX-B6i" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="Loq-hV-ORB"/>
                                                 <constraint firstItem="cvc-Kb-8sC" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" constant="20" id="QtJ-tg-yHm"/>
                                                 <constraint firstItem="2nd-dk-hVj" firstAttribute="top" secondItem="DCS-cf-hNs" secondAttribute="top" id="TLc-8i-Htu"/>
                                                 <constraint firstItem="UH8-5w-3eK" firstAttribute="leading" secondItem="DCS-cf-hNs" secondAttribute="leading" constant="30" id="gVR-tR-fAN"/>
                                                 <constraint firstAttribute="bottom" secondItem="2nd-dk-hVj" secondAttribute="bottom" id="i3E-hT-C95"/>
                                                 <constraint firstItem="m9U-97-e5R" firstAttribute="top" secondItem="cvc-Kb-8sC" secondAttribute="bottom" constant="5" id="sZ7-sV-Lvd"/>
+                                                <constraint firstItem="U1X-YQ-0PS" firstAttribute="top" secondItem="gop-sX-B6i" secondAttribute="bottom" constant="5" id="uez-Zo-bIc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="feedbackLabel" destination="U1X-YQ-0PS" id="96B-6G-cIU"/>
                                             <outlet property="firstGuidelineValueLabel" destination="m9U-97-e5R" id="KxU-UZ-Rb5"/>
                                             <outlet property="guidelineChartView" destination="2nd-dk-hVj" id="NIs-V4-U5w"/>
                                             <outlet property="guidelineIconImageView" destination="UH8-5w-3eK" id="iru-5g-rIA"/>
@@ -3868,7 +3877,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3X-a5-6ZZ">
-                                                    <rect key="frame" x="165" y="0.0" width="98" height="98"/>
+                                                    <rect key="frame" x="165" y="0.0" width="98" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="3RS-7G-1Np"/>
                                                         <constraint firstAttribute="height" constant="98" id="ocx-nb-dOS"/>
@@ -4351,7 +4360,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKQ-do-WTW">
-                                                    <rect key="frame" x="316" y="0.0" width="98" height="100"/>
+                                                    <rect key="frame" x="316" y="0.0" width="98" height="98"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="98" id="F7Z-lU-axS"/>
                                                         <constraint firstAttribute="height" constant="98" id="ucb-7o-P1W"/>
@@ -4462,7 +4471,7 @@
         <image name="Webp.net-resizeimage" width="50" height="50"/>
         <image name="Website_s" width="128" height="128"/>
         <image name="bin_xs" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="32" height="32"/>
         <image name="folder.circle.fill" catalog="system" width="128" height="121"/>
         <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
