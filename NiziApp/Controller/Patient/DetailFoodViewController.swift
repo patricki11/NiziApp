@@ -50,6 +50,7 @@ class DetailFoodViewController: UIViewController {
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
     var foodObject      : NewFood?
+    var foodTime  : String = KeychainWrapper.standard.string(forKey: "mealTime")!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,8 +117,6 @@ class DetailFoodViewController: UIViewController {
     
     func SetupData()
     {
-        //mealSearchBtn.isHidden = true
-        //mealSaveBtn.isHidden = true
         mealEditBtn.isHidden = true
         datepicker.isHidden = true
         trashBtn.isHidden = true
@@ -132,11 +131,6 @@ class DetailFoodViewController: UIViewController {
             favoriteBtn.isHidden = true
             trashBtn.isHidden = false
             mealEditBtn.isHidden = false
-        }
-        
-        if(isMealProductDetail){
-            //mealSearchBtn.isHidden = false
-            //mealSaveBtn.isHidden = true
         }
         
         DetailTitle.text = self.foodItem!.name
@@ -164,6 +158,22 @@ class DetailFoodViewController: UIViewController {
         
         let waterString : String = (self.foodItem!.water.description)
         WaterLabel.text = waterString
+        
+        switch foodTime {
+        case "Ontbijt":
+            MealTime.selectedSegmentIndex = 0
+            break
+        case "Lunch":
+            MealTime.selectedSegmentIndex = 1
+            break
+        case "Avondeten":
+            MealTime.selectedSegmentIndex = 2
+            break
+        case "Snack":
+            MealTime.selectedSegmentIndex = 3
+        default:
+            break
+        }
         
         self.checkIfFavoriteCall()
     }

@@ -16,3 +16,7 @@ protocol CartSelection {
 protocol PresentDialog {
 func addDiary(succeeded : Bool)
 }
+
+protocol NavigateToFood {
+func goToSearch(mealTime : String)
+}

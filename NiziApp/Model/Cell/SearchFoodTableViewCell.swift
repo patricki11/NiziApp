@@ -46,7 +46,7 @@ class SearchFoodTableViewCell: UITableViewCell {
         
         let weight = self.createNewWeight(id: self.weightUnit, unit: "", short: "", createdAt: "", updatedAt: "")
         
-        let consumption = self.createNewConsumptionObject(amount: 1, date: date, mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
+        let consumption = self.createNewConsumptionObject(amount: 1, date: date, mealTime: KeychainWrapper.standard.string(forKey: "mealTime")!, patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
         
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
             self.dialog?.addDiary(succeeded: true)

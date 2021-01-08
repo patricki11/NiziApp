@@ -14,12 +14,19 @@ struct postStruct {
     var text: String!
 }
 
-class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NavigateToFood {
+    func goToSearch(mealTime: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
+        detailFoodVC.buttonTag = 0
+        detailFoodVC.patient = self.patient
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
     
     var heightHeader : CGFloat = 44
     
     @IBOutlet weak var diaryTable: UITableView!
-    @IBOutlet weak var DatePicker: UIDatePicker!
     var consumptions   : [NewConsumption] = []
     var breakfastFoods : [NewConsumption] = []
     var lunchFoods     : [NewConsumption] = []
@@ -27,7 +34,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var snackFoods     : [NewConsumption] = []
     var headers        : [postStruct] = []
     var patient        : NewPatient?
-    @IBOutlet weak var calendar: UIDatePicker!
     var currentDayCounter : Int = 0
     var selectedDate : Date?
     
@@ -43,70 +49,22 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         return formatter
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let patient = Int(KeychainWrapper.standard.string(forKey: "patientId")!)
         self.patient = createNewPatientObject(id: patient!, gender: "Male", dateOfBirth: "1995-02-08", createdAt: "2020-10-07T11:49:26.000Z", updatedAt: "2020-10-07T12:04:08.000Z", doctor: 1, user: 1)
-        headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
-        
-        /*
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        let formattedDate = format.string(from: date)
-        let finalDate = formattedDate + "T00:00:00.000Z"
-        saveDate(date: finalDate)
-        //getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
-        
-        calendar.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
- */
+        headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avondeten"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
         changeCurrentDayLabel()
-        //getConsumption(Date: "")
-    }
-    
-    @objc func datePickerChanged(picker: UIDatePicker) {
-        
-        // Create date formatter
-        let dateFormatter: DateFormatter = DateFormatter()
-        
-        // Set date format
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        // Apply date format
-        let selectedDate: String = dateFormatter.string(from: picker.date)
-        let finalDate = selectedDate + "T00:00:00.000Z"
-        
-        getConsumption(Date: selectedDate)
-        saveDate(date: selectedDate)
-        
-        print(finalDate)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        /*
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd"
-        let formattedDate = format.string(from: date)
-        let finalDate = formattedDate + "T00:00:00.000Z"
- */
         getConsumption(Date: "")
-        //calendar.setDate(date, animated: false)
         self.diaryTable.reloadData()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    fileprivate func SetupDatePicker() {
-        DatePicker.setValue(UIColor.white, forKeyPath: "textColor")
-        DatePicker.setValue(false, forKeyPath: "highlightsToday")
-        //DatePicker.backgroundColor = UIColor(red: 0x0A, green: 0x71, blue: 0xCB, alpha: <#CGFloat#>)
-        DatePicker.addTarget(self, action: #selector(DiaryViewController.datePickerValueChanged(_:)), for: .valueChanged)
     }
     
     func SortFood(){
@@ -128,7 +86,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
                 break
             }
         }
-        
     }
     
     func createNewPatientObject(id: Int, gender: String, dateOfBirth: String, createdAt: String, updatedAt: String, doctor: Int, user: Int) -> NewPatient {
@@ -287,13 +244,8 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         headerView.headerImageView.image = headers[section].image
         headerView.headerLabel.text = headers[section].text
         headerView.AddButton.tag = section
-        headerView.GotoDiary(){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
-            detailFoodVC.buttonTag = section
-            self.navigationController?.pushViewController(detailFoodVC, animated: true)
-        
-        }
+        headerView.mealTime = headers[section].text
+        headerView.navigation = self
         return headerView
     }
     
@@ -376,7 +328,5 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         else {
             currentWeekLabel.text = "\(dateFormatter.string(from: selectedDate!))"
         }
-        
     }
-    
 }
