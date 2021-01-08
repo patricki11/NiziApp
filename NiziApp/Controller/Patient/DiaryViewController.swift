@@ -230,9 +230,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+ 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0;//Choose your custom row height
@@ -285,6 +283,83 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         detailFoodVC.consumptionId = food.id!
         detailFoodVC.isDiaryDetail = true
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            showConfirmDeleteFavorite(indexPath: indexPath)
+        }
+    }
+    
+    func showConfirmDeleteFavorite(indexPath: IndexPath) {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Verwijder consumptie", comment: ""),
+            message: NSLocalizedString("Weet u zeker dat u consumptie wil verwijderen?", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Annuleer", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in
+            var food = self.consumptions[indexPath.row]
+            
+            switch indexPath.section {
+            case 0:
+                food = self.breakfastFoods[indexPath.row]
+                self.deleteFavorite(favorite: food)
+                self.breakfastFoods.remove(at: indexPath.row)
+          
+                break
+            case 1:
+                food = self.lunchFoods[indexPath.row]
+                self.deleteFavorite(favorite: food)
+                self.lunchFoods.remove(at: indexPath.row)
+              
+                break
+            case 2:
+                food = self.dinnerFoods[indexPath.row]
+                self.deleteFavorite(favorite: food)
+                self.dinnerFoods.remove(at: indexPath.row)
+               
+                break
+            case 3:
+                food = self.snackFoods[indexPath.row]
+                self.deleteFavorite(favorite: food)
+                self.snackFoods.remove(at: indexPath.row)
+             
+                break
+            default:
+                break
+            }
+            self.diaryTable?.deleteRows(at: [indexPath], with: .fade)
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteFavorite(favorite: NewConsumption) {
+        deleteFavoriteObject(forFavorite: favorite)
+    }
+    
+    func deleteFavoriteObject(forFavorite patient: NewConsumption) {
+        NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: patient.id!).responseData(completionHandler: { _ in
+            self.diaryTable.reloadData()
+            self.showFavoriteDeletedMessage()
+        })
+    }
+    
+    func showFavoriteDeletedMessage() {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Consumptie is verwijdert", comment: ""),
+            message: NSLocalizedString("Consumptie is verwijdert", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func previousDay(_ sender: Any) {
