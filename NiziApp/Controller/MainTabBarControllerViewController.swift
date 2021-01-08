@@ -17,6 +17,13 @@ class MainTabBarController: UITabBarController {
     var user : NewUser?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        token = "Yello"
+        
+        let finalVC = self.viewControllers![0] as! HomeViewController //first view controller in the tabbar
+        finalVC.dataTransferTo = token!
     }
+    
+    
 }
 

@@ -19,6 +19,8 @@ class HomeViewController: UIViewController {
     var patientGuidelines : [NewDietaryManagement] = []
     var patientConsumption : [NewConsumption] = []
     var currentDayCounter : Int = 0
+    
+    var dataTransferTo = ""
    
     var selectedDate : Date?
     
@@ -59,6 +61,7 @@ class HomeViewController: UIViewController {
         changeCurrentDayLabel()
         getDietaryGuidelines()
         getConsumptions()
+        print(self.dataTransferTo)
     }
     
     override func viewDidAppear(_ animated: Bool) {
