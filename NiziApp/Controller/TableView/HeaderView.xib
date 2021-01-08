@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,12 +17,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A0-39-9vU">
-                        <rect key="frame" x="268" y="7" width="30" height="30"/>
-                        <connections>
-                            <action selector="GotoDiary:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJT-4Y-cuT"/>
-                        </connections>
-                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-fw-Zua">
                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                         <constraints>
@@ -38,17 +33,40 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="left" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7A0-39-9vU">
+                        <rect key="frame" x="219" y="7" width="95" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="58J-OO-I3Z"/>
+                            <constraint firstAttribute="height" constant="30" id="QgT-D4-Drn"/>
+                        </constraints>
+                        <inset key="titleEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="59" maxY="0.0"/>
+                        <state key="normal" image="Add_xs">
+                            <attributedString key="attributedTitle">
+                                <fragment content="Toevoegen">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                        </state>
+                        <connections>
+                            <action selector="GotoDiary:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mJT-4Y-cuT"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="7A0-39-9vU" secondAttribute="bottom" constant="7" id="18V-2U-T3a"/>
                     <constraint firstItem="wFG-fw-Zua" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6Xk-Cg-WVB"/>
-                    <constraint firstAttribute="trailing" secondItem="7A0-39-9vU" secondAttribute="trailing" constant="22" id="FGi-oY-nbv"/>
                     <constraint firstAttribute="bottom" secondItem="wFG-fw-Zua" secondAttribute="bottom" id="KeC-jT-yTb"/>
                     <constraint firstItem="ezW-d6-5RC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="PNm-fy-qma"/>
-                    <constraint firstAttribute="bottom" secondItem="7A0-39-9vU" secondAttribute="bottom" constant="7" id="Ym7-Vy-hd7"/>
-                    <constraint firstItem="7A0-39-9vU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ess-Ix-VR6"/>
+                    <constraint firstAttribute="trailing" secondItem="7A0-39-9vU" secondAttribute="trailing" constant="6" id="e8N-lR-Pgl"/>
                     <constraint firstAttribute="bottom" secondItem="ezW-d6-5RC" secondAttribute="bottom" constant="11" id="hZm-Ed-Lb9"/>
                     <constraint firstItem="ezW-d6-5RC" firstAttribute="leading" secondItem="wFG-fw-Zua" secondAttribute="trailing" constant="15" id="iLy-1H-2g6"/>
+                    <constraint firstItem="7A0-39-9vU" firstAttribute="leading" secondItem="ezW-d6-5RC" secondAttribute="trailing" constant="30" id="ib0-e6-T5H"/>
                     <constraint firstAttribute="trailing" secondItem="wFG-fw-Zua" secondAttribute="trailing" constant="276" id="jO9-Rz-g5J"/>
                     <constraint firstItem="wFG-fw-Zua" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kUc-ov-Cdm"/>
                 </constraints>
@@ -62,4 +80,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="93.75"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Add_xs" width="100" height="100"/>
+    </resources>
 </document>
