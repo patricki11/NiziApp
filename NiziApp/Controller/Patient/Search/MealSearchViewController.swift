@@ -16,7 +16,6 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //removeKeyboardAfterClickingOutsideField()
         GetMeals()
     }
     
@@ -28,7 +27,6 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         self.GetMeals()
     }
-    
     
     @IBAction func navigateSearchProducts(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -70,19 +68,52 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //DeleteMeal(Id: meallist[indexPath.row].mealId)
-            meallist.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            showConfirmDeleteFavorite(indexPath: indexPath)
         }
     }
     
+    func showConfirmDeleteFavorite(indexPath: IndexPath) {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Verwijder Maaltijd", comment: ""),
+            message: NSLocalizedString("Weet u zeker dat u maaltijd wil verwijderen?", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Annuleer", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.deleteFavorite(favorite: self.meallist[indexPath.row])
+            self.meallist.remove(at: indexPath.row)
+            self.MealTable?.deleteRows(at: [indexPath], with: .fade)
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteFavorite(favorite: NewMeal) {
+        deleteFavoriteObject(forFavorite: favorite)
+    }
+    
+    func deleteFavoriteObject(forFavorite patient: NewMeal) {
+        NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: patient.id).responseData(completionHandler: { _ in
+            
+            self.showFavoriteDeletedMessage()
+        })
+    }
+    
+    func showFavoriteDeletedMessage() {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            message: NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+
     func GetMeals() {
         
         NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1).responseData(completionHandler: { response in
@@ -99,16 +130,6 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         })
          
     }
-    
-    func DeleteMeal(Id id: Int){
-        /*
-        NiZiAPIHelper.deleteMeal(withId: id, forPatient: patientIntID!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard response.data != nil
-                else { print("temp1"); return }
-        })
-        */
-    }
-    
     
     @IBAction func goToCreateMeal(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

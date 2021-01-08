@@ -77,17 +77,53 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            foodlist.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            showConfirmDeleteFavorite(indexPath: indexPath)
         }
     }
+    
+    func showConfirmDeleteFavorite(indexPath: IndexPath) {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Verwijder Favoriet", comment: ""),
+            message: NSLocalizedString("Weet u zeker dat u favoriet wil verwijderen?", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Annuleer", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.deleteFavorite(favorite: self.foodlist[indexPath.row])
+            self.foodlist.remove(at: indexPath.row)
+            self.FavoriteTable?.deleteRows(at: [indexPath], with: .fade)
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteFavorite(favorite: NewFavorite) {
+        deleteFavoriteObject(forFavorite: favorite)
+    }
+    
+    func deleteFavoriteObject(forFavorite patient: NewFavorite) {
+        NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: patient.id! ).responseData(completionHandler: { _ in
+            
+            self.showFavoriteDeletedMessage()
+        })
+    }
+    
+    func showFavoriteDeletedMessage() {
+        let alertController = UIAlertController(
+            title:NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            message: NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     func GetFavortiesFood() {
         NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID).responseData(completionHandler: { response in
