@@ -11,8 +11,6 @@ import UIKit
 import SwiftKeychainWrapper
 
 class MainTabBarController: UITabBarController {
-
-    
     var token : String?
     var user : NewUser?
     override func viewDidLoad() {
@@ -23,7 +21,5 @@ class MainTabBarController: UITabBarController {
         let finalVC = self.viewControllers![0] as! HomeViewController //first view controller in the tabbar
         finalVC.dataTransferTo = token!
     }
-    
-    
 }
 

@@ -52,7 +52,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     func addDiary(succeeded: Bool) {
         if(succeeded){
-            let alert = UIAlertController(title: "Success", message: "Maaltijd is aangepast", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             present(alert, animated: true)
