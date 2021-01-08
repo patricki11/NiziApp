@@ -22,13 +22,21 @@ class AddConversationViewController: UIViewController {
         super.viewDidLoad()
         title = NSLocalizedString("Conversations", comment: "")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
+        getDataFromUserDefaults()
         getConversation()
         SetupTableView()
         setupActivityIndicator()
     }
     
+    func getDataFromUserDefaults() {
+        let defaults = UserDefaults.standard
+        patientId = defaults.integer(forKey: "patient")
+        doctorId = defaults.integer(forKey: "doctorId")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
+        getDataFromUserDefaults()
         getConversation()
         SetupTableView()
         print("test")

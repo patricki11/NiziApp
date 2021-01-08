@@ -152,10 +152,13 @@ extension PatientListViewController : UITableViewDelegate {
     
     func navigateToPatientDetailView(patient: NewPatient) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "PatientOverviewViewController") as! PatientOverviewViewController
-        patientDetailVC.patient = patient
-        patientDetailVC.doctorId = loggedInAccount.doctor
-        self.navigationController?.pushViewController(patientDetailVC, animated: true)
+        let dietistTabBarController = storyboard.instantiateViewController(withIdentifier: "DietistTabBarController") as! DietistTabBarController
+        dietistTabBarController.patient = patient
+        dietistTabBarController.doctorId = loggedInAccount.doctor
+        
+        let defaults = UserDefaults.standard
+        defaults.set(patient.id, forKey: "patient")
+        defaults.set(loggedInAccount.doctor, forKey: "doctorId")
     }
     
     func deletePatient(patient: NewPatient) {

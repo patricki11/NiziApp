@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 class PatientOverviewViewController : UIViewController
 {
+    var patientId : Int!
     var doctorId : Int!
     weak var patient : NewPatient!
     @IBOutlet weak var ageGenderLabel: UILabel!
@@ -139,31 +140,45 @@ class PatientOverviewViewController : UIViewController
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        getDataFromUserDefaults()
+
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
+
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getDataFromUserDefaults()
+        super.viewDidAppear(true)
+    }
+    
+    func getDataFromUserDefaults() {
+        let defaults = UserDefaults.standard
+        patientId = defaults.integer(forKey: "patient")
+        doctorId = defaults.integer(forKey: "doctorId")
+        
+        NiZiAPIHelper.getPatient(byId: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            guard let jsonResponse = response.data
+            else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            guard let patient = try? jsonDecoder.decode(NewPatient.self, from: jsonResponse )
+            else { return }
+            
+            self.patient = patient
+            
+            self.getPatientOverviewData()
+        })
+    }
+    
+    func getPatientOverviewData() {
         setupTableView()
         setupDayWeekSelector()
         setLanguageSpecificText()
         getDietaryGuidelines()
         changeAgeGenderLabel()
         
-        if(useWeek) {
-            changeCurrentWeekLabel()
-            getConsumptionsForWeek()
-        }
-        else {
-            changeCurrentDayLabel()
-            getConsumptions()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        setupActivityIndicator()
-        getDietaryGuidelines()
-        changeAgeGenderLabel()
-
         if(useWeek) {
             changeCurrentWeekLabel()
             getConsumptionsForWeek()
@@ -228,14 +243,14 @@ class PatientOverviewViewController : UIViewController
     @IBAction func editPatient(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let patientDetailVC = storyboard.instantiateViewController(withIdentifier: "EditPatientViewController") as! EditPatientViewController
-        patientDetailVC.patientId = patient.id
+        patientDetailVC.patientId = patientId
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
     @IBAction func navigateToConversations(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
-        conversationVC.patientId = patient.id
+        conversationVC.patientId = patientId
         conversationVC.doctorId = doctorId
         self.navigationController?.pushViewController(conversationVC, animated: true)
     }
@@ -249,7 +264,7 @@ class PatientOverviewViewController : UIViewController
     
     func getDietaryGuidelines() {
         guidelineTableView.refreshControl?.beginRefreshing()
-        NiZiAPIHelper.getDietaryManagement(forDiet: patient.id!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
+        NiZiAPIHelper.getDietaryManagement(forDiet: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in
             
             guard let jsonResponse = response.data else { return }
 
@@ -268,8 +283,8 @@ class PatientOverviewViewController : UIViewController
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
+
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientId!, withStartDate: dateFormatter.string(from: selectedDate!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             
@@ -284,7 +299,7 @@ class PatientOverviewViewController : UIViewController
     }
     
     func getConsumptionsForWeek() {
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patient.id!, betweenDate: apiDateFormatter.string(from: firstDayOfWeek!), and: apiDateFormatter.string(from: lastDayOfWeek!)).response(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientId!, betweenDate: apiDateFormatter.string(from: firstDayOfWeek!), and: apiDateFormatter.string(from: lastDayOfWeek!)).response(completionHandler: { response in
             
             guard let jsonResponse = response.data else { return }
             
