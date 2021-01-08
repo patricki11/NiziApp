@@ -11,15 +11,6 @@ import Kingfisher
 import SwiftKeychainWrapper
 
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PresentDialog {
-    func addDiary(succeeded: Bool) {
-        if(succeeded){
-            let alert = UIAlertController(title: "Success", message: "Maaltijd is aangepast", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-            }))
-            present(alert, animated: true)
-        }
-    }
-    
     var foodlist                      : [NewFood] = []
     var buttonTag                     : Int = 0
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
@@ -35,7 +26,6 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         SearchFoodInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
     }
     
-    
     @objc func textFieldDidChange(textField: UITextField){
     searchFood()
     }
@@ -48,10 +38,6 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func productAction(_ sender: Any) {
     }
     
-    @IBAction func SearchButton(_ sender: Any) {
-        searchFood()
-    }
-    
     @IBAction func GetFavorites(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"FavoriteViewController") as! FavoriteViewController;()
@@ -62,6 +48,15 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealSearchViewController") as! MealSearchViewController;()
         self.navigationController?.pushViewController(detailFoodVC, animated: false)
+    }
+    
+    func addDiary(succeeded: Bool) {
+        if(succeeded){
+            let alert = UIAlertController(title: "Success", message: "Maaltijd is aangepast", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            present(alert, animated: true)
+        }
     }
     
     //MARK: Table Functions

@@ -5,7 +5,7 @@
 //  Created by Samir Yeasin on 30/12/2020.
 //  Copyright © 2020 Samir Yeasin. All rights reserved.
 //
-
+/*
 import UIKit
 import SwiftKeychainWrapper
 import Kingfisher
@@ -372,6 +372,8 @@ class FoodDetailViewController: UIViewController {
     }
 }
 
+*/
+
 /*
 extension FoodDetailViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
@@ -379,3 +381,5 @@ extension FoodDetailViewController: UINavigationControllerDelegate {
     }
 }
 */
+
+

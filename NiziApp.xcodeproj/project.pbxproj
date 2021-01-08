@@ -272,7 +272,6 @@
 				5330AE472582679F0027A768 /* AddConversationItemViewController.swift */,
 				5330AE4F2583870B0027A768 /* CircularProgressView.swift */,
 				5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */,
-				21D8793625A348DD00E75037 /* DetailFoodViewController.swift */,
 				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 			);
 			path = Controller;
@@ -322,6 +321,7 @@
 		9375BCDB23B27287004559D3 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
+				21D8793625A348DD00E75037 /* DetailFoodViewController.swift */,
 				2154CFE424299FE100E96AEF /* Search */,
 				934F537823C163EB007745AF /* CreateMeal */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
