@@ -68,18 +68,10 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                 self.editMealsHasbeenRetrieved = true
             }
         }
-        
         self.calculateDietary()
     }
 
-    
     override func viewDidAppear(_ animated: Bool){
-        /*
-        if(editMeal){
-            self.getProducts()
-        }
-        self.calculateDietary()
-        */
         foodListTable?.reloadData()
     }
     
@@ -143,21 +135,21 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     func calculateDietary(){
         
-        calorieResultLbl.text = "0.0"
-        fiberResultLbl.text = "0.0"
-        waterResultLbl.text = "0.0"
-        potassiumResultLbl.text = "0.0"
-        proteinResultLbl.text = "0.0"
-        sodiumResultLbl.text = "0.0"
+        kcal = 0
+        fiberMeal = 0
+        vochtMeal = 0
+        pottassiumMeal = 0
+        proteinMeal = 0
+        sodiumMeal = 0
         
         if(Mealfoodlist.count > 0){
             for food in Mealfoodlist {
-                kcal += food.foodMealComponent!.kcal
-                fiberMeal += food.foodMealComponent!.fiber
-                vochtMeal += food.foodMealComponent!.water
-                pottassiumMeal += food.foodMealComponent!.potassium
-                proteinMeal +=  food.foodMealComponent!.protein
-                sodiumMeal += food.foodMealComponent!.sodium
+                kcal += food.foodMealComponent!.kcal * food.amount!
+                fiberMeal += food.foodMealComponent!.fiber * food.amount!
+                vochtMeal += food.foodMealComponent!.water * food.amount!
+                pottassiumMeal += food.foodMealComponent!.potassium * food.amount!
+                proteinMeal +=  food.foodMealComponent!.protein * food.amount!
+                sodiumMeal += food.foodMealComponent!.sodium * food.amount!
                 
             }
             let kcalText:String = String(format:"%.1f", kcal)
@@ -261,10 +253,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-    @IBAction func importProducts(_ sender: Any) {
-        // Needs to be done later on
-    }
-    
     @IBAction func saveMeal(_ sender: Any) {
         if(editMeal){
             self.removeOldFoodItems()
@@ -273,7 +261,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
         else{
             addMeal()
         }
-       
     }
     
     func presentAlert(){

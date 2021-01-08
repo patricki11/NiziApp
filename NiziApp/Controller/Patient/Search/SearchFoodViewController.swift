@@ -10,7 +10,15 @@ import UIKit
 import Kingfisher
 import SwiftKeychainWrapper
 
-class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PresentDialog {
+    func addDiary(succeeded: Bool) {
+        if(succeeded){
+            let alert = UIAlertController(title: "Success", message: "Maaltijd is aangepast", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            }))
+            present(alert, animated: true)
+        }
+    }
     
     var foodlist                      : [NewFood] = []
     var buttonTag                     : Int = 0
@@ -75,6 +83,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
         let portionSizeString : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
         searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + (foodResult.weightObject?.unit)!)
         searchFoodCell.foodItem = foodResult
+        searchFoodCell.dialog = self
         return searchFoodCell
     }
     

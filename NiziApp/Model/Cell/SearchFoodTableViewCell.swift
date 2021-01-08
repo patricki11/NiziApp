@@ -13,6 +13,7 @@ class SearchFoodTableViewCell: UITableViewCell {
     var foodItem : NewFood?
     var weightUnit : Int = 0
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
+    var dialog : PresentDialog?
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
@@ -27,14 +28,12 @@ class SearchFoodTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    
     @IBAction func QuickAdd(_ sender: Any) {
         self.addConsumption()
     }
 
     func addConsumption() {
         let date = KeychainWrapper.standard.string(forKey: "date")!
-        //let newdate = date + "T00:00:00.000Z"
         
         let patient = self.createNewPatient(id: patientIntID)
         
@@ -50,13 +49,7 @@ class SearchFoodTableViewCell: UITableViewCell {
         let consumption = self.createNewConsumptionObject(amount: 1, date: date, mealTime: "Ontbijt", patient: patient, weightUnit: weight, foodMealComponent: (foodItem?.foodMealComponent)!)
         
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
-            let alertController = UIAlertController(
-                title: NSLocalizedString("Success", comment: "Title"),
-                message: NSLocalizedString("Voedsel is toegevoegd", comment: "Message"),
-                preferredStyle: .alert)
-            
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Ok"), style: .default, handler: nil))
-            //self.present(alertController, animated: true, completion: nil)
+            self.dialog?.addDiary(succeeded: true)
         })
     }
     
@@ -75,13 +68,4 @@ class SearchFoodTableViewCell: UITableViewCell {
         let consumptionWeight : newWeightUnit = newWeightUnit(id: id, unit: unit, short: short, createdAt: createdAt, updatedAt: updatedAt)
         return consumptionWeight
     }
-    
-    /*
-    func createNewFoodMealComponent(id: Int, name: String, description: String, kcal: Float, protein: Float, potassium: Float, sodium: Float, water: Float, fiber: Float, portionSize: Float, imageUrl: String, foodId : Int) -> newFoodMealComponent {
-        
-        let foodmealComponent : newFoodMealComponent = newFoodMealComponent(id: id, name: name, description: description, kcal: kcal, protein: protein, potassium: potassium, sodium: sodium, water: water, fiber: fiber, portionSize: portionSize, imageUrl: imageUrl, foodId: foodId)
-        return foodmealComponent
-    }
- */
-
 }
