@@ -2821,6 +2821,7 @@
                         <outlet property="currentWeekLabel" destination="nvF-1B-cZU" id="m8S-eE-Xfb"/>
                         <outlet property="dayOverviewLabel" destination="0vq-FB-ty0" id="Lni-MT-xHv"/>
                         <outlet property="guidelineTableView" destination="oh2-6H-Hzf" id="I55-bg-e9Y"/>
+                        <outlet property="nextWeekButton" destination="BuL-b7-Bex" id="EyT-Bv-tR5"/>
                         <outlet property="patientNameLabel" destination="eAn-89-hrf" id="ots-Ho-YxN"/>
                         <outlet property="selectDayWeekSwitch" destination="9Pb-lX-qtf" id="mXM-oD-hQ5"/>
                         <outlet property="useDayLabel" destination="dLB-32-0LK" id="03D-eK-tMt"/>

@@ -26,6 +26,8 @@ class PatientOverviewViewController : UIViewController
     @IBOutlet weak var useDayLabel: UILabel!
     @IBOutlet weak var selectDayWeekSwitch: UISwitch!
     
+    @IBOutlet weak var nextWeekButton: UIButton!
+    
     lazy var apiDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
@@ -62,6 +64,13 @@ class PatientOverviewViewController : UIViewController
             changeCurrentDayLabel()
             getConsumptions()
         }
+        
+        if(nextDateAvailable()) {
+            nextWeekButton.isEnabled = true
+        }
+        else {
+            nextWeekButton.isEnabled = false
+        }
     }
     
     @IBAction func getNextWeek(_ sender: Any) {
@@ -74,6 +83,22 @@ class PatientOverviewViewController : UIViewController
         else {
             changeCurrentDayLabel()
             getConsumptions()
+        }
+        
+        if(nextDateAvailable()) {
+            nextWeekButton.isEnabled = true
+        }
+        else {
+            nextWeekButton.isEnabled = false
+        }
+    }
+    
+    func nextDateAvailable() -> Bool {
+        if(useWeek) {
+            return Date() > lastDayOfWeek!
+        }
+        else {
+            return Date() > selectedDate!
         }
     }
     
@@ -140,8 +165,8 @@ class PatientOverviewViewController : UIViewController
     }
     
     override func viewDidLoad() {
+        nextWeekButton.isEnabled = false
         getDataFromUserDefaults()
-
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
 
