@@ -211,6 +211,12 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     
+    static func checkIfUserExists(email: String, authenticationCode: String) -> DataRequest {
+        let apiMethod = "users?email=\(email)"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: header)
+    }
+    
     static func getPatient(byId patientId: Int, authenticationCode: String) -> DataRequest {
         let apiMethod = "patients/\(patientId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])

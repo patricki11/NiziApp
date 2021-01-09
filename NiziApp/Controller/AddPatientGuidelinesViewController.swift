@@ -314,11 +314,6 @@ class AddPatientGuidelinesViewController : UIViewController {
         NiZiAPIHelper.addUser(withDetails: newUser, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
             guard let jsonResponse = response.data else { return }
             
-            if(response.response?.statusCode == 400) {
-                self.showPatientAlreadyExistsMessage()
-                return
-            }
-            
             let jsonDecoder = JSONDecoder()
             guard let patientUser = try? jsonDecoder.decode(NewUser.self, from: jsonResponse) else { return }
             
@@ -366,17 +361,6 @@ class AddPatientGuidelinesViewController : UIViewController {
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.navigateBackToPatientList()}))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func showPatientAlreadyExistsMessage() {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("patientExistsTitle", comment: ""),
-            message: NSLocalizedString("patientExistsMessage", comment: ""),
-            preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }

@@ -139,10 +139,26 @@ class AddPatientViewController: UIViewController {
        
        newUser = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: nil, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
        
-       self.navigateToGuidelineController()
+        checkIfEmailExists()
     }
 
-   
+    func checkIfEmailExists() {
+        NiZiAPIHelper.checkIfUserExists(email: newUser.email!, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
+            
+            guard let jsonResponse = response.data else { return }
+
+            var jsonDecoder = JSONDecoder()
+            
+            guard let users = try? jsonDecoder.decode([NewUser].self, from: jsonResponse) else { return }
+            
+            if(users.count > 0) {
+                self.showPatientAlreadyExistsMessage()
+            }
+            else {
+                self.navigateToGuidelineController()
+            }
+        })
+    }
     
     func requiredFieldsAreFilled() -> Bool {
         let firstName = firstNameField.text ?? ""
@@ -277,6 +293,17 @@ class AddPatientViewController: UIViewController {
         let alertController = UIAlertController(
             title: NSLocalizedString("passwordNotStrongEnoughTitle", comment: ""),
             message: NSLocalizedString("passwordNotStrongEnoughMessage", comment: ""),
+            preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func showPatientAlreadyExistsMessage() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("patientExistsTitle", comment: ""),
+            message: NSLocalizedString("patientExistsMessage", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
