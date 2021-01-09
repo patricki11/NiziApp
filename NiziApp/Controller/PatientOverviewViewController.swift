@@ -363,7 +363,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
         var progressView = cell.guidelineChartView as! CircularProgressView
         progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
        
-        cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
+        cell.guidelineNameLabel.text = getLanguageSpecificCategory(category: guideline.dietaryRestrictionObject?.plural ?? "")
 
         if((guideline.minimum != 0 && guideline.minimum != nil) && (guideline.maximum != 0 && guideline.maximum != nil)) {
             cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!) \(unit)"
@@ -418,6 +418,16 @@ extension PatientOverviewViewController : UITableViewDataSource {
         
         return cell
 
+    }
+    
+    func getLanguageSpecificCategory(category: String) -> String {
+             if(category.contains("Calorie")) { return NSLocalizedString("Calorie"  , comment: "") }
+        else if(category.contains("Vocht"))   { return NSLocalizedString("Moisture" , comment: "") }
+        else if(category.contains("Natrium")) { return NSLocalizedString("Natrium"  , comment: "") }
+        else if(category.contains("Vezel"))   { return NSLocalizedString("Grain"    , comment: "") }
+        else if(category.contains("Eiwit"))   { return NSLocalizedString("Protein"  , comment: "") }
+        else if(category.contains("Kalium"))  { return NSLocalizedString("Potassium", comment: "") }
+        else                                  { return "" }
     }
     
     func getTotalForCorrespondingCategory(category: String) -> Float {
