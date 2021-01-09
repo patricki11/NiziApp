@@ -181,7 +181,6 @@ extension HomeViewController : UITableViewDataSource {
         
         var progressView = cell.guidelineChartView as! CircularProgressView
         progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
-        
        
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
         
@@ -278,7 +277,7 @@ extension HomeViewController : UITableViewDataSource {
         {
             for consumption in patientConsumption
             {
-                total += consumption.foodMealCompenent?.sodium ?? 0
+                total += (consumption.foodMealCompenent?.sodium ?? 0) * 1000
             }
         }
         else if(category.contains("Vezel"))
@@ -299,11 +298,11 @@ extension HomeViewController : UITableViewDataSource {
         {
             for consumption in patientConsumption
             {
-                total += consumption.foodMealCompenent?.potassium ?? 0
+                total += (consumption.foodMealCompenent?.potassium ?? 0) * 1000
             }
         }
         
-        return total
+        return total.rounded()
     }
     
     func getCorrespondingImageForCategory(category: String) -> UIImage? {

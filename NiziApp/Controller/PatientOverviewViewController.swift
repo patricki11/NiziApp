@@ -439,7 +439,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
         {
             for consumption in patientConsumption
             {
-                total += consumption.foodMealCompenent?.sodium ?? 0
+                total += (consumption.foodMealCompenent?.sodium ?? 0) * 1000
             }
         }
         else if(category.contains("Vezel"))
@@ -460,7 +460,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
         {
             for consumption in patientConsumption
             {
-                total += consumption.foodMealCompenent?.potassium ?? 0
+                total += (consumption.foodMealCompenent?.potassium ?? 0) * 1000
             }
         }
         
@@ -473,7 +473,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         
-        return total
+        return total.rounded()
     }
     
     func getCorrespondingImageForCategory(category: String) -> UIImage? {
