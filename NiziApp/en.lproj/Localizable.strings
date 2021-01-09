@@ -34,6 +34,9 @@
 "DiaryAddProduct" = "voeding toevoegen";
 "dayOverview" = "Dagoverzicht";
 "weekOverview" = "Weekoverzicht";
+"averageOf" = "Gemiddelde van";
+"day" = "Dag";
+"week" = "Week";
 
 // Nierstichting Info Login Page
 "NeedHelp" = "Hulp Nodig?";

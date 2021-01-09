@@ -235,9 +235,9 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setLanguageSpecificText() {
-        patientNameLabel.text = "\(patient.userObject!.first_name) \(patient.userObject!.last_name)"
-        useDayLabel.text = "Dag"
-        useWeekLabel.text = "Week"
+        patientNameLabel.text = "\(NSLocalizedString("averageOf", comment: "")) \(patient.userObject!.first_name) \(patient.userObject!.last_name)"
+        useDayLabel.text = NSLocalizedString("day", comment: "")
+        useWeekLabel.text = NSLocalizedString("week", comment: "")
     }
     
     @IBAction func ChangeDayWeekSelection(_ sender: Any) {
