@@ -132,6 +132,9 @@
 "invalidEmailTitle" = "Ongeldige Email";
 "invalidEmailMessage" = "Het ingegeven emailadres is ongeldig.";
 
+"patientExistsTitle" = "Patiënt bestaat al";
+"patientExistsMessage" = "Er bestaat al een patiënt met het ingegeven emailadres.";
+
 "passwordNotStrongEnoughTitle" = "Wachtwoord niet sterk genoeg";
 "passwordNotStrongEnoughMessage" = "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.";
 
