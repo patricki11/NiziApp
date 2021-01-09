@@ -229,14 +229,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
         
         headerView.headerImageView.image = headers[section].image
         headerView.headerLabel.text = headers[section].text
-        headerView.AddButton.tag = section
-        headerView.GotoDiary(){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
-            detailFoodVC.buttonTag = section
-            self.navigationController?.pushViewController(detailFoodVC, animated: true)
-        
-        }
+        headerView.AddButton.isHidden = true
         return headerView
     }
     

@@ -3384,7 +3384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADT-AC-Kzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="-1959"/>
+            <point key="canvasLocation" x="1454" y="-1959"/>
         </scene>
         <!--Add Conversation Item View Controller-->
         <scene sceneID="1Rc-vy-Y5w">
@@ -3501,7 +3501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFw-55-c3L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957" y="-1959"/>
+            <point key="canvasLocation" x="2228" y="-1959"/>
         </scene>
         <!--Voeding zoeken-->
         <scene sceneID="kLI-yd-6aa">
