@@ -11,7 +11,6 @@
 		211A104923966DE3002A42DA /* NiZiAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A104823966DE3002A42DA /* NiZiAPIHelper.swift */; };
 		211A104F23969D17002A42DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 211A105123969D17002A42DA /* Localizable.strings */; };
 		21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */; };
-		214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */; };
 		214DAD2423BE298C00448DB5 /* PatientOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */; };
 		214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7AD255C2C37003FFCA7 /* NewPatient.swift */; };
 		214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214DB7B9255C37BE003FFCA7 /* newFood.swift */; };
@@ -80,7 +79,6 @@
 		211A105323969D4B002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		211A105423969D4C002A42DA /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21455B7123A0DA1B0037496E /* PatientListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListTableViewCell.swift; sourceTree = "<group>"; };
-		214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientOverviewViewController.swift; sourceTree = "<group>"; };
 		214DB7AD255C2C37003FFCA7 /* NewPatient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPatient.swift; sourceTree = "<group>"; };
 		214DB7B9255C37BE003FFCA7 /* newFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newFood.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				2174966723918F3100243B41 /* AddPatientViewController.swift */,
 				2174966B2391913300243B41 /* PatientListViewController.swift */,
 				2174966F2391A4F500243B41 /* LoginViewController.swift */,
-				214A0067239E9C1A00DBA6F1 /* ChooseLoginViewController.swift */,
 				9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */,
 				214DAD2323BE298C00448DB5 /* PatientOverviewViewController.swift */,
 				214F7E1123C1F850002D670A /* EditPatientViewController.swift */,
@@ -453,7 +450,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				214A0068239E9C1A00DBA6F1 /* ChooseLoginViewController.swift in Sources */,
 				2154CFE62429DA4200E96AEF /* ConversationViewController.swift in Sources */,
 				53840FBA255ED9680094C3C8 /* NewUserLogin.swift in Sources */,
 				21455B7223A0DA1B0037496E /* PatientListTableViewCell.swift in Sources */,
