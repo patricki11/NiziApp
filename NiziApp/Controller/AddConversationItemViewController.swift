@@ -24,7 +24,7 @@ class AddConversationItemViewController : UIViewController
     
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
+        formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
         return formatter
     }()
     
