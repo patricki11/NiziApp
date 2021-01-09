@@ -315,4 +315,12 @@ class NiZiAPIHelper {
         return AF.request(baseUrl + apiMethod, method: .delete, parameters: nil, encoding: JSONEncoding.default , headers: header)
     }
     // DIETARY MANAGEMENT //
+    
+    // WEIGHT UNIT //
+    static func getWeightUnits(authenticationCode: String) -> DataRequest {
+        let apiMethod = "weight-units"
+        let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(authenticationCode)"])
+        return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
+    }
+    // WEIGHT UNIT //
 }

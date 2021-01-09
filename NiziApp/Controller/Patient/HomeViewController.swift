@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     
     var patientGuidelines : [NewDietaryManagement] = []
     var patientConsumption : [NewConsumption] = []
+    var weightUnits : [newWeightUnit] = []
     var currentDayCounter : Int = 0
     
     var dataTransferTo = ""
@@ -117,6 +118,21 @@ class HomeViewController: UIViewController {
             
             self.patientGuidelines = guidelines
             
+            self.getWeightUnits()
+            
+        })
+    }
+    
+    func getWeightUnits() {
+        NiZiAPIHelper.getWeightUnits(authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: { response in
+            guard let jsonResponse = response.data else { return }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            guard let weightUnits = try? jsonDecoder.decode([newWeightUnit].self, from: jsonResponse) else { return }
+            
+            self.weightUnits = weightUnits;
+           
             self.guidelineTableView.reloadData()
         })
     }
@@ -159,11 +175,12 @@ extension HomeViewController : UITableViewDataSource {
 
         let filteredList = patientGuidelines
         let guideline = filteredList[indexPath.row]
+        let weightUnit = weightUnits.filter({ $0.id == guideline.dietaryRestrictionObject?.weightUnit }).first
         var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var total : Int = Int(floatTotal)
         
         var progressView = cell.guidelineChartView as! CircularProgressView
-        progressView.progressAnimation(minimum: guideline.minimum, maximum: guideline.maximum, currentTotal: total)
+        progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
         
        
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural

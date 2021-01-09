@@ -47,6 +47,6 @@ class NewDietaryRestriction : Codable {
         case created_at  = "created_at"
         case updated_at  = "updated_at"
         case plural      = "plural"
-        case weightUnit  = "weightUnit"
+        case weightUnit  = "weight_unit"
     }
 }

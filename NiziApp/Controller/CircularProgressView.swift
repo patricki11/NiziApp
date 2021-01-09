@@ -35,31 +35,32 @@ private var totalLabel = CATextLayer()
         circleLayer.path = circularPath.cgPath
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineCap = .round
-        circleLayer.lineWidth = 12.0
+        circleLayer.lineWidth = 8.0
         circleLayer.strokeColor = grayColor
         progressLayer.path = circularPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.lineCap = .round
-        progressLayer.lineWidth = 12.0
+        progressLayer.lineWidth = 8.0
         progressLayer.strokeEnd = 0
         progressLayer.strokeColor = grayColor
         totalLabel.alignmentMode = .center
-        totalLabel.fontSize = 20
+        totalLabel.fontSize = 14
         totalLabel.foregroundColor = UIColor.black.cgColor
-        totalLabel.frame = CGRect(x: (frame.size.width / 2) - 20, y: (frame.size.height / 2) - 10, width: 40, height: 40)
+        totalLabel.frame = CGRect(x: (frame.size.width / 2) - 30, y: (frame.size.height / 2) - 10, width: 60, height: 50)
         totalLabel.string = "0"
         layer.addSublayer(circleLayer)
         layer.addSublayer(progressLayer)
         layer.addSublayer(totalLabel)
     }
     
-    func progressAnimation(minimum: Int?, maximum: Int?, currentTotal: Int) {
+    func progressAnimation(guideline: NewDietaryManagement, weightUnit: newWeightUnit?, currentTotal: Int) {
         
         var toValue : Double = 0.0
-        let min = Double(minimum ?? 0)
-        let max = Double(maximum ?? 0)
+        let min = Double(guideline.minimum ?? 0)
+        let max = Double(guideline.maximum ?? 0)
         let total = Double(currentTotal)
-        totalLabel.string = String(currentTotal)
+        let unit = weightUnit?.short ?? ""
+        totalLabel.string = "\(String(currentTotal)) \(unit)"
         
         if(min != 0) {
             circleLayer.strokeColor = yellowColor
