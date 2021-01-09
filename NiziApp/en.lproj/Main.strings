@@ -1,0 +1,660 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "04U-8T-oXZ"; */
+"04U-8T-oXZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0Rg-nd-lOJ"; */
+"0Rg-nd-lOJ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0S6-i6-Bzr"; */
+"0S6-i6-Bzr.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0c5-zy-gNt"; */
+"0c5-zy-gNt.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "e-mail adres"; ObjectID = "0cH-WJ-xmT"; */
+"0cH-WJ-xmT.placeholder" = "e-mail adres";
+
+/* Class = "UILabel"; text = "Food"; ObjectID = "0f3-W0-cyO"; */
+"0f3-W0-cyO.text" = "Food";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "0od-6I-udx"; */
+"0od-6I-udx.text" = "0.0";
+
+/* Class = "UILabel"; text = "Dagoverzicht"; ObjectID = "0vq-FB-ty0"; */
+"0vq-FB-ty0.text" = "Dagoverzicht";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "0wL-3X-UXo"; */
+"0wL-3X-UXo.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "10P-Jf-gaF"; */
+"10P-Jf-gaF.text" = "Label";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "1IZ-G8-zvJ"; */
+"1IZ-G8-zvJ.text" = "Maximum";
+
+/* Class = "UITextField"; placeholder = "Achternaam"; ObjectID = "1KM-rU-QvA"; */
+"1KM-rU-QvA.placeholder" = "Achternaam";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "1Lf-ZU-x46"; */
+"1Lf-ZU-x46.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1Np-iN-EmG"; */
+"1Np-iN-EmG.text" = "Label";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "1PA-Fg-gZf"; */
+"1PA-Fg-gZf.text" = "1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1kZ-dq-cBp"; */
+"1kZ-dq-cBp.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1uI-I4-QYy"; */
+"1uI-I4-QYy.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "32H-yG-TSj"; */
+"32H-yG-TSj.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Naam"; ObjectID = "3XN-rg-7zM"; */
+"3XN-rg-7zM.placeholder" = "Naam";
+
+/* Class = "UITextField"; placeholder = "Product zoeken"; ObjectID = "3qD-44-Idr"; */
+"3qD-44-Idr.placeholder" = "Product zoeken";
+
+/* Class = "UILabel"; text = "Richtlijnen"; ObjectID = "3uY-6I-YIs"; */
+"3uY-6I-YIs.text" = "Richtlijnen";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4xU-hR-HLR"; */
+"4xU-hR-HLR.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5lO-yF-9ow"; */
+"5lO-yF-9ow.text" = "Label";
+
+/* Class = "UILabel"; text = "Pers. informatie"; ObjectID = "5p5-fA-cAS"; */
+"5p5-fA-cAS.text" = "Pers. informatie";
+
+/* Class = "UILabel"; text = "Deze Week"; ObjectID = "5wJ-da-k3v"; */
+"5wJ-da-k3v.text" = "Deze Week";
+
+/* Class = "UINavigationItem"; title = "Dagboek"; ObjectID = "6i4-K4-Wpo"; */
+"6i4-K4-Wpo.title" = "Dagboek";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "6pF-qq-c5z"; */
+"6pF-qq-c5z.title" = "Home";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "79l-B1-IR9"; */
+"79l-B1-IR9.text" = "Maximum";
+
+/* Class = "UIButton"; normalTitle = "Voeding zoeken"; ObjectID = "7OQ-t2-ZX6"; */
+"7OQ-t2-ZX6.normalTitle" = "Voeding zoeken";
+
+/* Class = "UIButton"; normalTitle = "Zoek"; ObjectID = "7b9-vQ-P64"; */
+"7b9-vQ-P64.normalTitle" = "Zoek";
+
+/* Class = "UITextField"; placeholder = "Herhaal Wachtwoord"; ObjectID = "7c1-Ic-9EB"; */
+"7c1-Ic-9EB.placeholder" = "Herhaal Wachtwoord";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "7eJ-t5-4tj"; */
+"7eJ-t5-4tj.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "82g-7l-ccq"; */
+"82g-7l-ccq.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "82o-fr-VHF"; */
+"82o-fr-VHF.text" = "Label";
+
+/* Class = "UILabel"; text = "Pers. informatie"; ObjectID = "8Kg-z0-QWO"; */
+"8Kg-z0-QWO.text" = "Pers. informatie";
+
+/* Class = "UILabel"; text = "Calorieen"; ObjectID = "8rc-Ar-V2X"; */
+"8rc-Ar-V2X.text" = "Calorieen";
+
+/* Class = "UILabel"; text = "Richtlijn naam"; ObjectID = "8y7-s2-CyT"; */
+"8y7-s2-CyT.text" = "Richtlijn naam";
+
+/* Class = "UILabel"; text = "Vocht"; ObjectID = "97z-So-JVS"; */
+"97z-So-JVS.text" = "Vocht";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "9HS-xm-qfJ"; */
+"9HS-xm-qfJ.title" = "Item 2";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9eG-gO-f1R"; */
+"9eG-gO-f1R.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Product zoeken"; ObjectID = "9rC-CS-gJC"; */
+"9rC-CS-gJC.placeholder" = "Product zoeken";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "AND-sE-0Vs"; */
+"AND-sE-0Vs.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "ARP-nv-gH1"; */
+"ARP-nv-gH1.text" = "0.0";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "AZy-JZ-0uK"; */
+"AZy-JZ-0uK.text" = "Minimum";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "BN2-5X-9gV"; */
+"BN2-5X-9gV.title" = "Home";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BOC-BP-8LU"; */
+"BOC-BP-8LU.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BSu-od-5QN"; */
+"BSu-od-5QN.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BpV-Ul-Bvl"; */
+"BpV-Ul-Bvl.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Bzw-23-44S"; */
+"Bzw-23-44S.text" = "Label";
+
+/* Class = "UISegmentedControl"; ClZ-gk-W4L.segmentTitles[0] = "Ontbijt"; ObjectID = "ClZ-gk-W4L"; */
+"ClZ-gk-W4L.segmentTitles[0]" = "Ontbijt";
+
+/* Class = "UISegmentedControl"; ClZ-gk-W4L.segmentTitles[1] = "Lunch"; ObjectID = "ClZ-gk-W4L"; */
+"ClZ-gk-W4L.segmentTitles[1]" = "Lunch";
+
+/* Class = "UISegmentedControl"; ClZ-gk-W4L.segmentTitles[2] = "Avond"; ObjectID = "ClZ-gk-W4L"; */
+"ClZ-gk-W4L.segmentTitles[2]" = "Avond";
+
+/* Class = "UISegmentedControl"; ClZ-gk-W4L.segmentTitles[3] = "Snack"; ObjectID = "ClZ-gk-W4L"; */
+"ClZ-gk-W4L.segmentTitles[3]" = "Snack";
+
+/* Class = "UINavigationItem"; title = "Voeding zoeken"; ObjectID = "DA4-2d-Am2"; */
+"DA4-2d-Am2.title" = "Voeding zoeken";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Dds-XO-FMc"; */
+"Dds-XO-FMc.text" = "Label";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "Drv-Sd-IN8"; */
+"Drv-Sd-IN8.text" = "Maximum";
+
+/* Class = "UIViewController"; title = "Search Favorite"; ObjectID = "EDM-IG-yip"; */
+"EDM-IG-yip.title" = "Search Favorite";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "F6X-19-cno"; */
+"F6X-19-cno.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FDe-Mu-IZh"; */
+"FDe-Mu-IZh.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Gesprekken"; ObjectID = "FeS-9Z-Jjb"; */
+"FeS-9Z-Jjb.title" = "Gesprekken";
+
+/* Class = "UIViewController"; title = "Dagboek"; ObjectID = "Fph-Aw-iak"; */
+"Fph-Aw-iak.title" = "Dagboek";
+
+/* Class = "UIButton"; normalTitle = "Zoek"; ObjectID = "G0H-Qc-P8O"; */
+"G0H-Qc-P8O.normalTitle" = "Zoek";
+
+/* Class = "UITextField"; placeholder = "Geboortedatum"; ObjectID = "G8H-EU-0EM"; */
+"G8H-EU-0EM.placeholder" = "Geboortedatum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "G8d-Fx-VYd"; */
+"G8d-Fx-VYd.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "GFB-Yx-JL3"; */
+"GFB-Yx-JL3.text" = "0.0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GPk-Vb-qLU"; */
+"GPk-Vb-qLU.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "naam maaltijd"; ObjectID = "GU7-fU-PCK"; */
+"GU7-fU-PCK.placeholder" = "naam maaltijd";
+
+/* Class = "UILabel"; text = "Richtlijnen"; ObjectID = "GkW-LX-DvP"; */
+"GkW-LX-DvP.text" = "Richtlijnen";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Go0-nR-Xhd"; */
+"Go0-nR-Xhd.text" = "Label";
+
+/* Class = "UILabel"; text = "Food"; ObjectID = "H8p-kp-c3J"; */
+"H8p-kp-c3J.text" = "Food";
+
+/* Class = "UITextField"; placeholder = "Wachtwoord"; ObjectID = "HXj-xi-tWx"; */
+"HXj-xi-tWx.placeholder" = "Wachtwoord";
+
+/* Class = "UITextField"; placeholder = "Product zoeken"; ObjectID = "HfK-KZ-3XE"; */
+"HfK-KZ-3XE.placeholder" = "Product zoeken";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "Hfa-qh-pUk"; */
+"Hfa-qh-pUk.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "Hjw-hk-wwK"; */
+"Hjw-hk-wwK.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Hxn-bb-BbS"; */
+"Hxn-bb-BbS.text" = "Label";
+
+/* Class = "UILabel"; text = "Stap 1"; ObjectID = "I8a-MU-eVh"; */
+"I8a-MU-eVh.text" = "Stap 1";
+
+/* Class = "UILabel"; text = "1x"; ObjectID = "JEp-uN-S7j"; */
+"JEp-uN-S7j.text" = "1x";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JWK-To-FRD"; */
+"JWK-To-FRD.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Dagboek"; ObjectID = "Jd3-uB-jG7"; */
+"Jd3-uB-jG7.title" = "Dagboek";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Jd4-1j-E3z"; */
+"Jd4-1j-E3z.text" = "Label";
+
+/* Class = "UILabel"; text = "Voedingswaarden"; ObjectID = "Jmg-qd-KxE"; */
+"Jmg-qd-KxE.text" = "Voedingswaarden";
+
+/* Class = "UIButton"; normalTitle = "Maaltijden"; ObjectID = "KDh-AF-rQd"; */
+"KDh-AF-rQd.normalTitle" = "Maaltijden";
+
+/* Class = "UIViewController"; title = "Patiënt Bewerken"; ObjectID = "KEm-yn-oYW"; */
+"KEm-yn-oYW.title" = "Patiënt Bewerken";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Krv-qn-oSn"; */
+"Krv-qn-oSn.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Gesprekken"; ObjectID = "Kys-Rx-yeW"; */
+"Kys-Rx-yeW.title" = "Gesprekken";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "L3L-Uz-ZDj"; */
+"L3L-Uz-ZDj.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LC2-VH-bhy"; */
+"LC2-VH-bhy.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Maaltijd maken"; ObjectID = "Lka-5e-U00"; */
+"Lka-5e-U00.normalTitle" = "Maaltijd maken";
+
+/* Class = "UILabel"; text = "Aanbeveling [minimum] - [maximum] [eenheid]"; ObjectID = "MHs-je-Xf4"; */
+"MHs-je-Xf4.text" = "Aanbeveling [minimum] - [maximum] [eenheid]";
+
+/* Class = "UIBarButtonItem"; title = "Patienten"; ObjectID = "MNP-i7-n2Q"; */
+"MNP-i7-n2Q.title" = "Patienten";
+
+/* Class = "UIButton"; normalTitle = "Producten"; ObjectID = "N2j-14-tcG"; */
+"N2j-14-tcG.normalTitle" = "Producten";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "N9T-81-etP"; */
+"N9T-81-etP.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NG8-pR-NHY"; */
+"NG8-pR-NHY.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Favorieten"; ObjectID = "OVh-JR-5Ye"; */
+"OVh-JR-5Ye.normalTitle" = "Favorieten";
+
+/* Class = "UILabel"; text = "0g"; ObjectID = "Oac-qI-0Si"; */
+"Oac-qI-0Si.text" = "0g";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "P4O-v4-y36"; */
+"P4O-v4-y36.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PGo-zh-j8r"; */
+"PGo-zh-j8r.text" = "Label";
+
+/* Class = "UITextField"; text = "1"; ObjectID = "Qf4-zS-fy2"; */
+"Qf4-zS-fy2.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "RBp-SI-zsS"; */
+"RBp-SI-zsS.normalTitle" = "<";
+
+/* Class = "UILabel"; text = "Naam"; ObjectID = "RUh-Bf-4zi"; */
+"RUh-Bf-4zi.text" = "Naam";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Riq-Pk-YXC"; */
+"Riq-Pk-YXC.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Roq-2P-PmY"; */
+"Roq-2P-PmY.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Roz-I3-cbj"; */
+"Roz-I3-cbj.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "SG0-ae-acw"; */
+"SG0-ae-acw.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Stap 2"; ObjectID = "SGn-gZ-T6O"; */
+"SGn-gZ-T6O.text" = "Stap 2";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Suh-Qv-StE"; */
+"Suh-Qv-StE.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "T2r-OC-IZh"; */
+"T2r-OC-IZh.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "T6L-jr-EGw"; */
+"T6L-jr-EGw.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TXq-hn-y6o"; */
+"TXq-hn-y6o.text" = "Label";
+
+/* Class = "UILabel"; text = "Feedback"; ObjectID = "U1X-YQ-0PS"; */
+"U1X-YQ-0PS.text" = "Feedback";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "Uzz-mf-Ejb"; */
+"Uzz-mf-Ejb.normalTitle" = "<";
+
+/* Class = "UIButton"; normalTitle = "Richtlijnen opslaan"; ObjectID = "VKU-XW-h5Y"; */
+"VKU-XW-h5Y.normalTitle" = "Richtlijnen opslaan";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VON-oz-y2e"; */
+"VON-oz-y2e.text" = "Label";
+
+/* Class = "UIViewController"; title = "Dagboek"; ObjectID = "VQd-Lh-jxi"; */
+"VQd-Lh-jxi.title" = "Dagboek";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "VTQ-fD-cKL"; */
+"VTQ-fD-cKL.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "VTY-rK-xrE"; */
+"VTY-rK-xrE.text" = "0.0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vg3-UG-pua"; */
+"Vg3-UG-pua.text" = "Label";
+
+/* Class = "UILabel"; text = "Vocht"; ObjectID = "W27-nh-twf"; */
+"W27-nh-twf.text" = "Vocht";
+
+/* Class = "UITextField"; placeholder = "Gebruikersnaam"; ObjectID = "WKo-14-eUZ"; */
+"WKo-14-eUZ.placeholder" = "Gebruikersnaam";
+
+/* Class = "UIButton"; normalTitle = "Patiënt aanmaken"; ObjectID = "WXQ-eh-wgQ"; */
+"WXQ-eh-wgQ.normalTitle" = "Patiënt aanmaken";
+
+/* Class = "UILabel"; text = "Proteine /Eiwit"; ObjectID = "XDD-e7-OJ1"; */
+"XDD-e7-OJ1.text" = "Proteine /Eiwit";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XQR-wI-e12"; */
+"XQR-wI-e12.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Wachtwoord"; ObjectID = "XWw-gc-oId"; */
+"XWw-gc-oId.placeholder" = "Wachtwoord";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XYe-by-gPh"; */
+"XYe-by-gPh.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Xnl-fU-C77"; */
+"Xnl-fU-C77.text" = "Label";
+
+/* Class = "UILabel"; text = "1x"; ObjectID = "Xyv-3f-gJ9"; */
+"Xyv-3f-gJ9.text" = "1x";
+
+/* Class = "UIBarButtonItem"; title = "Uitloggen"; ObjectID = "Yzx-st-IJk"; */
+"Yzx-st-IJk.title" = "Uitloggen";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "Z5E-KI-lKu"; */
+"Z5E-KI-lKu.text" = "0.0";
+
+/* Class = "UILabel"; text = "Portie"; ObjectID = "Z99-r6-1ya"; */
+"Z99-r6-1ya.text" = "Portie";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZOs-dJ-wzf"; */
+"ZOs-dJ-wzf.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "Zsw-P4-abV"; */
+"Zsw-P4-abV.text" = "0.0";
+
+/* Class = "UITabBarItem"; title = "Dagboek"; ObjectID = "ZtJ-UP-SVP"; */
+"ZtJ-UP-SVP.title" = "Dagboek";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "a3i-Tw-xp6"; */
+"a3i-Tw-xp6.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aSf-39-lSX"; */
+"aSf-39-lSX.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Maaltijden"; ObjectID = "aTl-yM-dhg"; */
+"aTl-yM-dhg.normalTitle" = "Maaltijden";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "ahy-NJ-2MN"; */
+"ahy-NJ-2MN.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "amd-gp-hwA"; */
+"amd-gp-hwA.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Vezel"; ObjectID = "apH-us-nHc"; */
+"apH-us-nHc.text" = "Vezel";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "bA4-Jm-coh"; */
+"bA4-Jm-coh.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bHu-sb-6Pu"; */
+"bHu-sb-6Pu.text" = "Label";
+
+/* Class = "UILabel"; text = "Natrium"; ObjectID = "bYH-9g-y2Y"; */
+"bYH-9g-y2Y.text" = "Natrium";
+
+/* Class = "UILabel"; text = "0g"; ObjectID = "bbu-Lw-q5p"; */
+"bbu-Lw-q5p.text" = "0g";
+
+/* Class = "UILabel"; text = "Results (0)"; ObjectID = "bxH-9C-poh"; */
+"bxH-9C-poh.text" = "Results (0)";
+
+/* Class = "UIViewController"; title = "Dagboek"; ObjectID = "cIk-s1-WXa"; */
+"cIk-s1-WXa.title" = "Dagboek";
+
+/* Class = "UILabel"; text = "Richtlijn naam"; ObjectID = "cvc-Kb-8sC"; */
+"cvc-Kb-8sC.text" = "Richtlijn naam";
+
+/* Class = "UILabel"; text = "Kalium"; ObjectID = "cz4-ts-mO7"; */
+"cz4-ts-mO7.text" = "Kalium";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dLB-32-0LK"; */
+"dLB-32-0LK.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Voeding zoeken"; ObjectID = "dNH-o6-YRI"; */
+"dNH-o6-YRI.title" = "Voeding zoeken";
+
+/* Class = "UILabel"; text = "Geslacht - Geboortedatum (Leeftijd)"; ObjectID = "dqW-um-4Ub"; */
+"dqW-um-4Ub.text" = "Geslacht - Geboortedatum (Leeftijd)";
+
+/* Class = "UILabel"; text = "Results (0)"; ObjectID = "e5C-Jc-eE1"; */
+"e5C-Jc-eE1.text" = "Results (0)";
+
+/* Class = "UILabel"; text = "Naam"; ObjectID = "eAn-89-hrf"; */
+"eAn-89-hrf.text" = "Naam";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "eBY-oZ-BpA"; */
+"eBY-oZ-BpA.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Natrium"; ObjectID = "fRu-rj-diS"; */
+"fRu-rj-diS.text" = "Natrium";
+
+/* Class = "UIButton"; normalTitle = "Bewaar Gegevens"; ObjectID = "gGS-t5-MsW"; */
+"gGS-t5-MsW.normalTitle" = "Bewaar Gegevens";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "gN6-bZ-auw"; */
+"gN6-bZ-auw.text" = "0.0";
+
+/* Class = "UILabel"; text = "Aanbeveling [minimum] - [maximum] [eenheid]"; ObjectID = "gop-sX-B6i"; */
+"gop-sX-B6i.text" = "Aanbeveling [minimum] - [maximum] [eenheid]";
+
+/* Class = "UIButton"; normalTitle = "Producten"; ObjectID = "gtD-MF-OSz"; */
+"gtD-MF-OSz.normalTitle" = "Producten";
+
+/* Class = "UITextField"; placeholder = "Geboortedatum"; ObjectID = "gzM-lr-cY8"; */
+"gzM-lr-cY8.placeholder" = "Geboortedatum";
+
+/* Class = "UILabel"; text = "Calorieen"; ObjectID = "h6f-gk-NzV"; */
+"h6f-gk-NzV.text" = "Calorieen";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "hET-fB-NpV"; */
+"hET-fB-NpV.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hMc-Ld-OeC"; */
+"hMc-Ld-OeC.text" = "Label";
+
+/* Class = "UILabel"; text = "Voedingswaarde"; ObjectID = "hMp-oq-OUd"; */
+"hMp-oq-OUd.text" = "Voedingswaarde";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "hSd-le-VYR"; */
+"hSd-le-VYR.text" = "0.0";
+
+/* Class = "UIButton"; normalTitle = "Favorieten"; ObjectID = "hTR-QH-7Hi"; */
+"hTR-QH-7Hi.normalTitle" = "Favorieten";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hys-k9-QgD"; */
+"hys-k9-QgD.text" = "Label";
+
+/* Class = "UILabel"; text = "Stap 1"; ObjectID = "io8-3f-bhu"; */
+"io8-3f-bhu.text" = "Stap 1";
+
+/* Class = "UILabel"; text = "Proteine /Eiwit"; ObjectID = "jAO-Fs-MDh"; */
+"jAO-Fs-MDh.text" = "Proteine /Eiwit";
+
+/* Class = "UIButton"; normalTitle = "Favorieten"; ObjectID = "k7L-Wc-Ef4"; */
+"k7L-Wc-Ef4.normalTitle" = "Favorieten";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "kHy-HR-azV"; */
+"kHy-HR-azV.text" = "Minimum";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kyf-pS-pTD"; */
+"kyf-pS-pTD.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lOn-cQ-tQ8"; */
+"lOn-cQ-tQ8.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "lgU-25-gX7"; */
+"lgU-25-gX7.text" = "0.0";
+
+/* Class = "UILabel"; text = "[aantal] [eenheid]"; ObjectID = "m9U-97-e5R"; */
+"m9U-97-e5R.text" = "[aantal] [eenheid]";
+
+/* Class = "UIButton"; normalTitle = "Producten"; ObjectID = "mNQ-wc-8x1"; */
+"mNQ-wc-8x1.normalTitle" = "Producten";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "mpp-zZ-pui"; */
+"mpp-zZ-pui.text" = "0.0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "nAm-au-ehE"; */
+"nAm-au-ehE.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Voeding"; ObjectID = "nHa-YW-cJE"; */
+"nHa-YW-cJE.text" = "Voeding";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nM0-HV-VoR"; */
+"nM0-HV-VoR.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Voornaam"; ObjectID = "nWX-S2-jZg"; */
+"nWX-S2-jZg.placeholder" = "Voornaam";
+
+/* Class = "UILabel"; text = "Deze Week"; ObjectID = "nvF-1B-cZU"; */
+"nvF-1B-cZU.text" = "Deze Week";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "o2v-xx-l05"; */
+"o2v-xx-l05.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "oJo-Xy-u5x"; */
+"oJo-Xy-u5x.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oSZ-v0-Q5e"; */
+"oSZ-v0-Q5e.text" = "Label";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "ob8-c6-1Xy"; */
+"ob8-c6-1Xy.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Vezel"; ObjectID = "obR-zj-7tU"; */
+"obR-zj-7tU.text" = "Vezel";
+
+/* Class = "UINavigationItem"; title = "Voeding zoeken"; ObjectID = "pFe-xD-i1T"; */
+"pFe-xD-i1T.title" = "Voeding zoeken";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "paL-rw-aIR"; */
+"paL-rw-aIR.text" = "Label";
+
+/* Class = "UILabel"; text = "[aantal] [eenheid]"; ObjectID = "pjp-S7-9I7"; */
+"pjp-S7-9I7.text" = "[aantal] [eenheid]";
+
+/* Class = "UITextField"; placeholder = "Voornaam"; ObjectID = "qJn-2D-JnW"; */
+"qJn-2D-JnW.placeholder" = "Voornaam";
+
+/* Class = "UITabBarItem"; title = "Dagboek"; ObjectID = "qOU-D4-WWn"; */
+"qOU-D4-WWn.title" = "Dagboek";
+
+/* Class = "UITextField"; placeholder = "Achternaam"; ObjectID = "qUw-JO-BvN"; */
+"qUw-JO-BvN.placeholder" = "Achternaam";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "qgr-FF-1IP"; */
+"qgr-FF-1IP.text" = "Maximum";
+
+/* Class = "UINavigationItem"; title = "Dagboek"; ObjectID = "qrL-xC-jzf"; */
+"qrL-xC-jzf.title" = "Dagboek";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rgL-n1-5u8"; */
+"rgL-n1-5u8.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Producten"; ObjectID = "sMt-HP-hNH"; */
+"sMt-HP-hNH.normalTitle" = "Producten";
+
+/* Class = "UIButton"; normalTitle = "Zoek"; ObjectID = "sPR-lZ-i0m"; */
+"sPR-lZ-i0m.normalTitle" = "Zoek";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "shG-wW-CAK"; */
+"shG-wW-CAK.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "tGq-GH-K0x"; */
+"tGq-GH-K0x.text" = "Minimum";
+
+/* Class = "UIButton"; normalTitle = "Opslaan"; ObjectID = "tSL-cn-sUv"; */
+"tSL-cn-sUv.normalTitle" = "Opslaan";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uGL-QL-4jk"; */
+"uGL-QL-4jk.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uTx-zh-EeN"; */
+"uTx-zh-EeN.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "uu6-Qr-ERy"; */
+"uu6-Qr-ERy.text" = "0.0";
+
+/* Class = "UILabel"; text = "Stap 2"; ObjectID = "v1v-Vj-lhl"; */
+"v1v-Vj-lhl.text" = "Stap 2";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "v4I-pj-gpA"; */
+"v4I-pj-gpA.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "vIh-7m-BAW"; */
+"vIh-7m-BAW.text" = "Label";
+
+/* Class = "UILabel"; text = "size"; ObjectID = "vdg-gc-1gy"; */
+"vdg-gc-1gy.text" = "size";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "vg2-ha-qb3"; */
+"vg2-ha-qb3.text" = "Maximum";
+
+/* Class = "UIButton"; normalTitle = "Maaltijden"; ObjectID = "wbZ-fE-Qkn"; */
+"wbZ-fE-Qkn.normalTitle" = "Maaltijden";
+
+/* Class = "UILabel"; text = "Kalium"; ObjectID = "whN-Jf-Vna"; */
+"whN-Jf-Vna.text" = "Kalium";
+
+/* Class = "UILabel"; text = "Minimum"; ObjectID = "xRl-AE-raC"; */
+"xRl-AE-raC.text" = "Minimum";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "xXQ-A9-xPm"; */
+"xXQ-A9-xPm.text" = "Maximum";
+
+/* Class = "UILabel"; text = "Maximum"; ObjectID = "xiY-mt-ryr"; */
+"xiY-mt-ryr.text" = "Maximum";
+
+/* Class = "UINavigationItem"; title = "Maaltijd Zoeken"; ObjectID = "yEF-bk-ZiD"; */
+"yEF-bk-ZiD.title" = "Maaltijd Zoeken";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yQa-Uw-XgU"; */
+"yQa-Uw-XgU.text" = "Label";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "yRg-go-wNH"; */
+"yRg-go-wNH.text" = "0.0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ycF-J1-1su"; */
+"ycF-J1-1su.text" = "Label";
+
+/* Class = "UILabel"; text = "Results (0)"; ObjectID = "zX8-vo-rIE"; */
+"zX8-vo-rIE.text" = "Results (0)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zaL-b7-OUW"; */
+"zaL-b7-OUW.text" = "Label";
+
+/* Class = "UIViewController"; title = "Dagboek"; ObjectID = "zcp-Ij-gU0"; */
+"zcp-Ij-gU0.title" = "Dagboek";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zt5-uR-X2w"; */
+"zt5-uR-X2w.normalTitle" = "Button";

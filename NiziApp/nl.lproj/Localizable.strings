@@ -5,41 +5,50 @@
   Created by Patrick Dammers on 03/12/2019.
   Copyright © 2019 Samir Yeasin. All rights reserved.
 */
-
 "ApplicationName" = "Nizi";
 "LoginPageTitle" = "Inloggen";
 "UsernameLabel" = "Gebruikersnaam";
 "PasswordLabel" = "Wachtwoord";
-"Login" = "Inloggen";
-"NeedHelp" = "Hulp Nodig?";
-"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
-"NierstichtingWeb" = "http://www.nierstichting.nl";
-"NierstichtingPhone" = "035 697 80 00";
-"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
-"NierstichtingMail" = "info@nierstichting.nl";
-"wrongCredentialsTitle" = "Niet ingelogd";
-"wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
+"login" = "Inloggen";
+"LogOut" = "Uitloggen";
+"cancel" = "Annuleren";
 "ok" = "Ok";
 "loginAsPatient" = "Login als patiënt";
 "loginAsDietist" = "Login als diëtist";
-"patientList" = "Patiënten";
-"addPatient" = "Toevoegen Patiënt";
-"editPatient" = "Patiënt Bewerken";
-
+"edit" = "Bewerken";
 "firstName" = "Voornaam";
 "surname" = "Achternaam";
 "dateOfBirth" = "Geboortedatum";
 "username" = "Gebruikersnaam";
 "email" = "e-mailadres";
 "password" = "Wachtwoord";
+"passwordRequirement" = "Het wachtwoord moet minimaal aan 3 van de 4 volgende eisen voldoen: 1 kleine letter, 1 hoofdletter, 1 cijfer, 1 speciaal teken (!@#$%^&*)";
 "confirmPassword" = "Wachtwoord herhalen";
 "personalInfo" = "Persoonsgegevens";
 "loginInfo" = "Logingegevens";
 "createPatient" = "Patiënt aanmaken";
-
+"nextStep" = "Volgende Stap";
 "DiaryDayLabel" = "VANDAAG";
 "DiaryTitle" = "Voeding";
 "DiaryAddProduct" = "voeding toevoegen";
+"dayOverview" = "Dagoverzicht";
+"weekOverview" = "Weekoverzicht";
+"averageOf" = "Gemiddelde van";
+"day" = "Dag";
+"week" = "Week";
+
+// Nierstichting Info Login Page
+"NeedHelp" = "Hulp Nodig?";
+"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
+"NierstichtingWeb" = "http://www.nierstichting.nl";
+"NierstichtingPhone" = "035 697 80 00";
+"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
+"NierstichtingMail" = "info@nierstichting.nl";
+// Nierstichting Info Login Page
+
+
+
+// Guidelines
 "guidelines" = "Richtlijnen";
 "Calorie" = "Calorieën";
 "Grain" = "Vezel";
@@ -47,7 +56,6 @@
 "Moisture" = "Vocht";
 "Potassium" = "Kalium";
 "Natrium" = "Natrium";
-
 "Minimum" = "Minimum";
 "Maximum" = "Maximum";
 "caloriesTitle" = "Calorieën in kcal";
@@ -56,4 +64,99 @@
 "potassiumTitle" = "Kalium in mg";
 "proteinTitle" = "Proteïne in gram";
 "grainTitle" = "Vezels in gram";
+// Guidelines
 
+
+// Guideline Amount
+"between" = "Tussen";
+"and" = "en";
+"moreThan" = "Meer dan";
+"lessThan" = "Minder dan";
+// Guideline Amount
+
+// Intake Feedback
+"noIntake" = "Geen inname";
+"goodIntake" = "Goed bezig";
+"keepGoingIntake" = "Blijf zo doorgan!";
+"limitIntake" = "Beperk uw inname";
+// Intake Feedback
+
+// Conversation
+"ConversationTitle" = "Titel";
+"ConversationDescription" = "Beschrijving";
+"AddConversation" = "Toevoegen";
+// Conversation
+
+
+// Dates
+"Yesterday" = "Gisteren";
+"Today" = "Vandaag";
+"Tomorrow" = "Morgen";
+
+"lastWeek" = "Vorige Week";
+"thisWeek" = "Deze Week";
+"nextWeek" = "Volgende Week";
+// Dates
+
+
+// Gender
+"Gender" = "Geslacht";
+"Man" = "Man";
+"Woman" = "Vrouw";
+// Gender
+
+// Tab Bar Buttons Diëtist
+"Home" = "Home";
+"Diary" = "Diary";
+"Conversations" = "Covnersations";
+// Tab Bar Buttons Diëtist
+
+// Titles
+"Login" = "Inloggen";
+"AddPatient" = "Toevoegen Patiënt";
+"EditPatient" = "Bewerken Patiënt";
+"Overview" = "Overzicht";
+"PatientList" = "Patiënten";
+"Conversations" = "Gesprekken";
+"AddConversations" = "Gesprek Toevoegen";
+"Diary" = "Voedingsdagboek";
+// Titles
+
+
+// Messages
+"patientAddedTitle" = "Patiënt toegevoegd";
+"patientAddedMessage" = "De patiënt is toegevoegd";
+
+"patientUpdatedTitle" = "Patiënt bijgewerkt";
+"patientUpdatedMessage" = "De patiëntgegevens zijn bijgewerkt.";
+
+"requiredFieldsTitle" = "Verplichte velden";
+"requiredFieldsMessage" = "Niet alle verplichte velden zijn ingevuld.";
+
+"invalidEmailTitle" = "Ongeldige Email";
+"invalidEmailMessage" = "Het ingegeven emailadres is ongeldig.";
+
+"patientExistsTitle" = "Patiënt bestaat al";
+"patientExistsMessage" = "Er bestaat al een patiënt met het ingegeven emailadres.";
+
+"passwordNotStrongEnoughTitle" = "Wachtwoord niet sterk genoeg";
+"passwordNotStrongEnoughMessage" = "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.";
+
+"passwordDoesNotMatchTitle" = "Niet aangemaakt";
+"passwordDoesNotMatchMessage" = "Het ingegeven wachtwoord komt niet overeen.";
+
+"guidelinesAddedTitle" = "Richtlijnen toegevoegd";
+"guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd.";
+
+"wrongCredentialsTitle" = "Niet ingelogd";
+"wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
+
+"conversationAddedTitle" = "Toegevoegd";
+"conversationAddedMessage" = "Conversatie toegevoegd.";
+
+"patientDeletedTitle" = "Verwijderd";
+"patientDeletedMessage" = "De patiënt is successvol verwijderd.";
+
+"patientDeleteConfirmationTitle" = "Verwijderen";
+"patientDeleteConfirmationMessage" = "Weet u zeker datu de patiënt wilt verwijderen?";
+// Messages

@@ -7,152 +7,157 @@
 */
 
 "ApplicationName" = "Nizi";
-"LoginPageTitle" = "Inloggen";
-"UsernameLabel" = "Gebruikersnaam";
-"PasswordLabel" = "Wachtwoord";
-"login" = "Inloggen";
-"LogOut" = "Uitloggen";
-"cancel" = "Annuleren";
+"UsernameLabel" = "Username";
+"PasswordLabel" = "Password";
+"login" = "Log in";
+"LogOut" = "Log out";
+"cancel" = "Cancel";
 "ok" = "Ok";
-"loginAsPatient" = "Login als patiënt";
-"loginAsDietist" = "Login als diëtist";
-"edit" = "Bewerken";
-"firstName" = "Voornaam";
-"surname" = "Achternaam";
-"dateOfBirth" = "Geboortedatum";
-"username" = "Gebruikersnaam";
-"email" = "e-mailadres";
-"password" = "Wachtwoord";
-"passwordRequirement" = "Het wachtwoord moet minimaal aan 3 van de 4 volgende eisen voldoen: 1 kleine letter, 1 hoofdletter, 1 cijfer, 1 speciaal teken (!@#$%^&*)";
-"confirmPassword" = "Wachtwoord herhalen";
-"personalInfo" = "Persoonsgegevens";
-"loginInfo" = "Logingegevens";
-"createPatient" = "Patiënt aanmaken";
-"nextStep" = "Volgende Stap";
-"DiaryDayLabel" = "VANDAAG";
-"DiaryTitle" = "Voeding";
-"DiaryAddProduct" = "voeding toevoegen";
-"dayOverview" = "Dagoverzicht";
-"weekOverview" = "Weekoverzicht";
-"averageOf" = "Gemiddelde van";
-"day" = "Dag";
+"loginAsPatient" = "Login as patient";
+"loginAsDietist" = "Login as dietician";
+"edit" = "Edit";
+"firstName" = "Firstname";
+"surname" = "Surname";
+"dateOfBirth" = "Date of birth";
+"username" = "Username";
+"email" = "Email address";
+"password" = "Password";
+"passwordRequirement" = "The password has to comply with atleast 3 of the 4 following requirements: 1 Uppercase letter, 1 lowercase letter, 1 number, 1 special character (!@#$%^&*)";
+"confirmPassword" = "Repeat your password";
+"personalInfo" = "Personal data";
+"loginInfo" = "Login data";
+"createPatient" = "Create patient";
+"nextStep" = "Next Step";
+"DiaryDayLabel" = "Today";
+"DiaryTitle" = "Nutrition";
+"DiaryAddProduct" = "add nutrition";
+"dayOverview" = "Dayoverview";
+"weekOverview" = "Weekoverview";
+"averageOf" = "Average of";
+"day" = "Day";
 "week" = "Week";
 
 // Nierstichting Info Login Page
-"NeedHelp" = "Hulp Nodig?";
-"NeedHelpSubtitle" = "Neem contact op met de Nierstichting of uw dietist.";
+"NeedHelp" = "Need help?";
+"NeedHelpSubtitle" = "Contact the kidney foundation or your dietician.";
 "NierstichtingWeb" = "http://www.nierstichting.nl";
 "NierstichtingPhone" = "035 697 80 00";
-"NierstichtingPhoneTime" = "Op werkdagen tussen 9.00 en 17.00 uur";
+"NierstichtingPhoneTime" = "On working days between 9 AM and 5 PM";
 "NierstichtingMail" = "info@nierstichting.nl";
 // Nierstichting Info Login Page
 
 
 
 // Guidelines
-"guidelines" = "Richtlijnen";
-"Calorie" = "Calorieën";
-"Grain" = "Vezel";
-"Protein" = "Proteïne";
-"Moisture" = "Vocht";
-"Potassium" = "Kalium";
-"Natrium" = "Natrium";
+"guidelines" = "Guidelines";
+"Calorie" = "Calories";
+"Grain" = "Grain";
+"Protein" = "Protein";
+"Moisture" = "Moisture";
+"Potassium" = "Potassium";
+"Natrium" = "Sodium";
 "Minimum" = "Minimum";
 "Maximum" = "Maximum";
-"caloriesTitle" = "Calorieën in kcal";
-"waterTitle" = "Vocht in ml";
-"sodiumTitle" = "Natrium in mg";
-"potassiumTitle" = "Kalium in mg";
-"proteinTitle" = "Proteïne in gram";
-"grainTitle" = "Vezels in gram";
+"caloriesTitle" = "Calories in kcal";
+"waterTitle" = "Moisture in ml";
+"sodiumTitle" = "Sodium in mg";
+"potassiumTitle" = "Potassium in mg";
+"proteinTitle" = "Protein in gram";
+"grainTitle" = "Grain in gram";
 // Guidelines
 
 
 // Guideline Amount
-"between" = "Tussen";
-"and" = "en";
-"moreThan" = "Meer dan";
-"lessThan" = "Minder dan";
+"between" = "Between";
+"and" = "and";
+"moreThan" = "More than";
+"lessThan" = "Less than";
 // Guideline Amount
 
 // Intake Feedback
-"noIntake" = "Geen inname";
-"goodIntake" = "Goed bezig";
-"keepGoingIntake" = "Blijf zo doorgan!";
-"limitIntake" = "Beperk uw inname";
+"noIntake" = "No intake";
+"goodIntake" = "Good work";
+"keepGoingIntake" = "Keep it up!";
+"limitIntake" = "Limit your intake";
 // Intake Feedback
 
 // Conversation
-"ConversationTitle" = "Titel";
-"ConversationDescription" = "Beschrijving";
-"AddConversation" = "Toevoegen";
+"ConversationTitle" = "Title";
+"ConversationDescription" = "Description";
+"AddConversation" = "Add";
 // Conversation
 
 
 // Dates
-"Yesterday" = "Gisteren";
-"Today" = "Vandaag";
-"Tomorrow" = "Morgen";
+"Yesterday" = "Yesterday";
+"Today" = "Today";
+"Tomorrow" = "Tomorrow";
 
-"lastWeek" = "Vorige Week";
-"thisWeek" = "Deze Week";
-"nextWeek" = "Volgende Week";
+"lastWeek" = "Last Week";
+"thisWeek" = "This Week";
+"nextWeek" = "Next Week";
 // Dates
 
 
 // Gender
-"Gender" = "Geslacht";
+"Gender" = "Gender";
 "Man" = "Man";
-"Woman" = "Vrouw";
+"Woman" = "Woman";
 // Gender
 
+// Tab Bar Buttons Diëtist
+"Home" = "Home";
+"Diary" = "Diary";
+"Conversations" = "Covnersations";
+// Tab Bar Buttons Diëtist
 
 // Titles
-"Login" = "Inloggen";
-"AddPatient" = "Toevoegen Patiënt";
-"EditPatient" = "Bewerken Patiënt";
-"Overview" = "Overzicht";
-"PatientList" = "Patiënten";
-"Conversations" = "Gesprekken";
-"AddConversations" = "Gesprek Toevoegen";
-"Diary" = "Voedingsdagboek";
+"LoginPageTitle" = "Log in";
+"Login" = "Log in";
+"AddPatient" = "Add Patient";
+"EditPatient" = "Edit Patient";
+"Overview" = "Overview";
+"PatientList" = "Patients";
+"Conversations" = "Conversations";
+"AddConversations" = "Add Conversation";
+"Diary" = "Food diary";
 // Titles
 
 
 // Messages
-"patientAddedTitle" = "Patiënt toegevoegd";
-"patientAddedMessage" = "De patiënt is toegevoegd";
+"patientAddedTitle" = "Patient added";
+"patientAddedMessage" = "The patient has been added.";
 
-"patientUpdatedTitle" = "Patiënt bijgewerkt";
-"patientUpdatedMessage" = "De patiëntgegevens zijn bijgewerkt.";
+"patientUpdatedTitle" = "Patient edited";
+"patientUpdatedMessage" = "The patient data has been edited.";
 
-"requiredFieldsTitle" = "Verplichte velden";
-"requiredFieldsMessage" = "Niet alle verplichte velden zijn ingevuld.";
+"requiredFieldsTitle" = "Required fields";
+"requiredFieldsMessage" = "Not all required fields have been filled.";
 
-"invalidEmailTitle" = "Ongeldige Email";
-"invalidEmailMessage" = "Het ingegeven emailadres is ongeldig.";
+"invalidEmailTitle" = "Invalid Email";
+"invalidEmailMessage" = "The entered email adress is invalid.";
 
-"patientExistsTitle" = "Patiënt bestaat al";
-"patientExistsMessage" = "Er bestaat al een patiënt met het ingegeven emailadres.";
+"patientExistsTitle" = "Patient already exists";
+"patientExistsMessage" = "A user with this email address already exists.";
 
-"passwordNotStrongEnoughTitle" = "Wachtwoord niet sterk genoeg";
-"passwordNotStrongEnoughMessage" = "Het ingegeven wachtwoord is niet sterk genoeg, het wachtwoord moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciale teken () bevatten.";
+"passwordNotStrongEnoughTitle" = "Password is not strong enough";
+"passwordNotStrongEnoughMessage" = "The entered password is not strong enough, it has to meet atleast 3 of the 4 requirements: 1 Capital letter, 1 small letter, 1 number, 1 special character (!@#$%^&*).";
 
-"passwordDoesNotMatchTitle" = "Niet aangemaakt";
-"passwordDoesNotMatchMessage" = "Het ingegeven wachtwoord komt niet overeen.";
+"passwordDoesNotMatchTitle" = "Password does not match";
+"passwordDoesNotMatchMessage" = "The entered password does not match.";
 
-"guidelinesAddedTitle" = "Richtlijnen toegevoegd";
-"guidelinesAddedMessage" = "De richtlijnen zijn toegevoegd.";
+"guidelinesAddedTitle" = "Guideline added";
+"guidelinesAddedMessage" = "The guidelines have been added.";
 
-"wrongCredentialsTitle" = "Niet ingelogd";
-"wrongCredentialsMessage" = "De ingevoerde gebruikernaam en wachtwoord combinatie klopt niet.";
+"wrongCredentialsTitle" = "Not logged in";
+"wrongCredentialsMessage" = "The entered username and password combination is incorrect.";
 
-"conversationAddedTitle" = "Toegevoegd";
-"conversationAddedMessage" = "Conversatie toegevoegd.";
+"conversationAddedTitle" = "Added";
+"conversationAddedMessage" = "The conversation has been added.";
 
-"patientDeletedTitle" = "Verwijderd";
-"patientDeletedMessage" = "De patiënt is successvol verwijderd.";
+"patientDeletedTitle" = "Deleted";
+"patientDeletedMessage" = "Patient successfully deleted.";
 
-"patientDeleteConfirmationTitle" = "Verwijderen";
-"patientDeleteConfirmationMessage" = "Weet u zeker datu de patiënt wilt verwijderen?";
+"patientDeleteConfirmationTitle" = "Delete";
+"patientDeleteConfirmationMessage" = "Are you sure you want to delete this patient?";
 // Messages

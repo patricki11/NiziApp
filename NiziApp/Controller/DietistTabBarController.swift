@@ -21,6 +21,9 @@ class DietistTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.items![0].title = NSLocalizedString("Home", comment: "")
+        self.tabBar.items![1].title = NSLocalizedString("Diary", comment: "")
+        self.tabBar.items![2].title = NSLocalizedString("Conversations", comment: "")
     }
     
     func setPatientDataInUnderlyingViews() {

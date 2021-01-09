@@ -128,6 +128,7 @@
 		5330AE4F2583870B0027A768 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPatientDiaryViewController.swift; sourceTree = "<group>"; };
 		5335279925A866B600106753 /* DietistTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietistTabBarController.swift; sourceTree = "<group>"; };
+		533527BC25AA1BBF00106753 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		53840FB5255E99F80094C3C8 /* NewDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDoctor.swift; sourceTree = "<group>"; };
 		53840FB7255EA2A20094C3C8 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		53840FB9255ED9680094C3C8 /* NewUserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserLogin.swift; sourceTree = "<group>"; };
@@ -525,6 +526,7 @@
 			children = (
 				217496562391832700243B41 /* Base */,
 				211A105223969D49002A42DA /* nl */,
+				533527BC25AA1BBF00106753 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
