@@ -272,21 +272,6 @@ class PatientOverviewViewController : UIViewController
         self.navigationController?.pushViewController(patientDetailVC, animated: true)
     }
     
-    @IBAction func navigateToConversations(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let conversationVC = storyboard.instantiateViewController(withIdentifier: "AddConversationViewController") as! AddConversationViewController
-        conversationVC.patientId = patientId
-        conversationVC.doctorId = doctorId
-        self.navigationController?.pushViewController(conversationVC, animated: true)
-    }
-    
-    @IBAction func navigateToDiary(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let diaryVC = storyboard.instantiateViewController(withIdentifier: "ShowPatientDiaryViewController") as! ShowPatientDiaryViewController
-        diaryVC.patient = patient
-        self.navigationController?.pushViewController(diaryVC, animated: true)
-    }
-    
     func getDietaryGuidelines() {
         guidelineTableView.refreshControl?.beginRefreshing()
         NiZiAPIHelper.getDietaryManagement(forDiet: patientId, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).response(completionHandler: {response in

@@ -2574,6 +2574,45 @@
                                     <constraint firstAttribute="height" constant="50" id="78m-zI-azh"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-fL-OqJ">
+                                <rect key="frame" x="0.0" y="40" width="414" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-89-hrf">
+                                        <rect key="frame" x="20" y="15" width="55" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geslacht - Geboortedatum (Leeftijd)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-um-4Ub" userLabel="Age Gender Label">
+                                        <rect key="frame" x="19.999999999999986" y="52" width="235.66666666666663" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-zV-5Yo" userLabel="Edit Button">
+                                        <rect key="frame" x="356" y="21" width="38" height="38.666666666666671"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="mm6-fq-kU3"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" backgroundImage="pencil.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="editPatient:" destination="cIk-s1-WXa" eventType="touchUpInside" id="7Fg-BY-JtB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.4250459969" blue="0.81971204279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="eAn-89-hrf" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="Eej-JB-TAZ"/>
+                                    <constraint firstItem="dqW-um-4Ub" firstAttribute="top" secondItem="eAn-89-hrf" secondAttribute="bottom" constant="13" id="Fj9-DO-hdV"/>
+                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="Rni-fD-joL"/>
+                                    <constraint firstAttribute="height" constant="80" id="SeO-xS-VbY"/>
+                                    <constraint firstAttribute="trailing" secondItem="bFK-zV-5Yo" secondAttribute="trailing" constant="20" id="SkB-b3-gfN"/>
+                                    <constraint firstAttribute="bottom" secondItem="bFK-zV-5Yo" secondAttribute="bottom" constant="20" id="TeT-DX-4TM"/>
+                                    <constraint firstItem="dqW-um-4Ub" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="iJ4-PD-9o8"/>
+                                    <constraint firstItem="eAn-89-hrf" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="15" id="uy6-QZ-nLK"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdd-eb-D4E">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                 <subviews>
@@ -2612,75 +2651,6 @@
                                     <constraint firstItem="nvF-1B-cZU" firstAttribute="centerX" secondItem="Vdd-eb-D4E" secondAttribute="centerX" id="Tdj-UQ-FwP"/>
                                     <constraint firstItem="BuL-b7-Bex" firstAttribute="top" secondItem="Vdd-eb-D4E" secondAttribute="top" id="lqO-XW-qWc"/>
                                     <constraint firstItem="nvF-1B-cZU" firstAttribute="leading" secondItem="dpy-DV-LlU" secondAttribute="trailing" constant="10" id="srU-WQ-y9r"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-fL-OqJ">
-                                <rect key="frame" x="0.0" y="40" width="414" height="80"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-89-hrf">
-                                        <rect key="frame" x="20" y="15" width="326" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geslacht - Geboortedatum (Leeftijd)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqW-um-4Ub" userLabel="Age Gender Label">
-                                        <rect key="frame" x="20" y="52" width="326" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-zV-5Yo" userLabel="Edit Button">
-                                        <rect key="frame" x="356" y="21" width="38" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="38" id="mm6-fq-kU3"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <state key="normal" backgroundImage="pencil.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="editPatient:" destination="cIk-s1-WXa" eventType="touchUpInside" id="7Fg-BY-JtB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zQ-EC-5qz" userLabel="Conversation Button">
-                                        <rect key="frame" x="308" y="21" width="38" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="38" id="dLs-ga-elr"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <state key="normal" backgroundImage="message.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="navigateToConversations:" destination="cIk-s1-WXa" eventType="touchUpInside" id="f6A-E3-XGx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12W-Hs-gHc" userLabel="Diary Button">
-                                        <rect key="frame" x="260" y="21" width="38" height="38.666666666666671"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="38" id="vDP-0b-iM5"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <state key="normal" backgroundImage="folder.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="navigateToDiary:" destination="cIk-s1-WXa" eventType="touchUpInside" id="ZvA-eD-FJh"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.4250459969" blue="0.81971204279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="leading" secondItem="eAn-89-hrf" secondAttribute="trailing" constant="-38" id="0ra-ST-ueS"/>
-                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="5Qr-aK-Ie9"/>
-                                    <constraint firstItem="eAn-89-hrf" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="Eej-JB-TAZ"/>
-                                    <constraint firstItem="dqW-um-4Ub" firstAttribute="top" secondItem="eAn-89-hrf" secondAttribute="bottom" constant="13" id="Fj9-DO-hdV"/>
-                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="leading" secondItem="12W-Hs-gHc" secondAttribute="trailing" constant="10" id="L4o-xe-xHg"/>
-                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="Rni-fD-joL"/>
-                                    <constraint firstAttribute="height" constant="80" id="SeO-xS-VbY"/>
-                                    <constraint firstAttribute="trailing" secondItem="bFK-zV-5Yo" secondAttribute="trailing" constant="20" id="SkB-b3-gfN"/>
-                                    <constraint firstAttribute="bottom" secondItem="bFK-zV-5Yo" secondAttribute="bottom" constant="20" id="TeT-DX-4TM"/>
-                                    <constraint firstItem="4zQ-EC-5qz" firstAttribute="leading" secondItem="dqW-um-4Ub" secondAttribute="trailing" constant="-38" id="eyD-7F-b6x"/>
-                                    <constraint firstAttribute="bottom" secondItem="4zQ-EC-5qz" secondAttribute="bottom" constant="20" id="fjV-Li-8gi"/>
-                                    <constraint firstItem="dqW-um-4Ub" firstAttribute="leading" secondItem="QUT-fL-OqJ" secondAttribute="leading" constant="20" id="iJ4-PD-9o8"/>
-                                    <constraint firstItem="12W-Hs-gHc" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="20" id="pr9-L2-OjB"/>
-                                    <constraint firstAttribute="bottom" secondItem="12W-Hs-gHc" secondAttribute="bottom" constant="20" id="udj-nW-GFp"/>
-                                    <constraint firstItem="eAn-89-hrf" firstAttribute="top" secondItem="QUT-fL-OqJ" secondAttribute="top" constant="15" id="uy6-QZ-nLK"/>
-                                    <constraint firstItem="bFK-zV-5Yo" firstAttribute="leading" secondItem="4zQ-EC-5qz" secondAttribute="trailing" constant="10" id="vtU-Pi-v8L"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dagoverzicht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-FB-ty0" userLabel="Day Overview Label">
@@ -4215,8 +4185,6 @@
         <image name="Website_s" width="128" height="128"/>
         <image name="bin_xs" width="170.66667175292969" height="170.66667175292969"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="folder.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="message.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
