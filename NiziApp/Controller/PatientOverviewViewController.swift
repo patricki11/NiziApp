@@ -94,11 +94,13 @@ class PatientOverviewViewController : UIViewController
     }
     
     func nextDateAvailable() -> Bool {
+        var today = Date().startOfDay
+        
         if(useWeek) {
-            return Date() > lastDayOfWeek!
+            return today.startOfDay > lastDayOfWeek!.startOfDay
         }
         else {
-            return Date() > selectedDate!
+            return today.startOfDay > selectedDate!.startOfDay
         }
     }
     
@@ -523,6 +525,13 @@ extension PatientOverviewViewController : UITableViewDelegate {
 }
 
 extension Date {
+    var startOfDay: Date {
+            let calendar = Calendar.current
+            let unitFlags = Set<Calendar.Component>([.year, .month, .day])
+            let components = calendar.dateComponents(unitFlags, from: self)
+            return calendar.date(from: components)!
+    }
+    
     var startOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
