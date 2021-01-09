@@ -2552,7 +2552,7 @@
                     <connections>
                         <segue destination="cIk-s1-WXa" kind="relationship" relationship="viewControllers" id="qM8-4f-z72"/>
                         <segue destination="zcp-Ij-gU0" kind="relationship" relationship="viewControllers" id="mPv-Xu-BoI"/>
-                        <segue destination="eHF-R0-2L6" kind="relationship" relationship="viewControllers" id="7Vb-c1-gRg"/>
+                        <segue destination="OHK-pA-puD" kind="relationship" relationship="viewControllers" id="qpu-zg-UGA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3je-CT-w5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2590,12 +2590,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFK-zV-5Yo" userLabel="Edit Button">
-                                        <rect key="frame" x="356" y="11" width="38" height="38.666666666666671"/>
+                                        <rect key="frame" x="364" y="13" width="30" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="38" id="mm6-fq-kU3"/>
+                                            <constraint firstAttribute="width" constant="30" id="mm6-fq-kU3"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="systemOrangeColor"/>
-                                        <state key="normal" backgroundImage="pencil.circle.fill" catalog="system"/>
+                                        <state key="normal" backgroundImage="pencil" catalog="system"/>
                                         <connections>
                                             <action selector="editPatient:" destination="cIk-s1-WXa" eventType="touchUpInside" id="7Fg-BY-JtB"/>
                                         </connections>
@@ -3353,24 +3353,6 @@
             </objects>
             <point key="canvasLocation" x="-3955" y="-267"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="ryL-5Z-JVE">
-            <objects>
-                <navigationController id="eHF-R0-2L6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="Webp.net-resizeimage" id="dbF-qb-UgQ"/>
-                    <navigationItem key="navigationItem" id="bKs-MI-qaB"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YH-XX-yWz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="OHK-pA-puD" kind="relationship" relationship="rootViewController" id="3lq-xf-MBQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fGD-2I-CkZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1284" y="-1959"/>
-        </scene>
         <!--Gesprekken Toevoegen-->
         <scene sceneID="a75-aV-ajY">
             <objects>
@@ -3380,7 +3362,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P5C-xj-Uxu">
-                                <rect key="frame" x="10" y="56" width="414" height="693"/>
+                                <rect key="frame" x="10" y="0.0" width="414" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -3692,7 +3674,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gfm-6U-z0T">
-                                <rect key="frame" x="0.0" y="80" width="414" height="728"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="679"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="diarytablecell" rowHeight="70" id="7Ph-MZ-bd3" customClass="DiaryTableViewCell" customModule="NiziApp" customModuleProvider="target">
@@ -4161,7 +4143,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GnC-ia-3Qv"/>
+        <segue reference="mPv-Xu-BoI"/>
         <segue reference="CGj-BS-xWJ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4189,7 +4171,7 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

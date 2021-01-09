@@ -20,8 +20,8 @@ class AddConversationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = NSLocalizedString("Conversations", comment: "")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
+        self.tabBarController?.title = NSLocalizedString("Conversations", comment: "")
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
         getDataFromUserDefaults()
         getConversation()
         SetupTableView()
@@ -35,11 +35,11 @@ class AddConversationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddConversationViewModal))
         getDataFromUserDefaults()
         getConversation()
         SetupTableView()
-        print("test")
+        self.tabBarController?.title = NSLocalizedString("Conversations", comment: "")
     }
     
     func setupActivityIndicator() {

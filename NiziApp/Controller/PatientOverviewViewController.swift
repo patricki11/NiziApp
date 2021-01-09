@@ -168,14 +168,16 @@ class PatientOverviewViewController : UIViewController
         nextWeekButton.isEnabled = false
         getDataFromUserDefaults()
         self.navigationController?.navigationBar.isTranslucent = true
-        title = NSLocalizedString("Overview", comment: "")
+        self.tabBarController?.title = NSLocalizedString("Overview", comment: "")
 
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         getDataFromUserDefaults()
+        self.tabBarController?.title = NSLocalizedString("Overview", comment: "")
         super.viewDidAppear(true)
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
     func getDataFromUserDefaults() {

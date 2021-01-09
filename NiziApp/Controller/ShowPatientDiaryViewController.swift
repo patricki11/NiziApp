@@ -32,7 +32,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = NSLocalizedString("Diary" ,comment: "")
+        self.tabBarController?.title = NSLocalizedString("Diary" ,comment: "")
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
 
         let finalDate = dateFormatter.string(from: Date()) + "T00:00:00.000Z"
@@ -52,6 +52,8 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.title = NSLocalizedString("Diary" ,comment: "")
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
         var date = Date()
         let formattedDate = dateFormatter.string(from: date)
         let finalDate = formattedDate + "T00:00:00.000Z"
