@@ -129,9 +129,6 @@ class PatientOverviewViewController : UIViewController
         else if(currentDayCounter == 0) {
             currentWeekLabel.text = NSLocalizedString("Today", comment: "")
         }
-        else if(currentDayCounter == 1) {
-            currentWeekLabel.text = NSLocalizedString("Tomorrow", comment: "")
-        }
         else {
             currentWeekLabel.text = "\(dateFormatter.string(from: selectedDate!))"
         }
