@@ -358,6 +358,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
         let weightUnit = weightUnits.filter({ $0.id == guideline.dietaryRestrictionObject?.weightUnit }).first
         var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var total : Int = Int(floatTotal)
+        var unit = weightUnit?.short ?? ""
         
         var progressView = cell.guidelineChartView as! CircularProgressView
         progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
@@ -365,8 +366,8 @@ extension PatientOverviewViewController : UITableViewDataSource {
         cell.guidelineNameLabel.text = guideline.dietaryRestrictionObject?.plural
 
         if((guideline.minimum != 0 && guideline.minimum != nil) && (guideline.maximum != 0 && guideline.maximum != nil)) {
-            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
-            cell.secondGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!) \(unit)"
+            cell.secondGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!) \(unit)"
             
             if(total < guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("keepGoingIntake", comment: "")
@@ -382,7 +383,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         else if(guideline.minimum != 0 && guideline.minimum != nil) {
-            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!)"
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Minimum", comment: "")) \(guideline.minimum!) \(unit)"
             cell.secondGuidelineValueLabel.text = ""
             
             if(total > guideline.minimum!) {
@@ -395,7 +396,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             }
         }
         else if(guideline.maximum != 0 && guideline.maximum != nil) {
-            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!)"
+            cell.firstGuidelineValueLabel.text = "\( NSLocalizedString("Maximum", comment: "")) \(guideline.maximum!) \(unit)"
             cell.secondGuidelineValueLabel.text = ""
             
             if(total <= guideline.maximum!) {
