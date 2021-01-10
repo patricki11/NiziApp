@@ -153,22 +153,22 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
                 
             }
             let kcalText:String = String(format:"%.1f", kcal)
-            calorieResultLbl.text = kcalText
+            calorieResultLbl.text = kcalText + " " + "Kcal"
             
             let fiberText:String = String(format:"%.1f", fiberMeal)
-            fiberResultLbl.text = fiberText
+            fiberResultLbl.text = fiberText + " " + "g"
             
             let vochtText:String = String(format:"%.1f", vochtMeal)
-            waterResultLbl.text = vochtText
+            waterResultLbl.text = vochtText + " " + "g"
             
             let pottassiumText:String = String(format:"%.1f", pottassiumMeal)
-            potassiumResultLbl.text = pottassiumText
+            potassiumResultLbl.text = pottassiumText + " " + "mg"
             
             let proteinText:String = String(format:"%.1f", proteinMeal)
-            proteinResultLbl.text = proteinText
+            proteinResultLbl.text = proteinText + " " + "g"
             
             let sodiumText:String = String(format:"%.1f", sodiumMeal)
-            sodiumResultLbl.text = sodiumText
+            sodiumResultLbl.text = sodiumText + " " + "mg"
         }
         else{
             calorieResultLbl.text = "0.0"
@@ -264,7 +264,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func presentAlert(){
-        let alert = UIAlertController(title: "Success", message: "Maaltijd is gemaakt", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Succes", message: "Maaltijd is gemaakt", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             self.addMealProducts()
         }))
@@ -272,7 +272,6 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func getProducts(){
-        
         nameInput.text = editMealObject?.foodMealComponent.name
         
         for mealFood in editMealObject!.mealFoods {
