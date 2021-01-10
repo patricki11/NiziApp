@@ -13,6 +13,7 @@ import SwiftKeychainWrapper
 class MealSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var MealTable: UITableView!
     var meallist : [NewMeal] = []
+    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,8 +106,8 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     func showFavoriteDeletedMessage() {
         let alertController = UIAlertController(
-            title:NSLocalizedString("Favoriet is verwijdert", comment: ""),
-            message: NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            title:NSLocalizedString("Maaltijd is verwijderd", comment: ""),
+            message: NSLocalizedString("Maaltijd is verwijderd", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
@@ -116,7 +117,9 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
 
     func GetMeals() {
         
-        NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1).responseData(completionHandler: { response in
+        
+        
+        NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientIntID).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }

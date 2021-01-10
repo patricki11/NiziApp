@@ -204,7 +204,7 @@ extension HomeViewController : UITableViewDataSource {
         var total2 = Double(total)
         
         if(total == 0) {
-            cell.feedbackLabel.text = "Geen inname"
+            cell.feedbackLabel.text = "Geen inname voor " + (guideline.dietaryRestrictionObject?.plural)!
             cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
             if(total2 < max && min == 0){
                 cell.feedbackLabel.text = "Goed bezig"

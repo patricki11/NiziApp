@@ -50,12 +50,11 @@ class DetailFoodViewController: UIViewController {
     var editMeal        : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
     var foodObject      : NewFood?
-    var foodTime  : String = KeychainWrapper.standard.string(forKey: "mealTime")!
+    var foodTime        : String = KeychainWrapper.standard.string(forKey: "mealTime")!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func AddToDiary(_ sender: Any) {
@@ -92,6 +91,7 @@ class DetailFoodViewController: UIViewController {
     
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()
+    
     }
     
     @IBAction func goToEditMeal(_ sender: Any) {
@@ -112,6 +112,7 @@ class DetailFoodViewController: UIViewController {
             mFloat -= 0.5
             if mFloat > 0 {
                 portionSizeInput.text = mFloat.description
+                self.SetupData()
             }
         }else {
             print("else")
@@ -124,6 +125,7 @@ class DetailFoodViewController: UIViewController {
         if var mFloat = Float(str) {
             mFloat += 0.5
             portionSizeInput.text = mFloat.description
+            self.SetupData()
         }else {
             print("else")
         }
@@ -161,26 +163,34 @@ class DetailFoodViewController: UIViewController {
         let url = URL(string: self.foodItem!.imageUrl)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = String(format:"%.1f", self.foodItem!.kcal)
-        Kcal.text = calorieString + " " + "Kcal"
-        
-        let proteinString : String = String(format:"%.1f", self.foodItem!.protein)
-        Protein.text = proteinString + " " + "g"
-        
-        let fiberString : String = String(format:"%.1f", self.foodItem!.fiber)
-        Fiber.text = fiberString + " " + "g"
-        
-        let calciumString : String = String(format:"%.1f", self.foodItem!.potassium)
-        Calcium.text = calciumString + " " + "mg"
-        
-        let sodiumString : String = String(format:"%.1f", self.foodItem!.sodium)
-        Sodium.text = sodiumString + " " + " mg"
+        let str = portionSizeInput.text ?? "1.0"
+        if var mFloat = Float(str) {
+            if mFloat > 0 {
+                let calorieString : String = String(format:"%.1f", self.foodItem!.kcal * mFloat)
+                Kcal.text = calorieString + " " + "Kcal"
+                
+                let proteinString : String = String(format:"%.1f", self.foodItem!.protein * mFloat)
+                Protein.text = proteinString + " " + "g"
+                
+                let fiberString : String = String(format:"%.1f", self.foodItem!.fiber * mFloat)
+                Fiber.text = fiberString + " " + "g"
+                
+                let calciumString : String = String(format:"%.1f", self.foodItem!.potassium * mFloat)
+                Calcium.text = calciumString + " " + "mg"
+                
+                let sodiumString : String = String(format:"%.1f", self.foodItem!.sodium * mFloat)
+                Sodium.text = sodiumString + " " + " mg"
+                
+                let waterString : String = String(format:"%.1f", self.foodItem!.water * mFloat)
+                WaterLabel.text = waterString + " " + "g"
+            }
+        }else {
+            print("else")
+        }
         
         let portionSizeString : String = (self.foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
-        
-        let waterString : String = String(format:"%.1f", self.foodItem!.water)
-        WaterLabel.text = waterString + " " + "g"
+     
         
         switch foodTime {
         case "Ontbijt":
@@ -199,6 +209,8 @@ class DetailFoodViewController: UIViewController {
         }
         
         self.checkIfFavoriteCall()
+        
+        
     }
     
     func Addfavorite() {
@@ -269,7 +281,7 @@ class DetailFoodViewController: UIViewController {
             }
         }
         
-        food?.amount = 2
+        food?.amount = 1
         
         if(productExist == false){
             Mealfoodlist.append(food!)
@@ -289,6 +301,9 @@ class DetailFoodViewController: UIViewController {
                 break
             case "toMealProduct":
                 self.navigateSearchMealProduct()
+                break
+            case "Favorite":
+                self.SetupData()
                 break
             default:
                 break
@@ -361,14 +376,15 @@ class DetailFoodViewController: UIViewController {
     //Favorites
     func addFavoriteCall(){
         NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.foodObject?.id)!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Favoriet is toegevoegd", location: "")
+            self.displayAlertMessage(title: "Succes", message: "Favoriet is toegevoegd", location: "Favorite")
         })
     }
     
     func deleteFavorteCall(){
         NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: self.foodlist[0].id!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Favoriet is verwijdert", location: "")
+            self.displayAlertMessage(title: "Succes", message: "Favoriet is verwijderd", location: "Favorite")
         })
+   
     }
     
     func checkIfFavoriteCall(){
@@ -382,7 +398,13 @@ class DetailFoodViewController: UIViewController {
             else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
-            print(self.foodlist.count)
+            
+            if(self.foodlist.count >= 1){
+                self.favoriteBtn.setImage(UIImage(named: "HeartFilled2_s"), for: .normal)
+            }
+            else{
+                self.favoriteBtn.setImage(UIImage(named: "Heart2_s"), for: .normal)
+            }
         })
     }
     
@@ -401,14 +423,14 @@ class DetailFoodViewController: UIViewController {
     
     func deleteConsumptionCall(){
         NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Voedsel is verwijdert", location: "toDiary")
+            self.displayAlertMessage(title: "Succes", message: "Voedsel is verwijderd", location: "toDiary")
         })
     }
     
     // Meal
     func deleteMealCall(){
         NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijdert", location: "toMeal")
+            self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijderd", location: "toMeal")
         })
     }
 
