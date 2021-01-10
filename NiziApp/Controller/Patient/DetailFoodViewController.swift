@@ -106,6 +106,29 @@ class DetailFoodViewController: UIViewController {
         }
     }
     
+    @IBAction func minusAction(_ sender: Any) {
+        let str = portionSizeInput.text ?? "1.0"
+        if var mFloat = Float(str) {
+            mFloat -= 0.5
+            if mFloat > 0 {
+                portionSizeInput.text = mFloat.description
+            }
+        }else {
+            print("else")
+        }
+      
+    }
+    
+    @IBAction func plusAction(_ sender: Any) {
+        let str = portionSizeInput.text ?? "1.0"
+        if var mFloat = Float(str) {
+            mFloat += 0.5
+            portionSizeInput.text = mFloat.description
+        }else {
+            print("else")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if(isMealProductDetail){
@@ -138,26 +161,26 @@ class DetailFoodViewController: UIViewController {
         let url = URL(string: self.foodItem!.imageUrl)
         Picture.kf.setImage(with: url)
         
-        let calorieString : String = (self.foodItem!.kcal.description)
-        Kcal.text = calorieString
+        let calorieString : String = String(format:"%.1f", self.foodItem!.kcal)
+        Kcal.text = calorieString + " " + "Kcal"
         
-        let proteinString : String = (self.foodItem!.protein.description)
-        Protein.text = proteinString
+        let proteinString : String = String(format:"%.1f", self.foodItem!.protein)
+        Protein.text = proteinString + " " + "g"
         
-        let fiberString : String = (self.foodItem!.fiber.description)
-        Fiber.text = fiberString
+        let fiberString : String = String(format:"%.1f", self.foodItem!.fiber)
+        Fiber.text = fiberString + " " + "g"
         
-        let calciumString : String = (self.foodItem!.potassium.description)
-        Calcium.text = calciumString
+        let calciumString : String = String(format:"%.1f", self.foodItem!.potassium)
+        Calcium.text = calciumString + " " + "mg"
         
-        let sodiumString : String = (self.foodItem!.sodium.description)
-        Sodium.text = sodiumString
+        let sodiumString : String = String(format:"%.1f", self.foodItem!.sodium)
+        Sodium.text = sodiumString + " " + " mg"
         
         let portionSizeString : String = (self.foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
         
-        let waterString : String = (self.foodItem!.water.description)
-        WaterLabel.text = waterString
+        let waterString : String = String(format:"%.1f", self.foodItem!.water)
+        WaterLabel.text = waterString + " " + "g"
         
         switch foodTime {
         case "Ontbijt":
