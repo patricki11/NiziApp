@@ -168,7 +168,7 @@ class EditPatientViewController : UIViewController {
             case "Kalium":
                 setGuidelineFields(guideline: guideline, minimumField: potassiumMinimumField, maximumField: potassiumMaximumField)
                 break
-            case "Eiwiten":
+            case "Eiwitten":
                 setGuidelineFields(guideline: guideline, minimumField: proteinMinimumFIeld, maximumField: proteinMaximumField)
                 break
             case "Vezels":
