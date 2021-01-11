@@ -188,14 +188,17 @@ class DetailFoodViewController: UIViewController {
                 
                 let waterString : String = String(format:"%.1f", self.foodItem!.water * mFloat)
                 WaterLabel.text = waterString + " " + "g"
+                
+                let portionSizeString : String = String(self.foodItem!.portionSize * mFloat)
+                portionSizeLabel.text = portionSizeString
             }
         }else {
             print("else")
         }
-        
+        /*
         let portionSizeString : String = (self.foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
-        
+        */
         
         switch foodTime {
         case "Ontbijt":
