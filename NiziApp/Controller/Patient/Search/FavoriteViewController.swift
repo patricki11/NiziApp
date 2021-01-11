@@ -130,11 +130,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         NiZiAPIHelper.GetMyFoods(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let foodlistJSON = try? jsonDecoder.decode( [NewFavorite].self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
             self.FavoriteTable?.reloadData()
@@ -147,11 +147,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         NiZiAPIHelper.GetMyFoodsSearch(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: self.patientIntID, withFood: searchInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let foodlistJSON = try? jsonDecoder.decode( [NewFavorite].self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
             self.FavoriteTable?.reloadData()
@@ -161,7 +161,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func searchFoodByText(_ sender: Any) {
-       
+        
     }
     
     func createFavoriteShort(id: Int, food : Int) -> NewFavoriteShort {

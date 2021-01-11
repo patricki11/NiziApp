@@ -120,22 +120,22 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     func GetMeals() {
         NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientIntID, withText: searchMeal.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let MeallistJSON = try? jsonDecoder.decode( [NewMeal].self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.meallist = MeallistJSON
             self.MealTable?.reloadData()
             self.totalLabel.text = "\(NSLocalizedString("Result", comment: ""))(\(self.meallist.count))"
         })
-         
+        
     }
     
     @IBAction func goToCreateMeal(_ sender: Any) {

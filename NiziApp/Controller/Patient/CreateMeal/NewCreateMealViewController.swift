@@ -10,7 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 
 class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CartSelection {
-
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var titleLbl: UILabel!
@@ -40,7 +40,7 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
     var retrievedFoodItem: NewFood?
     var mealId          : Int = 0
     var editMealsHasbeenRetrieved : Bool = false
-
+    
     typealias FinishedDownload = () -> ()
     
     @IBOutlet weak var deleteBtn: UIButton!
@@ -67,7 +67,7 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
         }
         self.calculateDietary()
     }
-
+    
     override func viewDidAppear(_ animated: Bool){
         foodListTable?.reloadData()
     }
@@ -188,19 +188,17 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
         
         let meal = self.createNewMealObject(id: 0, weightUnit: weight, patient: patient, foodMealComponent: foodMealComponent, mealFoods: self.newMealFoodList)
         
-
+        
         NiZiAPIHelper.createMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: meal, withPatient: self.patientIntID).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let mealJSON = try? jsonDecoder.decode( NewMeal.self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.createdMeal = mealJSON
-            print("----------------------------")
-            print(self.createdMeal?.id)
         })
         
         self.presentAlert()
@@ -235,12 +233,12 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
         else{
             self.mealId = createdMeal!.id
         }
-
+        
         for product in self.Mealfoodlist {
             NiZiAPIHelper.addMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: product.id!, withMeal: self.mealId, withAmount: product.amount!).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
-                    else { print("temp1"); return }
+                else { print("temp1"); return }
             })
         }
         
@@ -276,11 +274,11 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
             NiZiAPIHelper.getSingleFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: mealFood.food).responseData(completionHandler: { response in
                 
                 guard let jsonResponse = response.data
-                    else { print("temp1"); return }
+                else { print("temp1"); return }
                 
                 let jsonDecoder = JSONDecoder()
                 guard let FoodItem = try? jsonDecoder.decode( NewFood.self, from: jsonResponse )
-                    else { print("temp2"); return }
+                else { print("temp2"); return }
                 
                 self.retrievedFoodItem = FoodItem
                 self.retrievedFoodItem?.amount = mealFood.amount
@@ -317,5 +315,5 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
     
     
     
-
+    
 }

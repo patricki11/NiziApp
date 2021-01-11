@@ -26,8 +26,6 @@ class DetailFoodViewController: UIViewController {
     @IBOutlet weak var trashBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var portionSizeInput: UITextField!
-    //@IBOutlet weak var mealSearchBtn: UIButton!
-    //@IBOutlet weak var mealSaveBtn: UIButton!
     @IBOutlet weak var datepicker: UIDatePicker!
     @IBOutlet weak var mealEditBtn: UIButton!
     
@@ -75,30 +73,8 @@ class DetailFoodViewController: UIViewController {
         }
     }
     
-    @IBAction func backToMealSearch(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"SearchMealProductsListViewController") as! SearchMealProductsViewController;()
-        detailFoodVC.Mealfoodlist = Mealfoodlist
-        if(editMeal){
-            detailFoodVC.editMeal = true
-            detailFoodVC.editMealObject = self.editMealObject
-            detailFoodVC.editMealsHasbeenRetrieved = true
-        }
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
-    
-    /*
-    @IBAction func SaveMeal(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
-        detailFoodVC.Mealfoodlist = Mealfoodlist
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
- */
-    
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()
-        
     }
     
     @IBAction func goToEditMeal(_ sender: Any) {
@@ -122,9 +98,8 @@ class DetailFoodViewController: UIViewController {
                 self.SetupData()
             }
         }else {
-            print("else")
+    
         }
-        
     }
     
     @IBAction func plusAction(_ sender: Any) {
@@ -134,7 +109,7 @@ class DetailFoodViewController: UIViewController {
             portionSizeInput.text = mFloat.description
             self.SetupData()
         }else {
-            print("else")
+          
         }
     }
     
@@ -195,13 +170,9 @@ class DetailFoodViewController: UIViewController {
                 portionSizeLabel.text = portionSizeString
             }
         }else {
-            print("else")
+           
         }
-        /*
-        let portionSizeString : String = (self.foodItem!.portionSize.description)
-        portionSizeLabel.text = portionSizeString
-        */
-        
+
         switch foodTime {
         case "Ontbijt":
             MealTime.selectedSegmentIndex = 0
@@ -219,8 +190,7 @@ class DetailFoodViewController: UIViewController {
         }
         
         self.checkIfFavoriteCall()
-        
-        
+
     }
     
     func Addfavorite() {
@@ -296,7 +266,7 @@ class DetailFoodViewController: UIViewController {
         if(productExist == false){
             Mealfoodlist.append(food!)
         }
-        self.displayAlertMessage(title: "Succes", message: "Voedsel is toegevoegd aan maaltijd", location: "toMealProduct")
+        self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is toegevoegd aan maaltijd", location: "toMealProduct")
     }
     
     func displayAlertMessage(title:String, message: String, location: String){
@@ -386,13 +356,13 @@ class DetailFoodViewController: UIViewController {
     //Favorites
     func addFavoriteCall(){
         NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.foodObject?.id)!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Favoriet is toegevoegd", location: "Favorite")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Favoriet is toegevoegd", location: "Favorite")
         })
     }
     
     func deleteFavorteCall(){
         NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: self.foodlist[0].id!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Favoriet is verwijderd", location: "Favorite")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Favoriet is verwijderd", location: "Favorite")
         })
         
     }
@@ -421,26 +391,26 @@ class DetailFoodViewController: UIViewController {
     //Consumption
     func createConsumptionCall(consumption : NewConsumptionModel){
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Voedsel is toegevoegd", location: "")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is toegevoegd", location: "")
         })
     }
     
     func editConsumption(consumption : NewConsumptionPatch){
         NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Voedsel is gewijzigd", location: "toDiary")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is gewijzigd", location: "toDiary")
         })
     }
     
     func deleteConsumptionCall(){
         NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Voedsel is verwijderd", location: "toDiary")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is verwijderd", location: "toDiary")
         })
     }
     
     // Meal
     func deleteMealCall(){
         NiZiAPIHelper.deleteMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withMealId: meal!.id).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijderd", location: "toMeal")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("MealDeletedConfirmed", comment: ""), location: "toMeal")
         })
     }
     
@@ -448,7 +418,7 @@ class DetailFoodViewController: UIViewController {
 
 extension DetailFoodViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        (viewController as? SearchMealProductsViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
+        (viewController as? SearchMealProductsViewController)?.Mealfoodlist = Mealfoodlist
     }
 }
 

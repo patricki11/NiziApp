@@ -204,10 +204,10 @@ extension HomeViewController : UITableViewDataSource {
         var total2 = Double(total)
         
         if(total == 0) {
-            cell.feedbackLabel.text = "Geen inname voor " + (guideline.dietaryRestrictionObject?.plural)!
+            cell.feedbackLabel.text = NSLocalizedString("Novalue", comment: "") + (guideline.dietaryRestrictionObject?.plural)!
             cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
             if(total2 < max && min == 0){
-                cell.feedbackLabel.text = "Goed bezig"
+                cell.feedbackLabel.text = NSLocalizedString("Goodjob", comment: "")
                 cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
             }
         }
@@ -216,36 +216,36 @@ extension HomeViewController : UITableViewDataSource {
            
             if(min != 0 && max != 0) {
                 if(total2 < max) {
-                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.text = NSLocalizedString("Goodjob", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
                 }
                 else if(total2 >= min && total <= guideline.maximum!) {
-                    cell.feedbackLabel.text = "Goed bezig"
+                    cell.feedbackLabel.text = NSLocalizedString("Goodjob", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
                     
                 }
                 else if(total2 > max) {
-                    cell.feedbackLabel.text = "Beperk uw inname"
+                    cell.feedbackLabel.text = NSLocalizedString("WatchOut", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
                 }
             }
             else if(min != 0) {
                 if(total2 >= min) {
-                    cell.feedbackLabel.text = "Goed bezig"
+                    cell.feedbackLabel.text = NSLocalizedString("Goodjob", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0x86, green: 0xCD, blue: 0x96)
                 }
                 else if(total2 < min) {
-                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.text = NSLocalizedString("KeepUpTheWork", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
                 }
             }
             else if(max != 0) {
                 if(total2 <= max) {
-                    cell.feedbackLabel.text = "Blijf zo doorgaan"
+                    cell.feedbackLabel.text = NSLocalizedString("KeepUpTheWork", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0xD1, green: 0xBD, blue: 0x76)
                 }
                 else if(total2 > max) {
-                    cell.feedbackLabel.text = "Beperk uw inname"
+                    cell.feedbackLabel.text = NSLocalizedString("WatchOut", comment: "")
                     cell.feedbackLabel.textColor = UIColor(red: 0xCE, green: 0x88, blue: 0x87)
                 }
             }
