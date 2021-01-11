@@ -32,7 +32,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let title : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.text = "hmm course title here"
         label.textColor = .black
         label.textAlignment = .left
@@ -42,7 +42,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let url : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.text = "hmm course URL here"
         label.textColor = .black
         label.numberOfLines = -1
@@ -52,7 +52,7 @@ class ConversationCell : UITableViewCell{
     
     fileprivate let dateAdded : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.text = "date"
         label.textColor = .black
         label.textAlignment = .left
