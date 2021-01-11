@@ -87,12 +87,14 @@ class DetailFoodViewController: UIViewController {
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
+    /*
     @IBAction func SaveMeal(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+ */
     
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()

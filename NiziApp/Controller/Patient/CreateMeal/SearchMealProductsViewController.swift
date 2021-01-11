@@ -136,6 +136,6 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
 
 extension SearchMealProductsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        (viewController as? MealCreateViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
+        (viewController as? NewCreateMealViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
     }
 }
