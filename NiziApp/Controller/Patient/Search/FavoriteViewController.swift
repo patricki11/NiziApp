@@ -89,7 +89,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func showConfirmDeleteFavorite(indexPath: IndexPath) {
         let alertController = UIAlertController(
-            title:NSLocalizedString("Verwijder Favoriet", comment: ""),
+            title:NSLocalizedString("FavoriteDeletedTitle", comment: ""),
             message: NSLocalizedString("Weet u zeker dat u favoriet wil verwijderen?", comment: ""),
             preferredStyle: .alert)
         

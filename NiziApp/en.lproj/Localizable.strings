@@ -169,10 +169,12 @@
 // Messages
 
 // Messages//
-"MealDeletedTitle" = "Delete meal"
-"MealDeletedMessage" = "Are you sure you want to delete the meal?"
+"MealDeletedTitle" = "Delete meal";
+"MealDeletedMessage" = "Are you sure you want to delete the meal?";
 
-"CancelTitle" = "Cancel"
+"CancelTitle" = "Cancel";
 
-"MealDeletedConfirmed" = "Meal has been deleted"
+"MealDeletedConfirmed" = "Meal has been deleted";
+
+"FavoriteDeletedTitle" = "Delete Favorite";
 
