@@ -251,7 +251,7 @@ class NiZiAPIHelper {
     static func createMeal(withToken token : String, withDetails consumption: NewMeal, withPatient patientid : Int) -> DataRequest {
         let apiMethod = "Meals"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-        let parameters = consumption.toNewMealJSON(forPatient: patientid)
+        let parameters = consumption.toNewFoodMealComponentJSON()
 
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
