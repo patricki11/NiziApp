@@ -59,6 +59,7 @@ private var totalLabel = CATextLayer()
         let min = Double(guideline.minimum ?? 0)
         let max = Double(guideline.maximum ?? 0)
         let total = Double(currentTotal)
+        print("total: \(total)")
         let unit = weightUnit?.short ?? ""
         totalLabel.string = "\(String(currentTotal)) \(unit)"
         
@@ -98,10 +99,11 @@ private var totalLabel = CATextLayer()
                 }
             }
             else if(max != 0) {
-                var toValue = total / max
+                toValue = total / max
                 if(total <= max) {
-                    circleLayer.strokeColor = greenColor
-                    progressLayer.strokeColor = yellowColor
+                    print("test: \(toValue)")
+                    circleLayer.strokeColor = grayColor
+                    progressLayer.strokeColor = greenColor
                 }
                 else if(total > max) {
                     circleLayer.strokeColor = grayColor
