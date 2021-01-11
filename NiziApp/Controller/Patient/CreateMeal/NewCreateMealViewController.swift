@@ -11,22 +11,12 @@ import SwiftKeychainWrapper
 
 class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CartSelection {
 
-    func addProductToCart(product: NewFood, atindex: Int) {
-        Mealfoodlist[atindex] = product
-        for product in Mealfoodlist {
-            print(product.foodMealComponent?.portionSize)
-        }
-        self.calculateDietary()
-        foodListTable.reloadData()
-    }
-    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var nameInput: UITextField!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var foodListTable: UITableView!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var searchFoodBtn: UIButton!
-    //@IBOutlet weak var importBtn: UIButton!
     @IBOutlet weak var secondTitleLbl: UILabel!
     @IBOutlet weak var calorieResultLbl: UILabel!
     @IBOutlet weak var fiberResultLbl: UILabel!
@@ -57,6 +47,15 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
     @IBAction func deleteMeal(_ sender: Any) {
     }
     
+    func addProductToCart(product: NewFood, atindex: Int) {
+        Mealfoodlist[atindex] = product
+        for product in Mealfoodlist {
+            print(product.foodMealComponent?.portionSize)
+        }
+        self.calculateDietary()
+        foodListTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +66,6 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         self.calculateDietary()
-        //removeKeyboardAfterClickingOutsideField()
     }
 
     override func viewDidAppear(_ animated: Bool){
@@ -296,7 +294,6 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
     func removeOldFoodItems(){
         for mealFood in editMealObject!.mealFoods{
             NiZiAPIHelper.removeMealFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFoods: mealFood.id).responseData(completionHandler: { response in
-                print("Meal item is deleted")
             })
         }
     }
@@ -305,7 +302,6 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
         let foodMealComponent = self.createNewFoodMealComponent(id: self.editMealObject!.foodMealComponent.id, name: self.nameInput.text!, description: "Self made meal", kcal: kcal, protein: proteinMeal, potassium: pottassiumMeal, sodium: sodiumMeal, water: vochtMeal, fiber: fiberMeal, portionSize: 1, imageUrl: "https://static.thenounproject.com/png/1695234-200.png")
         
         NiZiAPIHelper.patchMeal(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: foodMealComponent, withMeal: self.editMealObject!.id).responseData(completionHandler: { response in
-            print("Meal item is being patched")
         })
         
         self.presentPatchAlert()

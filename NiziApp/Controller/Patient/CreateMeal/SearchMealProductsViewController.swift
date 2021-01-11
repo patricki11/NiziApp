@@ -10,26 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 
 class SearchMealProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CartSelection {
-    
-    func addProductToCart(product: NewFood, atindex: Int) {
-        var productExist = false
         
-        for productSearch in Mealfoodlist {
-            if(productSearch.id == product.id){
-                productExist = true
-            }
-        }
-        product.amount = Float(1.0)
-        
-        if(productExist == false){
-            Mealfoodlist.append(product)
-        }
-        let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd aan maaltijd", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-        }))
-        present(alert, animated: true)
-    }
-    
     var foodlist : [NewFood] = []
     var Mealfoodlist : [NewFood] = []
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
@@ -74,6 +55,25 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    func addProductToCart(product: NewFood, atindex: Int) {
+        var productExist = false
+        
+        for productSearch in Mealfoodlist {
+            if(productSearch.id == product.id){
+                productExist = true
+            }
+        }
+        product.amount = Float(1.0)
+        
+        if(productExist == false){
+            Mealfoodlist.append(product)
+        }
+        let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd aan maaltijd", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+        }))
+        present(alert, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodlist.count
     }
@@ -98,7 +98,6 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         let food = self.foodlist[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"DetailFoodViewController") as! DetailFoodViewController;()
-        
         detailFoodVC.foodItem = food.foodMealComponent
         detailFoodVC.weightUnit = food.weightObject
         detailFoodVC.food = food
@@ -130,12 +129,10 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
             self.totalLbl.text = "Aantal(\(self.foodlist.count))"
         })
     }
-    
-    
 }
 
 extension SearchMealProductsViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        (viewController as? NewCreateMealViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
+        (viewController as? NewCreateMealViewController)?.Mealfoodlist = Mealfoodlist 
     }
 }
