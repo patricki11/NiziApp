@@ -323,7 +323,7 @@ extension HomeViewController : UITableViewDataSource {
             return UIImage(named: "Protein_s")!
         }
         else if(category.contains("Kalium")) {
-            return UIImage(named: "Salt_s")!
+            return UIImage(named: "Kalium")!
         }
         else {
             return nil
