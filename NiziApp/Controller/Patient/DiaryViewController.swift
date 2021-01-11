@@ -27,6 +27,10 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     var heightHeader : CGFloat = 44
     
     @IBOutlet weak var diaryTable: UITableView!
+    @IBOutlet weak var previousBtn: UIButton!
+    
+    @IBOutlet weak var nextDayBtn: UIButton!
+    
     var consumptions   : [NewConsumption] = []
     var breakfastFoods : [NewConsumption] = []
     var lunchFoods     : [NewConsumption] = []
@@ -372,6 +376,22 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         currentDayCounter += 1
         changeCurrentDayLabel()
         getConsumption(Date: "")
+        
+        /*
+        if(nextDateAvailable()) {
+            nextDayBtn.isEnabled = false
+        }
+        else {
+            nextDayBtn.isEnabled = true
+        }
+         */
+    }
+    
+    func nextDateAvailable() -> Bool {
+        var today = Date().startOfDay
+        
+        return today.startOfDay > selectedDate!.startOfDay
+        
     }
     
     

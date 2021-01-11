@@ -113,7 +113,7 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
             
             self.foodlist = foodlistJSON
             
-            let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd aan maaltijd", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
                 self.addConsumption()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)

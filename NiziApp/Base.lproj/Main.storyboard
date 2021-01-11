@@ -3606,6 +3606,8 @@
                     <connections>
                         <outlet property="currentWeekLabel" destination="hMc-Ld-OeC" id="tDl-9h-ITv"/>
                         <outlet property="diaryTable" destination="ZNQ-gf-Ff4" id="4pz-92-FRw"/>
+                        <outlet property="nextDayBtn" destination="AND-sE-0Vs" id="OHg-8b-49F"/>
+                        <outlet property="previousBtn" destination="Uzz-mf-Ejb" id="ejG-fY-HCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BqS-jE-6ZL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
