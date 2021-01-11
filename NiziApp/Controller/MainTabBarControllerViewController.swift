@@ -16,10 +16,10 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        token = "Yello"
+        //token = "Yello"
         
-        let finalVC = self.viewControllers![0] as! HomeViewController //first view controller in the tabbar
-        finalVC.dataTransferTo = token!
+        //let finalVC = self.viewControllers![0] as! HomeViewController //first view controller in the tabbar
+        //finalVC.dataTransferTo = token!
     }
 }
 

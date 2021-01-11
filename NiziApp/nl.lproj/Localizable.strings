@@ -166,3 +166,12 @@
 "patientDeleteConfirmationTitle" = "Verwijderen";
 "patientDeleteConfirmationMessage" = "Weet u zeker dat u de patiënt wilt verwijderen?";
 // Messages
+
+"MealDeletedTitle" = "Verwijder maaltijd";
+"MealDeletedMessage" = "Weet u zeker dat u maaltijd wil verwijderen?";
+
+"CancelTitle" = "Annuleren";
+
+"MealDeletedConfirmed" = "Meal is verwijderd";
+
+"FavoriteDeletedTitle" = "Favoriet verwijderen";

@@ -50,9 +50,6 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
-  
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meallist.count
     }
@@ -64,7 +61,6 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         let url = URL(string: meallist[idx].foodMealComponent.imageUrl)
         searchFoodCell.imageView!.kf.setImage(with: url)
         searchFoodCell.accessoryType = .disclosureIndicator
-     
         return searchFoodCell
     }
     
@@ -91,16 +87,15 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     func showConfirmDeleteFavorite(indexPath: IndexPath) {
         let alertController = UIAlertController(
-            title:NSLocalizedString("Verwijder Maaltijd", comment: ""),
-            message: NSLocalizedString("Weet u zeker dat u maaltijd wil verwijderen?", comment: ""),
+            title:NSLocalizedString("MealDeletedTitle", comment: ""),
+            message: NSLocalizedString("MealDeletedMessage", comment: ""),
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Annuleer", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("CancelTitle", comment: "Annuleren"), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.deleteFavorite(favorite: self.meallist[indexPath.row])
             self.meallist.remove(at: indexPath.row)
             self.MealTable?.deleteRows(at: [indexPath], with: .fade)
         }))
-        
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -117,8 +112,8 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     func showFavoriteDeletedMessage() {
         let alertController = UIAlertController(
-            title:NSLocalizedString("Maaltijd is verwijderd", comment: ""),
-            message: NSLocalizedString("Maaltijd is verwijderd", comment: ""),
+            title:NSLocalizedString("MealDeletedTitle", comment: ""),
+            message: NSLocalizedString("MealDeletedConfirmed", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
