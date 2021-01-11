@@ -520,30 +520,6 @@ extension PatientOverviewViewController : UITableViewDataSource {
             return nil
         }
     }
-    
-    func getCorrespondingType(category: String) -> String {
-        if(category.contains("Calorie")) {
-            return "kcal"
-        }
-        else if(category.contains("Vocht")) {
-            return "gram"
-        }
-        else if(category.contains("Natrium")) {
-            return "gram"
-        }
-        else if(category.contains("Vezel")) {
-            return "gram"
-        }
-        else if(category.contains("Eiwit")) {
-            return "gram"
-        }
-        else if(category.contains("Kalium")) {
-            return "gram"
-        }
-        else {
-            return ""
-        }
-    }
 }
 
 extension Date {
