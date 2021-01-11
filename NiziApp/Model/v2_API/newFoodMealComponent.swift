@@ -68,4 +68,24 @@ class newFoodMealComponent : Codable {
             "foodId"        : foodId as Any
            ]
        }
+    
+    func toNewFoodMealComponentJSON() -> [String:Any] {
+        return
+        [
+            "food_meal_component" :
+            [
+                "protein"     : protein as Any,
+                "id"          : id as Any,
+                "sodium"      : sodium as Any,
+                "name"        : name as Any,
+                "kcal"        : kcal as Any,
+                "potassium"   : potassium as Any,
+                "water"       : water as Any,
+                "description" : description as Any,
+                "fiber"       : fiber as Any,
+                "image_url"   : imageUrl as Any
+            ],
+            "name" : name as Any
+        ]
+    }
 }
