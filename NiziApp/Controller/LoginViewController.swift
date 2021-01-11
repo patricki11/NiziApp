@@ -54,7 +54,7 @@ class LoginViewController : UIViewController {
         passwordLabel.text = NSLocalizedString("PasswordLabel", comment: "")
         needHelpLabel.text = NSLocalizedString("NeedHelp", comment: "")
         needHelpDescription.text = NSLocalizedString("NeedHelpSubtitle", comment: "")
-        LoginButton.setTitle("login", for: .normal)
+        LoginButton.setTitle(NSLocalizedString("login", comment: ""), for: .normal)
         nierstichtingWebLabel.text = NSLocalizedString("NierstichtingWeb", comment: "")
         nierstichtingPhoneLabel.text = NSLocalizedString("NierstichtingPhone", comment: "")
         nierstichtingPhoneTimeLabel.text = NSLocalizedString("NierstichtingPhoneTime", comment: "")
