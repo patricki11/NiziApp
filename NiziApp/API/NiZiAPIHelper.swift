@@ -62,10 +62,8 @@ class NiZiAPIHelper {
     static func addNewConsumption(withToken token : String, withDetails consumption: NewConsumptionModel) -> DataRequest {
         let apiMethod = "consumptions"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-        let parameters =
-            [
-                "amount": consumption.amount, "date": consumption.date, "meal_time": consumption.mealTime, "patient": ["id": consumption.patient.id], "weight_unit": ["unit": consumption.weightUnit.unit, "updated_at": consumption.weightUnit.updatedAt, "id": consumption.weightUnit.id, "created_at": consumption.weightUnit.createdAt, "short": consumption.weightUnit.short], "food_meal_component": ["foodId": consumption.foodmealComponent.foodId, "protein": consumption.foodmealComponent.protein, "id": consumption.foodmealComponent.id, "sodium": consumption.foodmealComponent.sodium, "name": consumption.foodmealComponent.name, "kcal":  consumption.foodmealComponent.kcal, "potassium": consumption.foodmealComponent.potassium, "water": consumption.foodmealComponent.water, "description": consumption.foodmealComponent.description, "fiber": consumption.foodmealComponent.fiber, "image_url": consumption.foodmealComponent.imageUrl, "portion_size": consumption.foodmealComponent.portionSize]
-            ] as [String : Any]
+        let parameters = consumption.toJSON()
+           
         print(parameters)
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
     }
@@ -73,10 +71,8 @@ class NiZiAPIHelper {
     static func patchNewConsumption(withToken token : String, withDetails consumption: NewConsumptionPatch, withConsumptionId consumptionId: Int) -> DataRequest {
         let apiMethod = "consumptions/\(consumptionId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-        let parameters =
-            [
-                "amount": consumption.amount, "date": consumption.date, "meal_time": consumption.mealTime
-            ] as [String : Any]
+        let parameters = consumption.toJson()
+            
         print(parameters)
         print(baseUrl+apiMethod)
         return AF.request(baseUrl + apiMethod, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header)
