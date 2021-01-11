@@ -131,11 +131,6 @@ extension PatientListViewController: UITableViewDataSource {
             return patientList.filter { ("\($0.userObject!.first_name.lowercased() ?? "") \($0.userObject!.last_name.lowercased() ?? "")").contains(patientName.lowercased())}
         }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // TODO: Volgende patienten ophalen
-    }
-
 }
 
 extension PatientListViewController : UITableViewDelegate {

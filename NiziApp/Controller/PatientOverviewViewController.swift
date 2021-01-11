@@ -52,7 +52,7 @@ class PatientOverviewViewController : UIViewController
     var useWeek : Bool = true
     var currentDayOfWeek : Int = Calendar.current.component(.weekday, from: Date())
     
-    var greenColor : UIColor =  UIColor.init(red: 9, green: 156, blue: 57) //UIColor.init(displayP3Red: 9, green: 156, blue: 57, alpha: 100)
+    var greenColor : UIColor =  UIColor.init(red: 9, green: 156, blue: 57)
     var yellowColor : UIColor = UIColor.init(red: 247, green: 133, blue: 2)
     var redColor : UIColor = UIColor.init(red: 192, green: 21, blue: 10)
     @IBOutlet weak var currentWeekLabel: UILabel!
@@ -266,7 +266,6 @@ class PatientOverviewViewController : UIViewController
     }
     
     func setupTableView() {
-        guidelineTableView.delegate = self
         guidelineTableView.dataSource = self
     }
     
@@ -537,17 +536,6 @@ extension PatientOverviewViewController : UITableViewDataSource {
         else {
             return ""
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // TODO: Volgende patienten ophalen
-    }
-
-}
-
-extension PatientOverviewViewController : UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
     }
 }
 
