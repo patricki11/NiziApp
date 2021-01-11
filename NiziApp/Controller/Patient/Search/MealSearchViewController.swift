@@ -12,11 +12,15 @@ import SwiftKeychainWrapper
 
 class MealSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var MealTable: UITableView!
+    @IBOutlet weak var searchMeal: UITextField!
+    @IBOutlet weak var totalLabel: UILabel!
+    
     var meallist : [NewMeal] = []
     let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchMeal.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         GetMeals()
     }
     
@@ -26,6 +30,10 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.GetMeals()
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
         self.GetMeals()
     }
     
@@ -116,10 +124,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     func GetMeals() {
-        
-        
-        
-        NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientIntID).responseData(completionHandler: { response in
+        NiZiAPIHelper.getMeals(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientIntID, withText: searchMeal.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
                 else { print("temp1"); return }
@@ -130,6 +135,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
             
             self.meallist = MeallistJSON
             self.MealTable?.reloadData()
+            self.totalLabel.text = "Aantal(\(self.meallist.count))"
         })
          
     }

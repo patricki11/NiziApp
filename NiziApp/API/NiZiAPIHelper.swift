@@ -243,7 +243,8 @@ class NiZiAPIHelper {
     // PATIENTS //
     
     // NEW MEAL //
-    static func getMeals(withToken token : String,withPatient patientId: Int) -> DataRequest{
+    static func getMeals(withToken token : String,withPatient patientId: Int, withText searchText : String) -> DataRequest{
+        let search = "&food.name_contains=\(searchText)"
         let apiMethod = "meals?patient.id=\(patientId)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
@@ -254,7 +255,7 @@ class NiZiAPIHelper {
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
             [
-                "patient": ["id": patientid], "weight_unit": [ "id": consumption.weightUnit.id], "food_meal_component": ["foodId": consumption.foodMealComponent.foodId, "protein": consumption.foodMealComponent.protein, "id": consumption.foodMealComponent.id, "sodium": consumption.foodMealComponent.sodium, "name": consumption.foodMealComponent.name, "kcal":  consumption.foodMealComponent.kcal, "potassium": consumption.foodMealComponent.potassium, "water": consumption.foodMealComponent.water, "description": consumption.foodMealComponent.description, "fiber": consumption.foodMealComponent.fiber, "image_url": consumption.foodMealComponent.imageUrl, "portion_size": consumption.foodMealComponent.portionSize]
+                "patient": ["id": patientid], "weight_unit": [ "id": consumption.weightUnit.id], "food_meal_component": ["foodId": consumption.foodMealComponent.foodId, "protein": consumption.foodMealComponent.protein, "id": consumption.foodMealComponent.id, "sodium": consumption.foodMealComponent.sodium, "name": consumption.foodMealComponent.name, "kcal":  consumption.foodMealComponent.kcal, "potassium": consumption.foodMealComponent.potassium, "water": consumption.foodMealComponent.water, "description": consumption.foodMealComponent.description, "fiber": consumption.foodMealComponent.fiber, "image_url": consumption.foodMealComponent.imageUrl, "portion_size": consumption.foodMealComponent.portionSize], "name": consumption.foodMealComponent.name
             ] as [String : Any]
         print(parameters)
         return AF.request(baseUrl + apiMethod, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)

@@ -2323,11 +2323,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPR-lZ-i0m">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPR-lZ-i0m">
                                 <rect key="frame" x="337" y="155" width="35" height="30"/>
-                                <state key="normal" title="Zoek">
+                                <state key="normal" title="Scan">
                                     <color key="titleColor" systemColor="systemOrangeColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="W0l-0s-tMO" kind="show" id="A4p-UK-cbp"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTm-zy-fBb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="80"/>
@@ -2855,7 +2858,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ecM-TO-uc7">
-                                <rect key="frame" x="0.0" y="213" width="414" height="649"/>
+                                <rect key="frame" x="0.0" y="232" width="414" height="630"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCell" rowHeight="98" id="eoG-1S-YQm" customClass="SearchFoodTableViewCell" customModule="NiziApp" customModuleProvider="target">
@@ -2872,35 +2875,62 @@
                                     <outlet property="delegate" destination="w0Y-9M-giY" id="jFP-fY-jfk"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lka-5e-U00">
-                                <rect key="frame" x="178" y="131" width="216" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lka-5e-U00">
+                                <rect key="frame" x="276" y="150" width="118" height="34"/>
+                                <color key="backgroundColor" red="0.054901960780000002" green="0.47450980390000003" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="216" id="fgY-1f-BdF"/>
+                                    <constraint firstAttribute="width" constant="118" id="eal-Hw-QA2"/>
+                                    <constraint firstAttribute="height" constant="34" id="o0X-Ce-HKb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Maaltijd maken" image="Add_xs">
-                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="+ Maaltijd maken">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </state>
                                 <connections>
                                     <action selector="goToCreateMeal:" destination="w0Y-9M-giY" eventType="touchUpInside" id="Nk9-Aa-Lhd"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zoek maaltijd" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tAg-KX-wID">
+                                <rect key="frame" x="20" y="150" width="230" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="AOf-p2-aSi"/>
+                                    <constraint firstAttribute="height" constant="34" id="pwE-m2-Mye"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aantal (0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd9-wX-gGY">
+                                <rect key="frame" x="19.999999999999996" y="205" width="63.666666666666657" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fV2-SR-3y0"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ecM-TO-uc7" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" id="4RT-Cg-y2Z"/>
+                            <constraint firstItem="Wd9-wX-gGY" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" constant="20" id="0Vd-AN-l7i"/>
                             <constraint firstItem="4Vd-P0-Wl6" firstAttribute="trailing" secondItem="fV2-SR-3y0" secondAttribute="trailing" id="AtX-1E-6FY"/>
-                            <constraint firstItem="Lka-5e-U00" firstAttribute="top" secondItem="4Vd-P0-Wl6" secondAttribute="bottom" constant="7" id="B37-YS-vV8"/>
-                            <constraint firstItem="Lka-5e-U00" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" constant="178" id="BDF-Lm-YxC"/>
                             <constraint firstItem="fV2-SR-3y0" firstAttribute="trailing" secondItem="r1A-Jn-9gP" secondAttribute="trailing" constant="48.333333333333314" id="BLy-iL-rhd"/>
-                            <constraint firstItem="fV2-SR-3y0" firstAttribute="bottom" secondItem="ecM-TO-uc7" secondAttribute="bottom" id="GOc-uU-cdT"/>
+                            <constraint firstItem="Lka-5e-U00" firstAttribute="top" secondItem="4Vd-P0-Wl6" secondAttribute="bottom" constant="26" id="ERh-Uy-o0m"/>
                             <constraint firstItem="r1A-Jn-9gP" firstAttribute="top" secondItem="fV2-SR-3y0" secondAttribute="top" constant="25" id="KuV-Rt-iTG"/>
+                            <constraint firstItem="ecM-TO-uc7" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" id="PwM-aB-ZgO"/>
                             <constraint firstItem="4Vd-P0-Wl6" firstAttribute="top" secondItem="fV2-SR-3y0" secondAttribute="top" id="VdH-dr-zAA"/>
-                            <constraint firstItem="fV2-SR-3y0" firstAttribute="trailing" secondItem="Lka-5e-U00" secondAttribute="trailing" constant="20" id="X0g-ZK-Qxl"/>
+                            <constraint firstItem="ecM-TO-uc7" firstAttribute="top" secondItem="Wd9-wX-gGY" secondAttribute="bottom" constant="10" id="XiV-Hk-ibL"/>
+                            <constraint firstItem="tAg-KX-wID" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" constant="20" id="YIG-kB-8I4"/>
                             <constraint firstItem="r1A-Jn-9gP" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" constant="49" id="YKB-5N-Rcm"/>
-                            <constraint firstItem="fV2-SR-3y0" firstAttribute="trailing" secondItem="ecM-TO-uc7" secondAttribute="trailing" id="YQo-8q-h5M"/>
-                            <constraint firstItem="ecM-TO-uc7" firstAttribute="top" secondItem="Lka-5e-U00" secondAttribute="bottom" constant="-18" id="rLW-Ls-1S3"/>
+                            <constraint firstItem="tAg-KX-wID" firstAttribute="top" secondItem="4Vd-P0-Wl6" secondAttribute="bottom" constant="26" id="ZgD-Ri-G3i"/>
+                            <constraint firstItem="Lka-5e-U00" firstAttribute="leading" secondItem="tAg-KX-wID" secondAttribute="trailing" constant="26" id="kte-KR-Q7j"/>
+                            <constraint firstItem="fV2-SR-3y0" firstAttribute="bottom" secondItem="ecM-TO-uc7" secondAttribute="bottom" id="mf5-eX-qLW"/>
+                            <constraint firstItem="fV2-SR-3y0" firstAttribute="trailing" secondItem="ecM-TO-uc7" secondAttribute="trailing" id="ugD-8e-P3N"/>
+                            <constraint firstItem="Wd9-wX-gGY" firstAttribute="top" secondItem="tAg-KX-wID" secondAttribute="bottom" constant="21" id="xMK-8l-vAe"/>
                             <constraint firstItem="4Vd-P0-Wl6" firstAttribute="leading" secondItem="fV2-SR-3y0" secondAttribute="leading" id="z6z-IU-EPl"/>
                         </constraints>
                     </view>
@@ -2908,11 +2938,13 @@
                     <navigationItem key="navigationItem" title="Maaltijd Zoeken" id="yEF-bk-ZiD"/>
                     <connections>
                         <outlet property="MealTable" destination="ecM-TO-uc7" id="VAl-61-NqX"/>
+                        <outlet property="searchMeal" destination="tAg-KX-wID" id="lSh-f1-l9I"/>
+                        <outlet property="totalLabel" destination="Wd9-wX-gGY" id="cJn-dP-me6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkE-HD-Zu8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1671" y="420"/>
+            <point key="canvasLocation" x="-1671.0144927536232" y="419.86607142857139"/>
         </scene>
         <!--Meal Create View Controller-->
         <scene sceneID="R9K-Ga-zws">
@@ -3649,6 +3681,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lH-jN-572" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-78" y="613"/>
+        </scene>
+        <!--Bar Code Scan View Controller-->
+        <scene sceneID="vbM-9a-T8K">
+            <objects>
+                <viewController storyboardIdentifier="BarcodeScanViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W0l-0s-tMO" customClass="BarCodeScanViewController" customModule="NiziApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zjx-3V-L0r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knx-yT-Quu">
+                                <rect key="frame" x="27" y="80" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Scan"/>
+                                <connections>
+                                    <action selector="Scan:" destination="W0l-0s-tMO" eventType="touchUpInside" id="XfX-AT-eBF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ER3-Hs-yBd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gFo-pZ-RI3"/>
+                    <connections>
+                        <outlet property="scannerBtn" destination="Knx-yT-Quu" id="a1w-a2-3Mm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxD-Cg-fhI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2406" y="-267"/>
         </scene>
         <!--Dagboek-->
         <scene sceneID="SlP-dO-qvg">

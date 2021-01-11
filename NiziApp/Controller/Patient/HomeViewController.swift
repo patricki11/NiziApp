@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
         changeCurrentDayLabel()
         getDietaryGuidelines()
         getConsumptions()
-        print(self.dataTransferTo)
+        print(KeychainWrapper.standard.string(forKey: "authToken")!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
