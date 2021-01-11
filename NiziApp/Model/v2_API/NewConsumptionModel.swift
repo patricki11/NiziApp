@@ -36,12 +36,35 @@ class NewConsumptionModel : Codable {
     
     func toJSON() -> [String:Any]{
         return [
-            "amount"              : amount as Any,
-            "date"                : date as Any,
-            "meal_time"           : mealTime as Any,
-            "patient"             : patient as Any,
-            "weight_unit"         : weightUnit as Any,
-            "food_meal_component" : foodmealComponent as Any
+            "amount"    : amount as Any,
+            "date"      : date as Any,
+            "meal_time" : mealTime as Any,
+            "patient"   :
+            [
+                "id" : patient.id as Any
+            ],
+            "weight_unit":
+            [
+                "unit"       : weightUnit.unit as Any,
+                "updated_at" : weightUnit.updatedAt as Any,
+                "id"         : weightUnit.id as Any,
+                "created_at" : weightUnit.createdAt as Any,
+                "short"      : weightUnit.short as Any
+            ],
+            "food_meal_component": [
+                "foodId"       : foodmealComponent.foodId as Any,
+                "protein"      : foodmealComponent.protein as Any,
+                "id"           : foodmealComponent.id as Any,
+                "sodium"       : foodmealComponent.sodium as Any,
+                "name"         : foodmealComponent.name as Any,
+                "kcal"         : foodmealComponent.kcal as Any,
+                "potassium"    : foodmealComponent.potassium as Any,
+                "water"        : foodmealComponent.water as Any,
+                "description"  : foodmealComponent.description as Any,
+                "fiber"        : foodmealComponent.fiber as Any,
+                "image_url"    : foodmealComponent.imageUrl as Any,
+                "portion_size" : foodmealComponent.portionSize as Any
+            ]
         ]
     }
 }
