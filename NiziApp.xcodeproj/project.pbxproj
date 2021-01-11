@@ -32,6 +32,7 @@
 		2173E47C25AC159A00BFDE88 /* BarCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E47B25AC159A00BFDE88 /* BarCodeScanViewController.swift */; };
 		2173E47F25AC2C8600BFDE88 /* MealProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */; };
 		2173E48225AC2DE400BFDE88 /* NewCreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */; };
+		2173E48525AC4E2500BFDE88 /* SearchMealProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E48425AC4E2400BFDE88 /* SearchMealProductsTableViewCell.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -103,6 +104,7 @@
 		2173E47B25AC159A00BFDE88 /* BarCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanViewController.swift; sourceTree = "<group>"; };
 		2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealProductsTableViewCell.swift; sourceTree = "<group>"; };
 		2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreateMealViewController.swift; sourceTree = "<group>"; };
+		2173E48425AC4E2400BFDE88 /* SearchMealProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealProductsTableViewCell.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				2180FA8F258126690022920E /* MealTableViewCell.swift */,
 				21C58C772586B155004944AA /* MealSearchTableViewCell.swift */,
 				2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */,
+				2173E48425AC4E2400BFDE88 /* SearchMealProductsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				215FE885256C30D0007F05AB /* NewFavorite.swift in Sources */,
 				214F7E1223C1F850002D670A /* EditPatientViewController.swift in Sources */,
 				5330AE42257A77160027A768 /* AddConversationViewController.swift in Sources */,
+				2173E48525AC4E2500BFDE88 /* SearchMealProductsTableViewCell.swift in Sources */,
 				2180FA90258126690022920E /* MealTableViewCell.swift in Sources */,
 				214DB7AE255C2C37003FFCA7 /* NewPatient.swift in Sources */,
 				93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */,

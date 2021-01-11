@@ -9,7 +9,26 @@
 import UIKit
 import SwiftKeychainWrapper
 
-class SearchMealProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchMealProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CartSelection {
+    
+    func addProductToCart(product: NewFood, atindex: Int) {
+        var productExist = false
+        
+        for productSearch in Mealfoodlist {
+            if(productSearch.id == product.id){
+                productExist = true
+            }
+        }
+        product.amount = Float(1.0)
+        
+        if(productExist == false){
+            Mealfoodlist.append(product)
+        }
+        let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd aan maaltijd", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+        }))
+        present(alert, animated: true)
+    }
     
     var foodlist : [NewFood] = []
     var Mealfoodlist : [NewFood] = []
@@ -17,7 +36,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     var editMealObject : NewMeal?
     var editMeal : Bool = false
     var editMealsHasbeenRetrieved : Bool = false
-
+    
     @IBOutlet weak var searchFoodInput: UITextField!
     @IBOutlet weak var totalLbl: UILabel!
     @IBOutlet weak var productTable: UITableView!
@@ -41,6 +60,11 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchFoodInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        searchFood()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +78,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchFoodCell", for: indexPath) as! SearchFoodTableViewCell
+        let searchFoodCell = tableView.dequeueReusableCell(withIdentifier: "searchMealFoodCell", for: indexPath) as! SearchMealProductsTableViewCell
         let idx: Int = indexPath.row
         let foodResult : NewFood = foodlist[idx]
         searchFoodCell.foodTitle?.text = foodlist[idx].name
@@ -64,6 +88,8 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
         let portionSizeString : String = String(format:"%.f",foodResult.foodMealComponent?.portionSize as! CVarArg)
         searchFoodCell.portionSize?.text = ("portie: " + portionSizeString + " " + (foodResult.weightObject?.unit)!)
         searchFoodCell.foodItem = foodResult
+        searchFoodCell.index = idx
+        searchFoodCell.cartSelectionDelegate = self
         return searchFoodCell
     }
     
@@ -87,16 +113,16 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     }
     
     //MARK: API CALLS
-
+    
     func searchFood() {
         NiZiAPIHelper.getFood(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withFood: searchFoodInput.text!).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
-                else { print("temp1"); return }
+            else { print("temp1"); return }
             
             let jsonDecoder = JSONDecoder()
             guard let foodlistJSON = try? jsonDecoder.decode( [NewFood].self, from: jsonResponse )
-                else { print("temp2"); return }
+            else { print("temp2"); return }
             
             self.foodlist = foodlistJSON
             self.productTable?.reloadData()
