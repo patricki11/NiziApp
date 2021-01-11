@@ -12,7 +12,6 @@ protocol CartSelection {
     func addProductToCart(product : NewFood, atindex : Int)
 }
 
-
 protocol PresentDialog {
 func addDiary(succeeded : Bool)
 }

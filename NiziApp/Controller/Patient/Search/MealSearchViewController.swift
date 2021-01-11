@@ -49,6 +49,8 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: false)
     }
     
+  
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meallist.count
