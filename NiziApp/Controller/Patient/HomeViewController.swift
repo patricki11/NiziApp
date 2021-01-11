@@ -55,14 +55,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(KeychainWrapper.standard.string(forKey: "patientId")!)
         self.navigationController?.navigationBar.isTranslucent = true
         title = NSLocalizedString("Overview", comment: "")
         setupTableView()
         changeCurrentDayLabel()
         getDietaryGuidelines()
         getConsumptions()
-        print(KeychainWrapper.standard.string(forKey: "authToken")!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
