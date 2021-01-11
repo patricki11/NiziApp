@@ -55,6 +55,7 @@ class DetailFoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
+        //removeKeyboardAfterClickingOutsideField()
     }
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -445,3 +446,5 @@ extension DetailFoodViewController: UINavigationControllerDelegate {
         (viewController as? SearchMealProductsViewController)?.Mealfoodlist = Mealfoodlist // Here you pass the to your original view controller
     }
 }
+
+

@@ -22,6 +22,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         searchMeal.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         GetMeals()
+        //removeKeyboardAfterClickingOutsideField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,3 +149,5 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
 }
+
+

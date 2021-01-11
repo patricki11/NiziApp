@@ -67,6 +67,7 @@ class NewCreateMealViewController: UIViewController, UITableViewDataSource, UITa
             }
         }
         self.calculateDietary()
+        //removeKeyboardAfterClickingOutsideField()
     }
 
     override func viewDidAppear(_ animated: Bool){
