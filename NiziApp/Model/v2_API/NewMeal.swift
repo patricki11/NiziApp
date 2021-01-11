@@ -30,4 +30,33 @@ class NewMeal : Codable {
         case foodMealComponent = "food_meal_component"
         case mealFoods         = "meal_foods"
     }
+    
+    func toNewMealJSON(forPatient patientId: Int) -> [String:Any] {
+        return [
+            "patient":
+            [
+                "id": patientId
+            ],
+            "weight_unit":
+            [
+                "id": weightUnit.id
+            ],
+            "food_meal_component":
+            [
+                "foodId": foodMealComponent.foodId,
+                "protein": foodMealComponent.protein,
+                "id": foodMealComponent.id,
+                "sodium": foodMealComponent.sodium,
+                "name": foodMealComponent.name,
+                "kcal":  foodMealComponent.kcal,
+                "potassium": foodMealComponent.potassium,
+                "water": foodMealComponent.water,
+                "description": foodMealComponent.description,
+                "fiber": foodMealComponent.fiber,
+                "image_url": foodMealComponent.imageUrl,
+                "portion_size": foodMealComponent.portionSize
+            ],
+            "name": foodMealComponent.name
+        ]
+    }
 }
