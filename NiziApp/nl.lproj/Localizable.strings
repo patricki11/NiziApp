@@ -172,6 +172,10 @@
 
 "CancelTitle" = "Annuleren";
 
-"MealDeletedConfirmed" = "Meal is verwijderd";
+"MealDeletedConfirmed" = "Maaltijd is verwijderd";
 
 "FavoriteDeletedTitle" = "Favoriet verwijderen";
+"FavoriteDeletedMessage" = "Weet u zeker dat u favoriet wil verwijderen?";
+"FavoriteHasBeenDeleted" = "Favoriet is verwijderd";
+
+"Result" = "Aantal";

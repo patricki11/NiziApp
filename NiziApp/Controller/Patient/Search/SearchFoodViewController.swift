@@ -122,7 +122,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
             
             self.foodlist = foodlistJSON
             self.FoodTable?.reloadData()
-            self.results.text = "Aantal(\(self.foodlist.count))"
+            self.results.text = "\(NSLocalizedString("Result", comment: ""))(\(self.foodlist.count))"
         })
     }
 }

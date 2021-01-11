@@ -90,10 +90,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func showConfirmDeleteFavorite(indexPath: IndexPath) {
         let alertController = UIAlertController(
             title:NSLocalizedString("FavoriteDeletedTitle", comment: ""),
-            message: NSLocalizedString("Weet u zeker dat u favoriet wil verwijderen?", comment: ""),
+            message: NSLocalizedString("FavoriteDeletedMessage", comment: ""),
             preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Annuleer", comment: "Annuleren"), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("CancelTitle", comment: ""), style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: { _ in self.deleteFavorite(favorite: self.foodlist[indexPath.row])
             self.foodlist.remove(at: indexPath.row)
             self.FavoriteTable?.deleteRows(at: [indexPath], with: .fade)
@@ -115,8 +115,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func showFavoriteDeletedMessage() {
         let alertController = UIAlertController(
-            title:NSLocalizedString("Favoriet is verwijdert", comment: ""),
-            message: NSLocalizedString("Favoriet is verwijdert", comment: ""),
+            title:NSLocalizedString("FavoriteHasBeenDeleted", comment: ""),
+            message: NSLocalizedString("FavoriteHasBeenDeleted", comment: ""),
             preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "Ok"), style: .default, handler: nil))
@@ -155,13 +155,13 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             
             self.foodlist = foodlistJSON
             self.FavoriteTable?.reloadData()
-            self.totalResultLbl.text = "Aantal(\(self.foodlist.count))"
+            self.totalResultLbl.text = "\(NSLocalizedString("Result", comment: ""))(\(self.foodlist.count))"
         })
         
     }
     
     @IBAction func searchFoodByText(_ sender: Any) {
-        print("Searching Favorite Food")
+       
     }
     
     func createFavoriteShort(id: Int, food : Int) -> NewFavoriteShort {

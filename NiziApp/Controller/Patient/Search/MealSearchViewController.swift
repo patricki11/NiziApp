@@ -133,7 +133,7 @@ class MealSearchViewController: UIViewController, UITableViewDataSource, UITable
             
             self.meallist = MeallistJSON
             self.MealTable?.reloadData()
-            self.totalLabel.text = "Aantal(\(self.meallist.count))"
+            self.totalLabel.text = "\(NSLocalizedString("Result", comment: ""))(\(self.meallist.count))"
         })
          
     }

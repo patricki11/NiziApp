@@ -115,7 +115,9 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
             
             let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-                self.addConsumption()
+                if(self.foodlist.count > 0){
+                    self.addConsumption()
+                }
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
                 self.navigationController?.pushViewController(detailFoodVC, animated: false)

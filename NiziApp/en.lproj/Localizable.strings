@@ -177,4 +177,7 @@
 "MealDeletedConfirmed" = "Meal has been deleted";
 
 "FavoriteDeletedTitle" = "Delete Favorite";
+"FavoriteDeletedMessage" = "Are you sure you want to delete this favorite?";
+"FavoriteHasBeenDeleted" = "Favorite has been deleted";
 
+"Result" = "Results";
