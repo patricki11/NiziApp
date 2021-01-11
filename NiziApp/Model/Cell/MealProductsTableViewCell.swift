@@ -22,7 +22,6 @@ class MealProductsTableViewCell: UITableViewCell {
     @IBOutlet weak var amountInput: UITextField!
     
     @objc func textFieldDidChange(textField: UITextField){
-     print("text changed")
         let str = amountInput.text ?? "1.0"
         if var mFloat = Float(str) {
             if mFloat > 0.1 {
@@ -39,14 +38,6 @@ class MealProductsTableViewCell: UITableViewCell {
     }
     
     @IBAction func substractAction(_ sender: Any) {
-        /*
-        var numberon = Float(amountInput.text!)
-        numberon!-=1
-        amountInput.text = numberon?.description
-        food.amount = Float(numberon!)
-        cartSelectionDelegate?.addProductToCart(product: food, atindex: index)
- */
-        
         let str = amountInput.text ?? "1.0"
         if var mFloat = Float(str) {
             mFloat -= 0.5
@@ -63,14 +54,6 @@ class MealProductsTableViewCell: UITableViewCell {
         }
     }
     @IBAction func IncrementAction(_ sender: Any) {
-        /*
-        var numberon = Float(amountInput.text!)
-        numberon!+=1
-        amountInput.text = numberon?.description
-        food.amount = Float(numberon!)
-        cartSelectionDelegate?.addProductToCart(product: food, atindex: index)
- */
-        
         let str = amountInput.text ?? "1.0"
         if var mFloat = Float(str) {
             mFloat += 0.5
@@ -95,8 +78,6 @@ class MealProductsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
