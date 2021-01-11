@@ -18,4 +18,12 @@ class NewConsumptionPatch {
         self.date = date
         self.mealTime = mealTime
     }
+    
+    func toJson() -> [String:Any]{
+        return [
+            "amount"    : amount as Any,
+            "date"      : date as Any,
+            "meal_time" : mealTime as Any
+        ]
+    }
 }

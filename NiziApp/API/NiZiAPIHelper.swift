@@ -71,10 +71,8 @@ class NiZiAPIHelper {
     static func patchNewConsumption(withToken token : String, withDetails consumption: NewConsumptionPatch, withConsumptionId consumptionId: Int) -> DataRequest {
         let apiMethod = "consumptions/\(consumptionId)"
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
-        let parameters =
-            [
-                "amount": consumption.amount, "date": consumption.date, "meal_time": consumption.mealTime
-            ] as [String : Any]
+        let parameters = consumption.toJson()
+            
         print(parameters)
         print(baseUrl+apiMethod)
         return AF.request(baseUrl + apiMethod, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header)
