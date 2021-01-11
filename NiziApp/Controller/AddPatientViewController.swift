@@ -137,7 +137,7 @@ class AddPatientViewController: UIViewController {
     func createPatientAccountObjects() {
         newPatient = NewPatient(id: nil, gender: gender, dateOfBirth: self.dateOfBirthField.text!, createdAt: "",updatedAt: "", doctor: loggedInAccount.doctor!, user: nil)
        
-       newUser = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 2, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: nil, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
+       newUser = NewUser(id: 0, password: self.passwordField.text!, username: self.usernameField.text!, email: self.usernameField.text!, provider: "local", confirmed: false, role: 4, created_at: "", updated_at: "", firstname: self.firstNameField.text!, lastname: self.surnameField.text!, test: "", patient: nil, patientObject: nil, first_name: self.firstNameField.text!, last_name: self.surnameField.text!, doctor: nil)
        
         checkIfEmailExists()
     }
