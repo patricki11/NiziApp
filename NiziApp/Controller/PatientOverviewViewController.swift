@@ -52,6 +52,9 @@ class PatientOverviewViewController : UIViewController
     var useWeek : Bool = true
     var currentDayOfWeek : Int = Calendar.current.component(.weekday, from: Date())
     
+    var greenColor : UIColor =  UIColor.init(red: 9, green: 156, blue: 57) //UIColor.init(displayP3Red: 9, green: 156, blue: 57, alpha: 100)
+    var yellowColor : UIColor = UIColor.init(red: 247, green: 133, blue: 2)
+    var redColor : UIColor = UIColor.init(red: 192, green: 21, blue: 10)
     @IBOutlet weak var currentWeekLabel: UILabel!
     
     @IBAction func getPreviousWeek(_ sender: Any) {
@@ -371,15 +374,15 @@ extension PatientOverviewViewController : UITableViewDataSource {
             
             if(total < guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("keepGoingIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemOrange
+                cell.feedbackLabel.textColor = yellowColor
             }
             else if(total > guideline.minimum! && total < guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemGreen
+                cell.feedbackLabel.textColor = greenColor
             }
             else if(total > guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("limitIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemRed
+                cell.feedbackLabel.textColor = redColor
             }
         }
         else if(guideline.minimum != 0 && guideline.minimum != nil) {
@@ -388,11 +391,11 @@ extension PatientOverviewViewController : UITableViewDataSource {
             
             if(total > guideline.minimum!) {
                 cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemGreen
+                cell.feedbackLabel.textColor = greenColor
             }
             else if(total < guideline.minimum!) {
                 cell.feedbackLabel.text = NSLocalizedString("keepGoingIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemOrange
+                cell.feedbackLabel.textColor = yellowColor
             }
         }
         else if(guideline.maximum != 0 && guideline.maximum != nil) {
@@ -401,17 +404,17 @@ extension PatientOverviewViewController : UITableViewDataSource {
             
             if(total <= guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("goodIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemGreen
+                cell.feedbackLabel.textColor = greenColor
             }
             else if(total > guideline.maximum!) {
                 cell.feedbackLabel.text = NSLocalizedString("limitIntake", comment: "")
-                cell.feedbackLabel.textColor = UIColor.systemRed
+                cell.feedbackLabel.textColor = redColor
             }
         }
         
         if(total == 0) {
             cell.feedbackLabel.text = NSLocalizedString("noIntake", comment: "")
-            cell.feedbackLabel.textColor = UIColor.systemOrange
+            cell.feedbackLabel.textColor = yellowColor
         }
         
         cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")
