@@ -361,9 +361,6 @@ extension PatientOverviewViewController : UITableViewDataSource {
         var floatTotal : Float = getTotalForCorrespondingCategory(category: (guideline.dietaryRestrictionObject?.plural)!)
         var total : Int = Int(floatTotal)
         var unit = weightUnit?.short ?? ""
-        
-        var progressView = cell.guidelineChartView as! CircularProgressView
-        progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
        
         cell.guidelineNameLabel.text = getLanguageSpecificCategory(category: guideline.dietaryRestrictionObject?.plural ?? "")
 
@@ -415,6 +412,9 @@ extension PatientOverviewViewController : UITableViewDataSource {
             cell.feedbackLabel.text = NSLocalizedString("noIntake", comment: "")
             cell.feedbackLabel.textColor = yellowColor
         }
+        
+        var progressView = cell.guidelineChartView as! CircularProgressView
+        progressView.progressAnimation(guideline: guideline, weightUnit: weightUnit, currentTotal: total)
         
         cell.guidelineIconImageView.image = getCorrespondingImageForCategory(category: guideline.dietaryRestrictionObject?.description ?? "")
         
