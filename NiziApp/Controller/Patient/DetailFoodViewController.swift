@@ -51,21 +51,25 @@ class DetailFoodViewController: UIViewController {
     var editMealsHasbeenRetrieved : Bool = false
     var foodObject      : NewFood?
     var foodTime        : String = KeychainWrapper.standard.string(forKey: "mealTime")!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
     }
-
+    
     @IBAction func AddToDiary(_ sender: Any) {
         if let floatValue = Float(portionSizeInput.text!) {
-            amount = floatValue
-            if(isMealProductDetail == true){
-                self.addProductToMealList()
-            }else{
-                addConsumption()
+            if floatValue > 0.1{
+                amount = floatValue
+                if(isMealProductDetail == true){
+                    self.addProductToMealList()
+                }else{
+                    addConsumption()
+                }
+            } else {
+                displayAlertMessage(title: "Portie fout", message: "Portie waarde is onjuist",location: "" )
             }
-        } else {
+        }else{
             displayAlertMessage(title: "Portie fout", message: "Portie waarde is onjuist",location: "" )
         }
     }
@@ -91,7 +95,7 @@ class DetailFoodViewController: UIViewController {
     
     @IBAction func AddtoFavorites(_ sender: Any) {
         Addfavorite()
-    
+        
     }
     
     @IBAction func goToEditMeal(_ sender: Any) {
@@ -117,7 +121,7 @@ class DetailFoodViewController: UIViewController {
         }else {
             print("else")
         }
-      
+        
     }
     
     @IBAction func plusAction(_ sender: Any) {
@@ -190,7 +194,7 @@ class DetailFoodViewController: UIViewController {
         
         let portionSizeString : String = (self.foodItem!.portionSize.description)
         portionSizeLabel.text = portionSizeString
-     
+        
         
         switch foodTime {
         case "Ontbijt":
@@ -218,7 +222,7 @@ class DetailFoodViewController: UIViewController {
             deleteFavorteCall()
         }
         else{
-           addFavoriteCall()
+            addFavoriteCall()
         }
     }
     
@@ -256,13 +260,13 @@ class DetailFoodViewController: UIViewController {
             let patient = self.createNewPatient(id: patientId!)
             
             let consumption = self.createNewConsumptionObject(amount: self.amount, date: KeychainWrapper.standard.string(forKey: "date")!, mealTime: self.mealtimeString, patient: patient, weightUnit: weight, foodMealComponent: foodComponent)
-
+            
             createConsumptionCall(consumption: consumption)
         }
         else{
             let dateFormatter: DateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-    
+            
             let selectedDate: String = dateFormatter.string(from: datepicker.date)
             let finalDate = selectedDate + "T00:00:00.000Z"
             
@@ -281,7 +285,7 @@ class DetailFoodViewController: UIViewController {
             }
         }
         
-        food?.amount = 1
+        food?.amount = Float(portionSizeInput.text!)
         
         if(productExist == false){
             Mealfoodlist.append(food!)
@@ -384,7 +388,7 @@ class DetailFoodViewController: UIViewController {
         NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: self.foodlist[0].id!).responseData(completionHandler: { response in
             self.displayAlertMessage(title: "Succes", message: "Favoriet is verwijderd", location: "Favorite")
         })
-   
+        
     }
     
     func checkIfFavoriteCall(){
@@ -433,7 +437,7 @@ class DetailFoodViewController: UIViewController {
             self.displayAlertMessage(title: "Succes", message: "Maaltijd is verwijderd", location: "toMeal")
         })
     }
-
+    
 }
 
 extension DetailFoodViewController: UINavigationControllerDelegate {
