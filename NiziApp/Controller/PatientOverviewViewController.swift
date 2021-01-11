@@ -144,8 +144,13 @@ class PatientOverviewViewController : UIViewController
         
         dayOverviewLabel.text = NSLocalizedString("weekOverview", comment: "")
         
-        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().startOfWeek!)
-        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date().endOfWeek!)
+        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date())
+        firstDayOfWeek = Calendar.current.date(byAdding: .day, value: currentDayOfWeek - 7, to: firstDayOfWeek!)
+        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date())
+        lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7 - currentDayCounter, to: lastDayOfWeek!)
+        
+        print(firstDayOfWeek)
+        print(lastDayOfWeek)
         
         if(currentDayCounter == -1) {
             currentWeekLabel.text = NSLocalizedString("lastWeek", comment: "")
@@ -548,14 +553,15 @@ extension Date {
     }
     
     var startOfWeek: Date? {
+        let date = Date()
         let gregorian = Calendar(identifier: .gregorian)
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+        return gregorian.date(byAdding: .day, value: 0, to: sunday)
     }
 
     var endOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
-        return gregorian.date(byAdding: .day, value: 7, to: sunday)
+        return gregorian.date(byAdding: .day, value: 6, to: sunday)
     }
 }
