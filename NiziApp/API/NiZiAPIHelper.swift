@@ -245,7 +245,7 @@ class NiZiAPIHelper {
     // NEW MEAL //
     static func getMeals(withToken token : String,withPatient patientId: Int, withText searchText : String) -> DataRequest{
         let search = "&food.name_contains=\(searchText)"
-        let apiMethod = "meals?patient.id=\(patientId)"
+        let apiMethod = "meals?patient.id=\(patientId)&name_contains=\(searchText)"
         let header = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         return AF.request(baseUrl + apiMethod, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: header)
     }
@@ -290,7 +290,7 @@ class NiZiAPIHelper {
         let header : HTTPHeaders = HTTPHeaders(["Authorization" : "Bearer \(token)"])
         let parameters =
             [
-                "food_meal_component": ["protein": consumption.protein, "id": consumption.id, "sodium": consumption.sodium, "name": consumption.name, "kcal":  consumption.kcal, "potassium": consumption.potassium, "water": consumption.water, "description": consumption.description, "fiber": consumption.fiber, "image_url": consumption.imageUrl]
+                "food_meal_component": ["protein": consumption.protein, "id": consumption.id, "sodium": consumption.sodium, "name": consumption.name, "kcal":  consumption.kcal, "potassium": consumption.potassium, "water": consumption.water, "description": consumption.description, "fiber": consumption.fiber, "image_url": consumption.imageUrl], "name": consumption.name
             ] as [String : Any]
         print(parameters)
         return AF.request(baseUrl + apiMethod, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header)

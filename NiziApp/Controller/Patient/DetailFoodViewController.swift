@@ -326,7 +326,7 @@ class DetailFoodViewController: UIViewController {
     
     func navigateToEditMeal(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"NewCreateMealViewController") as! NewCreateMealViewController;()
         detailFoodVC.editMeal = true
         detailFoodVC.editMealObject = self.meal
         detailFoodVC.editMealsHasbeenRetrieved = false

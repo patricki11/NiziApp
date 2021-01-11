@@ -30,6 +30,8 @@
 		215FE88C256C456B007F05AB /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE88B256C456B007F05AB /* ConversationCell.swift */; };
 		215FE88F256C4643007F05AB /* NewConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE88E256C4643007F05AB /* NewConversation.swift */; };
 		2173E47C25AC159A00BFDE88 /* BarCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E47B25AC159A00BFDE88 /* BarCodeScanViewController.swift */; };
+		2173E47F25AC2C8600BFDE88 /* MealProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */; };
+		2173E48225AC2DE400BFDE88 /* NewCreateMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */; };
 		217496502391832700243B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174964F2391832700243B41 /* AppDelegate.swift */; };
 		217496522391832700243B41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217496512391832700243B41 /* SceneDelegate.swift */; };
 		217496572391832700243B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217496552391832700243B41 /* Main.storyboard */; };
@@ -99,6 +101,8 @@
 		215FE88B256C456B007F05AB /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		215FE88E256C4643007F05AB /* NewConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversation.swift; sourceTree = "<group>"; };
 		2173E47B25AC159A00BFDE88 /* BarCodeScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScanViewController.swift; sourceTree = "<group>"; };
+		2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealProductsTableViewCell.swift; sourceTree = "<group>"; };
+		2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreateMealViewController.swift; sourceTree = "<group>"; };
 		2174964C2391832700243B41 /* NiziApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiziApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2174964F2391832700243B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		217496512391832700243B41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				215FE88B256C456B007F05AB /* ConversationCell.swift */,
 				2180FA8F258126690022920E /* MealTableViewCell.swift */,
 				21C58C772586B155004944AA /* MealSearchTableViewCell.swift */,
+				2173E47E25AC2C8600BFDE88 /* MealProductsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 			children = (
 				2180FA8C2581177F0022920E /* MealCreateViewController.swift */,
 				2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */,
+				2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */,
 			);
 			path = CreateMeal;
 			sourceTree = "<group>";
@@ -461,6 +467,7 @@
 				53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */,
 				2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */,
 				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
+				2173E47F25AC2C8600BFDE88 /* MealProductsTableViewCell.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
 				2180FA8D258117800022920E /* MealCreateViewController.swift in Sources */,
@@ -469,6 +476,7 @@
 				53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */,
 				214DB7BA255C37BE003FFCA7 /* newFood.swift in Sources */,
 				2174966823918F3100243B41 /* AddPatientViewController.swift in Sources */,
+				2173E48225AC2DE400BFDE88 /* NewCreateMealViewController.swift in Sources */,
 				214DB7BD255C37D0003FFCA7 /* NewRole.swift in Sources */,
 				2154CFDC242942D300E96AEF /* DiaryViewController.swift in Sources */,
 				2180FA71257E563B0022920E /* PatientConsumption.swift in Sources */,

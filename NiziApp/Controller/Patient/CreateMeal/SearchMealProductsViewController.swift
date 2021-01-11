@@ -28,7 +28,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     
     @IBAction func goBackToCreateMeal(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"MealCreateViewController") as! MealCreateViewController;()
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"NewCreateMealViewController") as! NewCreateMealViewController;()
         detailFoodVC.Mealfoodlist = Mealfoodlist
         
         if(editMeal){
