@@ -70,7 +70,6 @@
 		9322A71323A07922003F136D /* MainTabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */; };
 		9322A71923A08611003F136D /* SearchFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71823A08611003F136D /* SearchFoodViewController.swift */; };
 		9322A71B23A08933003F136D /* SearchFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */; };
-		9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */; };
 		9375BCDA23B2727C004559D3 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375BCD923B2727C004559D3 /* FavoriteViewController.swift */; };
 		93EDD32D23BE80B9008836C4 /* MealSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */; };
 /* End PBXBuildFile section */
@@ -144,7 +143,6 @@
 		9322A71223A07922003F136D /* MainTabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerViewController.swift; sourceTree = "<group>"; };
 		9322A71823A08611003F136D /* SearchFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewController.swift; sourceTree = "<group>"; };
 		9322A71A23A08933003F136D /* SearchFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodTableViewCell.swift; sourceTree = "<group>"; };
-		9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailViewController.swift; sourceTree = "<group>"; };
 		9375BCD923B2727C004559D3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		93EDD32C23BE80B9008836C4 /* MealSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSearchViewController.swift; sourceTree = "<group>"; };
 		A0B51B7BCF4F006859C0444C /* Pods_NiziApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NiziApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +279,6 @@
 				5330AE472582679F0027A768 /* AddConversationItemViewController.swift */,
 				5330AE4F2583870B0027A768 /* CircularProgressView.swift */,
 				5330AE532583BEE10027A768 /* ShowPatientDiaryViewController.swift */,
-				9375BCB523B0F1E6004559D3 /* FoodDetailViewController.swift */,
 				5335279925A866B600106753 /* DietistTabBarController.swift */,
 			);
 			path = Controller;
@@ -469,7 +466,6 @@
 				2180FA7C257FBA620022920E /* NewConsumptionPatch.swift in Sources */,
 				53840FB8255EA2A20094C3C8 /* NewUser.swift in Sources */,
 				2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */,
-				9375BCB623B0F1E6004559D3 /* FoodDetailViewController.swift in Sources */,
 				2173E47F25AC2C8600BFDE88 /* MealProductsTableViewCell.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
