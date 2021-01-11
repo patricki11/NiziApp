@@ -514,7 +514,7 @@ extension PatientOverviewViewController : UITableViewDataSource {
             return UIImage(named: "Protein_s")!
         }
         else if(category.contains("Kalium")) {
-            return UIImage(named: "Kalium")!
+            return UIImage(named: "kalium")!
         }
         else {
             return nil
