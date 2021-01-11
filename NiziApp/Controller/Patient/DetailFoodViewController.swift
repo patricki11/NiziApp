@@ -53,7 +53,6 @@ class DetailFoodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupData()
-        //removeKeyboardAfterClickingOutsideField()
     }
     
     @IBAction func AddToDiary(_ sender: Any) {
@@ -97,8 +96,6 @@ class DetailFoodViewController: UIViewController {
                 portionSizeInput.text = mFloat.description
                 self.SetupData()
             }
-        }else {
-    
         }
     }
     
@@ -108,8 +105,6 @@ class DetailFoodViewController: UIViewController {
             mFloat += 0.5
             portionSizeInput.text = mFloat.description
             self.SetupData()
-        }else {
-          
         }
     }
     
@@ -169,8 +164,6 @@ class DetailFoodViewController: UIViewController {
                 let portionSizeString : String = String(self.foodItem!.portionSize * mFloat)
                 portionSizeLabel.text = portionSizeString
             }
-        }else {
-           
         }
 
         switch foodTime {
@@ -190,7 +183,6 @@ class DetailFoodViewController: UIViewController {
         }
         
         self.checkIfFavoriteCall()
-
     }
     
     func Addfavorite() {
@@ -325,7 +317,6 @@ class DetailFoodViewController: UIViewController {
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
-    
     func createNewPatient(id: Int) -> PatientConsumption {
         let consumptionPatient : PatientConsumption = PatientConsumption(id: id)
         return consumptionPatient
@@ -356,13 +347,13 @@ class DetailFoodViewController: UIViewController {
     //Favorites
     func addFavoriteCall(){
         NiZiAPIHelper.addMyFood(withToken:KeychainWrapper.standard.string(forKey: "authToken")! , withPatientId: KeychainWrapper.standard.string(forKey: "patientId")!, withFoodId: (self.foodObject?.id)!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Favoriet is toegevoegd", location: "Favorite")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FavoriteHasBeenAdded", comment: ""), location: "Favorite")
         })
     }
     
     func deleteFavorteCall(){
         NiZiAPIHelper.deleteFavorite(withToken: KeychainWrapper.standard.string(forKey: "authToken")! , withConsumptionId: self.foodlist[0].id!).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Favoriet is verwijderd", location: "Favorite")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FavoriteHasBeenDeleted", comment: ""), location: "Favorite")
         })
         
     }
@@ -391,19 +382,19 @@ class DetailFoodViewController: UIViewController {
     //Consumption
     func createConsumptionCall(consumption : NewConsumptionModel){
         NiZiAPIHelper.addNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is toegevoegd", location: "")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FoodHasBeenAdded", comment: ""), location: "")
         })
     }
     
     func editConsumption(consumption : NewConsumptionPatch){
         NiZiAPIHelper.patchNewConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withDetails: consumption, withConsumptionId: self.consumptionId).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is gewijzigd", location: "toDiary")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FoodEdited", comment: ""), location: "toDiary")
         })
     }
     
     func deleteConsumptionCall(){
         NiZiAPIHelper.deleteConsumption2(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withConsumptionId: consumptionId).responseData(completionHandler: { response in
-            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: "Voedsel is verwijderd", location: "toDiary")
+            self.displayAlertMessage(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FoodDeleted", comment: ""), location: "toDiary")
         })
     }
     

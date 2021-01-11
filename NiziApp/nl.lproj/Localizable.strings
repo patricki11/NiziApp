@@ -177,6 +177,7 @@
 "FavoriteDeletedTitle" = "Favoriet verwijderen";
 "FavoriteDeletedMessage" = "Weet u zeker dat u favoriet wil verwijderen?";
 "FavoriteHasBeenDeleted" = "Favoriet is verwijderd";
+"FavoriteHasBeenAdded" = "Favorite is toegevoegd";
 
 "Result" = "Aantal";
 
@@ -187,3 +188,7 @@
 "KeepUpTheWork" = "Blijf zo doorgaan";
 "WatchOut" = "Beperk uw inname";
 "Novalue" = "Geen inname voor ";
+
+"FoodEdited" = "Voedsel is gewijzigd";
+"FoodDeleted"= "Voedsel is verwijderd";
+
