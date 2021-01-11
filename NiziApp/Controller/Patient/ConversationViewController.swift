@@ -72,7 +72,6 @@ extension ConversationViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        
         tableView.beginUpdates()
         tableView.reloadRows(at: [selectedIndex], with: .none)
         tableView.endUpdates()

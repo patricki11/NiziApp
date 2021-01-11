@@ -15,20 +15,14 @@ struct postStruct {
 }
 
 class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NavigateToFood {
-    func goToSearch(mealTime: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
-        detailFoodVC.buttonTag = 0
-        detailFoodVC.patient = self.patient
-        self.navigationController?.pushViewController(detailFoodVC, animated: true)
-    }
+
     
     
     var heightHeader : CGFloat = 44
     
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var previousBtn: UIButton!
-    
+    @IBOutlet weak var currentWeekLabel: UILabel!
     @IBOutlet weak var nextDayBtn: UIButton!
     
     var consumptions   : [NewConsumption] = []
@@ -86,10 +80,17 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             case "Snack":
                 snackFoods.append(food)
             default:
-                print("no valid food")
                 break
             }
         }
+    }
+    
+    func goToSearch(mealTime: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
+        detailFoodVC.buttonTag = 0
+        detailFoodVC.patient = self.patient
+        self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
     
     func createNewPatientObject(id: Int, gender: String, dateOfBirth: String, createdAt: String, updatedAt: String, doctor: Int, user: Int) -> NewPatient {
@@ -111,8 +112,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         getConsumption(Date: selectedDate)
         saveDate(date: selectedDate)
-        //-----------------------------
-        //print("Selected value \(selectedDate)")
     }
     
     // API Calls
@@ -138,16 +137,6 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.SortFood()
             self.diaryTable?.reloadData()
         })
-    }
-    
-    func Deleteconsumption(Id id: Int){
-        /*
-        NiZiAPIHelper.deleteConsumption(withId: id, authenticationCode: KeychainWrapper.standard.string(forKey: "authToken")!).responseData(completionHandler: { response in
-            guard response.data != nil
-                else { print("temp1"); return }
-        })
- */
-        //self.getConsumption(Date: KeychainWrapper.standard.string(forKey: "date")!)
     }
     
     func saveDate(date: String) {
@@ -254,6 +243,8 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return heightHeader
     }
+    
+    /*
     @IBAction func GoToSearch(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailFoodVC = storyboard.instantiateViewController(withIdentifier:"ProductListViewController") as! SearchFoodViewController;()
@@ -261,6 +252,7 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         detailFoodVC.patient = self.patient
         self.navigationController?.pushViewController(detailFoodVC, animated: true)
     }
+ */
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var food = self.consumptions[indexPath.row]
@@ -376,26 +368,13 @@ class DiaryViewController: UIViewController, UITableViewDataSource, UITableViewD
         currentDayCounter += 1
         changeCurrentDayLabel()
         getConsumption(Date: "")
-        
-        /*
-        if(nextDateAvailable()) {
-            nextDayBtn.isEnabled = false
-        }
-        else {
-            nextDayBtn.isEnabled = true
-        }
-         */
     }
     
     func nextDateAvailable() -> Bool {
         var today = Date().startOfDay
         
         return today.startOfDay > selectedDate!.startOfDay
-        
     }
-    
-    
-    @IBOutlet weak var currentWeekLabel: UILabel!
     
     func changeCurrentDayLabel() {
 

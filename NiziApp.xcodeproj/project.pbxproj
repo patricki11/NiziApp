@@ -48,7 +48,6 @@
 		2180FA7C257FBA620022920E /* NewConsumptionPatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */; };
 		2180FA7F2580CE590022920E /* NewMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA7E2580CE590022920E /* NewMeal.swift */; };
 		2180FA822581027D0022920E /* NewMealFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA812581027D0022920E /* NewMealFood.swift */; };
-		2180FA8D258117800022920E /* MealCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8C2581177F0022920E /* MealCreateViewController.swift */; };
 		2180FA90258126690022920E /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FA8F258126690022920E /* MealTableViewCell.swift */; };
 		2180FAA125813AF20022920E /* SearchMealProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */; };
 		2180FAE3258604D30022920E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2180FAE2258604D20022920E /* HomeViewController.swift */; };
@@ -121,7 +120,6 @@
 		2180FA7B257FBA620022920E /* NewConsumptionPatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConsumptionPatch.swift; sourceTree = "<group>"; };
 		2180FA7E2580CE590022920E /* NewMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeal.swift; sourceTree = "<group>"; };
 		2180FA812581027D0022920E /* NewMealFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMealFood.swift; sourceTree = "<group>"; };
-		2180FA8C2581177F0022920E /* MealCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCreateViewController.swift; sourceTree = "<group>"; };
 		2180FA8F258126690022920E /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealProductsViewController.swift; sourceTree = "<group>"; };
 		2180FAE2258604D20022920E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 		934F537823C163EB007745AF /* CreateMeal */ = {
 			isa = PBXGroup;
 			children = (
-				2180FA8C2581177F0022920E /* MealCreateViewController.swift */,
 				2180FAA025813AF10022920E /* SearchMealProductsViewController.swift */,
 				2173E48125AC2DE400BFDE88 /* NewCreateMealViewController.swift */,
 			);
@@ -331,10 +328,10 @@
 		9375BCDB23B27287004559D3 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				21D8793625A348DD00E75037 /* DetailFoodViewController.swift */,
 				2154CFE424299FE100E96AEF /* Search */,
 				934F537823C163EB007745AF /* CreateMeal */,
 				2154CFDB242942D300E96AEF /* DiaryViewController.swift */,
+				21D8793625A348DD00E75037 /* DetailFoodViewController.swift */,
 				2154CFE52429DA4200E96AEF /* ConversationViewController.swift */,
 				2180FAE2258604D20022920E /* HomeViewController.swift */,
 			);
@@ -469,7 +466,6 @@
 				2173E47F25AC2C8600BFDE88 /* MealProductsTableViewCell.swift in Sources */,
 				217496502391832700243B41 /* AppDelegate.swift in Sources */,
 				2174966C2391913300243B41 /* PatientListViewController.swift in Sources */,
-				2180FA8D258117800022920E /* MealCreateViewController.swift in Sources */,
 				2180FA6E257E557D0022920E /* NewConsumptionModel.swift in Sources */,
 				2154CFE2242972E400E96AEF /* HeaderView.swift in Sources */,
 				53840FB6255E99F80094C3C8 /* NewDoctor.swift in Sources */,
