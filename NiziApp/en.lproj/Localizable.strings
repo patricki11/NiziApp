@@ -167,3 +167,12 @@
 "patientDeleteConfirmationTitle" = "Delete";
 "patientDeleteConfirmationMessage" = "Are you sure you want to delete this patient?";
 // Messages
+
+// Messages//
+"MealDeletedTitle" = "Delete meal"
+"MealDeletedMessage" = "Are you sure you want to delete the meal?"
+
+"CancelTitle" = "Cancel"
+
+"MealDeletedConfirmed" = "Meal has been deleted"
+
