@@ -128,7 +128,7 @@ extension PatientListViewController: UITableViewDataSource {
             return patientList
         }
         else {
-            return patientList.filter { ("\($0.userObject?.first_name.lowercased()) \($0.userObject?.last_name.lowercased())").contains(patientName.lowercased())}
+            return patientList.filter { ("\($0.userObject!.first_name.lowercased() ?? "") \($0.userObject!.last_name.lowercased() ?? "")").contains(patientName.lowercased())}
         }
     }
     
