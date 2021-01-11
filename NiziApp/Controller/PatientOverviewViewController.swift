@@ -149,11 +149,6 @@ class PatientOverviewViewController : UIViewController
         lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7*currentDayCounter, to: Date())
         lastDayOfWeek = Calendar.current.date(byAdding: .day, value: 7 - currentDayOfWeek, to: lastDayOfWeek!)
         
-        print("firstDayOfWeek: \(firstDayOfWeek!) - \(lastDayOfWeek)")
-        
-        print(firstDayOfWeek)
-        print(lastDayOfWeek)
-        
         if(currentDayCounter == -1) {
             currentWeekLabel.text = NSLocalizedString("lastWeek", comment: "")
         }

@@ -59,7 +59,7 @@ private var totalLabel = CATextLayer()
         let min = Double(guideline.minimum ?? 0)
         let max = Double(guideline.maximum ?? 0)
         let total = Double(currentTotal)
-        print("total: \(total)")
+
         let unit = weightUnit?.short ?? ""
         totalLabel.string = "\(String(currentTotal)) \(unit)"
         
