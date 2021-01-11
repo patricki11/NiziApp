@@ -23,7 +23,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
     var dinnerFoods    : [NewConsumption] = []
     var snackFoods     : [NewConsumption] = []
     var headers        : [postStruct] = []
-    var patient        : NewPatient?
+    var patientId      : Int?
     @IBOutlet weak var calendar: UIDatePicker!
     
     @IBOutlet weak var previousButton: UIButton!
@@ -32,6 +32,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDataFromUserDefaults()
         self.tabBarController?.title = NSLocalizedString("Diary" ,comment: "")
         headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
 
@@ -41,6 +42,11 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
         getConsumption(Date:KeychainWrapper.standard.string(forKey: "date")!)
         
         calendar.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+    }
+    
+    func getDataFromUserDefaults() {
+        let defaults = UserDefaults.standard
+        patientId = defaults.integer(forKey: "patient")
     }
     
     @objc func datePickerChanged(picker: UIDatePicker) {
@@ -117,7 +123,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
         lunchFoods      = []
         dinnerFoods     = []
         snackFoods      = []
-        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: 1, withStartDate: date).responseData(completionHandler: { response in
+        NiZiAPIHelper.readAllConsumption(withToken: KeychainWrapper.standard.string(forKey: "authToken")!, withPatient: patientId ?? 0, withStartDate: date).responseData(completionHandler: { response in
             
             guard let jsonResponse = response.data
             else { return }
