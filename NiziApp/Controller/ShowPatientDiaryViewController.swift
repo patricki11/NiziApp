@@ -34,7 +34,7 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
         super.viewDidLoad()
         getDataFromUserDefaults()
         self.tabBarController?.title = NSLocalizedString("Diary" ,comment: "")
-        headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: "Ontbijt"),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: "Lunch"),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: "Avond"),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: "Snack")]
+        headers = [postStruct.init(image: #imageLiteral(resourceName: "Sunrise_s"), text: NSLocalizedString("Ontbijt", comment: "")),postStruct.init(image: #imageLiteral(resourceName: "Sun"), text: NSLocalizedString("Lunch", comment: "")),postStruct.init(image: #imageLiteral(resourceName: "Sunset"), text: NSLocalizedString("Diner", comment: "")),postStruct.init(image: #imageLiteral(resourceName: "Food"), text: NSLocalizedString("Snack", comment: ""))]
 
         let finalDate = dateFormatter.string(from: Date()) + "T00:00:00.000Z"
         
@@ -70,7 +70,6 @@ class ShowPatientDiaryViewController: UIViewController, UITableViewDataSource, U
     fileprivate func SetupDatePicker() {
         DatePicker.setValue(UIColor.white, forKeyPath: "textColor")
         DatePicker.setValue(false, forKeyPath: "highlightsToday")
-        //DatePicker.backgroundColor = UIColor(red: 0x0A, green: 0x71, blue: 0xCB)
         DatePicker.addTarget(self, action: #selector(DiaryViewController.datePickerValueChanged(_:)), for: .valueChanged)
     }
     

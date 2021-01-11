@@ -98,6 +98,12 @@
 "nextWeek" = "Volgende Week";
 // Dates
 
+// Food Categories
+"Ontbijt" = "Ontbijt";
+"Lunch" = "Lunch";
+"Diner" = "Avond";
+"Snack" = "Snack";
+// Food Categories
 
 // Gender
 "Gender" = "Geslacht";
