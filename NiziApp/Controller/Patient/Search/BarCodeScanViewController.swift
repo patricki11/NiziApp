@@ -113,7 +113,7 @@ class BarCodeScanViewController: UIViewController, AVCaptureMetadataOutputObject
             
             self.foodlist = foodlistJSON
             
-            let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Sucess", comment: ""), message: NSLocalizedString("FoodHasBeenAdded", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
                 if(self.foodlist.count > 0){
                     self.addConsumption()

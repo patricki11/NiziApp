@@ -13,7 +13,7 @@ import SwiftKeychainWrapper
 class SearchFoodViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PresentDialog {
     var foodlist                      : [NewFood] = []
     var buttonTag                     : Int = 0
-    let patientIntID : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
+    let patientIntID                  : Int = Int(KeychainWrapper.standard.string(forKey: "patientId")!)!
     var patient                       : NewPatient?
     @IBOutlet weak var FoodTable      : UITableView!
     @IBOutlet weak var SearchFoodInput: UITextField!
@@ -28,7 +28,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func textFieldDidChange(textField: UITextField){
-    searchFood()
+        searchFood()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +53,7 @@ class SearchFoodViewController: UIViewController, UITableViewDataSource, UITable
     
     func addDiary(succeeded: Bool) {
         if(succeeded){
-            let alert = UIAlertController(title: "Success", message: "Voedel is toegevoegd", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Sucess", comment: ""), message:NSLocalizedString("FoodHasBeenAdded", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
             }))
             present(alert, animated: true)
