@@ -69,6 +69,7 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         self.calculateDietary()
+        //removeKeyboardAfterClickingOutsideField()
     }
 
     override func viewDidAppear(_ animated: Bool){
@@ -323,3 +324,5 @@ class MealCreateViewController: UIViewController, UITableViewDataSource, UITable
     
     
 }
+
+

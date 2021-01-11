@@ -22,6 +22,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         GetFavortiesFood()
         searchInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        //removeKeyboardAfterClickingOutsideField()
     }
     
     @objc func textFieldDidChange(textField: UITextField){
@@ -169,3 +170,5 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
 }
+
+

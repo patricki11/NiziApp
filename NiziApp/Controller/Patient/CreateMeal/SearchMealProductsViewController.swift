@@ -61,6 +61,7 @@ class SearchMealProductsViewController: UIViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         searchFoodInput.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        //removeKeyboardAfterClickingOutsideField()
     }
     
     @objc func textFieldDidChange(textField: UITextField){
