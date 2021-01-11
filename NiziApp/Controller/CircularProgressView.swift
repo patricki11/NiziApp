@@ -101,7 +101,6 @@ private var totalLabel = CATextLayer()
             else if(max != 0) {
                 toValue = total / max
                 if(total <= max) {
-                    print("test: \(toValue)")
                     circleLayer.strokeColor = grayColor
                     progressLayer.strokeColor = greenColor
                 }
